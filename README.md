@@ -1,7 +1,7 @@
 # NRGSIM application
 
 
-## Development Environmen Setup
+## Development Environment Setup
 * Install Git if you don't have it already (http://git-scm.com/)
 * Install node.js if you don't have it already (http://nodejs.org/)
 * Open a console window and cd to the parent directory of where you want to work on code
