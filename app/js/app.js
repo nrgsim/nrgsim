@@ -82,7 +82,7 @@ function addCube(scene, width, height, depth) {
 }
 
 function createCamera(canvas) {
-  var camera = new THREE.PerspectiveCamera(25, canvas.innerWidth() / canvas.innerHeight(), 1, 1000);
+  var camera = new THREE.PerspectiveCamera(45, canvas.innerWidth() / canvas.innerHeight(), 1, 1000);
   camera.position.x = 0;
   camera.position.y = 0;
   camera.position.z = 100;
@@ -143,6 +143,15 @@ function init() {
     var transform = buildOriginTransform(d.data.zone);
     addPlanes(scene, d.data.zone, transform);
     addPlanes(scene, d.data.windows, transform);
+  });
+
+  window.addEventListener('resize', function() {
+    var canvas = $('#canvas');
+    var width = canvas.innerWidth();
+    var height = canvas.innerHeight();
+    renderer.setSize(width, height);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
   });
 
   //addCube(scene, 20, 20, 20);
