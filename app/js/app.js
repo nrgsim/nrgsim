@@ -93,12 +93,27 @@
   }
 
   function createManualControls() {
-    $("#ventilation-rate").slider({ min: 1, max: 10, value: 5 });
-    $("#insulation-level").slider({ min: 1, max: 10, value: 5 });
-    $("#window-size").slider({ min: 1, max: 10, value: 5 });
-    $("#window-type").slider({ min: 1, max: 10, value: 5 });
-    $("#window-shading").slider({ min: 1, max: 10, value: 5 });
+    $("#Length").slider({ min: 1, max: 10, value: 5 });
+    $("#Depth").slider({ min: 1, max: 10, value: 5 });
+    $("#Height").slider({ min: 1, max: 10, value: 5 });
+    $("#SWinGR").slider({ min: 1, max: 99, value: 50, disabled: true });
+    $("#EWinGR").slider({ min: 1, max: 99, value: 50, disabled: true });
+    $("#NWinGR").slider({ min: 1, max: 99, value: 50, disabled: true });
+    $("#WWinGR").slider({ min: 1, max: 99, value: 50, disabled: true });
     $("#save-button").button();
+
+    $("#SWin").change(function() {
+      $("#SWinGR").slider(this.checked ? "enable" : "disable");
+    });
+    $("#EWin").change(function() {
+      $("#EWinGR").slider(this.checked ? "enable" : "disable");
+    });
+    $("#NWin").change(function() {
+      $("#NWinGR").slider(this.checked ? "enable" : "disable");
+    });
+    $("#WWin").change(function() {
+      $("#WWinGR").slider(this.checked ? "enable" : "disable");
+    });
   }
 
   function createRenderer(canvas) {
