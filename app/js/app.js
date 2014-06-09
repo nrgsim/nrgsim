@@ -93,27 +93,50 @@
   }
 
   function createManualControls() {
-    $("#Length").slider({ min: 1, max: 10, value: 5 });
-    $("#Depth").slider({ min: 1, max: 10, value: 5 });
-    $("#Height").slider({ min: 1, max: 10, value: 5 });
-    $("#SWinGR").slider({ min: 1, max: 99, value: 50, disabled: true });
-    $("#EWinGR").slider({ min: 1, max: 99, value: 50, disabled: true });
-    $("#NWinGR").slider({ min: 1, max: 99, value: 50, disabled: true });
-    $("#WWinGR").slider({ min: 1, max: 99, value: 50, disabled: true });
+    $("#Length").slider({ min: 1, max: 10, value: 5, slide: updateSliderDisplay });
+    $("#Depth").slider({ min: 1, max: 10, value: 5, slide: updateSliderDisplay });
+    $("#Height").slider({ min: 1, max: 10, value: 5, slide: updateSliderDisplay });
+    $("#SWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: updateSliderDisplay });
+    $("#EWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: updateSliderDisplay });
+    $("#NWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: updateSliderDisplay });
+    $("#WWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: updateSliderDisplay });
     $("#save-button").button();
 
-    $("#SWin").change(function() {
-      $("#SWinGR").slider(this.checked ? "enable" : "disable");
-    });
-    $("#EWin").change(function() {
-      $("#EWinGR").slider(this.checked ? "enable" : "disable");
-    });
-    $("#NWin").change(function() {
-      $("#NWinGR").slider(this.checked ? "enable" : "disable");
-    });
-    $("#WWin").change(function() {
-      $("#WWinGR").slider(this.checked ? "enable" : "disable");
-    });
+    $("#SWin").change(handleSliderCheckboxChange);
+    $("#EWin").change(handleSliderCheckboxChange);
+    $("#NWin").change(handleSliderCheckboxChange);
+    $("#WWin").change(handleSliderCheckboxChange);
+
+    setSliderDisplayValue('#Length');
+    setSliderDisplayValue('#Depth');
+    setSliderDisplayValue('#Height');
+    setSliderDisplayValue('#SWinGR');
+    setSliderDisplayValue('#EWinGR');
+    setSliderDisplayValue('#NWinGR');
+    setSliderDisplayValue('#WWinGR');
+  }
+
+  function handleSliderCheckboxChange(event) {
+    console.log(event.target.id + ' ' + this.checked);
+    var grId = '#'+event.target.id+'GR';
+    $(grId).slider(this.checked ? "enable" : "disable");
+    if (this.checked) {
+      $(grId+'Disp').show();
+    } else {
+      $(grId+'Disp').hide();
+    }
+    
+  }
+
+  function updateSliderDisplay(event, ui) {
+    setSliderDisplayValue('#'+event.target.id, ui.value);
+  }
+
+  function setSliderDisplayValue(sliderId, val) {
+    if (val === undefined) {
+      val = $(sliderId).slider('value');
+    }
+    $(sliderId+'Disp').text(val);
   }
 
   function createRenderer(canvas) {
