@@ -13,14 +13,16 @@
   function buildOriginTransform(zone) {
     var dimensions = { x: {}, y: {}, z: {} };
     _.each(zone, function(surface) {
-      _.each(surface.vertices, function(vertex) {
-        if (dimensions.x.min === undefined || vertex.x < dimensions.x.min) { dimensions.x.min = vertex.x; }
-        if (dimensions.x.max === undefined || vertex.x > dimensions.x.max) { dimensions.x.max = vertex.x; }
-        if (dimensions.y.min === undefined || vertex.y < dimensions.y.min) { dimensions.y.min = vertex.y; }
-        if (dimensions.y.max === undefined || vertex.y > dimensions.y.max) { dimensions.y.max = vertex.y; }
-        if (dimensions.z.min === undefined || vertex.z < dimensions.z.min) { dimensions.z.min = vertex.z; }
-        if (dimensions.z.max === undefined || vertex.z > dimensions.z.max) { dimensions.z.max = vertex.z; }
-      });
+      if (surface.BuildingSurface) {
+        _.each(surface.BuildingSurface.vertices, function(vertex) {
+          if (dimensions.x.min === undefined || vertex.x < dimensions.x.min) { dimensions.x.min = vertex.x; }
+          if (dimensions.x.max === undefined || vertex.x > dimensions.x.max) { dimensions.x.max = vertex.x; }
+          if (dimensions.y.min === undefined || vertex.y < dimensions.y.min) { dimensions.y.min = vertex.y; }
+          if (dimensions.y.max === undefined || vertex.y > dimensions.y.max) { dimensions.y.max = vertex.y; }
+          if (dimensions.z.min === undefined || vertex.z < dimensions.z.min) { dimensions.z.min = vertex.z; }
+          if (dimensions.z.max === undefined || vertex.z > dimensions.z.max) { dimensions.z.max = vertex.z; }
+        });
+      }
     });
 
     return new THREE.Matrix4().makeTranslation(-dimensions.x.min-(dimensions.x.max-dimensions.x.min)/2,
@@ -57,8 +59,7 @@
     return faces;
   }
 
-  function addPlanes(scene, surfaces, transform) {
-    _.each(surfaces, function(surface) {
+  function addPlane(scene, surface, transform) {
       var geometry = createGeometry(surface, transform);
       geometry.faces = createFaces(surface);
       geometry.computeBoundingSphere();
@@ -68,6 +69,15 @@
       var material = new THREE.MeshBasicMaterial({ vertexColors: THREE.FaceColors, overdraw: 0.5 });
       var plane = new THREE.Mesh(geometry, material);
       scene.add(plane);
+  }
+
+  function addPlanes(scene, surfaces, transform) {
+    _.each(surfaces, function(surface) {
+      if (surface.BuildingSurface) {
+        addPlane(scene, surface.BuildingSurface, transform);
+      } else if (surface.FenestrationSurface) {
+        addPlane(scene, surface.FenestrationSurface, transform);
+      }
     });
   }
 
@@ -155,10 +165,18 @@
     renderer = createRenderer(container);
     container[0].appendChild(renderer.domElement);
 
+    /*
     $.get("excel/ZoneGeometry.xlsx", function(d) {
       var transform = buildOriginTransform(d.data.zone);
       addPlanes(scene, d.data.zone, transform);
       addPlanes(scene, d.data.windows, transform);
+    });
+    */
+    $.get('zone/1', function(d) {
+      if (d.status === 0) {
+        var transform = buildOriginTransform(d.data);
+        addPlanes(scene, d.data, transform);
+      }
     });
 
     window.addEventListener('resize', function() {
