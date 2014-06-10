@@ -2,12 +2,13 @@
 
   var camera, scene, renderer;
   var controls;
-  var surfaceColors = {
-    Ceiling: 0x333333,
-    Floor: 0x000000,
-    Wall: 0xcccccc,
-    Window: 0xe0ffff
-  };
+  var materials = [
+    new THREE.MeshBasicMaterial({ color: 0x000000 }),
+    new THREE.MeshBasicMaterial({ color: 0x666666 }),
+    //new THREE.MeshLambertMaterial({ color: 0xcccccc, opacity: 0.1, depthWrite: false, depthTest: false, vertexColors: THREE.VertexColors }),
+    new THREE.MeshBasicMaterial({ color: 0xcccccc, wireframe: true }),
+    new THREE.MeshBasicMaterial({ color: 0xe0ffff, opacity: 1.0, depthWrite: false, depthTest: false, vertexColors: THREE.NoColors })
+  ];
   var transform;
 
   // Create a transform matrix that will put the center of a zone at the origin (0, 0, 0)
@@ -31,8 +32,18 @@
       -dimensions.z.min-(dimensions.z.max-dimensions.z.min)/2);
   }
 
-  function getColor(surfaceType) {
-    return surfaceColors[surfaceType];
+  function getMaterialIndex(surfaceType) {
+    switch (surfaceType) {
+      case 'Floor':
+        return 0;
+      case 'Ceiling':
+        return 1;
+      case 'Wall':
+        return 2;
+      case 'Window':
+        return 3;
+    }
+    return -1;
   }
 
   function createGeometry(surface, transform) {
@@ -49,14 +60,11 @@
   function createFaces(surface) {
     var faces = [];
     var face = new THREE.Face3(0, 1, 2);
-    var clr = getColor(surface.type);
-    face.color.setHex(clr);
+    face.materialIndex = getMaterialIndex(surface.type);
     faces.push(face);
     face = new THREE.Face3(2, 3, 0);
-    face.color.setHex(clr);
+    face.materialIndex = getMaterialIndex(surface.type);
     faces.push(face);
-    faces[0].color.setHex(clr);
-    faces[1].color.setHex(clr);
     return faces;
   }
 
@@ -69,8 +77,8 @@
       geometry.name = surface.name;
       geometry.type = surface.type;
 
-      var material = new THREE.MeshBasicMaterial({ vertexColors: THREE.FaceColors, overdraw: 0.5 });
-      var plane = new THREE.Mesh(geometry, material);
+      //var material = new THREE.MeshBasicMaterial({ vertexColors: THREE.FaceColors, overdraw: 0.5 });
+      var plane = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
       scene.add(plane);
   }
 
