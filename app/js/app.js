@@ -8,6 +8,7 @@
     Wall: 0xcccccc,
     Window: 0xe0ffff
   };
+  var transform;
 
   // Create a transform matrix that will put the center of a zone at the origin (0, 0, 0)
   function buildOriginTransform(zone) {
@@ -65,6 +66,8 @@
       geometry.computeBoundingSphere();
       geometry.computeFaceNormals();
       geometry.computeCentroids();
+      geometry.name = surface.name;
+      geometry.type = surface.type;
 
       var material = new THREE.MeshBasicMaterial({ vertexColors: THREE.FaceColors, overdraw: 0.5 });
       var plane = new THREE.Mesh(geometry, material);
@@ -110,7 +113,7 @@
     $("#EWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: updateSliderDisplay });
     $("#NWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: updateSliderDisplay });
     $("#WWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: updateSliderDisplay });
-    $("#save-button").button();
+    $("#run-button").button();
 
     $("#SWin").change(handleSliderCheckboxChange);
     $("#EWin").change(handleSliderCheckboxChange);
@@ -124,6 +127,10 @@
     setSliderDisplayValue('#EWinGR');
     setSliderDisplayValue('#NWinGR');
     setSliderDisplayValue('#WWinGR');
+
+    $("#run-button").click(function(evt) {
+      runSimulation();
+    });
   }
 
   function handleSliderCheckboxChange(event) {
@@ -174,8 +181,8 @@
     */
     $.get('zone/1', function(d) {
       if (d.status === 0) {
-        var transform = buildOriginTransform(d.data);
-        addPlanes(scene, d.data, transform);
+        transform = buildOriginTransform(d.data.zone);
+        addPlanes(scene, d.data.zone, transform);
       }
     });
 
@@ -197,5 +204,32 @@
 
   init();
   animate();
+
+  function runSimulation() {
+    var zone = [];
+    var inverseTransform = new THREE.Matrix4();
+    inverseTransform.getInverse(transform);
+    _.each(scene.children, function(child) {
+      var result = {};
+      result.name = child.geometry.name;
+      result.type = child.geometry.type;
+      result.vertices = [];
+
+      _.each(child.geometry.vertices, function(vertex) {
+        var vert = vertex.clone().applyMatrix4(inverseTransform);
+        result.vertices.push({x: vert.x, y: vert.y, z: vert.z});
+      });
+
+      zone.push(result);
+    });
+
+window.console.log(zone);
+    $.post('simulate', { zone: zone }, handleSimulationResults);
+  }
+
+  function handleSimulationResults(data, status) {
+    window.console.log(data);
+    window.console.log(status);
+  }
 
 })(window.NRGSIM = window.NRGSIM || {}, jQuery);
