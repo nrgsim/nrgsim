@@ -1,48 +1,49 @@
 {
-  zone:
+  "zone":
     [ 
       { /* there can be multiple instances of this - 6 in the usual case: 4 walls, roof and ceiling */
-        BuildingSurface:
+        "BuildingSurface":
         {
-          name: <string>,
-          type: <Floor,Ceiling,Wall>,
-	      ...
-	      vertices:
-    		[
-    		  { x: <float>, y: <float>, z: <float> },
-    		  { x: <float>, y: <float>, z: <float> },
-    		  { x: <float>, y: <float>, z: <float> },
-    		  { x: <float>, y: <float>, z: <float> }
-    		]
+          "name": "<string>",
+          "type": "<Floor,Ceiling,Wall>",
+          /* we can add more stuff in here as we need it */
+          "vertices":
+            [
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" }
+            ]
         }
       },
       { /* there can be multiple instances of this: up to 4 since the UI currently only supports windows in walls */
-        FenestrationSurface:
+        "FenestrationSurface":
         {
-          name: <string>,
-          type: <Window>,
-    	  ...
-    	  vertices:
-    		[
-    		  { x: <float>, y: <float>, z: <float> },
-    		  { x: <float>, y: <float>, z: <float> },
-    		  { x: <float>, y: <float>, z: <float> },
-    		  { x: <float>, y: <float>, z: <float> }
-    		]
-        }
+          "name": "<string>",
+          "type": "<Window>",
+          /* we can add more stuff in here as we need it */
+          "vertices":
+            [
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" }
+            ]
+          }
       },
       { /* this won't be supported in first version since we don't have a UI for it yet */
-        Shading:
+        "Shading":
         {
-          name: <string>,
-    	  ...
-    	  vertices:
-    		[
-    		  { x: <float>, y: <float>, z: <float> },
-    		  { x: <float>, y: <float>, z: <float> },
-    		  { x: <float>, y: <float>, z: <float> },
-    		  { x: <float>, y: <float>, z: <float> }
-    		]
+          "name": "<string>",
+          "type": "<string>",
+          /* we can add more stuff in here as we need it */
+          "vertices":
+            [
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" }
+            ]
         }
       }
     ]

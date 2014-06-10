@@ -179,7 +179,7 @@
       addPlanes(scene, d.data.windows, transform);
     });
     */
-    $.get('zone/1', function(d) {
+    $.get('load/1', function(d) {
       if (d.status === 0) {
         transform = buildOriginTransform(d.data.zone);
         addPlanes(scene, d.data.zone, transform);

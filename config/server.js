@@ -146,7 +146,7 @@ module.exports = {
       return result;
     }
   
-    app.get('/zone/:zoneid', function(req, res) {
+    app.get('/load/:zoneid', function(req, res) {
       res.json({ "status": 0, "data": zone});
     });
   
