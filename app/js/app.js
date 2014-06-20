@@ -3,11 +3,11 @@
   var camera, scene, renderer;
   var controls;
   var materials = [
-    new THREE.MeshBasicMaterial({ color: 0x000000 }),
-    new THREE.MeshBasicMaterial({ color: 0x666666 }),
+    new THREE.MeshBasicMaterial({ color: 0x000000 }), //Outer Floor Color 
+    new THREE.MeshBasicMaterial({ color: 0x666666 }), //Outer Roof Ceiling Color 
     //new THREE.MeshLambertMaterial({ color: 0xcccccc, opacity: 0.1, depthWrite: false, depthTest: false, vertexColors: THREE.VertexColors }),
-    new THREE.MeshBasicMaterial({ color: 0xcccccc, wireframe: true }),
-    new THREE.MeshBasicMaterial({ color: 0xe0ffff, opacity: 1.0, depthWrite: false, depthTest: false, vertexColors: THREE.NoColors })
+    new THREE.MeshBasicMaterial({ color: 0xcccccc, wireframe: true }), //WireFrame or Wall color 
+    new THREE.MeshBasicMaterial({ color: 0xe0ffff, opacity: 1.0, depthWrite: false, depthTest: false, vertexColors: THREE.NoColors }) //Window Color etc 
   ];
   var transform;
 
@@ -93,7 +93,7 @@
   }
 
   function createCamera(canvas) {
-    var camera = new THREE.PerspectiveCamera(45, canvas.innerWidth() / canvas.innerHeight(), 1, 1000);
+    var camera = new THREE.PerspectiveCamera(3, canvas.innerWidth() / canvas.innerHeight(), 1, 1000);
     camera.position.x = 0;
     camera.position.y = 0;
     camera.position.z = 100;
@@ -102,9 +102,9 @@
 
   function createCanvasControls(canvas) {
     var controls = new THREE.TrackballControls(camera, canvas[0]);
-    controls.rotateSpeed = 1.0;
-    controls.zoomSpeed = 1.2;
-    controls.panSpeed = 0.8;
+    controls.rotateSpeed = 0.7;
+    controls.zoomSpeed = 0.7;
+    controls.panSpeed = 0.7;
     controls.noZoom = false;
     controls.noPan = false;
     controls.staticMoving = false;
@@ -117,23 +117,25 @@
     $("#Length").slider({ min: 1, max: 10, value: 5, slide: updateSliderDisplay });
     $("#Depth").slider({ min: 1, max: 10, value: 5, slide: updateSliderDisplay });
     $("#Height").slider({ min: 1, max: 10, value: 5, slide: updateSliderDisplay });
-    $("#SWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: updateSliderDisplay });
-    $("#EWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: updateSliderDisplay });
     $("#NWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: updateSliderDisplay });
+    $("#EWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: updateSliderDisplay });
+    $("#SWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: updateSliderDisplay });
     $("#WWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: updateSliderDisplay });
+    $("#insulation-level").slider({ min: 1, max: 10, value: 5 });
+    $("#ventilation-rate").slider({ min: 1, max: 10, value: 5 });
     $("#run-button").button();
 
-    $("#SWin").change(handleSliderCheckboxChange);
-    $("#EWin").change(handleSliderCheckboxChange);
     $("#NWin").change(handleSliderCheckboxChange);
+    $("#EWin").change(handleSliderCheckboxChange);
+    $("#SWin").change(handleSliderCheckboxChange);
     $("#WWin").change(handleSliderCheckboxChange);
 
     setSliderDisplayValue('#Length');
     setSliderDisplayValue('#Depth');
     setSliderDisplayValue('#Height');
-    setSliderDisplayValue('#SWinGR');
-    setSliderDisplayValue('#EWinGR');
     setSliderDisplayValue('#NWinGR');
+    setSliderDisplayValue('#EWinGR');
+    setSliderDisplayValue('#SWinGR');
     setSliderDisplayValue('#WWinGR');
 
     $("#run-button").click(function(evt) {
