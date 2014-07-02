@@ -1,20 +1,36 @@
 {
-  "name": "nrgsim",
-  "title": "An HTML/JS/CSS app",
+  "name": "nrgsim-web",
+  "description": "NRGSIM application for running JEPlus simulations.",
   "version": "0.0.1",
   "private": true,
   "author": {
     "name": "Steve Paquin",
     "company": "Tryon Creek Software LLC"
   },
-  "dependencies": {},
+  "dependencies": {
+    "connect-mongo": "0.4.x",
+    "cookie-parser": "1.3.x",
+    "express": "3.12.x",
+    "express-session": "1.6.x",
+    "i18next": "1.7.x",
+    "mongo-session": "0.2.x",
+    "mongoose": "3.8.x",
+    "passport": "0.2.x",
+    "passport-local": "1.0.x",
+    "underscore": "1.6.x"
+  },
   "devDependencies": {
-    "node-xlsx": "~0.4.0",
-    "lodash": "~2.4.0",
-    "lineman-less": "~0.0.1"
+    "chai": "1.9.x",
+    "coffee-script": "1.7.x",
+    "mocha": "1.20.x",
+    "sinon": "1.10.x"
   },
   "engines": {
-    "node": "~>0.10.28",
-    "npm": "~>1.4.9"
+    "node": "0.10.x",
+    "npm": "1.4.x"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "runTests"
   }
 }

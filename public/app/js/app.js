@@ -189,7 +189,7 @@
       addPlanes(scene, d.data.windows, transform);
     });
     */
-    $.get('load/1', function(d) {
+    $.get('simulation/load/25', function(d) {
       if (d.status === 0) {
         transform = buildOriginTransform(d.data.zone);
         addPlanes(scene, d.data.zone, transform);
@@ -234,7 +234,7 @@
     });
 
 window.console.log(zone);
-    $.post('simulate', { zone: zone }, handleSimulationResults);
+    $.post('simulation/run', { zone: zone }, handleSimulationResults);
   }
 
   function handleSimulationResults(data, status) {

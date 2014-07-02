@@ -1,23 +1,20 @@
-# NRGSIM application
+Starting mongo server: `mongod`  
+Run the app: `node server.js` or `npm start`  
+Run in debug: `node --debug server.js`  
+Run with nodemon (auto restarts when changes made during development): `nodemon [--debug] server.js`
 
+Useful global node.js modules
+=============================
+Nodemon - useful for restarting express when something changes: `npm install -g nodemon`  
 
-## Development Environment Setup (Windows)
-* Install Git if you don't have it already (http://git-scm.com/)
-* Install node.js if you don't have it already (http://nodejs.org/)
-* Open a console window and cd to the parent directory of where you want to work on code
-* Clone the git repository: `git clone https://github.com/nrgsim/nrgsim.git`
-* Move into the project directory: `cd nrgsim`
-* Install the projects node modules: `npm install`
-* Run lineman: `lineman run`
-* Hit the site with a browser (http://localhost:8000/index.html)
+Techonologies
+=============
+MongoDB - http://docs.mongodb.org/manual/reference/mongo-shell/  
+Express - http://expressjs.com/  
+I18Next - http://i18next.com/node/index.html  
 
-## Development Environment Setup (Linux)
-* Install Git if you don't have it already: `sudo apt-get install git`
-* Install node.js if you don't have it already: `sudo apt-get install nodejs` (and `sudo apt-get install nodejs-legacy` on Debian distros)
-* Open a console window and cd to the parent directory of where you want to work on code
-* Clone the git repository: `git clone git@github.com:nrgsim/nrgsim.git`
-* Move into the project directory: `cd nrgsim`
-* Install lineman globally: `sudo npm install -g lineman`
-* Install the projects node modules: `npm install`
-* Run lineman: `lineman run`
-* Hit the site with a browser (http://localhost:8000/index.html)
+Testing
+=======
+Run from command line at root of project: `runTests.cmd` or `npm test`  
+It runs all the tests under the 'tests/' directory. They can be written in JavaScript or CoffeeScript.
+

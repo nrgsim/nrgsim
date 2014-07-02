@@ -1,0 +1,73 @@
+{
+  "zone":
+            "name": "<string>", /*Name include jE+ @@ tags, a word that describes occupancy type and also value for multiple zones, eg @@Office@@Zone1
+    [ 
+      { /* there can be multiple instances of this - 6 in the usual case: 4 walls, roof and ceiling */
+        "BuildingSurface:Detailed":
+        {
+          "name": "<string>", /* Should be human readable and identify the physical location of the surface, eg "SouthWall"
+          "type": "<Floor,Ceiling,Roof,Wall>", /*Surface Type and orientation/azimuth determines construction type /*
+		  {
+		  "Construction Name": "<string>", /* This calls jE+ and matching file/data /*
+		  "Name": "<@@Floor@@,@@Roof@@,@@Ceiling@@,@@EastWall@@,@@NorthWall@@,@@SouthWall@@,@@WestWall@@>" /*Based on Surface Type and orientation/azimuth
+		  {
+		  "ZoneName": "<string>",
+         "Name": "<@@Office@@Zone1>"
+	      {
+		  "Outside Boundary Condition" "<string>"
+		  "type": "<Outside,Surface,>"
+		  {
+		  "Outside Boundary Condition Object" "<string>" /* IF "Outside Boundary Condition" ="Outdoors" THEN Blank, ELSE IF "Outside Boundary Condition" = "Surface" THEN "Surface Name"
+		  "type": "<,"SurfaceName",>"
+		  {
+	    "SunExposed" "<string>"  
+		"type": "<SunExposed,NoSun>", /*  IF "Outside Boundary Condition" ="Outdoors" THEN "SunExposed" ELSE IF "Outside Boundary Condition" ="Outside" Boundary Condition Object THEN "NoSun"
+         {
+       "WindExposed" "<string>"  
+		"type": "<WindExposed,NoSun>", /*  IF "Outside Boundary Condition" ="Outdoors" THEN "WindExposed" ELSE IF "Outside Boundary Condition" ="Outside" Boundary Condition Object THEN "NoWind" 
+          "vertices":
+            [
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" }
+            ]
+        }
+      },
+      { /* there can be multiple instances of this: up to 4 since the UI currently only supports windows in walls */
+        "FenestrationSurface:Detailed":
+        {
+          "name": "<string>", /*Should be human readable and identify the physical location of the surface, eg "SouthWindow" */
+		{  
+          "type": "<Window>",
+		{
+		  "Surface Name": "<SouthWall>", /* Must match its parent surface, eg "SouthWindow" is on "SouthWall"
+		{  
+		  "Construction Name": "<@@SouthWindow@@>", /* This calls jE+ and matching file/data */
+		 { 
+
+          "vertices":
+            [
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" }
+            ]
+          }
+      },
+      { /* this won't be supported in first version since we don't have a UI for it yet */
+        "Shading":
+        {
+          "name": "<string>",
+          "vertices":
+            [
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" },
+              { "x": "<float>", "y": "<float>", "z": "<float>" }
+            ]
+        }
+      }
+    ]
+}
+    
