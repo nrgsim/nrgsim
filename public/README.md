@@ -1,23 +1,17 @@
 # NRGSIM application
 
+Note: make sure you've followed the steps in ../readme.md for getting the development environment set up. That will
+take you through downloading the source code and installing some of the necessary tools. In particular you should
+have git and node.js installed. MongoDB is only necessary if you are going to be running the full server/client
+application. If you are working on just the client side code then you don't really need MongoDB running.
 
-## Development Environment Setup (Windows)
-* Install Git if you don't have it already (http://git-scm.com/)
-* Install node.js if you don't have it already (http://nodejs.org/)
-* Open a console window and cd to the parent directory of where you want to work on code
-* Clone the git repository: `git clone https://github.com/nrgsim/nrgsim.git`
-* Move into the project directory: `cd nrgsim`
+## Development Environment Setup
+* Open a console window and cd to the nrgsim/public directory
+* Install lineman globally: `sudo npm install -g lineman` [Linux] or `npm install -g lineman` [Windows]
 * Install the projects node modules: `npm install`
-* Run lineman: `lineman run`
-* Hit the site with a browser (http://localhost:8000/index.html)
-
-## Development Environment Setup (Linux)
-* Install Git if you don't have it already: `sudo apt-get install git`
-* Install node.js if you don't have it already: `sudo apt-get install nodejs` (and `sudo apt-get install nodejs-legacy` on Debian distros)
-* Open a console window and cd to the parent directory of where you want to work on code
-* Clone the git repository: `git clone git@github.com:nrgsim/nrgsim.git`
-* Move into the project directory: `cd nrgsim`
-* Install lineman globally: `sudo npm install -g lineman`
-* Install the projects node modules: `npm install`
-* Run lineman: `lineman run`
-* Hit the site with a browser (http://localhost:8000/index.html)
+* Run lineman
+  * To run only client side stuff: `lineman run`
+  * To run it through the web server using express (see ../readme.md): `lineman build`
+* Hit the site with a browser:
+  * If running only client: (http://localhost:8000/index.html)
+  * If running server using express: (http://localhost:3000)
