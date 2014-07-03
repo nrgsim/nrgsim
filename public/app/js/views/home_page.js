@@ -1,5 +1,6 @@
 window.app.views.HomePage = Backbone.View.extend({
 
+  el: "#view",
   template: JST["app/templates/home.us"],
   camera: null,
   scene: null,
@@ -15,9 +16,8 @@ window.app.views.HomePage = Backbone.View.extend({
   ],
 
   events: {
-    'click .add-row' : 'addRow',
-    'click .clear-db' : 'clearDatabase',
-    'click .exit-app' : 'exitApp'
+    'click #run-button' : 'runSimulation',
+    'change .group-disable' : 'handleSliderCheckboxChange'
   },
 
   // Create a transform matrix that will put the center of a zone at the origin (0, 0, 0)
@@ -136,34 +136,23 @@ window.app.views.HomePage = Backbone.View.extend({
     $("#ventilation-rate").slider({ min: 1, max: 10, value: 5 });
     $("#run-button").button();
 
-    $("#NWin").change(self.handleSliderCheckboxChange);
-    $("#EWin").change(self.andleSliderCheckboxChange);
-    $("#SWin").change(self.handleSliderCheckboxChange);
-    $("#WWin").change(self.handleSliderCheckboxChange);
-
-    self.setSliderDisplayValue('#Length');
-    self.setSliderDisplayValue('#Depth');
-    self.setSliderDisplayValue('#Height');
-    self.setSliderDisplayValue('#NWinGR');
-    self.setSliderDisplayValue('#EWinGR');
-    self.setSliderDisplayValue('#SWinGR');
-    self.setSliderDisplayValue('#WWinGR');
-
-    $("#run-button").click(function(evt) {
-      self.runSimulation();
-    });
+    this.setSliderDisplayValue('#Length');
+    this.setSliderDisplayValue('#Depth');
+    this.setSliderDisplayValue('#Height');
+    this.setSliderDisplayValue('#NWinGR');
+    this.setSliderDisplayValue('#EWinGR');
+    this.setSliderDisplayValue('#SWinGR');
+    this.setSliderDisplayValue('#WWinGR');
   },
 
   handleSliderCheckboxChange: function(event) {
-    console.log(event.target.id + ' ' + this.checked);
     var grId = '#'+event.target.id+'GR';
-    $(grId).slider(this.checked ? "enable" : "disable");
-    if (this.checked) {
+    $(grId).slider(event.target.checked ? "enable" : "disable");
+    if (event.target.checked) {
       $(grId+'Disp').show();
     } else {
       $(grId+'Disp').hide();
     }
-    
   },
 
   updateSliderDisplay: function(event, ui) {
@@ -222,7 +211,7 @@ window.app.views.HomePage = Backbone.View.extend({
     var zone = [];
     var inverseTransform = new THREE.Matrix4();
     inverseTransform.getInverse(transform);
-    _.each(scene.children, function(child) {
+    _.each(this.scene.children, function(child) {
       var result = {};
       result.name = child.geometry.name;
       result.type = child.geometry.type;
@@ -236,8 +225,7 @@ window.app.views.HomePage = Backbone.View.extend({
       zone.push(result);
     });
 
-window.console.log(zone);
-    $.post('simulation/run', { zone: zone }, handleSimulationResults);
+    $.post('simulation/run', { zone: zone }, this.handleSimulationResults);
   },
 
   handleSimulationResults: function(data, status) {
