@@ -1,25 +1,27 @@
-window.app = {
-  views: {},
-  models: {},
-  services: {}
-};
-/*
+window.app.views.HomePage = Backbone.View.extend({
 
-(function(NRGSIM, $, undefined) {
-
-  var camera, scene, renderer;
-  var controls;
-  var materials = [
+  template: JST["app/templates/home.us"],
+  camera: null,
+  scene: null,
+  renderer: null,
+  controls: null,
+  transform: null,
+  materials: [
     new THREE.MeshBasicMaterial({ color: 0x000000 }), //Outer Floor Color 
     new THREE.MeshBasicMaterial({ color: 0x666666 }), //Outer Roof Ceiling Color 
     //new THREE.MeshLambertMaterial({ color: 0xcccccc, opacity: 0.1, depthWrite: false, depthTest: false, vertexColors: THREE.VertexColors }),
     new THREE.MeshBasicMaterial({ color: 0xcccccc, wireframe: true }), //WireFrame or Wall color 
     new THREE.MeshBasicMaterial({ color: 0xe0ffff, opacity: 1.0, depthWrite: false, depthTest: false, vertexColors: THREE.NoColors }) //Window Color etc 
-  ];
-  var transform;
+  ],
+
+  events: {
+    'click .add-row' : 'addRow',
+    'click .clear-db' : 'clearDatabase',
+    'click .exit-app' : 'exitApp'
+  },
 
   // Create a transform matrix that will put the center of a zone at the origin (0, 0, 0)
-  function buildOriginTransform(zone) {
+  buildOriginTransform: function(zone) {
     var dimensions = { x: {}, y: {}, z: {} };
     _.each(zone, function(surface) {
       if (surface.BuildingSurface) {
@@ -37,9 +39,9 @@ window.app = {
     return new THREE.Matrix4().makeTranslation(-dimensions.x.min-(dimensions.x.max-dimensions.x.min)/2,
       -dimensions.y.min-(dimensions.y.max-dimensions.y.min)/2,
       -dimensions.z.min-(dimensions.z.max-dimensions.z.min)/2);
-  }
+  },
 
-  function getMaterialIndex(surfaceType) {
+  getMaterialIndex: function(surfaceType) {
     switch (surfaceType) {
       case 'Floor':
         return 0;
@@ -51,9 +53,9 @@ window.app = {
         return 3;
     }
     return -1;
-  }
+  },
 
-  function createGeometry(surface, transform) {
+  createGeometry: function(surface, transform) {
     var geometry = new THREE.PlaneGeometry();
     geometry.vertices = [];
     _.each(surface.vertices, function(vertex) {
@@ -62,22 +64,22 @@ window.app = {
       geometry.vertices.push(vector);
     });
     return geometry;
-  }
+  },
 
-  function createFaces(surface) {
+  createFaces: function(surface) {
     var faces = [];
     var face = new THREE.Face3(0, 1, 2);
-    face.materialIndex = getMaterialIndex(surface.type);
+    face.materialIndex = this.getMaterialIndex(surface.type);
     faces.push(face);
     face = new THREE.Face3(2, 3, 0);
-    face.materialIndex = getMaterialIndex(surface.type);
+    face.materialIndex = this.getMaterialIndex(surface.type);
     faces.push(face);
     return faces;
-  }
+  },
 
-  function addPlane(scene, surface, transform) {
-      var geometry = createGeometry(surface, transform);
-      geometry.faces = createFaces(surface);
+  addPlane: function(scene, surface, transform) {
+      var geometry = this.createGeometry(surface, transform);
+      geometry.faces = this.createFaces(surface);
       geometry.computeBoundingSphere();
       geometry.computeFaceNormals();
       geometry.computeCentroids();
@@ -85,30 +87,31 @@ window.app = {
       geometry.type = surface.type;
 
       //var material = new THREE.MeshBasicMaterial({ vertexColors: THREE.FaceColors, overdraw: 0.5 });
-      var plane = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
+      var plane = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(this.materials));
       scene.add(plane);
-  }
+  },
 
-  function addPlanes(scene, surfaces, transform) {
+  addPlanes: function(scene, surfaces, transform) {
+    var self = this;
     _.each(surfaces, function(surface) {
       if (surface.BuildingSurface) {
-        addPlane(scene, surface.BuildingSurface, transform);
+        self.addPlane(scene, surface.BuildingSurface, transform);
       } else if (surface.FenestrationSurface) {
-        addPlane(scene, surface.FenestrationSurface, transform);
+        self.addPlane(scene, surface.FenestrationSurface, transform);
       }
     });
-  }
+  },
 
-  function createCamera(canvas) {
+  createCamera: function(canvas) {
     var camera = new THREE.PerspectiveCamera(3, canvas.innerWidth() / canvas.innerHeight(), 1, 1000);
     camera.position.x = 0;
     camera.position.y = 0;
     camera.position.z = 100;
     return camera;
-  }
+  },
 
-  function createCanvasControls(canvas) {
-    var controls = new THREE.TrackballControls(camera, canvas[0]);
+  createCanvasControls: function(canvas) {
+    var controls = new THREE.TrackballControls(this.camera, canvas[0]);
     controls.rotateSpeed = 0.7;
     controls.zoomSpeed = 0.7;
     controls.panSpeed = 0.7;
@@ -118,39 +121,40 @@ window.app = {
     controls.dynamicDampingFactor = 0.3;
     controls.keys = [ 65, 83, 68 ];
     return controls;
-  }
+  },
 
-  function createManualControls() {
-    $("#Length").slider({ min: 1, max: 10, value: 5, slide: updateSliderDisplay });
-    $("#Depth").slider({ min: 1, max: 10, value: 5, slide: updateSliderDisplay });
-    $("#Height").slider({ min: 1, max: 10, value: 5, slide: updateSliderDisplay });
-    $("#NWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: updateSliderDisplay });
-    $("#EWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: updateSliderDisplay });
-    $("#SWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: updateSliderDisplay });
-    $("#WWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: updateSliderDisplay });
+  createManualControls: function() {
+    var self = this;
+    $("#Length").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
+    $("#Depth").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
+    $("#Height").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
+    $("#NWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: self.updateSliderDisplay });
+    $("#EWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: self.updateSliderDisplay });
+    $("#SWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: self.updateSliderDisplay });
+    $("#WWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: self.updateSliderDisplay });
     $("#insulation-level").slider({ min: 1, max: 10, value: 5 });
     $("#ventilation-rate").slider({ min: 1, max: 10, value: 5 });
     $("#run-button").button();
 
-    $("#NWin").change(handleSliderCheckboxChange);
-    $("#EWin").change(handleSliderCheckboxChange);
-    $("#SWin").change(handleSliderCheckboxChange);
-    $("#WWin").change(handleSliderCheckboxChange);
+    $("#NWin").change(self.handleSliderCheckboxChange);
+    $("#EWin").change(self.andleSliderCheckboxChange);
+    $("#SWin").change(self.handleSliderCheckboxChange);
+    $("#WWin").change(self.handleSliderCheckboxChange);
 
-    setSliderDisplayValue('#Length');
-    setSliderDisplayValue('#Depth');
-    setSliderDisplayValue('#Height');
-    setSliderDisplayValue('#NWinGR');
-    setSliderDisplayValue('#EWinGR');
-    setSliderDisplayValue('#SWinGR');
-    setSliderDisplayValue('#WWinGR');
+    self.setSliderDisplayValue('#Length');
+    self.setSliderDisplayValue('#Depth');
+    self.setSliderDisplayValue('#Height');
+    self.setSliderDisplayValue('#NWinGR');
+    self.setSliderDisplayValue('#EWinGR');
+    self.setSliderDisplayValue('#SWinGR');
+    self.setSliderDisplayValue('#WWinGR');
 
     $("#run-button").click(function(evt) {
-      runSimulation();
+      self.runSimulation();
     });
-  }
+  },
 
-  function handleSliderCheckboxChange(event) {
+  handleSliderCheckboxChange: function(event) {
     console.log(event.target.id + ' ' + this.checked);
     var grId = '#'+event.target.id+'GR';
     $(grId).slider(this.checked ? "enable" : "disable");
@@ -160,39 +164,40 @@ window.app = {
       $(grId+'Disp').hide();
     }
     
-  }
+  },
 
-  function updateSliderDisplay(event, ui) {
-    setSliderDisplayValue('#'+event.target.id, ui.value);
-  }
+  updateSliderDisplay: function(event, ui) {
+    this.setSliderDisplayValue('#'+event.target.id, ui.value);
+  },
 
-  function setSliderDisplayValue(sliderId, val) {
+  setSliderDisplayValue: function(sliderId, val) {
     if (val === undefined) {
       val = $(sliderId).slider('value');
     }
     $(sliderId+'Disp').text(val);
-  }
+  },
 
-  function createRenderer(canvas) {
+  createRenderer: function(canvas) {
     var renderer = new THREE.CanvasRenderer();
     renderer.setClearColor(0xffffff);
     renderer.setSize(canvas.innerWidth(), canvas.innerHeight());
     return renderer;
-  }
+  },
 
-  function init() {
+  init: function() {
+    var self = this;
     var container = $("#canvas");
-    scene = new THREE.Scene();
-    camera = createCamera(container);
-    controls = createCanvasControls(container);
-    createManualControls();
-    renderer = createRenderer(container);
-    container[0].appendChild(renderer.domElement);
+    this.scene = new THREE.Scene();
+    this.camera = this.createCamera(container);
+    this.controls = this.createCanvasControls(container);
+    this.createManualControls();
+    this.renderer = this.createRenderer(container);
+    container[0].appendChild(this.renderer.domElement);
 
     $.get('simulation/load/25', function(d) {
       if (d.status === 0) {
-        transform = buildOriginTransform(d.data.zone);
-        addPlanes(scene, d.data.zone, transform);
+        transform = self.buildOriginTransform(d.data.zone);
+        self.addPlanes(self.scene, d.data.zone, transform);
       }
     });
 
@@ -201,21 +206,19 @@ window.app = {
       var width = canvas.innerWidth();
       var height = canvas.innerHeight();
       renderer.setSize(width, height);
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
+      this.camera.aspect = width / height;
+      this.camera.updateProjectionMatrix();
     });
-  }
+  },
 
-  function animate() {
-    requestAnimationFrame(animate);
-    controls.update();
-    renderer.render(scene, camera);
-  }
+  animate: function(controls, renderer) {
+    window.requestAnimationFrame(this.animate.bind(this));
+    this.controls.update();
+    this.renderer.render(this.scene, this.camera);
+  },
 
-  init();
-  animate();
 
-  function runSimulation() {
+  runSimulation: function() {
     var zone = [];
     var inverseTransform = new THREE.Matrix4();
     inverseTransform.getInverse(transform);
@@ -235,12 +238,36 @@ window.app = {
 
 window.console.log(zone);
     $.post('simulation/run', { zone: zone }, handleSimulationResults);
-  }
+  },
 
-  function handleSimulationResults(data, status) {
+  handleSimulationResults: function(data, status) {
     window.console.log(data);
     window.console.log(status);
+  },
+
+  initialize: function(options) {
+    /*
+    // Add hourglass and timer for when we are running in a browser
+    if (!window.hourglass) { window.hourglass = {}; }
+
+    _.bindAll(this);
+    this.DatabaseService = options.DatabaseService;
+    this.model = new window.app.models.HomePage();
+    this.model.on("change:data", this.updateTable);
+    this.updateModel();
+    */
+    this.model = new window.app.models.HomePage();
+  },
+
+  render: function() {
+    window.animateCnt = 0;
+    var self = this;
+    this.$el.html(this.template(this.model.attributes));
+    window.setTimeout(function() {
+      self.init();
+      self.animate();
+    }, 0);
+    return this;
   }
 
-})(window.NRGSIM = window.NRGSIM || {}, jQuery);
-*/
+});

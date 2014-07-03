@@ -2,72 +2,16 @@
 <html>
   <head>
     <title><%= pkg.name %></title>
-    <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/app.css" media="all" />
+    <META HTTP-Equiv="Hourglass" Content="left:200; top:180">
   </head>
   <body>
-    <div id="controls">
-      <div class="control">
-        <label>Length: <span id="LengthDisp"></span></label>
-        <div id="Length"></div>
-      </div>
-      <div class="control">
-        <label>Width: <span id="DepthDisp"></span></label>
-        <div id="Depth"></div>
-      </div>
-      <div class="control">
-        <label>Height: <span id="HeightDisp"></span></label>
-        <div id="Height"></div>
-      </div>
-      <hr/>
-      <div class="control">
-        <label><input type="checkbox" id="NWin">North Windows</input></label>
-        <div class="indent">
-          <label>Glazing Ratio: <span id="NWinGRDisp" style="display:none"></span></label>
-          <div id="NWinGR"></div>
-        </div>
-      </div>
-      <hr/>
-      <div class="control">
-        <label><input type="checkbox" id="EWin">East Windows</input></label>
-        <div class="indent">
-          <label>Glazing Ratio: <span id="EWinGRDisp" style="display:none"></span></label>
-          <div id="EWinGR"></div>
-        </div>
-      </div>
-      <hr/>
-      <div class="control">
-        <label><input type="checkbox" id="SWin">South Windows</input></label>
-        <div class="indent">
-          <label>Glazing Ratio: <span id="SWinGRDisp" style="display:none"></span></label>
-          <div id="SWinGR"></div>
-        </div>
-      </div>
-      <hr/>
-      <div class="control">
-        <label><input type="checkbox" id="WWin">West Windows</input></label>
-        <div class="indent">
-          <label>Glazing Ratio: <span id="WWinGRDisp" style="display:none"></span></label>
-          <div id="WWinGR"></div>
-        </div>
-      </div>
-      <hr/>
-      <div class="control">
-        <label>Insulation level</label>
-        <div id="insulation-level"></div>
-      </div>
-      <div class="control">
-        <label>Ventilation Rate</label>
-        <div id="ventilation-rate"></div>
-      </div>
-      <div class="control">
-        <button id="run-button">Simulate</button>
+    <div class="row">
+      <div class="large-12">
+        <div id="view"></div>
       </div>
     </div>
-    <div id="canvas">
-    </div>
-    <div id="results">
-    </div>
+
     <script type="text/javascript" src="js/app.js"></script>
   </body>
 </html>
