@@ -4,7 +4,10 @@
 
 var express = require('express'),
   MongoStore = require('connect-mongo')(express),
-  flash = require('connect-flash');
+  flash = require('connect-flash'),
+  cookieParser = require('cookie-parser'),
+  bodyParser = require('body-parser'),
+  cookieSession = require('cookie-session');
 
 module.exports = function (app, config, i18n, passport) {
 
@@ -28,16 +31,17 @@ module.exports = function (app, config, i18n, passport) {
     //app.use(viewHelpers(config));
 
     // cookieParser should be above session
-    app.use(express.cookieParser());
+    app.use(cookieParser());
 
     // bodyParser should be above methodOverride
-    app.use(express.bodyParser());
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.json());
     //app.use(i18n.handle);
     //app.use(express.methodOverride());
 
     // express/mongo session storage
-    app.use(express.session({
-      secret: 'session hash secret',
+    app.use(cookieSession({
+      secret: 'nrgsim_app',
       store: new MongoStore({
         url: config.db,
         collection : 'sessions'
@@ -66,9 +70,11 @@ module.exports = function (app, config, i18n, passport) {
     });
 
     // if it got this far then it is a non-existent page - just send the default page
+    /*
     app.use(function(req, res, next) {
       console.log("Can't find page sending default");
       res.sendfile('./public/dist/index.html');
     });
+    */
   });
 };
