@@ -235,7 +235,7 @@ window.app.views.SimPage = Backbone.View.extend({
 
   initialize: function(options) {
     _.bindAll(this);
-    this.model = new window.app.models.SimPage();
+    this.model = new window.app.models.Simulation();
   },
 
   render: function() {

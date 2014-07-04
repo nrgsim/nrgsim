@@ -11,7 +11,6 @@ window.app.views.LoginPage = Backbone.View.extend({
 
   initialize: function(options) {
     this.AuthenticationService = options.AuthenticationService;
-    this.model = new window.app.models.LoginPage();
   },
 
   login: function() {
@@ -30,7 +29,7 @@ window.app.views.LoginPage = Backbone.View.extend({
   },
 
   render: function() {
-    this.$el.html(this.template(this.model.attributes));
+    this.$el.html(this.template());
     return this;
   }
 });
