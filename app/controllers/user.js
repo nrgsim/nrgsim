@@ -39,15 +39,19 @@ exports.create = function (req, res, next) {
   user.provider = 'local';
   user.save(function (err) {
     if (err) {
-      return res.render('user/signup', { errors: err.errors, user: user });
+      res.status(500).json({ 'messages': [ err ] });
+    } else {
+      res.status(200).json({ 'messages': [ 'user saved' ]});
     }
     // TODO: do we really want to log in immediately?
+    /*
     req.logIn(user, function(err) {
       if (err) {
         return next(err);
       }
       return res.redirect('/');
     });
+*/
   });
 };
 

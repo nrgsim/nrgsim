@@ -43,6 +43,7 @@ UserSchema.path('hashed_password').validate(function (hashed_password) {
 
 // pre save hooks
 UserSchema.pre('save', function(next) {
+  console.log(this);
   if (!this.isNew) { return next(); }
 
   if (!fieldIsPresent(this.password)) {

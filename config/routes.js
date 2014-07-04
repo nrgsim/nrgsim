@@ -26,9 +26,11 @@ module.exports = function (app, t, passport, auth) {
   app.get('/simulation/load/:id', simulation.load);
   app.post('/simulation/run', simulation.run);
 
+  app.get('/signup', appctrl.render);
   app.get('/login', appctrl.render);
   app.get('/logout', appctrl.logout);
   app.get('/home', appctrl.render);
+  app.get('/profile', auth.requiresLogin, appctrl.render);
   app.get('/sim', auth.requiresLogin, appctrl.render);
   app.get('/', appctrl.render);
 
