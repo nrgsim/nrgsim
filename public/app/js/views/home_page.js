@@ -201,7 +201,7 @@ window.app.views.HomePage = Backbone.View.extend({
   },
 
   animate: function(controls, renderer) {
-    window.requestAnimationFrame(this.animate.bind(this));
+    window.requestAnimationFrame(this.animate);
     this.controls.update();
     this.renderer.render(this.scene, this.camera);
   },
@@ -244,6 +244,7 @@ window.app.views.HomePage = Backbone.View.extend({
     this.model.on("change:data", this.updateTable);
     this.updateModel();
     */
+    _.bindAll(this);
     this.model = new window.app.models.HomePage();
   },
 

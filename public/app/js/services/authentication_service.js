@@ -1,7 +1,13 @@
 window.app.services.AuthenticationService = {
-  
-  login: function(credentials) {
-    return $.post('/login', credentials);
+
+  login: function(credentials, success, failure) {
+    $.ajax({
+      type: "POST",
+      url: '/user/session',
+      data: credentials,
+      success: success,
+      error: failure
+    });
   },
 
   logout: function() {

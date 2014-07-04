@@ -2,7 +2,7 @@ window.app.router = Backbone.Router.extend({
   routes: {
     "login" : "login",
     "home"  : "home",
-    "*path" : "login"
+    "*path" : "home"
   },
 
   login: function() {
@@ -28,5 +28,5 @@ window.app.router = Backbone.Router.extend({
 
 $(function() {
   window.router = new window.app.router();
-  Backbone.history.start();
+  Backbone.history.start({pushState: true});
 });

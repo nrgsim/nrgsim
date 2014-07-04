@@ -3,7 +3,8 @@
 "use strict";
 
 var express = require('express'),
-  MongoStore = require('connect-mongo')(express);
+  MongoStore = require('connect-mongo')(express),
+  flash = require('connect-flash');
 
 module.exports = function (app, config, i18n, passport) {
 
@@ -47,7 +48,7 @@ module.exports = function (app, config, i18n, passport) {
     //i18n.registerAppHelper(app);
 
     // connect flash for flash messages
-    //app.use(flash());
+    app.use(flash());
 
     // use passport session
     app.use(passport.initialize());
@@ -59,13 +60,14 @@ module.exports = function (app, config, i18n, passport) {
     app.use(app.router);
 
     // handle server errors
-    app.use(function(err, req, res, next){
+    app.use(function(err, req, res, next) {
       console.error(err.stack);
       res.status(500).json({'err': 'internal server error'});
     });
 
     // if it got this far then it is a non-existent page - just send the default page
-    app.use(function(req, res, next){
+    app.use(function(req, res, next) {
+      console.log("Can't find page sending default");
       res.sendfile('./public/dist/index.html');
     });
   });

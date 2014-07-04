@@ -1,25 +1,32 @@
 window.app.views.LoginPage = Backbone.View.extend({
 
   template: JST["app/templates/login.us"],
+  AuthenticationService: null,
 
   events: {
     'click .add-row' : 'addRow',
     'click .clear-db' : 'clearDatabase',
-    'click .exit-app' : 'exitApp'
+    'click #login' : 'login'
   },
 
   initialize: function(options) {
-    /*
-    // Add hourglass and timer for when we are running in a browser
-    if (!window.hourglass) { window.hourglass = {}; }
-
-    _.bindAll(this);
-    this.DatabaseService = options.DatabaseService;
-    this.model = new window.app.models.HomePage();
-    this.model.on("change:data", this.updateTable);
-    this.updateModel();
-    */
+    this.AuthenticationService = options.AuthenticationService;
     this.model = new window.app.models.LoginPage();
+  },
+
+  login: function() {
+    this.AuthenticationService.login({email: $('#email').val(), password: $('#password').val()}, this.loginSuccess, this.loginFailure);
+  },
+
+  loginSuccess: function() {
+    window.console.log("Login succeeded");
+    window.location = "/";
+  },
+
+  loginFailure: function(evt) {
+    window.console.log("Login failed");
+    window.console.log(evt);
+    $(".alert").text(evt.responseJSON.msg);
   },
 
   render: function() {

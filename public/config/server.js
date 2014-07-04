@@ -80,6 +80,16 @@ module.exports = {
         ]
     };
 
+    app.post('/user/session', function(req, res) {
+      var email = req.body.email;
+      var pwd = req.body.password;
+      if (email === pwd) {
+        res.status(200).json({"msg": "logged in"});
+      } else {
+        res.status(400).json({"msg": "login failed"});
+      }
+    });
+
     app.get('/simulation/load/:id', function(req, res) {
       res.json({ "status": 0, "data": zone});
     });

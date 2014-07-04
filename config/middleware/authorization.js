@@ -5,7 +5,11 @@
  *  Generic require login routing middleware
  */
 exports.requiresLogin = function (req, res, next) {
+  console.log("Checking authentication: " + req.isAuthenticated());
   if (!req.isAuthenticated()) {
+    console.log("NOT AUTHENTICATED");
+    console.log("URL: " + req.url);
+    console.log(req.headers);
     return res.redirect('/login');
   }
   next();

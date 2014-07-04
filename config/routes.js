@@ -3,12 +3,9 @@
 
 module.exports = function (app, t, passport, auth) {
 
-  var user = require('../app/controllers/user'),
+  var appctrl = require('../app/controllers/app'),
+    user = require('../app/controllers/user'),
     simulation = require('../app/controllers/simulation');
-
-  var sendApp = function(req, res, next){
-    res.sendfile('./public/dist/index.html');
-  };
 
   // user and authentication routes
   //app.get('/login', user.login);
@@ -22,13 +19,16 @@ module.exports = function (app, t, passport, auth) {
 
   //app.param('userId', user.user);
 
-  app.get('/', sendApp);
+  //app.get('/', sendApp);
   //app.get('/about', auth.requiresLogin, about.index);
   //app.get('/contact', auth.requiresLogin, contact.index);
 
   app.get('/simulation/load/:id', simulation.load);
   app.post('/simulation/run', simulation.run);
 
-  app.get('/', sendApp);
+  app.get('/home', auth.requiresLogin, appctrl.render);
+  app.get('/login', appctrl.render);
+  app.get('/', appctrl.redirect);
+  app.all('*', auth.requiresLogin, appctrl.render);
 
 };
