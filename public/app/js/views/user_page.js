@@ -14,11 +14,13 @@ window.app.views.UserPage = Backbone.View.extend({
   saveSucceeded: function(data) {
     window.console.log('saveSucceeded');
     window.console.log(data);
+    window.location.replace('/#login');
   },
 
   saveFailed: function(data) {
     window.console.log('saveFailed');
     window.console.log(data);
+    // TODO: show error message
   },
 
   save: function(evt) {

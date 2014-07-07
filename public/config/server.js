@@ -90,6 +90,14 @@ module.exports = {
       }
     });
 
+    app.delete('/user/session', function(req, res) {
+      res.status(200).json({ "message" : "logged out" });
+    });
+
+    app.post('/user', function(req, res) {
+      res.status(200).json({ "message" : "registered" });
+    });
+
     app.get('/simulation/load/:id', function(req, res) {
       res.json({ "status": 0, "data": zone});
     });
