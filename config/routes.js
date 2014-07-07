@@ -3,8 +3,7 @@
 
 module.exports = function (app, t, passport, auth) {
 
-  var appctrl = require('../app/controllers/app'),
-    user = require('../app/controllers/user'),
+  var user = require('../app/controllers/user'),
     simulation = require('../app/controllers/simulation');
 
   // REST API
