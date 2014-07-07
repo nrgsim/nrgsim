@@ -4,14 +4,19 @@ window.app.views.LoginPage = Backbone.View.extend({
   AuthenticationService: null,
 
   events: {
-    'click .add-row' : 'addRow',
-    'click .clear-db' : 'clearDatabase',
+    'keydown' : 'handleKeyDown',
     'click #login' : 'login',
-    'click #forgot-password' : 'forgotPassword',
+    'click #forgot-password' : 'forgotPassword'
   },
 
   initialize: function(options) {
     this.AuthenticationService = options.AuthenticationService;
+  },
+
+  handleKeyDown: function(evt) {
+    if (evt.which === 13) {
+      this.login(evt);
+    }
   },
 
   login: function() {

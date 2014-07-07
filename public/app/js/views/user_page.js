@@ -7,8 +7,15 @@ window.app.views.UserPage = Backbone.View.extend({
   UserService: null,
 
   events: {
-    'click #save'   : 'save',
+    'keydown' : 'handleKeyDown',
+    'click #save' : 'save',
     'click #cancel' : 'cancel'
+  },
+
+  handleKeyDown: function(evt) {
+    if (evt.which === 13) {
+      this.save(evt);
+    }
   },
 
   saveSucceeded: function(data) {
