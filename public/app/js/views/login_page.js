@@ -19,7 +19,7 @@ window.app.views.LoginPage = Backbone.View.extend({
 
   loginSuccess: function() {
     window.console.log("Login succeeded");
-    window.location.replace("/sim");
+    window.location.replace("/#sim");
   },
 
   loginFailure: function(evt) {

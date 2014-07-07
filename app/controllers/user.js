@@ -3,12 +3,25 @@
 
 var mongoose = require('mongoose'),
   User = mongoose.model('User'),
-  underscore = require('underscore');
+  underscore = require('underscore'),
+  passport = require('passport');
 
 // route handler and session setup for passport login
 exports.passport = function (req, res) {};
-exports.session = function (req, res) {
-  res.redirect('/');
+
+exports.authenticate = function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err || !user) {
+      res.status(500).json({ "messages" : [ "login failed", err ] });
+    } else {
+      res.status(200).json(user);
+    }
+  })(req, res, next);
+};
+
+exports.endSession = function(req, res) {
+  req.logout();
+  res.status(200).json({ "messages" : [ "logged out" ]});
 };
 
 exports.authCallback = function (req, res, next) {
