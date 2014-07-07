@@ -10,7 +10,8 @@ var UserSchema = new Schema({
   email: String,
   provider: String,
   hashed_password: String,
-  salt: String
+  salt: String,
+  roles: Array
 });
 
 // Make password virtual and generate an encrypted password and salt
@@ -70,6 +71,7 @@ UserSchema.method('encryptPassword', function(password) {
 });
 
 UserSchema.statics.create = function(data) {
+  console.log('UserSchema.statics.create: ' + JSON.stringify(data));
   var User = this;
   return new User(data);
 };

@@ -1,7 +1,7 @@
 window.app.services.UserService = {
 
-  create: function(id, name, email, password, success, failure) {
-    var user = { id: id, name: name, email: email, password: password, provider: 'local' };
+  create: function(id, name, email, password, roles, success, failure) {
+    var user = { id: id, name: name, email: email, password: password, provider: 'local', roles: roles };
     $.ajax({
       type: "POST",
       url: '/user',

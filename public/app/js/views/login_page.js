@@ -6,7 +6,8 @@ window.app.views.LoginPage = Backbone.View.extend({
   events: {
     'click .add-row' : 'addRow',
     'click .clear-db' : 'clearDatabase',
-    'click #login' : 'login'
+    'click #login' : 'login',
+    'click #forgot-password' : 'forgotPassword',
   },
 
   initialize: function(options) {
@@ -26,6 +27,11 @@ window.app.views.LoginPage = Backbone.View.extend({
     window.console.log("Login failed");
     window.console.log(evt);
     $(".alert").text(evt.responseJSON.msg);
+  },
+
+  forgotPassword: function(evt) {
+    window.alert('not implemented yet');
+    evt.preventDefault();
   },
 
   render: function() {

@@ -8,7 +8,17 @@ window.app.views.UserPage = Backbone.View.extend({
 
   events: {
     'click #save'   : 'save',
-    'click #cancle' : 'cancel'
+    'click #cancel' : 'cancel'
+  },
+
+  saveSucceeded: function(data) {
+    window.console.log('saveSucceeded');
+    window.console.log(data);
+  },
+
+  saveFailed: function(data) {
+    window.console.log('saveFailed');
+    window.console.log(data);
   },
 
   save: function(evt) {
@@ -17,14 +27,15 @@ window.app.views.UserPage = Backbone.View.extend({
     var email = $('#email').val();
     var password = $('#password').val();
     var confirm = $('#confirm-password').val();
+    var roles = ['User'];
 
     // TODO validate fields
     window.console.log('create user: ' + name + ' ' + email + ' ' + password);
-    this.UserService.create(name, email, password);
+    this.UserService.create(null, name, email, password, roles, this.saveSucceeded, this.saveFailed);
   },
 
   cancel: function(evt) {
-    window.location.replace('/');
+    window.history.back();
   },
 
   initialize: function(options) {
