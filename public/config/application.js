@@ -39,7 +39,7 @@ module.exports = require(process.env['LINEMAN_MAIN']).config.extend('application
         }
       ]
     }
-  }
+  },
 
   // API Proxying
   //
@@ -62,6 +62,6 @@ module.exports = require(process.env['LINEMAN_MAIN']).config.extend('application
   // have Ruby installed as well as the `sass` gem. To enable it, comment out the
   // following line:
   //
-  // enableSass: false
+  enableSass: true
 
 });
