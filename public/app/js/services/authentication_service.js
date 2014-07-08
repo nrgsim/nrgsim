@@ -7,7 +7,9 @@ window.app.services.AuthenticationService = {
   },
 
   loginSuccess: function(next, data, status, xhr) {
-    this.currentUser = data;
+    window.console.log('login success');
+    this.currentUser = new window.app.models.User(data);
+    window.console.log(this.currentUser);
     if (next) {
       next(data, status, xhr);
     }

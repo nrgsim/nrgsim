@@ -32,6 +32,7 @@ window.app.views.UserPage = Backbone.View.extend({
 
   save: function(evt) {
     var id = $('#id').val();
+    var ver = $('#version').val();
     var name = $('#name').val();
     var email = $('#email').val();
     var password = $('#password').val();
@@ -39,8 +40,13 @@ window.app.views.UserPage = Backbone.View.extend({
     var roles = ['User'];
 
     // TODO validate fields
-    window.console.log('create user: ' + name + ' ' + email + ' ' + password);
-    this.UserService.create(null, name, email, password, roles, this.saveSucceeded, this.saveFailed);
+    if (id && id.length() > 0) {
+      window.console.log('update user: ' + name + ' ' + email + ' ' + password);
+      this.UserService.save(id, name, email, password, roles, this.saveSucceeded, this.saveFailed);
+    } else {
+      window.console.log('create user: ' + name + ' ' + email + ' ' + password);
+      this.UserService.create(name, email, password, roles, this.saveSucceeded, this.saveFailed);
+    }
   },
 
   cancel: function(evt) {

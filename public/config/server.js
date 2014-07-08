@@ -84,7 +84,8 @@ module.exports = {
       var email = req.body.email;
       var pwd = req.body.password;
       if (email === pwd) {
-        res.status(200).json({"msg": "logged in"});
+        var user = { _id: 1, __v: 0, name: req.body.name, email: email, password: pwd };
+        res.status(200).json(user);
       } else {
         res.status(400).json({"msg": "login failed"});
       }
@@ -95,7 +96,11 @@ module.exports = {
     });
 
     app.post('/user', function(req, res) {
-      res.status(200).json({ "message" : "registered" });
+      res.status(200).json({ "message" : "user registered" });
+    });
+
+    app.put('/user', function(req, res) {
+      res.status(200).json({ "message" : "user updated" });
     });
 
     app.get('/simulation/load/:id', function(req, res) {

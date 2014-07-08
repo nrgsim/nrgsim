@@ -97,8 +97,11 @@ window.app.router = AuthRouter.extend({
 
   profile: function() {
     window.console.log('route to profile');
+    window.console.log(window.app.services.AuthenticationService);
+    var user = window.app.services.AuthenticationService.getLoggedInUser();
+    window.console.log(user);
     this.renderPage(window.app.views.UserPage, {
-      'user': new window.app.models.User()/*todo: get current user*/
+      'user': user
     });
   },
 
