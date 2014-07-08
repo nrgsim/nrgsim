@@ -36,7 +36,7 @@ module.exports = function (app, config, i18n, passport) {
     // bodyParser should be above methodOverride
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
-    //app.use(i18n.handle);
+    app.use(i18n.handle);
     //app.use(express.methodOverride());
 
     // express/mongo session storage
@@ -68,13 +68,5 @@ module.exports = function (app, config, i18n, passport) {
       console.error(err.stack);
       res.status(500).json({'err': 'internal server error'});
     });
-
-    // if it got this far then it is a non-existent page - just send the default page
-    /*
-    app.use(function(req, res, next) {
-      console.log("Can't find page sending default");
-      res.sendfile('./public/dist/index.html');
-    });
-    */
   });
 };

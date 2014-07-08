@@ -12,7 +12,7 @@ exports.passport = function (req, res) {};
 exports.authenticate = function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err || !user) {
-      res.status(500).json({ message : "login failed" });
+      res.status(500).json({ message : req.i18n.t("error.loginFailed") });
     } else {
       console.log('login success');
       console.log(user);
@@ -24,7 +24,7 @@ exports.authenticate = function(req, res, next) {
 
 exports.endSession = function(req, res) {
   req.logout();
-  res.status(200).json({ "messages" : [ "logged out" ]});
+  res.status(200).json({ message : req.i18n.t("message.logoutSucceeded") });
 };
 
 exports.authCallback = function (req, res, next) {
@@ -51,9 +51,9 @@ exports.create = function (req, res, next) {
   user.provider = 'local';
   user.save(function (err) {
     if (err) {
-      res.status(500).json({ 'messages': [ err ] });
+      res.status(500).json({ message: [ err ] });
     } else {
-      res.status(200).json({ message: [ 'user created' ], user: user.toJSON() });
+      res.status(200).json({ message: req.i18n.t("message.userCreated"), user: user.toJSON() });
     }
   });
 };
@@ -75,7 +75,7 @@ exports.update = function(req, res) {
       if (err) {
         res.status(500).json({ 'messages': [ err ] });
       } else {
-        res.status(200).json({ message: [ 'user updated' ], user: user.toJSON() });
+        res.status(200).json({ message: req.i18n.t("message.userUpdated"), user: user.toJSON() });
       }
     });
   });

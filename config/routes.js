@@ -8,11 +8,11 @@ module.exports = function (app, t, passport, auth) {
 
   // REST API
   app.post('/user', user.create);
+  app.put('/user', auth.requiresLogin, user.update);
   app.post('/user/session', user.authenticate);
   app.delete('/user/session', user.endSession);
   //app.get('/user/:userId', user.show);
   //app.get('/user', auth.requiresLogin, user.edit);
-  app.put('/user', auth.requiresLogin, user.update);
 
   //app.param('userId', user.user);
 
