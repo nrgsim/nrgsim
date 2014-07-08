@@ -14,9 +14,13 @@ window.app.services.AuthenticationService = {
     return null;
   },
 
+  setLoggedInUser: function(user) {
+    window.sessionStorage.setItem('currentUser', JSON.stringify(user.toJSON()));
+  },
+
   loginSuccess: function(next, data, status, xhr) {
     var user = new window.app.models.User(data);
-    window.sessionStorage.setItem('currentUser', JSON.stringify(user.toJSON()));
+    this.setLoggedInUser(user);
     if (next) {
       next(data, status, xhr);
     }

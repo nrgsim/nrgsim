@@ -12,7 +12,7 @@ exports.passport = function (req, res) {};
 exports.authenticate = function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err || !user) {
-      res.status(500).json({ "messages" : [ "login failed", err ] });
+      res.status(500).json({ message : "login failed" });
     } else {
       console.log('login success');
       console.log(user);
@@ -32,7 +32,7 @@ exports.authCallback = function (req, res, next) {
 };
 
 exports.login = function (req, res) {
-  res.render('user/login');
+  res.render('user/#login');
 };
 
 exports.logout = function (req, res) {
@@ -53,14 +53,9 @@ exports.create = function (req, res, next) {
     if (err) {
       res.status(500).json({ 'messages': [ err ] });
     } else {
-      res.status(200).json({ 'messages': [ 'user created' ]});
+      res.status(200).json({ message: [ 'user created' ], user: user.toJSON() });
     }
   });
-};
-
-exports.edit = function(req, res) {
-  var user = req.user;
-  res.render('/user', { user: user, stringify: JSON.stringify });
 };
 
 exports.update = function(req, res) {
@@ -80,7 +75,7 @@ exports.update = function(req, res) {
       if (err) {
         res.status(500).json({ 'messages': [ err ] });
       } else {
-        res.status(200).json({ 'messages': [ 'user updated' ]});
+        res.status(200).json({ message: [ 'user updated' ], user: user.toJSON() });
       }
     });
   });

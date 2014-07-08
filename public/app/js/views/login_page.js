@@ -31,7 +31,7 @@ window.app.views.LoginPage = Backbone.View.extend({
   loginFailure: function(evt) {
     window.console.log("Login failed");
     window.console.log(evt);
-    $(".alert").text(evt.responseJSON.msg);
+    $(".messages").text(evt.responseJSON.message);
   },
 
   forgotPassword: function(evt) {

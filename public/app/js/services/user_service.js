@@ -13,7 +13,7 @@ window.app.services.UserService = {
 
   update: function(id, version, name, email, password, roles, success, failure) {
     var user = { _id: id, __v: version, name: name, email: email, provider: 'local', roles: roles };
-    if (password && password.length() > 0) {
+    if (password && password.length > 0) {
       user.password = password;
     }
     window.console.log("about to do update");

@@ -27,7 +27,10 @@ window.app.views.UserPage = Backbone.View.extend({
   updateSucceeded: function(data) {
     window.console.log('updateSucceeded');
     window.console.log(data);
-    //window.location.replace('/#sim');
+    var user = new app.models.User(data.user);
+    window.console.log(user);
+    window.app.services.AuthenticationService.setLoggedInUser(user);
+    $('.messages').text(data.message);
   },
 
   saveFailed: function(data) {
