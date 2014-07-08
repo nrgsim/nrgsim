@@ -1,12 +1,12 @@
 window.app.models.User = Backbone.Model.extend({
 
-  initialize: function() {
-    this.set('_id', null);
-    this.set('__v', null);
-    this.set('name', '');
-    this.set('email', '');
-    this.set('password', '');
-    this.set('roles', null);
+  defaults: {
+    _id : null,
+    __v : null,
+    name : '',
+    email : '',
+    password : '',
+    roles : null
   }
   
 });

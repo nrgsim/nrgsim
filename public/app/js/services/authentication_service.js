@@ -1,15 +1,22 @@
 window.app.services.AuthenticationService = {
 
-  currentUser: null,
-
   getLoggedInUser: function() {
-    return this.currentUser;
+    var userInfo = window.sessionStorage.getItem('currentUser');
+    if (userInfo && userInfo.length > 0) {
+      try {
+        var user = JSON.parse(userInfo);
+        return new app.models.User(user);
+      } catch (err) {
+        window.console.log(err);
+        window.sessionStorage.removeItem('currentUser');
+      }
+    }
+    return null;
   },
 
   loginSuccess: function(next, data, status, xhr) {
-    window.console.log('login success');
-    this.currentUser = new window.app.models.User(data);
-    window.console.log(this.currentUser);
+    var user = new window.app.models.User(data);
+    window.sessionStorage.setItem('currentUser', JSON.stringify(user.toJSON()));
     if (next) {
       next(data, status, xhr);
     }
@@ -27,7 +34,7 @@ window.app.services.AuthenticationService = {
   },
 
   logoutSuccess: function(next, data, status, xhr) {
-    this.currentUser = null;
+    window.sessionStorage.removeItem('currentUser');
     if (next) {
       next(data, status, xhr);
     }

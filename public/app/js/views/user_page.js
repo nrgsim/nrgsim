@@ -24,6 +24,12 @@ window.app.views.UserPage = Backbone.View.extend({
     window.location.replace('/#login');
   },
 
+  updateSucceeded: function(data) {
+    window.console.log('updateSucceeded');
+    window.console.log(data);
+    //window.location.replace('/#sim');
+  },
+
   saveFailed: function(data) {
     window.console.log('saveFailed');
     window.console.log(data);
@@ -40,9 +46,9 @@ window.app.views.UserPage = Backbone.View.extend({
     var roles = ['User'];
 
     // TODO validate fields
-    if (id && id.length() > 0) {
+    if (id && id.length > 0) {
       window.console.log('update user: ' + name + ' ' + email + ' ' + password);
-      this.UserService.save(id, name, email, password, roles, this.saveSucceeded, this.saveFailed);
+      this.UserService.update(id, ver, name, email, password, roles, this.updateSucceeded, this.saveFailed);
     } else {
       window.console.log('create user: ' + name + ' ' + email + ' ' + password);
       this.UserService.create(name, email, password, roles, this.saveSucceeded, this.saveFailed);

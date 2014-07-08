@@ -43,7 +43,8 @@ window.app.router = AuthRouter.extend({
   },
 
   requresAuth : {
-    "sim" : [ "User" ]
+    "sim" : [ "User" ],
+    "profile" : [ "User" ]
   },
 
   getRequiredRoles: function(path) {
@@ -60,11 +61,15 @@ window.app.router = AuthRouter.extend({
   },
 
   before: function(params, next) {
+    window.console.log('before route');
     var loggedInUser = window.app.services.AuthenticationService.getLoggedInUser();
+    window.console.log('loggedInUser: ' + loggedInUser);
     var path = Backbone.history.location.hash; // Change hash to pathname if not using hashes for routing
+    window.console.log('path: ' + path);
     var requiredRoles = this.getRequiredRoles(path);
+    window.console.log('requiredRoles: ' + requiredRoles);
     
-    window.console.log(loggedInUser + ' ' + path + ' ' + requiredRoles);
+    //window.console.log(loggedInUser + ' ' + path + ' ' + JSON.stringify(requiredRoles));
     // TODO: need to check if the user has the required roles
     if (requiredRoles && !loggedInUser) {
       window.location.replace('/#login');
@@ -97,11 +102,10 @@ window.app.router = AuthRouter.extend({
 
   profile: function() {
     window.console.log('route to profile');
-    window.console.log(window.app.services.AuthenticationService);
     var user = window.app.services.AuthenticationService.getLoggedInUser();
-    window.console.log(user);
     this.renderPage(window.app.views.UserPage, {
-      'user': user
+      'user': user,
+      UserService: window.app.services.UserService
     });
   },
 

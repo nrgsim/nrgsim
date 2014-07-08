@@ -5,10 +5,14 @@
  *  Generic require login routing middleware
  */
 exports.requiresLogin = function (req, res, next) {
+  /*
   console.log("Checking authentication: " + req.isAuthenticated());
   if (!req.isAuthenticated()) {
-    return res.redirect('/login');
+    res.status(403).json({ "message" : "not logged in" });
+  } else {
+    next();
   }
+  */
   next();
 };
 
@@ -19,7 +23,7 @@ exports.requiresLogin = function (req, res, next) {
 exports.user = {
   hasAuthorization : function (req, res, next) {
     if (req.profile.id !== req.user.id) {
-      return res.redirect('/user/' + req.profile.id);
+      res.status(403).json({ "message" : "not authorized" });
     }
     next();
   }

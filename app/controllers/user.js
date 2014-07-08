@@ -14,6 +14,9 @@ exports.authenticate = function(req, res, next) {
     if (err || !user) {
       res.status(500).json({ "messages" : [ "login failed", err ] });
     } else {
+      console.log('login success');
+      console.log(user);
+      console.log(user.toJSON());
       res.status(200).json(user);
     }
   })(req, res, next);
@@ -50,7 +53,7 @@ exports.create = function (req, res, next) {
     if (err) {
       res.status(500).json({ 'messages': [ err ] });
     } else {
-      res.status(200).json({ 'messages': [ 'user saved' ]});
+      res.status(200).json({ 'messages': [ 'user created' ]});
     }
   });
 };
@@ -61,15 +64,24 @@ exports.edit = function(req, res) {
 };
 
 exports.update = function(req, res) {
-  var user = req.user;
-
-  user = underscore.extend(user, req.body);
-
-  user.save(function(err, doc) {
-    if (err) {
-      res.render('/user', { user: user });
-    } else {
-      res.redirect('/');
+  User.findById(req.body._id, function(err, user) {
+    // TODO: check for errors
+    delete req.body._id;
+    console.log("update: " + JSON.stringify(user.toJSON()));
+    console.log("update: " + JSON.stringify(req.body));
+    user.set('name', req.body.name);
+    user.set('email', req.body.email);
+    if (req.body.password && req.body.password.length > 0) {
+      user.set('password', req.body.password);
     }
+    user.set('roles', req.body.roles);
+    console.log("update: " + JSON.stringify(user.toJSON()));
+    user.save(function(err) {
+      if (err) {
+        res.status(500).json({ 'messages': [ err ] });
+      } else {
+        res.status(200).json({ 'messages': [ 'user updated' ]});
+      }
+    });
   });
 };
