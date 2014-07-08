@@ -1,60 +1,6 @@
-$white: #ffffff;
-$darkgray: #9e9e9e;
-$lightgray: #efefef;
-$ctrlwidth: 200px;
-$resultheight: 150px;
+// This file will just import other files.
 
-body {
-  background-color: $white;
-  margin: 0;
-  overflow: hidden;
-
-  #controls {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: $ctrlwidth;
-    background-color: $lightgray;
-    font-size: 12px;
-
-    .control {
-      margin: 14px;
-    }
-
-    .indent {
-      padding-left: 12px;
-    }
-
-    label {
-      color: #6e6e6e;
-    }
-
-    .ui-slider {
-      margin: 4px 0 0 0;
-    }
-  }
-
-  #canvas {
-    position: fixed;
-    left: $ctrlwidth;
-    right: 0;
-    top: 0;
-    bottom: $resultheight;
-
-    canvas {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  #results {
-    position: fixed;
-    left: $ctrlwidth;
-    right: 0;
-    bottom: 0;
-    height: $resultheight;
-    border-top: 1px solid $darkgray;
-  }
-}
+@import 'global';
+@import 'layout';
+@import 'base';
+@import 'component';

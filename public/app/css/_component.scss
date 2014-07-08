@@ -1,0 +1,52 @@
+// This file applies to individual elements
+// This file in particular will likely be broken
+// out into many files eg. _component_home.scss, _component_charts.scss
+
+#controls {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: $ctrlwidth;
+  background-color: $lightgray;
+  font-size: 12px;
+
+  .control {
+    margin: 14px;
+  }
+
+  .indent {
+    padding-left: 12px;
+  }
+
+  label {
+    color: #6e6e6e;
+  }
+
+  .ui-slider {
+    margin: 4px 0 0 0;
+  }
+}
+
+#canvas {
+  position: fixed;
+  left: $ctrlwidth;
+  right: 0;
+  top: 0;
+  bottom: $resultheight;
+
+  canvas {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+#results {
+  position: fixed;
+  left: $ctrlwidth;
+  right: 0;
+  bottom: 0;
+  height: $resultheight;
+  border-top: 1px solid $darkgray;
+}
