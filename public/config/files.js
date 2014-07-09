@@ -21,6 +21,15 @@ module.exports = require(process.env['LINEMAN_MAIN']).config.extend('files', {
       "vendor/js/underscore.js",
       "vendor/js/backbone.js",
       "vendor/js/three.js",
+      "vendor/js/jquery.i18n/jquery.i18n.js",
+      "vendor/js/jquery.i18n/jquery.messagestore.js",
+      "vendor/js/jquery.i18n/jquery.fallbacks.js",
+      "vendor/js/jquery.i18n/jquery.parser.js",
+      "vendor/js/jquery.i18n/jquery.emitter.js",
+      "vendor/js/jquery.i18n/jquery.language.js",
+      /* Note that if we want to support other languages we might need language specific files added here.
+         See https://github.com/wikimedia/jquery.i18n/tree/master/src/languages for languages that need
+         extra support files. */
       "vendor/js/**/*.js"
     ],
 

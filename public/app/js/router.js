@@ -124,8 +124,15 @@ window.app.router = AuthRouter.extend({
   },
 
   renderPage: function(PageClass, options) {
-    var page = new PageClass(options);
-    $("#view").empty().append(page.render().el);
+
+    $.i18n.debug = true;
+    var i18n = $.i18n();
+    i18n.load('../i18n/' + i18n.locale + '.json', i18n.locale).done(function(x) {
+      window.console.log($.i18n('home-title'));
+      var page = new PageClass(options);
+      $("#view").empty().append(page.render().el);
+    });
+
   }
 });
 

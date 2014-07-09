@@ -11,11 +11,11 @@ module.exports = require(process.env['LINEMAN_MAIN']).config.extend('application
 
   appendTasks: {
     common: [],
-    dev: ["copy:dev"],
+    dev: ["copy:dev", "watch:dev"],
     dist: ["copy:dist"]
   },
 
-  // A task to copy the jquery UI images to the output directory
+  // A task to copy the jquery UI images and the i18n files to the output directory
   copy: {
     dev: {
       files: [
@@ -24,6 +24,13 @@ module.exports = require(process.env['LINEMAN_MAIN']).config.extend('application
           expand: true,
           src: "vendor/css/images/**",
           dest: "generated/css/images",
+          filter: "isFile"
+        },
+        {
+          flatten: false,
+          expand: true,
+          src: "i18n/**",
+          dest: "generated",
           filter: "isFile"
         }
       ]
@@ -36,8 +43,22 @@ module.exports = require(process.env['LINEMAN_MAIN']).config.extend('application
           src: "vendor/css/images/**",
           dest: "dist/css/images",
           filter: "isFile"
+        },
+        {
+          flatten: false,
+          expand: true,
+          src: "i18n/**",
+          dest: "dist",
+          filter: "isFile"
         }
       ]
+    }
+  },
+
+  watch: {
+    dev: {
+      files: ["i18n/**"],
+      tasks: ["copy"]
     }
   },
 
