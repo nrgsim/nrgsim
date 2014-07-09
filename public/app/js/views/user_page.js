@@ -65,11 +65,12 @@ window.app.views.UserPage = Backbone.View.extend({
   initialize: function(options) {
     this.UserService = options.UserService;
     this.model = options.user;
+    this.title = options.signup ? $.i18n('user-register') : $.i18n('user-profile');
     _.bindAll(this);
   },
 
   render: function() {
-    this.$el.html(this.template(this.model));
+    this.$el.html(this.template({ user: this.model, title: this.title }));
     return this;
   }
 

@@ -1,22 +1,23 @@
-<input type="hidden" id="id" value="<%= get('_id') %>"/>
-<input type="hidden" id="version" value="<%= get('__v') %>"/>
+<h2><%= title %></h2>
+<input type="hidden" id="id" value="<%= user.get('_id') %>"/>
+<input type="hidden" id="version" value="<%= user.get('__v') %>"/>
 <div class="control">
-  <label for="name">Name</label>
-  <input type="text" id="name" value="<%= get('name') %>">
+  <label for="name"><%= $.i18n('user-name') %></label>
+  <input type="text" id="name" value="<%= user.get('name') %>">
 </div>
 <div class="control">
-  <label for="email">Email</label>
-  <input type="text" id="email" value="<%= get('email') %>" />
+  <label for="email"><%= $.i18n('user-email') %></label>
+  <input type="text" id="email" value="<%= user.get('email') %>" />
 </div>
 <div class="control">
-  <label for="password">Password</label>
+  <label for="password"><%= $.i18n('user-password') %></label>
   <input type="password" id="password" />
 </div>
 <div class="control">
-  <label for="confirm-password">Confirm Password</label>
+  <label for="confirm-password"><%= $.i18n('user-confirm') %></label>
   <input type="password" id="confirm-password" />
 </div>
 <div class="messages"></div>
 <div class="control">
-  <button id="save">Save</button> <button id="cancel">Done</button>
+  <button id="save"><%= $.i18n('user-save') %></button> <button id="cancel"><%= $.i18n('user-cancel') %></button>
 </div>

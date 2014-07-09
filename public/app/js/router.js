@@ -96,6 +96,7 @@ window.app.router = AuthRouter.extend({
     var user = new window.app.models.User();
     this.renderPage(window.app.views.UserPage, {
       'user': user,
+      'signup' : true,
       UserService: window.app.services.UserService
     });
   },
@@ -105,6 +106,7 @@ window.app.router = AuthRouter.extend({
     var user = window.app.services.AuthenticationService.getLoggedInUser();
     this.renderPage(window.app.views.UserPage, {
       'user': user,
+      'signup' : false,
       UserService: window.app.services.UserService
     });
   },

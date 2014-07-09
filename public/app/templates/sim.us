@@ -1,62 +1,62 @@
 <div id="controls">
   <div class="control">
-    <a href="/#logout">Logout</a>&nbsp;<a href="/#profile">Profile</a>
+    <a href="/#logout"><%= $.i18n('sim-logout') %></a>&nbsp;<a href="/#profile"><%= $.i18n('sim-profile') %></a>
   </div>
   <div class="control">
-    <label>Length: <span id="LengthDisp"></span></label>
+    <label><%= $.i18n('sim-length') %> <span id="LengthDisp"></span></label>
     <div id="Length"></div>
   </div>
   <div class="control">
-    <label>Width: <span id="DepthDisp"></span></label>
+    <label><%= $.i18n('sim-width') %> <span id="DepthDisp"></span></label>
     <div id="Depth"></div>
   </div>
   <div class="control">
-    <label>Height: <span id="HeightDisp"></span></label>
+    <label><%= $.i18n('sim-height') %> <span id="HeightDisp"></span></label>
     <div id="Height"></div>
   </div>
   <hr/>
   <div class="control">
-    <label><input type="checkbox" id="NWin" class="group-disable">North Windows</input></label>
+    <label><input type="checkbox" id="NWin" class="group-disable"><%= $.i18n('sim-nwin') %></input></label>
     <div class="indent">
-      <label>Glazing Ratio: <span id="NWinGRDisp" style="display:none"></span></label>
+      <label><%= $.i18n('sim-glaze-ratio') %> <span id="NWinGRDisp" style="display:none"></span></label>
       <div id="NWinGR"></div>
     </div>
   </div>
   <hr/>
   <div class="control">
-    <label><input type="checkbox" id="EWin" class="group-disable">East Windows</input></label>
+    <label><input type="checkbox" id="EWin" class="group-disable"><%= $.i18n('sim-ewin') %></input></label>
     <div class="indent">
-      <label>Glazing Ratio: <span id="EWinGRDisp" style="display:none"></span></label>
+      <label><%= $.i18n('sim-glaze-ratio') %> <span id="EWinGRDisp" style="display:none"></span></label>
       <div id="EWinGR"></div>
     </div>
   </div>
   <hr/>
   <div class="control">
-    <label><input type="checkbox" id="SWin" class="group-disable">South Windows</input></label>
+    <label><input type="checkbox" id="SWin" class="group-disable"><%= $.i18n('sim-swin') %></input></label>
     <div class="indent">
-      <label>Glazing Ratio: <span id="SWinGRDisp" style="display:none"></span></label>
+      <label><%= $.i18n('sim-glaze-ratio') %> <span id="SWinGRDisp" style="display:none"></span></label>
       <div id="SWinGR"></div>
     </div>
   </div>
   <hr/>
   <div class="control">
-    <label><input type="checkbox" id="WWin" class="group-disable">West Windows</input></label>
+    <label><input type="checkbox" id="WWin" class="group-disable"><%= $.i18n('sim-wwin') %></input></label>
     <div class="indent">
-      <label>Glazing Ratio: <span id="WWinGRDisp" style="display:none"></span></label>
+      <label><%= $.i18n('sim-glaze-ratio') %> <span id="WWinGRDisp" style="display:none"></span></label>
       <div id="WWinGR"></div>
     </div>
   </div>
   <hr/>
   <div class="control">
-    <label>Insulation level</label>
+    <label><%= $.i18n('sim-insulation') %></label>
     <div id="insulation-level"></div>
   </div>
   <div class="control">
-    <label>Ventilation Rate</label>
+    <label><%= $.i18n('sim-ventilation') %></label>
     <div id="ventilation-rate"></div>
   </div>
   <div class="control">
-    <button id="run-button">Simulate</button>
+    <button id="run-button"><%= $.i18n('sim-simulate') %></button>
   </div>
 </div>
 <div id="canvas">
