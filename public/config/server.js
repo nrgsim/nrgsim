@@ -96,7 +96,11 @@ module.exports = {
     });
 
     app.post('/user', function(req, res) {
-      res.status(200).json({ "message" : "user registered" });
+      if (req.body.email === 'taken@taken.com') {
+        res.status(400).json({ message: "That email address is already taken." });
+      } else {
+        res.status(200).json({ "message" : "user registered" });
+      }
     });
 
     app.put('/user', function(req, res) {
