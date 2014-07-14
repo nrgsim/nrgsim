@@ -2,6 +2,9 @@
 /*jslint node: true */
 "use strict";
 
+var mongoose = require('mongoose'),
+    Simulation =  mongoose.model('Simulation');
+
 var zone = {
   zone:
     [
@@ -85,6 +88,32 @@ exports.load = function(req, res) {
 };
 
 exports.run = function(req, res) {
-  console.log('simulation.run: ' + JSON.stringify(req.body));
-  res.json({ "status": 0, "data": "this would be some simulation results"});
+  var simulation = Simulation.create({ userInput: req.body });
+  simulation.save();
+  res.json({ "status": 0, jobId: simulation.get('_id')});
+};
+
+exports.checkForResults = function(req, res) {
+  var id = req.params.jobId;
+  Simulation.findById(req.params.jobId, function(err, simulation) {
+    if (err) {
+      res.status(500).json({'error': err});
+      return;
+    } else if (!simulation) {
+      res.status(400).json({ error: "simulation " + req.params.jobId + " not found" });
+      return;
+    }
+
+    // KLUDGE - for testing
+    var rnd = Math.floor((Math.random() * 4) + 1);
+    console.log('checking finished: ' + rnd);
+    if (rnd === 1) {
+      console.log('marking simulation finished');
+      simulation.set('finished', true);
+      simulation.save();
+    }
+    // END KLUDGE
+
+    res.status(200).json({ jobId: id, finished: simulation.get('finished') });
+  });
 };
