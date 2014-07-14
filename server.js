@@ -14,6 +14,7 @@ mongoose.connect(config.db);
 
 // Set up models
 require('./app/models/user');
+require('./app/models/simulation');
 
 // Set up passport authentication
 require('./config/passport')(passport, config);

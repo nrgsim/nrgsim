@@ -210,6 +210,13 @@ window.app.views.SimPage = Backbone.View.extend({
   runSimulation: function() {
     var zone = [];
     var inverseTransform = new THREE.Matrix4();
+
+    var progbar = $('#progressbar');
+
+    $("#run-button").button("option", "disabled", true);
+    progbar.progressbar({ value: false });
+    progbar.show();
+
     inverseTransform.getInverse(transform);
     _.each(this.scene.children, function(child) {
       var result = {};
@@ -225,12 +232,27 @@ window.app.views.SimPage = Backbone.View.extend({
       zone.push(result);
     });
 
-    $.post('simulation/run', { zone: zone }, this.handleSimulationResults);
+    $.post('simulation/run', { zone: zone }, this.getSimulationResults);
   },
 
-  handleSimulationResults: function(data, status) {
+  getSimulationResults: function(data, status) {
     window.console.log(data);
     window.console.log(status);
+    $.get('simulation/' + data.jobId, this.handleSimulationResults.bind(this));
+    // TODO: add some error checking
+  },
+
+  handleSimulationResults: function(results) {
+    if (results.finished) {
+      window.console.log('simulation run finished');
+      window.console.log(results);
+      var progbar = $('#progressbar');
+      progbar.hide();
+      progbar.progressbar('destroy');
+      $("#run-button").button("option", "disabled", false);
+    } else {
+      window.setTimeout(this.getSimulationResults.bind(this, results), 5000);
+    }
   },
 
   initialize: function(options) {

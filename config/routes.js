@@ -22,6 +22,7 @@ module.exports = function (app, t, passport, auth) {
 
   app.get('/simulation/load/:id', simulation.load);
   app.post('/simulation/run', simulation.run);
+  app.get('/simulation/:jobId', simulation.checkForResults);
 
   /* general html page requests */
   /*

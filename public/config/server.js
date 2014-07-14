@@ -115,5 +115,12 @@ module.exports = {
       console.log(JSON.stringify(req.body, null, '  '));
       res.json({ "status": 0, "data": "this would be some simulation results"});
     });
+
+    app.get('/simulation/:jobId', function(req, res) {
+      var jobId = req.params.jobId;
+      var rnd = Math.floor((Math.random() * 4) + 1);
+      var finished = (rnd === 1);
+      res.json({ jobId: jobId, finished: finished });
+    });
   }
 };
