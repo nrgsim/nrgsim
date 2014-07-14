@@ -3,7 +3,8 @@
 "use strict";
 
 var mongoose = require('mongoose'),
-    Simulation =  mongoose.model('Simulation');
+    Simulation =  mongoose.model('Simulation'),
+    pyShell = require('python-shell');
 
 var zone = {
   zone:
@@ -89,7 +90,26 @@ exports.load = function(req, res) {
 
 exports.run = function(req, res) {
   var simulation = Simulation.create({ userInput: req.body });
+
   simulation.save();
+  var jobId = simulation.get('_id');
+
+  var options = {
+    scriptPath: 'scripts',
+    args: [ jobId, JSON.stringify(req.body) ]
+  };
+
+  pyShell.run('runsimulation.py', options, function (err, results) {
+    if (err) {
+      // TODO: probably need to set an error on the simulation object
+      console.log("Error running python script: " + err);
+    }
+    // results is an array consisting of messages collected during execution
+    console.log('results: %j', results);
+    simulation.set('finished', true);
+    simulation.save();
+  });
+
   res.json({ "status": 0, jobId: simulation.get('_id')});
 };
 
@@ -103,16 +123,6 @@ exports.checkForResults = function(req, res) {
       res.status(400).json({ error: "simulation " + req.params.jobId + " not found" });
       return;
     }
-
-    // KLUDGE - for testing
-    var rnd = Math.floor((Math.random() * 4) + 1);
-    console.log('checking finished: ' + rnd);
-    if (rnd === 1) {
-      console.log('marking simulation finished');
-      simulation.set('finished', true);
-      simulation.save();
-    }
-    // END KLUDGE
 
     res.status(200).json({ jobId: id, finished: simulation.get('finished') });
   });
