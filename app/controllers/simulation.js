@@ -4,6 +4,7 @@
 
 var mongoose = require('mongoose'),
     Simulation =  mongoose.model('Simulation'),
+    os = require('os'),
     pyShell = require('python-shell');
 
 var zone = {
@@ -98,6 +99,9 @@ exports.run = function(req, res) {
     scriptPath: 'scripts',
     args: [ jobId, JSON.stringify(req.body) ]
   };
+  if (os.platform() === 'linux') {
+    options.pythonPath = '/usr/bin/python3';
+  }
 
   pyShell.run('runsimulation.py', options, function (err, results) {
     if (err) {
