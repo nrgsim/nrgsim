@@ -4,11 +4,11 @@ require 'breakpoint'
 
 
 # Set this to the root of your project when deployed:
-http_path = "/"
-css_dir = "app/tmp"
-sass_dir = "app/css"
-images_dir = "generated/css/images"
-javascripts_dir = "generated/js"
+# http_path = "/"
+css_dir = "app/temp"
+sass_dir = "/"
+images_dir = "app/css/images"
+javascripts_dir = "app/js"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed

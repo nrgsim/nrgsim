@@ -91,6 +91,11 @@ module.exports = require(process.env['LINEMAN_MAIN']).config.extend('application
   autoprefixer: {
     dist: {
       files: {
+        'dist/css/app.css' : 'app/temp/main.css'
+      }
+    },
+    dev: {
+      files: {
         'generated/css/app.css' : 'app/temp/main.css'
       }
     }
@@ -106,8 +111,8 @@ module.exports = require(process.env['LINEMAN_MAIN']).config.extend('application
       tasks: ['compass:compile']
     },
     autoPrefixer: {
-      files: ['app/tmp/**/*.css'],
-      tasks: ['autoprefixer']
+      files: ['app/temp/**/*.css'],
+      tasks: ['autoprefixer:dev']
     }
   },
 
