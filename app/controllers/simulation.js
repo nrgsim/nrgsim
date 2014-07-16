@@ -109,8 +109,8 @@ exports.run = function(req, res) {
       console.log("Error running python script: " + err);
     }
     // results is an array consisting of messages collected during execution
-    console.log('results: %j', results);
-    simulation.set('finished', true);
+    console.log('results: ' + results[0]);
+    simulation.set({ results: JSON.parse(results[0]), finished: true });
     simulation.save();
   });
 
