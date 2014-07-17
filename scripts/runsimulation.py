@@ -32,7 +32,10 @@ def copySupportingFiles(simulationDirectory, jsondata):
   shutil.copyfile('../idf/Geometry.idf', simulationDirectory + os.sep + 'in.idf')
 
 def executeSimulation(simulationDirectory, resultsDirectory):
+  olddir = os.getcwd()
+  os.chdir('../jess_client')
   subprocess.call(['java', '-jar', '../jess_client/JESS_Client.jar', '-cfg', '../jess_client/client.cfg', '-job', simulationDirectory, '-type', 'STD_SINGLE_JOB', '-output', resultsDirectory])
+  os.chdir(olddir)
 
 def runSimulation(simulationid, jsondata):
   directory = createSimulationDirectory(simulationid)
