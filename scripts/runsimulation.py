@@ -34,7 +34,7 @@ def copySupportingFiles(simulationDirectory, jsondata):
 def executeSimulation(simulationDirectory, resultsDirectory):
   olddir = os.getcwd()
   os.chdir('../jess_client')
-  subprocess.check_call(['java', '-jar', '../jess_client/JESS_Client.jar', '-cfg', '../jess_client/client.cfg', '-job', simulationDirectory, '-type', 'STD_SINGLE_JOB', '-output', resultsDirectory], shell=True)
+  subprocess.call(['java', '-jar', '../jess_client/JESS_Client.jar', '-cfg', '../jess_client/client.cfg', '-job', simulationDirectory, '-type', 'STD_SINGLE_JOB', '-output', resultsDirectory])
   os.chdir(olddir)
 
 def runSimulation(simulationid, jsondata):

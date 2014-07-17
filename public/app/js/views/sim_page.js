@@ -250,7 +250,7 @@ window.app.views.SimPage = Backbone.View.extend({
       progbar.hide();
       progbar.progressbar('destroy');
       $("#run-button").button("option", "disabled", false);
-      $("#results").text(JSON.stringify(results.resultsDirectory));
+      $("#results").text(results.resultsDirectory);
     } else {
       window.setTimeout(this.getSimulationResults.bind(this, results), 5000);
     }
