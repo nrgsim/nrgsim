@@ -108,9 +108,8 @@ exports.run = function(req, res) {
       // TODO: probably need to set an error on the simulation object
       console.log("Error running python script: " + err);
     }
-    // results is an array consisting of messages collected during execution
-    console.log('results: ' + results[0]);
-    simulation.set({ results: JSON.parse(results[0]), finished: true });
+    // results is the full path to the directory where the simulation results are stored
+    simulation.set({ resultsDirectory: results, finished: true });
     simulation.save();
   });
 
@@ -128,6 +127,6 @@ exports.checkForResults = function(req, res) {
       return;
     }
 
-    res.status(200).json({ jobId: id, finished: simulation.get('finished') });
+    res.status(200).json({ jobId: id, finished: simulation.get('finished'), resultsDirectory: simulation.get('resultsDirectory') });
   });
 };

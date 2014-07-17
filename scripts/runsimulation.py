@@ -7,7 +7,7 @@ def createSimulationDirectory(simulationid):
   directory = 'simulations/{0}'.format(simulationid)
   if not os.path.exists(directory):
       os.makedirs(directory)
-  return directory
+  return os.path.abspath(directory)
 
 def convertDataToCSV(jsondata):
   # This would take the json object passed in and convert it to CSV data.
@@ -24,11 +24,12 @@ def createParametersFile(directory, jsondata):
 
 def runSimulation(simulationid, jsondata):
   directory = createSimulationDirectory(simulationid)
-  createParametersFile(directory, jsondata)
 
+  createParametersFile(directory, jsondata)
   # TODO: copy a weather file and idf file to the directory and run the simulation
-  results = [{ 'result': 'fake result'}]
-  strResults = str(results).replace("'", '"')
-  print(strResults)
+
+  # Send the directory that the simulation results are in back to the caller.
+  resultsDirectory = directory + os.sep + 'output';
+  print(resultsDirectory)
 
 runSimulation(sys.argv[1], json.JSONDecoder().decode(sys.argv[2]))
