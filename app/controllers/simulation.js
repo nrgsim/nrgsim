@@ -109,7 +109,10 @@ exports.run = function(req, res) {
       console.log("Error running python script: " + err);
     }
     // results is the full path to the directory where the simulation results are stored
-    simulation.set({ resultsDirectory: results, finished: true });
+    var idx = results.indexOf('|||') + 3;
+    var idx2 = results.indexOf('|||');
+    var resultsDir = results.substring(idx, idx2);
+    simulation.set({ resultsDirectory: resultsDir, finished: true });
     simulation.save();
   });
 
