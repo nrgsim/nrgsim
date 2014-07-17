@@ -46,6 +46,6 @@ def runSimulation(simulationid, jsondata):
   executeSimulation(directory, resultsDirectory)
 
   # Send the directory that the simulation results are in back to the caller.
-  print('|||' + resultsDirectory + '|||')
+  print(resultsDirectory)
 
 runSimulation(sys.argv[1], json.JSONDecoder().decode(sys.argv[2]))
