@@ -8,11 +8,11 @@ window.app.views.SimPage = Backbone.View.extend({
   controls: null,
   transform: null,
   materials: [
-    new THREE.MeshBasicMaterial({ color: 0x000000 }), //Outer Floor Color 
-    new THREE.MeshBasicMaterial({ color: 0x666666 }), //Outer Roof Ceiling Color 
+    //new THREE.MeshLambertMaterial({ color: 0x000000 }), //Outer Floor Color 
+    ///new THREE.MeshLambertMaterial({ color: 0x666666 }), //Outer Roof Ceiling Color 
     //new THREE.MeshLambertMaterial({ color: 0xcccccc, opacity: 0.1, depthWrite: false, depthTest: false, vertexColors: THREE.VertexColors }),
-    new THREE.MeshBasicMaterial({ color: 0xcccccc, wireframe: true }), //WireFrame or Wall color 
-    new THREE.MeshBasicMaterial({ color: 0xe0ffff, opacity: 1.0, depthWrite: false, depthTest: false, vertexColors: THREE.NoColors }) //Window Color etc 
+    //new THREE.MeshLambertMaterial({ color: 0xcccccc, wireframe: true }), //WireFrame or Wall color 
+    //new THREE.MeshLambertMaterial({ color: 0xe0ffff, opacity: 0.8, depthWrite: false, depthTest: false, vertexColors: THREE.NoColors }) //Window Color etc 
   ],
 
   events: {
@@ -87,8 +87,37 @@ window.app.views.SimPage = Backbone.View.extend({
       geometry.type = surface.type;
 
       //var material = new THREE.MeshBasicMaterial({ vertexColors: THREE.FaceColors, overdraw: 0.5 });
-      var plane = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(this.materials));
-      scene.add(plane);
+      //var plane = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(this.materials));
+      //plane.castShadow=true;
+      //scene.add(plane);
+      var axes = new THREE.AxisHelper (20);
+      scene.add(axes);
+      var cubeGeometry=new THREE.CubeGeometry(4,3,4);
+      var cubeMaterial= new THREE.MeshLambertMaterial({color: 0xf2d478});
+      var solarCube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+      solarCube.position.x=0;
+      solarCube.position.y=0;
+      solarCube.position.z=2;
+      solarCube.castShadow=true;
+      scene.add(solarCube);
+
+      var groundPlaneGeometry = new THREE.PlaneGeometry (100,100);
+      var groundPlaneMaterial= new THREE.MeshLambertMaterial ({color: 0xcccccc});
+      var groundPlane = new THREE.Mesh (groundPlaneGeometry, groundPlaneMaterial);
+      groundPlane.position.x=0;
+      groundPlane.position.y=0;
+      groundPlane.position.z=-0;
+      groundPlane.receiveShadow=true;
+      scene.add(groundPlane);
+
+      var sunLight= new THREE.DirectionalLight (0xffffff, 0.1);
+      sunLight.position.set(45,45,100);
+      sunLight.castShadow=true;
+      sunLight.onlyShadow=false;
+      scene.add(sunLight);
+      
+      //var ambilight = new THREE.AmbientLight( 0x404040 ); // soft white light
+      //scene.add( ambilight );
   },
 
   addPlanes: function(scene, surfaces, transform) {
@@ -103,17 +132,18 @@ window.app.views.SimPage = Backbone.View.extend({
   },
 
   createCamera: function(canvas) {
-    var camera = new THREE.PerspectiveCamera(3, canvas.innerWidth() / canvas.innerHeight(), 1, 1000);
-    camera.position.x = 0;
-    camera.position.y = 0;
-    camera.position.z = 100;
+    var camera = new THREE.PerspectiveCamera(60, canvas.innerWidth() / canvas.innerHeight(), 1, 1000);
+    camera.position.x = -10;
+    camera.position.y = 10;
+    camera.position.z = 5;
+    //camera.lookAt(scene.position);
     return camera;
   },
 
   createCanvasControls: function(canvas) {
     var controls = new THREE.TrackballControls(this.camera, canvas[0]);
-    controls.rotateSpeed = 0.7;
-    controls.zoomSpeed = 0.7;
+    controls.rotateSpeed = 0.1;
+    controls.zoomSpeed = 0.5;
     controls.panSpeed = 0.7;
     controls.noZoom = false;
     controls.noPan = false;
@@ -167,9 +197,10 @@ window.app.views.SimPage = Backbone.View.extend({
   },
 
   createRenderer: function(canvas) {
-    var renderer = new THREE.CanvasRenderer();
-    renderer.setClearColor(0xffffff);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setClearColorHex(0xffffff, 1.0);
     renderer.setSize(canvas.innerWidth(), canvas.innerHeight());
+    renderer.shadowMapEnabled=true;
     return renderer;
   },
 
