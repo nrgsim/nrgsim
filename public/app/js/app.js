@@ -20,5 +20,5 @@ $.ajaxSetup({
 
 
 jQuery(document).ready(function() {
-  console.log("BOOOM");
+  // console.log("BOOOM");
 });
