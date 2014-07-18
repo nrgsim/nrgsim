@@ -15,7 +15,7 @@
 module.exports = require(process.env['LINEMAN_MAIN']).config.extend('files', {
   //Override file patterns here
   js: {
-    
+
     vendor: [
       "vendor/js/jquery-2.1.0.js",
       "vendor/js/underscore.js",
@@ -45,7 +45,11 @@ module.exports = require(process.env['LINEMAN_MAIN']).config.extend('files', {
 
   css: {
     vendor: [
-      "vendor/css/**/*.css"
+      "!vendor/css/**/*.css"
     ]
+  },
+  sass: {
+    main: ["!app/css/main.scss"]
   }
+
 });

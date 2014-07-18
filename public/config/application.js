@@ -7,13 +7,46 @@
  */
 
 module.exports = require(process.env['LINEMAN_MAIN']).config.extend('application', {
+
+  removeTasks: {
+    common: [
+      "sass"
+    ],
+    dev: [
+      "sass"
+    ]
+  },
+
+
+  loadNpmTasks:[
+    'grunt-autoprefixer',
+    'grunt-contrib-compass'
+  ],
+
   //Override application configuration here. Common examples follow in the comments.
+
+  compass: {
+    compile: {
+      options: {
+        sassDir: "app/css",
+        cssDir: "app/temp"
+      }
+    }
+  },
+
+  prependTasks: {
+    common: [
+      "compass:compile",
+      "autoprefixer"
+    ]
+  },
 
   appendTasks: {
     common: [],
     dev: ["copy:dev", "watch:dev"],
     dist: ["copy:dist"]
   },
+
 
   // A task to copy the jquery UI images and the i18n files to the output directory
   copy: {
@@ -55,10 +88,31 @@ module.exports = require(process.env['LINEMAN_MAIN']).config.extend('application
     }
   },
 
+  autoprefixer: {
+    dist: {
+      files: {
+        'dist/css/app.css' : 'app/temp/main.css'
+      }
+    },
+    dev: {
+      files: {
+        'generated/css/app.css' : 'app/temp/main.css'
+      }
+    }
+  },
+
   watch: {
     dev: {
       files: ["i18n/**"],
       tasks: ["copy"]
+    },
+    compassSource: {
+      files: ['app/css/**/*.scss'],
+      tasks: ['compass:compile']
+    },
+    autoPrefixer: {
+      files: ['app/temp/**/*.css'],
+      tasks: ['autoprefixer:dev']
     }
   },
 
