@@ -248,6 +248,7 @@ window.app.views.SimPage = Backbone.View.extend({
     progbar.progressbar({ value: false });
     progbar.show();
 
+    /* TODO: this needs to be changed after Troy's changes
     inverseTransform.getInverse(transform);
     _.each(this.scene.children, function(child) {
       var result = {};
@@ -262,6 +263,9 @@ window.app.views.SimPage = Backbone.View.extend({
 
       zone.push(result);
     });
+    */
+    // this is a kludge for now
+    zone.push({name: "test", type: "roof", vertices: [{x: 10, y: 10, z: 10 }]});
 
     $.post('simulation/run', { zone: zone }, this.getSimulationResults);
   },
