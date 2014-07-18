@@ -8,11 +8,11 @@ window.app.views.SimPage = Backbone.View.extend({
   controls: null,
   transform: null,
   materials: [
-    //new THREE.MeshLambertMaterial({ color: 0x000000 }), //Outer Floor Color 
-    ///new THREE.MeshLambertMaterial({ color: 0x666666 }), //Outer Roof Ceiling Color 
+    //new THREE.MeshLambertMaterial({ color: 0x000000 }), //Outer Floor Color
+    ///new THREE.MeshLambertMaterial({ color: 0x666666 }), //Outer Roof Ceiling Color
     //new THREE.MeshLambertMaterial({ color: 0xcccccc, opacity: 0.1, depthWrite: false, depthTest: false, vertexColors: THREE.VertexColors }),
-    //new THREE.MeshLambertMaterial({ color: 0xcccccc, wireframe: true }), //WireFrame or Wall color 
-    //new THREE.MeshLambertMaterial({ color: 0xe0ffff, opacity: 0.8, depthWrite: false, depthTest: false, vertexColors: THREE.NoColors }) //Window Color etc 
+    //new THREE.MeshLambertMaterial({ color: 0xcccccc, wireframe: true }), //WireFrame or Wall color
+    //new THREE.MeshLambertMaterial({ color: 0xe0ffff, opacity: 0.8, depthWrite: false, depthTest: false, vertexColors: THREE.NoColors }) //Window Color etc
   ],
 
   events: {
@@ -115,7 +115,7 @@ window.app.views.SimPage = Backbone.View.extend({
       sunLight.castShadow=true;
       sunLight.onlyShadow=false;
       scene.add(sunLight);
-      
+
       //var ambilight = new THREE.AmbientLight( 0x404040 ); // soft white light
       //scene.add( ambilight );
   },

@@ -1,3 +1,29 @@
+<header class="main_header">
+  <div class="input_header">
+    <nav class="input_header--panel_tabs">
+      <div class="input_header--panel_tab">Passive</div>
+      <div class="input_header--panel_tab">PhotoV</div>
+      <div class="input_header--panel_tab">Insolation</div>
+      <div class="input_header--panel_tab">Windrose</div>
+      <div class="input_header--panel_tab">Daylight</div>
+      <div class="input_header--panel_tab">Construction</div>
+    </nav>
+    <div class="input_header--panel_toggle">Open</div>
+  </div>
+  <div class="render_header">
+    <input id="render_header__hour_id" type="range" class="render_header--input">
+    <input id="render_header__date_id" type="range" class="render_header--input">
+  </div>
+  <div class="results_header">
+    <div class="results_header--panel_toggle"></div>
+  </div>
+</header>
+<div class="main_content">
+  <div class="main_content--input_panel"></div>
+  <div class="main_content--render_panel"></div>
+  <div class="main_content--results_panel"></div>
+</div>
+
 <div id="controls">
   <div class="control">
     <a href="/#logout"><%= $.i18n('sim-logout') %></a>&nbsp;<a href="/#profile"><%= $.i18n('sim-profile') %></a>
@@ -62,7 +88,7 @@
     <div id="progressbar" style="display:none"></div>
   </div>
 </div>
-<div id="canvas">
+<div id="x_canvas">
 </div>
 <div id="results">
 </div>
