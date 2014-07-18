@@ -109,8 +109,9 @@ exports.run = function(req, res) {
       console.log("Error running python script: " + err);
     }
     // results is the full path to the directory where the simulation results are stored
-    var resultsDir = results[results.length-1];
-    simulation.set({ resultsDirectory: resultsDir, finished: true });
+    var resultsDir = results[results.length-2];
+    var resultsFile = results[results.length-1];
+    simulation.set({ resultsDirectory: resultsDir, resultsFile: resultsFile, finished: true });
     simulation.save();
   });
 
@@ -128,6 +129,13 @@ exports.checkForResults = function(req, res) {
       return;
     }
 
-    res.status(200).json({ jobId: id, finished: simulation.get('finished'), resultsDirectory: simulation.get('resultsDirectory') });
+    var finished = simulation.get('finished');
+    if (finished) {
+      var resultsFile = simulation.get('resultsFile');
+      res.status(200).sendfile(resultsFile);
+    } else {
+      // Send a 203 (not finished yet)
+      res.status(203).json({ jobId: id, finished: false });
+    }
   });
 };

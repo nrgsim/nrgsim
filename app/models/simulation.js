@@ -7,7 +7,8 @@ var mongoose = mongoose || require('mongoose'),
 var SimulationSchema = new Schema({
   userInput: Object,
   finished: { type: Boolean, default: false },
-  resultsDirectory: { type: String, default: null }
+  resultsDirectory: { type: String, default: null },
+  resultsFile: { type: String, default: null }
 });
 
 

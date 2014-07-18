@@ -236,22 +236,22 @@ window.app.views.SimPage = Backbone.View.extend({
   },
 
   getSimulationResults: function(data, status) {
-    window.console.log(data);
-    window.console.log(status);
+    //window.console.log(data);
+    //window.console.log(status);
     $.get('simulation/' + data.jobId, this.handleSimulationResults.bind(this));
     // TODO: add some error checking
   },
 
-  handleSimulationResults: function(results) {
-    if (results.finished) {
-      window.console.log('simulation run finished');
-      window.console.log(results);
+  handleSimulationResults: function(results, status, xhr) {
+    if (xhr.status === 200) {
+      //window.console.log('simulation run finished');
       var progbar = $('#progressbar');
       progbar.hide();
       progbar.progressbar('destroy');
       $("#run-button").button("option", "disabled", false);
-      $("#results").text(results.resultsDirectory);
+      $("#results").text(results);
     } else {
+      //window.console.log('simulation not finished');
       window.setTimeout(this.getSimulationResults.bind(this, results), 5000);
     }
   },

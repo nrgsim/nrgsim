@@ -34,18 +34,24 @@ def copySupportingFiles(simulationDirectory, jsondata):
 def executeSimulation(simulationDirectory, resultsDirectory):
   olddir = os.getcwd()
   os.chdir('../jess_client')
-  subprocess.call(['java', '-jar', '../jess_client/JESS_Client.jar', '-cfg', '../jess_client/client.cfg', '-job', simulationDirectory, '-type', 'STD_SINGLE_JOB', '-output', resultsDirectory])
+  subprocess.call(['java', '-jar', '../jess_client/JESS_Client.jar',
+    '-cfg', '../jess_client/client.cfg', 
+    '-job', simulationDirectory, 
+    '-type', 'STD_SINGLE_JOB', 
+    '-output', resultsDirectory])
   os.chdir(olddir)
 
 def runSimulation(simulationid, jsondata):
   directory = createSimulationDirectory(simulationid)
-  resultsDirectory = directory + os.sep + 'output';
+  resultsDirectory = directory + os.sep + 'output'
+  resultsFile = resultsDirectory + os.sep + 'eplustbl.csv'
 
   createParametersFile(directory, jsondata)
   copySupportingFiles(directory, jsondata)
   executeSimulation(directory, resultsDirectory)
 
-  # Send the directory that the simulation results are in back to the caller.
+  # Send the directory that the simulation results are in and the file to stream back to the client to the caller.
   print(resultsDirectory)
+  print(resultsFile)
 
 runSimulation(sys.argv[1], json.JSONDecoder().decode(sys.argv[2]))
