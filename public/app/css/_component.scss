@@ -3,17 +3,71 @@
 // out into many files eg. _component_home.scss, _component_charts.scss
 
 
-.main_content {}
+.main_header {
+  background-image: linear-gradient($darkgray, darken($darkgray, 20%));
+  border-bottom: 1px solid $black;
+  @include group;
+}
 .input_header {
+  @extend %header-part;
+  width: 25%;
+  &--title {
+    @extend %header-title;
+  }
   &--panel_tabs {}
-  &--panel_tab {}
+  &--panel_tab {
+    background-image: linear-gradient(lighten($black, 60%), $black);
+    border: 0.2em solid $white;
+    border-radius: 100%;
+    color: $white;
+    display: inline-block;
+    float: left;
+    font-style: italic;
+    font-size: 1.1em;
+    line-height: 1.6;
+    text-align: center;
+    height: 2em;
+    width: 2em;
+    &:hover {
+      background-image: linear-gradient($black, lighten($black, 60%));
+    }
+  }
   &--panel_toggle {}
 }
 .render_header {
+  @extend %header-part;
+  width: 50%;
+  &--title {
+    @extend %header-title;
+  }
   &--input {}
 }
 .results_header {
+  @extend %header-part;
+  width: 25%;
+  &--title {
+    @extend %header-title;
+  }
   &--panel_toggle {}
+}
+.main_content {}
+
+.inputs_area {
+  @extend %body-area;
+  background-color: darken($darkgray, 20%);
+  border-right: 1px solid $black;
+  padding: 0.2em;
+  width: 25%;
+}
+.render_area {
+  @extend %body-area;
+  width: 50%;
+}
+.results_area {
+  @extend %body-area;
+  background-color: darken($darkgray, 20%);
+  border-left: 1px solid $black;
+  width: 25%;
 }
 
 

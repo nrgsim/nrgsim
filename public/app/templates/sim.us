@@ -1,20 +1,22 @@
 <header class="main_header">
   <div class="input_header">
+    <h2 class="input_header--title">Inputs</h2>
     <nav class="input_header--panel_tabs">
-      <div class="input_header--panel_tab">Passive</div>
-      <div class="input_header--panel_tab">PhotoV</div>
-      <div class="input_header--panel_tab">Insolation</div>
-      <div class="input_header--panel_tab">Windrose</div>
-      <div class="input_header--panel_tab">Daylight</div>
-      <div class="input_header--panel_tab">Construction</div>
+      <div class="input_header--panel_tab">PS</div>
+      <div class="input_header--panel_tab">PV</div>
+      <div class="input_header--panel_tab">SI</div>
+      <div class="input_header--panel_tab">WR</div>
+      <div class="input_header--panel_tab">DF</div>
+      <div class="input_header--panel_tab">CN</div>
     </nav>
-    <div class="input_header--panel_toggle">Open</div>
   </div>
   <div class="render_header">
+    <h2 class="render_header--title">Render</h2>
     <input id="render_header__hour_id" type="range" class="render_header--input">
     <input id="render_header__date_id" type="range" class="render_header--input">
   </div>
   <div class="results_header">
+    <h2 class="results_header--title">Results</h2>
     <div class="results_header--panel_toggle"></div>
   </div>
 </header>
@@ -23,8 +25,7 @@
   <div class="main_content--render_panel"></div>
   <div class="main_content--results_panel"></div>
 </div>
-<!--
-<div id="controls">
+<div class="inputs_area" id="inputs_id">
   <div class="control">
     <a href="/#logout"><%= $.i18n('sim-logout') %></a>&nbsp;<a href="/#profile"><%= $.i18n('sim-profile') %></a>
   </div>
@@ -88,8 +89,5 @@
     <div id="progressbar" style="display:none"></div>
   </div>
 </div>
-<div id="x_canvas">
-</div>
-<div id="results">
-</div>
--->
+<div class="render_area" id="x_canvas"></div>
+<div class="results_area"></div>

@@ -1,7 +1,35 @@
 // All non-printing styles => variables, functions, mixins, extends
 
 $white: #ffffff;
+$black: #000000;
 $darkgray: #9e9e9e;
 $lightgray: #efefef;
 $ctrlwidth: 200px;
 $resultheight: 150px;
+
+@mixin group {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+%header-part {
+  color: $white;
+  float: left;
+  padding: 0.2em;
+  text-align: center;
+  &:first-child {
+    border-left: none;
+  }
+}
+%header-title {
+  clear: none;
+  font-size: 1em;
+  margin: 0;
+}
+%body-area {
+  display: block;
+  float: left;
+  min-height: 500px;
+}
