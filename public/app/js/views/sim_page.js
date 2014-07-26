@@ -290,7 +290,7 @@ window.app.views.SimPage = Backbone.View.extend({
 
 
   runSimulation: function() {
-    var zone = [];
+    var zone = { northWindow: null, eastWindow: null, southWindow: null, westWindow: null };
     var inverseTransform = new THREE.Matrix4();
 
     var progbar = $('#progressbar');
@@ -299,26 +299,26 @@ window.app.views.SimPage = Backbone.View.extend({
     progbar.progressbar({ value: false });
     progbar.show();
 
-    /* TODO: this needs to be changed after Troy's changes
-    inverseTransform.getInverse(transform);
-    _.each(this.scene.children, function(child) {
-      var result = {};
-      result.name = child.geometry.name;
-      result.type = child.geometry.type;
-      result.vertices = [];
+    zone.weatherFile = "TODO: add UI to let user specify weather file";
+    zone.length = $("#Length").slider('value');
+    zone.width = $("#Depth").slider('value');
+    zone.height = $("#Height").slider('value');
+    if ($("#NWin").prop("checked")) {
+      zone.northWindow = $("#NWinGR").slider('value');
+    }
+    if ($("#EWin").prop("checked")) {
+      zone.northWindow = $("#EWinGR").slider('value');
+    }
+    if ($("#SWin").prop("checked")) {
+      zone.northWindow = $("#SWinGR").slider('value');
+    }
+    if ($("#WWin").prop("checked")) {
+      zone.northWindow = $("#WWinGR").slider('value');
+    }
+    zone.insulationLevel = $("#insulation-level").slider('value');
+    zone.ventilationRate = $("#ventilation-rate").slider('value');
 
-      _.each(child.geometry.vertices, function(vertex) {
-        var vert = vertex.clone().applyMatrix4(inverseTransform);
-        result.vertices.push({x: vert.x, y: vert.y, z: vert.z});
-      });
-
-      zone.push(result);
-    });
-    */
-    // this is a kludge for now
-    zone.push({name: "test", type: "roof", vertices: [{x: 10, y: 10, z: 10 }]});
-
-    $.post('simulation/run', { zone: zone }, this.getSimulationResults);
+    $.post('simulation/run', zone, this.getSimulationResults);
   },
 
   getSimulationResults: function(data, status) {
