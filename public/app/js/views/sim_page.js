@@ -197,8 +197,8 @@ window.app.views.SimPage = Backbone.View.extend({
     $("#EWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: self.updateSliderDisplay });
     $("#SWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: self.updateSliderDisplay });
     $("#WWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: self.updateSliderDisplay });
-    $("#insulation-level").slider({ min: 1, max: 10, value: 5 });
-    $("#ventilation-rate").slider({ min: 1, max: 10, value: 5 });
+    $("#insulation-level").slider({ min: 0.1, max: 3.5, value: 0.2, step: 0.01, slide: self.updateSliderDisplay });
+    $("#ventilation-rate").slider({ min: 0.01, max: 3, value: 0.35, step: 0.01, slide: self.updateSliderDisplay });
     $("#run-button").button();
 
     this.setSliderDisplayValue('#Length');
@@ -208,6 +208,8 @@ window.app.views.SimPage = Backbone.View.extend({
     this.setSliderDisplayValue('#EWinGR');
     this.setSliderDisplayValue('#SWinGR');
     this.setSliderDisplayValue('#WWinGR');
+    this.setSliderDisplayValue('#insulation-level');
+    this.setSliderDisplayValue('#ventilation-rate');
   },
 
   handleSliderCheckboxChange: function(event) {
