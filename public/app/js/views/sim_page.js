@@ -309,13 +309,13 @@ window.app.views.SimPage = Backbone.View.extend({
       zone.northWindow = $("#NWinGR").slider('value');
     }
     if ($("#EWin").prop("checked")) {
-      zone.northWindow = $("#EWinGR").slider('value');
+      zone.eastWindow = $("#EWinGR").slider('value');
     }
     if ($("#SWin").prop("checked")) {
-      zone.northWindow = $("#SWinGR").slider('value');
+      zone.soutWindow = $("#SWinGR").slider('value');
     }
     if ($("#WWin").prop("checked")) {
-      zone.northWindow = $("#WWinGR").slider('value');
+      zone.westWindow = $("#WWinGR").slider('value');
     }
     zone.insulationLevel = $("#insulation-level").slider('value');
     zone.ventilationRate = $("#ventilation-rate").slider('value');
