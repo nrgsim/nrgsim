@@ -7,6 +7,7 @@ window.app.views.SimPage = Backbone.View.extend({
   renderer: null,
   controls: null,
   transform: null,
+  solarCube: null,
   materials: [
     //new THREE.MeshLambertMaterial({ color: 0x000000 }), //Outer Floor Color
     ///new THREE.MeshLambertMaterial({ color: 0x666666 }), //Outer Roof Ceiling Color
@@ -41,6 +42,7 @@ window.app.views.SimPage = Backbone.View.extend({
       -dimensions.z.min-(dimensions.z.max-dimensions.z.min)/2);
   },
 
+  /*
   getMaterialIndex: function(surfaceType) {
     switch (surfaceType) {
       case 'Floor':
@@ -78,46 +80,49 @@ window.app.views.SimPage = Backbone.View.extend({
   },
 
   addPlane: function(scene, surface, transform) {
-      var geometry = this.createGeometry(surface, transform);
-      geometry.faces = this.createFaces(surface);
-      geometry.computeBoundingSphere();
-      geometry.computeFaceNormals();
-      geometry.computeCentroids();
-      geometry.name = surface.name;
-      geometry.type = surface.type;
 
-      //var material = new THREE.MeshBasicMaterial({ vertexColors: THREE.FaceColors, overdraw: 0.5 });
-      //var plane = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(this.materials));
-      //plane.castShadow=true;
-      //scene.add(plane);
-      var axes = new THREE.AxisHelper (20);
-      scene.add(axes);
-      var cubeGeometry=new THREE.CubeGeometry(4,3,4);
-      var cubeMaterial= new THREE.MeshLambertMaterial({color: 0xf2d478});
-      var solarCube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-      solarCube.position.x=0;
-      solarCube.position.y=0;
-      solarCube.position.z=2;
-      solarCube.castShadow=true;
-      scene.add(solarCube);
+    var geometry = this.createGeometry(surface, transform);
+    geometry.faces = this.createFaces(surface);
+    geometry.computeBoundingSphere();
+    geometry.computeFaceNormals();
+    geometry.computeCentroids();
+    geometry.name = surface.name;
+    geometry.type = surface.type;
 
-      var groundPlaneGeometry = new THREE.PlaneGeometry (100,100);
-      var groundPlaneMaterial= new THREE.MeshLambertMaterial ({color: 0xcccccc});
-      var groundPlane = new THREE.Mesh (groundPlaneGeometry, groundPlaneMaterial);
-      groundPlane.position.x=0;
-      groundPlane.position.y=0;
-      groundPlane.position.z=-0;
-      groundPlane.receiveShadow=true;
-      scene.add(groundPlane);
+    //var material = new THREE.MeshBasicMaterial({ vertexColors: THREE.FaceColors, overdraw: 0.5 });
+    //var plane = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(this.materials));
+    //plane.castShadow=true;
+    //scene.add(plane);
 
-      var sunLight= new THREE.DirectionalLight (0xffffff, 0.1);
-      sunLight.position.set(45,45,100);
-      sunLight.castShadow=true;
-      sunLight.onlyShadow=false;
-      scene.add(sunLight);
+    var axes = new THREE.AxisHelper (20);
+    scene.add(axes);
+    var boxGeometry =new THREE.BoxGeometry(4, 3, 4);
+    var cubeMaterial = new THREE.MeshLambertMaterial({color: 0xf2d478});
+    var solarCube = new THREE.Mesh(boxGeometry, cubeMaterial);
+    solarCube.position.x=0;
+    solarCube.position.y=0;
+    solarCube.position.z=2;
+    solarCube.castShadow=true;
+    scene.add(solarCube);
 
-      //var ambilight = new THREE.AmbientLight( 0x404040 ); // soft white light
-      //scene.add( ambilight );
+    var groundPlaneGeometry = new THREE.PlaneGeometry (100, 100);
+    var groundPlaneMaterial= new THREE.MeshLambertMaterial ({color: 0xcccccc});
+    var groundPlane = new THREE.Mesh (groundPlaneGeometry, groundPlaneMaterial);
+    groundPlane.position.x=0;
+    groundPlane.position.y=0;
+    groundPlane.position.z=-0;
+    groundPlane.receiveShadow=true;
+    scene.add(groundPlane);
+
+    var sunLight= new THREE.DirectionalLight (0xffffff, 0.1);
+    sunLight.position.set(45, 45, 100);
+    sunLight.castShadow=true;
+    sunLight.onlyShadow=false;
+    scene.add(sunLight);
+
+    //var ambilight = new THREE.AmbientLight( 0x404040 ); // soft white light
+    //scene.add( ambilight );
+
   },
 
   addPlanes: function(scene, surfaces, transform) {
@@ -129,6 +134,38 @@ window.app.views.SimPage = Backbone.View.extend({
         self.addPlane(scene, surface.FenestrationSurface, transform);
       }
     });
+  },
+  */
+
+  initializeScene: function(scene, surfaces, transform) {
+    var axes = new THREE.AxisHelper(20);
+    scene.add(axes);
+    var boxGeometry = new THREE.BoxGeometry(1, 1, 1);
+    var cubeMaterial = new THREE.MeshBasicMaterial({color: 0xf2d478});
+    this.solarCube = new THREE.Mesh(boxGeometry, cubeMaterial);
+    this.solarCube.castShadow = true;
+    this.solarCube.scale.x = 3;
+    this.solarCube.scale.y = 4;
+    this.solarCube.scale.z = 4;
+    this.solarCube.position.x = 0;
+    this.solarCube.position.y = 0;
+    this.solarCube.position.z = 2;
+    this.scene.add(this.solarCube);
+
+    var groundPlaneGeometry = new THREE.PlaneGeometry (100, 100);
+    var groundPlaneMaterial = new THREE.MeshBasicMaterial ({color: 0xcccccc});
+    var groundPlane = new THREE.Mesh(groundPlaneGeometry, groundPlaneMaterial);
+    groundPlane.position.x = 0;
+    groundPlane.position.y = 0;
+    groundPlane.position.z = 0;
+    groundPlane.receiveShadow = true;
+    scene.add(groundPlane);
+
+    var sunLight = new THREE.DirectionalLight (0xffffff, 0.1);
+    sunLight.position.set(45, 45, 100);
+    sunLight.castShadow = true;
+    sunLight.onlyShadow = false;
+    scene.add(sunLight);
   },
 
   createCamera: function(canvas) {
@@ -155,15 +192,15 @@ window.app.views.SimPage = Backbone.View.extend({
 
   createManualControls: function() {
     var self = this;
-    $("#Length").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
-    $("#Depth").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
-    $("#Height").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
+    $("#Length").slider({ min: 1, max: 10, value: 3, slide: self.updateLength });
+    $("#Depth").slider({ min: 1, max: 10, value: 4, slide: self.updateWidth });
+    $("#Height").slider({ min: 1, max: 10, value: 4, slide: self.updateHeight });
     $("#NWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: self.updateSliderDisplay });
     $("#EWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: self.updateSliderDisplay });
     $("#SWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: self.updateSliderDisplay });
     $("#WWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: self.updateSliderDisplay });
-    $("#insulation-level").slider({ min: 1, max: 10, value: 5 });
-    $("#ventilation-rate").slider({ min: 1, max: 10, value: 5 });
+    $("#insulation-level").slider({ min: 0.1, max: 3.5, value: 0.2, step: 0.01, slide: self.updateSliderDisplay });
+    $("#ventilation-rate").slider({ min: 0.01, max: 3, value: 0.35, step: 0.01, slide: self.updateSliderDisplay });
     $("#run-button").button();
 
     this.setSliderDisplayValue('#Length');
@@ -173,6 +210,8 @@ window.app.views.SimPage = Backbone.View.extend({
     this.setSliderDisplayValue('#EWinGR');
     this.setSliderDisplayValue('#SWinGR');
     this.setSliderDisplayValue('#WWinGR');
+    this.setSliderDisplayValue('#insulation-level');
+    this.setSliderDisplayValue('#ventilation-rate');
   },
 
   handleSliderCheckboxChange: function(event) {
@@ -183,6 +222,22 @@ window.app.views.SimPage = Backbone.View.extend({
     } else {
       $(grId+'Disp').hide();
     }
+  },
+
+  updateLength: function(event, ui) {
+    this.updateSliderDisplay(event, ui);
+    this.solarCube.scale.x = ui.value;
+  },
+
+  updateWidth: function(event, ui) {
+    this.updateSliderDisplay(event, ui);
+    this.solarCube.scale.y = ui.value;
+  },
+
+  updateHeight: function(event, ui) {
+    this.updateSliderDisplay(event, ui);
+    this.solarCube.scale.z = ui.value;
+    this.solarCube.position.z = ui.value/2;
   },
 
   updateSliderDisplay: function(event, ui) {
@@ -216,8 +271,8 @@ window.app.views.SimPage = Backbone.View.extend({
 
     $.get('simulation/load/25', function(d) {
       if (d.status === 0) {
-        transform = self.buildOriginTransform(d.data.zone);
-        self.addPlanes(self.scene, d.data.zone, transform);
+        transform = null; //self.buildOriginTransform(d.data.zone);
+        self.initializeScene(self.scene, d.data.zone, transform);
       }
     });
 
@@ -239,7 +294,7 @@ window.app.views.SimPage = Backbone.View.extend({
 
 
   runSimulation: function() {
-    var zone = [];
+    var zone = { northWindow: null, eastWindow: null, southWindow: null, westWindow: null };
     var inverseTransform = new THREE.Matrix4();
 
     var progbar = $('#progressbar');
@@ -248,26 +303,26 @@ window.app.views.SimPage = Backbone.View.extend({
     progbar.progressbar({ value: false });
     progbar.show();
 
-    /* TODO: this needs to be changed after Troy's changes
-    inverseTransform.getInverse(transform);
-    _.each(this.scene.children, function(child) {
-      var result = {};
-      result.name = child.geometry.name;
-      result.type = child.geometry.type;
-      result.vertices = [];
+    zone.weatherFile = "TODO: add UI to let user specify weather file";
+    zone.length = $("#Length").slider('value');
+    zone.width = $("#Depth").slider('value');
+    zone.height = $("#Height").slider('value');
+    if ($("#NWin").prop("checked")) {
+      zone.northWindow = $("#NWinGR").slider('value');
+    }
+    if ($("#EWin").prop("checked")) {
+      zone.eastWindow = $("#EWinGR").slider('value');
+    }
+    if ($("#SWin").prop("checked")) {
+      zone.soutWindow = $("#SWinGR").slider('value');
+    }
+    if ($("#WWin").prop("checked")) {
+      zone.westWindow = $("#WWinGR").slider('value');
+    }
+    zone.insulationLevel = $("#insulation-level").slider('value');
+    zone.ventilationRate = $("#ventilation-rate").slider('value');
 
-      _.each(child.geometry.vertices, function(vertex) {
-        var vert = vertex.clone().applyMatrix4(inverseTransform);
-        result.vertices.push({x: vert.x, y: vert.y, z: vert.z});
-      });
-
-      zone.push(result);
-    });
-    */
-    // this is a kludge for now
-    zone.push({name: "test", type: "roof", vertices: [{x: 10, y: 10, z: 10 }]});
-
-    $.post('simulation/run', { zone: zone }, this.getSimulationResults);
+    $.post('simulation/run', zone, this.getSimulationResults);
   },
 
   getSimulationResults: function(data, status) {

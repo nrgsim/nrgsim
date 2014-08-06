@@ -120,7 +120,7 @@ module.exports = {
       var jobId = req.params.jobId;
       var rnd = Math.floor((Math.random() * 4) + 1);
       var finished = (rnd === 1);
-      res.json({ jobId: jobId, finished: finished });
+      res.send("This would be the results streamed back from the server");
     });
   }
 };

@@ -13,9 +13,27 @@ def createSimulationDirectory(simulationid):
 
 def convertDataToCSV(jsondata):
   # This would take the json object passed in and convert it to CSV data.
-  # The format of the data is specified in public/transport.json
+  # The format of the data is as follows:
+  '''
+  {
+    "weatherFile": "<string>",
+    "length": "<number>",
+    "width": "<number>",
+    "height": "<number>",
+    "northWindow" : "null or <number>",
+    "eastWindow" : "null or <number>",
+    "southWindow" : "null or <number>",
+    "westWindow" : "null or <number>",
+    "insulationLevel" : "<number>",
+    "ventilationRate" : "<number>"
+  }
+  '''
+
+  # This is a kludge for now. It just writes out the parameters on 3 lines to test that we received them correctly
   csvdata = []
-  csvdata.append([jsondata["zone"][0]["vertices"][0]["x"], jsondata["zone"][0]["vertices"][0]["y"], jsondata["zone"][0]["vertices"][0]["z"]])
+  csvdata.append([jsondata["length"], jsondata["width"], jsondata["height"]])
+  csvdata.append([jsondata["northWindow"], jsondata["eastWindow"], jsondata["southWindow"], jsondata["westWindow"]])
+  csvdata.append([jsondata["insulationLevel"], jsondata["ventilationRate"]])
   return csvdata
 
 def createParametersFile(directory, jsondata):
@@ -35,9 +53,9 @@ def executeSimulation(simulationDirectory, resultsDirectory):
   olddir = os.getcwd()
   os.chdir('../jess_client')
   subprocess.call(['java', '-jar', '../jess_client/JESS_Client.jar',
-    '-cfg', '../jess_client/client.cfg', 
-    '-job', simulationDirectory, 
-    '-type', 'STD_SINGLE_JOB', 
+    '-cfg', '../jess_client/client.cfg',
+    '-job', simulationDirectory,
+    '-type', 'STD_SINGLE_JOB',
     '-output', resultsDirectory])
   os.chdir(olddir)
 

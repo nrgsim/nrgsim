@@ -99,6 +99,7 @@ exports.run = function(req, res) {
     scriptPath: 'scripts',
     args: [ jobId, JSON.stringify(req.body) ]
   };
+  console.log(options.args);
   if (os.platform() === 'linux') {
     options.pythonPath = '/usr/bin/python3';
   }
