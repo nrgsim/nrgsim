@@ -1,13 +1,14 @@
-<header class="main_header">
-  <div class="input_header">
-    <h2 class="input_header--title">Inputs</h2>
-    <nav class="input_header--panel_tabs">
-      <div class="input_header--panel_tab">PS</div>
-      <div class="input_header--panel_tab">PV</div>
-      <div class="input_header--panel_tab">SI</div>
-      <div class="input_header--panel_tab">WR</div>
-      <div class="input_header--panel_tab">DF</div>
-      <div class="input_header--panel_tab">CN</div>
+<header class="main_header" id="main_header_id">
+  <div class="inputs_header">
+    <h2 class="inputs_header--title">Inputs</h2>
+    <div class="inputs_header--panel_toggle" id="inputs_panel_toggle_id">Close</div>
+    <nav class="inputs_header--panel_tabs">
+      <div class="inputs_header--panel_tab">PS</div>
+      <div class="inputs_header--panel_tab">PV</div>
+      <div class="inputs_header--panel_tab">SI</div>
+      <div class="inputs_header--panel_tab">WR</div>
+      <div class="inputs_header--panel_tab">DF</div>
+      <div class="inputs_header--panel_tab">CN</div>
     </nav>
   </div>
   <div class="render_header">
@@ -15,19 +16,22 @@
     <input id="render_header__hour_id" type="range" class="render_header--input">
     <input id="render_header__date_id" type="range" class="render_header--input">
   </div>
+  <div class="profile_header">
+    <a href="/#logout"><%= $.i18n('sim-logout') %></a>&nbsp;<a href="/#profile"><%= $.i18n('sim-profile') %></a>
+  </div>
   <div class="results_header">
     <h2 class="results_header--title">Results</h2>
-    <div class="results_header--panel_toggle"></div>
+    <div class="results_header--panel_toggle" id="results_panel_toggle_id">Close</div>
   </div>
 </header>
-<div class="main_content">
-  <div class="main_content--input_panel"></div>
+<div class="main_content" id="main_content_id">
+  <div class="main_content--inputs_panel"></div>
   <div class="main_content--render_panel"></div>
   <div class="main_content--results_panel"></div>
 </div>
-<div class="inputs_area" id="inputs_id">
+<div class="inputs_area" id="inputs_panel_id">
   <div class="control">
-    <a href="/#logout"><%= $.i18n('sim-logout') %></a>&nbsp;<a href="/#profile"><%= $.i18n('sim-profile') %></a>
+
   </div>
   <div class="control">
     <label><%= $.i18n('sim-length') %> <span id="LengthDisp"></span></label>
@@ -90,4 +94,4 @@
   </div>
 </div>
 <div class="render_area" id="canvas"></div>
-<div class="results_area"></div>
+<div class="results_area" id="results_panel_id"></div>

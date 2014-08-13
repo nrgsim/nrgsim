@@ -1,14 +1,14 @@
-.input_header, .render_header, .results_header {
+.inputs_header, .render_header, .profile_header, .results_header {
   color: white;
   float: left;
   padding: 0.2em;
   text-align: center;
 }
-.input_header:first-child, .render_header:first-child, .results_header:first-child {
+.inputs_header:first-child, .render_header:first-child, .profile_header:first-child, .results_header:first-child {
   border-left: none;
 }
 
-.input_header--title, .render_header--title, .results_header--title {
+.inputs_header--title, .render_header--title, .results_header--title {
   clear: none;
   font-size: 1em;
   margin: 0;
@@ -2277,7 +2277,7 @@ th {
 }
 
 body {
-  background-color: white;
+  background-color: #9e9e9e;
   color: white;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 16px;
@@ -2294,10 +2294,10 @@ body {
   clear: both;
 }
 
-.input_header {
-  width: 25%;
+.inputs_header {
+  width: 20%;
 }
-.input_header--panel_tab {
+.inputs_header--panel_tab {
   background-image: linear-gradient(#999999, black);
   border: 0.2em solid white;
   border-radius: 100%;
@@ -2311,12 +2311,18 @@ body {
   height: 2em;
   width: 2em;
 }
-.input_header--panel_tab:hover {
+.inputs_header--panel_tab:hover {
   background-image: linear-gradient(black, #999999);
 }
 
 .render_header {
-  width: 50%;
+  width: 55%;
+}
+
+.profile_header {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .results_header {
@@ -2327,40 +2333,15 @@ body {
   background-color: #6b6b6b;
   border-right: 1px solid black;
   padding: 0.2em;
-  width: 25%;
+  width: 20%;
 }
 
 .render_area {
-  width: 50%;
+  width: 55%;
 }
 
 .results_area {
   background-color: #6b6b6b;
   border-left: 1px solid black;
   width: 25%;
-}
-
-#controls {
-  background-color: #efefef;
-  font-size: 12px;
-}
-#controls .control {
-  margin: 14px;
-  border-radius: 1em;
-}
-#controls .indent {
-  padding-left: 12px;
-}
-#controls label {
-  color: #6e6e6e;
-}
-#controls .ui-slider {
-  margin: 4px 0 0 0;
-}
-
-#results {
-  height: 150px;
-  border-top: 1px solid #9e9e9e;
-  word-wrap: break-word;
-  overflow-y: auto;
 }
