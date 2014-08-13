@@ -351,6 +351,85 @@ window.app.views.SimPage = Backbone.View.extend({
     this.model = new window.app.models.Simulation();
   },
 
+  onPageManipulations: function() {
+    $(document).ready(function() {
+
+      // global stuff that will be usefull throught
+      var $win = $(window),
+          $body = $('body'),
+              curWinWidth = $win.width(),
+              curWinHeight = $win.height(),
+              timer,
+              layoutView = 'small',
+              smallMax = 640,
+              mediumMax = 1024,
+          checkLayout = function() {
+            var $curWin = $(window);
+            curWinWidth = $curWin.width();
+            if ( curWinWidth <= smallMax ) {
+              layoutView = 'small';
+            } else if ( curWinWidth > smallMax && curWinWidth < mediumMax ) {
+              layoutView = 'medium';
+            } else {
+              layoutView = 'large';
+            }
+            console.log(layoutView);
+          };
+
+      var $mainContent = $('#main_content_id'),
+          $mainHeader = $('#main_header_id'),
+      levelContentHeight = function() {
+        var mainHeaderHeight = $mainHeader.height(),
+            newMainContnetHeight = curWinHeight - mainHeaderHeight;
+        $mainContent.height(newMainContnetHeight);
+      };
+      console.log($mainContent);
+
+
+      // Panel Sliding
+      var $resultsPanelToggle = $('#results_panel_toggle_id'),
+          $inputsPanelToggle = $('#inputs_panel_toggle_id'),
+          $resultsPanel = $('#results_panel_id'),
+          $inputsPanel = $('#inputs_panel_id'),
+          $panelToggles = $resultsPanelToggle.add($inputsPanelToggle),
+      closePanel = function($curPanel) {
+        // close $curPanel
+      },
+      openPanel = function($curPanel) {
+        // open $curPanel
+      },
+      togglePanel = function(clickedEl) {
+        var $curPanel;
+        if ( clickedEl === $inputsPanelToggle ) {
+          $curPanel = $inputsPanel;
+        } else if ( clickedEl === $resultsPanelToggle ) {
+          $curPanel = $resultsPanel;
+        }
+        if ( $curPanel.hasClass('open') ) {
+          closePanel($curPanel);
+        } else {
+          openPanel($curPanel);
+        }
+      };
+      $panelToggles.click(function() {
+        togglePanel(this);
+      });
+
+      // Initialize
+      levelContentHeight();
+
+      // On Resize
+      $win.resize(function() {
+        clearTimeout(timer);
+        // throttle the resize check
+        timer = setTimeout(function() {
+          // do resize stuff here
+          checkLayout();
+        }, 200);
+      });
+    });
+  },
+
   render: function() {
     var self = this;
     this.$el.html(this.template(this.model.attributes));
@@ -358,86 +437,9 @@ window.app.views.SimPage = Backbone.View.extend({
       self.init();
       self.animate();
     }, 0);
+    this.onPageManipulations();
     return this;
   }
 
 });
 
-(function($) {
-  $(document).ready(function() {
-
-    // global stuff that will be usefull throught
-    var $win = $(window),
-        $body = $('body'),
-            curWinWidth = $win.width(),
-            curWinHeight = $win.height(),
-            timer,
-            layoutView = 'small',
-            smallMax = 640,
-            mediumMax = 1024,
-        checkLayout = function() {
-          var $curWin = $(window);
-          curWinWidth = $curWin.width();
-          if ( curWinWidth <= smallMax ) {
-            layoutView = 'small';
-          } else if ( curWinWidth > smallMax && curWinWidth < mediumMax ) {
-            layoutView = 'medium';
-          } else {
-            layoutView = 'large';
-          }
-          console.log(layoutView);
-        };
-
-    var $mainContent = jQuery('#main_content_id'),
-        $mainHeader = $('#main_header_id'),
-    levelContentHeight = function() {
-      var mainHeaderHeight = $mainHeader.height(),
-          newMainContnetHeight = curWinHeight - mainHeaderHeight;
-      $mainContent.height(newMainContnetHeight);
-    };
-    // console.log($mainContent);
-
-
-    // Panel Sliding
-    var $resultsPanelToggle = $('#results_panel_toggle_id'),
-        $inputsPanelToggle = $('#inputs_panel_toggle_id'),
-        $resultsPanel = $('#results_panel_id'),
-        $inputsPanel = $('#inputs_panel_id'),
-        $panelToggles = $resultsPanelToggle.add($inputsPanelToggle),
-    closePanel = function($curPanel) {
-      // close $curPanel
-    },
-    openPanel = function($curPanel) {
-      // open $curPanel
-    },
-    togglePanel = function(clickedEl) {
-      var $curPanel;
-      if ( clickedEl === $inputsPanelToggle ) {
-        $curPanel = $inputsPanel;
-      } else if ( clickedEl === $resultsPanelToggle ) {
-        $curPanel = $resultsPanel;
-      }
-      if ( $curPanel.hasClass('open') ) {
-        closePanel($curPanel);
-      } else {
-        openPanel($curPanel);
-      }
-    };
-    $panelToggles.click(function() {
-      togglePanel(this);
-    });
-
-    // Initialize
-    levelContentHeight();
-
-    // On Resize
-    $win.resize(function() {
-      clearTimeout(timer);
-      // throttle the resize check
-      timer = setTimeout(function() {
-        // do resize stuff here
-        checkLayout();
-      }, 200);
-    });
-  });
-})(jQuery);
