@@ -8,6 +8,8 @@ $darkGray: darken($gray, 20%);
 $ctrlwidth: 200px;
 $resultheight: 150px;
 
+$border--basic: 1px solid $black;
+
 @mixin group {
   &:after {
     content: "";
@@ -30,7 +32,12 @@ $resultheight: 150px;
   margin: 0;
 }
 %body-area {
+  background-color: darken($gray, 20%);
+  bottom: 0;
   display: block;
   float: left;
   height: 100%;
+  padding: 0.2em;
+  position: absolute;
+  transition: all 0.2s ease;
 }

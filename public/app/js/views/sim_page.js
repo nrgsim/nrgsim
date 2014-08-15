@@ -373,7 +373,7 @@ window.app.views.SimPage = Backbone.View.extend({
             } else {
               layoutView = 'large';
             }
-            console.log(layoutView);
+            // console.log(layoutView);
           };
 
       var $mainContent = $('#main_content_id'),
@@ -383,7 +383,6 @@ window.app.views.SimPage = Backbone.View.extend({
             newMainContnetHeight = curWinHeight - mainHeaderHeight;
         $mainContent.height(newMainContnetHeight);
       };
-      console.log($mainContent);
 
 
       // Panel Sliding
@@ -391,24 +390,31 @@ window.app.views.SimPage = Backbone.View.extend({
           $inputsPanelToggle = $('#inputs_panel_toggle_id'),
           $resultsPanel = $('#results_panel_id'),
           $inputsPanel = $('#inputs_panel_id'),
-          $panelToggles = $resultsPanelToggle.add($inputsPanelToggle),
-      closePanel = function($curPanel) {
+          $panelToggles = $resultsPanelToggle.add($inputsPanelToggle);
+      $resultsPanelToggle.data('togglePair', $resultsPanel);
+      $inputsPanelToggle.data('togglePair', $inputsPanel);
+      $resultsPanel.data('togglePair', $resultsPanelToggle);
+      $inputsPanel.data('togglePair', $inputsPanelToggle);
+      var closePanel = function($curPanel) {
         // close $curPanel
+        $curPanel.addClass('closed');
+        $($curPanel.data().togglePair).html('Open');
+        console.log('close: ');
+        console.log($curPanel);
       },
       openPanel = function($curPanel) {
         // open $curPanel
+        $($curPanel.data().togglePair).html('Close');
+        $curPanel.removeClass('closed');
+        console.log('open: ');
+        console.log($curPanel);
       },
       togglePanel = function(clickedEl) {
-        var $curPanel;
-        if ( clickedEl === $inputsPanelToggle ) {
-          $curPanel = $inputsPanel;
-        } else if ( clickedEl === $resultsPanelToggle ) {
-          $curPanel = $resultsPanel;
-        }
-        if ( $curPanel.hasClass('open') ) {
-          closePanel($curPanel);
-        } else {
+        var $curPanel = $($(clickedEl).data().togglePair);
+        if ( $curPanel.hasClass('closed') ) {
           openPanel($curPanel);
+        } else {
+          closePanel($curPanel);
         }
       };
       $panelToggles.click(function() {
