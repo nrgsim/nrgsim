@@ -34,15 +34,8 @@ module.exports = require(process.env['LINEMAN_MAIN']).config.extend('application
     }
   },
 
-  prependTasks: {
-    common: [
-      "compass:compile",
-      "autoprefixer"
-    ]
-  },
-
   appendTasks: {
-    common: [],
+    common: ["compass:compile", "autoprefixer"],
     dev: ["copy:dev", "watch:dev"],
     dist: ["copy:dist"]
   },
