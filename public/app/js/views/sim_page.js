@@ -399,15 +399,11 @@ window.app.views.SimPage = Backbone.View.extend({
         // close $curPanel
         $curPanel.addClass('closed');
         $($curPanel.data().togglePair).html('Open');
-        console.log('close: ');
-        console.log($curPanel);
       },
       openPanel = function($curPanel) {
         // open $curPanel
         $($curPanel.data().togglePair).html('Close');
         $curPanel.removeClass('closed');
-        console.log('open: ');
-        console.log($curPanel);
       },
       togglePanel = function(clickedEl) {
         var $curPanel = $($(clickedEl).data().togglePair);
@@ -420,6 +416,11 @@ window.app.views.SimPage = Backbone.View.extend({
       $panelToggles.click(function() {
         togglePanel(this);
       });
+
+      // Control Panel Tabs
+      $('#tabs').tabs();
+
+
 
       // Initialize
       levelContentHeight();
