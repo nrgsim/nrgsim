@@ -478,39 +478,33 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     var self = this;
 
     $("#Length").slider({ min: 1, max: 10, value: 3, slide: self.updateLength });
-
     $("#Depth").slider({ min: 1, max: 10, value: 4, slide: self.updateWidth });
-
     $("#Height").slider({ min: 1, max: 10, value: 4, slide: self.updateHeight });
 
-    $("#NWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: self.updateSliderDisplay });
+    $("#NWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
+    $("#EWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
+    $("#SWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
+    $("#WWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
 
-    $("#EWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: self.updateSliderDisplay });
+    $("#Rinsulation-level").slider({ min: 1, max: 10, value: 5 });
+    $("#Ninsulation-level").slider({ min: 1, max: 10, value: 5 });
+    $("#Einsulation-level").slider({ min: 1, max: 10, value: 5 });
+    $("#Sinsulation-level").slider({ min: 1, max: 10, value: 5 });
+    $("#Winsulation-level").slider({ min: 1, max: 10, value: 5 });
 
-    $("#SWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: self.updateSliderDisplay });
-
-    $("#WWinGR").slider({ min: 1, max: 99, value: 50, disabled: true, slide: self.updateSliderDisplay });
-
-    $("#insulation-level").slider({ min: 1, max: 10, value: 5 });
-
-    $("#ventilation-rate").slider({ min: 1, max: 10, value: 5 });
+    $("#ventilation-rate").slider({ min: 0.35, max: 10, value: 1 });
 
     $("#run-button").button();
 
 
 
     this.setSliderDisplayValue('#Length');
-
     this.setSliderDisplayValue('#Depth');
-
     this.setSliderDisplayValue('#Height');
 
     this.setSliderDisplayValue('#NWinGR');
-
     this.setSliderDisplayValue('#EWinGR');
-
     this.setSliderDisplayValue('#SWinGR');
-
     this.setSliderDisplayValue('#WWinGR');
 
   },
