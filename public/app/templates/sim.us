@@ -2,16 +2,10 @@
   <div class="inputs_header">
     <h2 class="inputs_header--title">Inputs</h2>
     <nav class="inputs_header--panel_tabs">
-      <div class="inputs_header--panel_tab">PS</div>
-      <div class="inputs_header--panel_tab">PV</div>
-      <div class="inputs_header--panel_tab">SI</div>
-      <div class="inputs_header--panel_tab">WR</div>
-      <div class="inputs_header--panel_tab">DF</div>
-      <div class="inputs_header--panel_tab">CN</div>
     </nav>
   </div>
   <div class="render_header">
-    <h2 class="render_header--title">Render</h2>
+    <h2 class="render_header--title"></h2> 
     <input id="render_header__hour_id" type="range" class="render_header--input">
     <input id="render_header__date_id" type="range" class="render_header--input">
   </div>
@@ -26,26 +20,41 @@
   <div class="main_content--inputs_panel" id="inputs_panel_id">
     <div class="panel_toggle panel_toggle--inputs_panel" id="inputs_panel_toggle_id">Close</div>
 
+   
     <!-- <div class="inputs_panel--tabs">
       <a href="#tab1" class="inputs_panel--tab">Tab 1</a>
       <a href="#tab2" class="inputs_panel--tab">Tab 2</a>
       <a href="#tab3" class="inputs_panel--tab">Tab 3</a>
+      <a href="#tab3" class="inputs_panel--tab">Tab 4</a>
+      <a href="#tab3" class="inputs_panel--tab">Tab 5</a>
+      <a href="#tab3" class="inputs_panel--tab">Tab 6</a>
+      <a href="#tab3" class="inputs_panel--tab">Tab 7</a>
+      <a href="#tab3" class="inputs_panel--tab">Tab 8</a>
     </div>
 
     <div class="inputs_panel--tabs_content">
       <div class="inputs_panel--tab_content" id="tab1"></div>
       <div class="inputs_panel--tab_content" id="tab2"></div>
-      <div class="inputs_panel--tab_content" id="tab"></div>
+      <div class="inputs_panel--tab_content" id="tab3"></div>
+      <div class="inputs_panel--tab_content" id="tab4"></div>
+      <div class="inputs_panel--tab_content" id="tab5"></div>
+      <div class="inputs_panel--tab_content" id="tab6"></div>
+      <div class="inputs_panel--tab_content" id="tab7"></div>
+
     </div> -->
 
     <div id="tabs">
       <ul>
-        <li><a href="#fragment-1"><span>One</span></a></li>
-        <li><a href="#fragment-2"><span>Two</span></a></li>
-        <li><a href="#fragment-3"><span>Three</span></a></li>
+        <li><a href="#fragment-1"><span>Geometry</span></a></li>
+        <li><a href="#fragment-2"><span>Loads</span></a></li>
+        <li><a href="#fragment-3"><span>Roofs</span></a></li>
+        <li><a href="#fragment-4"><span>Walls</span></a></li>
+        <li><a href="#fragment-5"><span>Glazing</span></a></li>
+        <li><a href="#fragment-6"><span>HVAC</span></a></li>
+        <li><a href="#fragment-7"><span>Run Simulation</span></a></li>
       </ul>
       <div id="fragment-1">
-        Tab 1
+        Geometry
         <div class="control">
           <label><%= $.i18n('sim-length') %> <span id="LengthDisp"></span></label>
           <div id="Length"></div>
@@ -59,7 +68,27 @@
           <div id="Height"></div>
         </div>
         <hr/>
-        <div class="control">
+      </div>
+      <div id="fragment-2">
+        Loads 
+      </div>
+      <div id="fragment-3">
+        Roofs
+      <div class="control">
+        <label><%= $.i18n('sim-insulation') %> <span id="insulation-levelDisp"></label>
+          <div id="insulation-level"></div>
+        </div>
+      </div>
+      <div id="fragment-4">
+        Walls 
+      <div class="control">
+        <label><%= $.i18n('sim-insulation') %> <span id="insulation-levelDisp"></label>
+          <div id="insulation-level"></div>
+        </div> 
+      </div>
+      <div id="fragment-5">
+                Glazing
+            <div class="control">
           <label><input type="checkbox" id="NWin" class="group-disable"><%= $.i18n('sim-nwin') %></input></label>
           <div class="indent">
             <label><%= $.i18n('sim-glaze-ratio') %> <span id="NWinGRDisp" style="display:none"></span></label>
@@ -91,29 +120,22 @@
           </div>
         </div>
         <hr/>
-        <div class="control">
-          <label><%= $.i18n('sim-insulation') %> <span id="insulation-levelDisp"></label>
-          <div id="insulation-level"></div>
-        </div>
-        <div class="control">
+      </div>
+      <div id="fragment-6">
+        HVAC
+           <div class="control">
           <label><%= $.i18n('sim-ventilation') %> <span id="ventilation-rateDisp"></label>
           <div id="ventilation-rate"></div>
         </div>
-        <div class="control">
+      </div>
+      <div id="fragment-7">
+        Run Simulation
+                <div class="control">
           <button id="run-button"><%= $.i18n('sim-simulate') %></button>
         </div>
         <div class="control">
           <div id="progressbar" style="display:none"></div>
         </div>
-      </div>
-      <div id="fragment-2">
-        Tab 2 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-      </div>
-      <div id="fragment-3">
-        Tab 3. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
       </div>
     </div>
 
