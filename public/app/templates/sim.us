@@ -43,6 +43,7 @@
 
     </div> -->
 
+<!--
     <div id="tabs">
       <ul>
         <li><a href="#fragment-1"><span>Geometry</span></a></li>
@@ -143,6 +144,104 @@
       <div id="fragment-7">
         Run Simulation
                 <div class="control">
+          <button id="run-button"><%= $.i18n('sim-simulate') %></button>
+        </div>
+        <div class="control">
+          <div id="progressbar" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+-->
+
+    <div id="accordion">
+      <h3>Geometry</h3>
+      <div>
+        <div class="control">
+          <label><%= $.i18n('sim-length') %> <span id="LengthDisp"></span></label>
+          <div id="Length"></div>
+        </div>
+        <div class="control">
+          <label><%= $.i18n('sim-width') %> <span id="DepthDisp"></span></label>
+          <div id="Depth"></div>
+        </div>
+        <div class="control">
+          <label><%= $.i18n('sim-height') %> <span id="HeightDisp"></span></label>
+          <div id="Height"></div>
+        </div>
+      </div>
+      <h3>Loads</h3>
+      <div>
+      </div>
+      <h3>Roofs</h3>
+      <div>
+        <div class="control">
+          <label><%= $.i18n('sim-insulation') %> <span id="insulation-levelDisp"></label>
+          <div id="Rinsulation-level"></div>
+        </div>
+      </div>
+      <h3>Walls</h3>
+      <div>
+        <div class="control">
+          <label><%= $.i18n('sim-insulation') %> <span id="insulation-levelDisp"></label>
+          <div id="Ninsulation-level"></div>
+        </div> 
+        <div class="control">
+          <label><%= $.i18n('sim-insulation') %> <span id="insulation-levelDisp"></label>
+          <div id="Einsulation-level"></div>
+        </div> 
+        <div class="control">
+          <label><%= $.i18n('sim-insulation') %> <span id="insulation-levelDisp"></label>
+          <div id="Sinsulation-level"></div>
+        </div> 
+        <div class="control">
+          <label><%= $.i18n('sim-insulation') %> <span id="insulation-levelDisp"></label>
+          <div id="Winsulation-level"></div>
+        </div> 
+      </div>
+      <h3>Glazing</h3>
+      <div>
+        <div class="control">
+          <label><input type="checkbox" id="NWin" class="group-disable"><%= $.i18n('sim-nwin') %></input></label>
+          <div class="indent">
+            <label><%= $.i18n('sim-glaze-ratio') %> <span id="NWinGRDisp" style="display:none"></span></label>
+            <div id="NWinGR"></div>
+          </div>
+        </div>
+        <hr/>
+        <div class="control">
+          <label><input type="checkbox" id="EWin" class="group-disable"><%= $.i18n('sim-ewin') %></input></label>
+          <div class="indent">
+            <label><%= $.i18n('sim-glaze-ratio') %> <span id="EWinGRDisp" style="display:none"></span></label>
+            <div id="EWinGR"></div>
+          </div>
+        </div>
+        <hr/>
+        <div class="control">
+          <label><input type="checkbox" id="SWin" class="group-disable"><%= $.i18n('sim-swin') %></input></label>
+          <div class="indent">
+            <label><%= $.i18n('sim-glaze-ratio') %> <span id="SWinGRDisp" style="display:none"></span></label>
+            <div id="SWinGR"></div>
+          </div>
+        </div>
+        <hr/>
+        <div class="control">
+          <label><input type="checkbox" id="WWin" class="group-disable"><%= $.i18n('sim-wwin') %></input></label>
+          <div class="indent">
+            <label><%= $.i18n('sim-glaze-ratio') %> <span id="WWinGRDisp" style="display:none"></span></label>
+            <div id="WWinGR"></div>
+          </div>
+        </div>
+      </div>
+      <h3>HVAC</h3>
+      <div>
+       <div class="control">
+          <label><%= $.i18n('sim-ventilation') %> <span id="ventilation-rateDisp"></label>
+          <div id="ventilation-rate"></div>
+        </div>
+      </div>
+      <h3>Run Simulation</h3>
+      <div>
+        <div class="control">
           <button id="run-button"><%= $.i18n('sim-simulate') %></button>
         </div>
         <div class="control">

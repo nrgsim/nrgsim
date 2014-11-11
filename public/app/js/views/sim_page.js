@@ -653,6 +653,8 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
     });
 
+    $('#accordion').accordion();
+
   },
 
 
