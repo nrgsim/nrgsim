@@ -637,6 +637,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
 
 
+
     window.addEventListener('resize', function() {
 
       var canvas = $('#canvas');
@@ -645,15 +646,30 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
       var height = canvas.innerHeight();
 
-      renderer.setSize(width, height);
+      this.renderer.setSize(width, height);
 
       this.camera.aspect = width / height;
 
       this.camera.updateProjectionMatrix();
 
-    });
+    }.bind(this));
 
     $('#accordion').accordion();
+
+    var helpDialog = $('#help-dialog').dialog({autoOpen: false});
+    var otherHelpDialog = $('#other-help-dialog').dialog({autoOpen: false});
+    $('#show-help').on('click', function(evt) {
+      evt.preventDefault();
+      helpDialog.dialog('open');
+    });
+
+    $('#other-help').on('click', function(evt) {
+      evt.preventDefault();
+      otherHelpDialog.dialog('open');
+    });
+
+    var inputPanel = $('#inputs_panel_id');
+    inputPanel.resizable({ minHeight: inputPanel.parent().height(), handles: "ne, se" });
 
   },
 
@@ -847,10 +863,6 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
       $panelToggles.click(function() {
         togglePanel(this);
       });
-
-      // Control Panel Tabs
-      $('#tabs').tabs();
-
 
 
       // Initialize
