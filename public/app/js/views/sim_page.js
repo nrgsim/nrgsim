@@ -668,8 +668,8 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
       otherHelpDialog.dialog('open');
     });
 
-    var inputPanel = $('#inputs_panel_id');
-    inputPanel.resizable({ minHeight: inputPanel.parent().height(), handles: "ne, se" });
+    //var inputPanel = $('#inputs_panel_id');
+    //inputPanel.resizable({ minHeight: inputPanel.parent().height(), handles: "ne, se" });
 
   },
 
