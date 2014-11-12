@@ -833,36 +833,36 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
 
       // Panel Sliding
-      var $resultsPanelToggle = $('#results_panel_toggle_id'),
-          $inputsPanelToggle = $('#inputs_panel_toggle_id'),
-          $resultsPanel = $('#results_panel_id'),
-          $inputsPanel = $('#inputs_panel_id'),
-          $panelToggles = $resultsPanelToggle.add($inputsPanelToggle);
-      $resultsPanelToggle.data('togglePair', $resultsPanel);
-      $inputsPanelToggle.data('togglePair', $inputsPanel);
-      $resultsPanel.data('togglePair', $resultsPanelToggle);
-      $inputsPanel.data('togglePair', $inputsPanelToggle);
-      var closePanel = function($curPanel) {
-        // close $curPanel
-        $curPanel.addClass('closed');
-        $($curPanel.data().togglePair).html('Open');
-      },
-      openPanel = function($curPanel) {
+   //   var $resultsPanelToggle = $('#results_panel_toggle_id'),
+   //       $inputsPanelToggle = $('#inputs_panel_toggle_id'),
+   //       $resultsPanel = $('#results_panel_id'),
+   //       $inputsPanel = $('#inputs_panel_id'),
+   //       $panelToggles = $resultsPanelToggle.add($inputsPanelToggle);
+   //   $resultsPanelToggle.data('togglePair', $resultsPanel);
+   //   $inputsPanelToggle.data('togglePair', $inputsPanel);
+   //   $resultsPanel.data('togglePair', $resultsPanelToggle);
+   //   $inputsPanel.data('togglePair', $inputsPanelToggle);
+   //   var closePanel = function($curPanel) {
+  //    // close $curPanel
+  //      $curPanel.addClass('closed');
+  //      $($curPanel.data().togglePair).html('Open');
+ //     },
+ //     openPanel = function($curPanel) {
         // open $curPanel
-        $($curPanel.data().togglePair).html('Close');
-        $curPanel.removeClass('closed');
-      },
-      togglePanel = function(clickedEl) {
-        var $curPanel = $($(clickedEl).data().togglePair);
-        if ( $curPanel.hasClass('closed') ) {
-          openPanel($curPanel);
-        } else {
-          closePanel($curPanel);
-        }
-      };
-      $panelToggles.click(function() {
-        togglePanel(this);
-      });
+ //       $($curPanel.data().togglePair).html('Close');
+//        $curPanel.removeClass('closed');
+ //     },
+ //     togglePanel = function(clickedEl) {
+ //       var $curPanel = $($(clickedEl).data().togglePair);
+ //       if ( $curPanel.hasClass('closed') ) {
+ //         openPanel($curPanel);
+ //       } else {
+ //         closePanel($curPanel);
+ //       }
+ //     };
+ //     $panelToggles.click(function() {
+  //      togglePanel(this);
+  //    });
 
 
       // Initialize

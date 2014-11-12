@@ -17,7 +17,6 @@
 </header>
 <div class="main_content" id="main_content_id">
   <div class="main_content--inputs_panel" id="inputs_panel_id">
-    <div class="panel_toggle panel_toggle--inputs_panel" id="inputs_panel_toggle_id"></div>
 
     <div id="accordion">
       <h3>Geometry</h3>
@@ -105,7 +104,14 @@
           <div id="ventilation-rate"></div>
         </div>
       </div>
-      <h3>Run Simulation</h3>
+    </div>
+
+
+  </div>
+  <div class="main_content--render_panel" id="canvas"></div>
+  <div class="main_content--results_panel" id="results_panel_id">
+   <div id="accordion">
+  <h3>Run Simulation</h3>
       <div>
         <div class="control">
           <button id="run-button"><%= $.i18n('sim-simulate') %></button>
@@ -114,15 +120,7 @@
           <div id="progressbar" style="display:none"></div>
         </div>
       </div>
-    </div>
 
-
-  </div>
-  <div class="main_content--render_panel" id="canvas"></div>
-  <div class="main_content--results_panel" id="results_panel_id">
-    <div class="panel_toggle panel_toggle--results_panel" id="results_panel_toggle_id"></div>
-  </div>
-</div>
 
 <div id="help-dialog" title="Help">
   <p>This is some help. It could be styled nicely to fit on the page and be as big as you want.</p>
@@ -132,4 +130,8 @@
 
 <div id="other-help-dialog" title="More Help">
   <p>Some more help.</p>
+</div>
+
+    <!--<div class="panel_toggle panel_toggle--results_panel" id="results_panel_toggle_id"></div>
+  </div>
 </div>
