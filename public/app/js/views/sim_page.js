@@ -486,17 +486,20 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     $("#SWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
     $("#WWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
 
-    $("#Rinsulation-level").slider({ min: 1, max: 10, value: 5 });
-    $("#Ninsulation-level").slider({ min: 1, max: 10, value: 5 });
-    $("#Einsulation-level").slider({ min: 1, max: 10, value: 5 });
-    $("#Sinsulation-level").slider({ min: 1, max: 10, value: 5 });
-    $("#Winsulation-level").slider({ min: 1, max: 10, value: 5 });
+    $("#Rinsulation-level").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
+    $("#Ninsulation-level").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
+    $("#Einsulation-level").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
+    $("#Sinsulation-level").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
+    $("#Winsulation-level").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
 
     $("#ventilation-rate").slider({ min: 0.35, max: 10, value: 1 });
 
+    $("#people-rate").slider({ min: 0, max: 100, value: 18 });
+    $("#lighting-rate").slider({ min: 0, max: 30, value: 11 });
+    $("#equipment-rate").slider({ min: 0, max: 30, value: 11 });
+    $("#hotwater-rate").slider({ min: 0, max: 30, value: 11 });
+
     $("#run-button").button();
-
-
 
     this.setSliderDisplayValue('#Length');
     this.setSliderDisplayValue('#Depth');
@@ -506,6 +509,20 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.setSliderDisplayValue('#EWinGR');
     this.setSliderDisplayValue('#SWinGR');
     this.setSliderDisplayValue('#WWinGR');
+
+    this.setSliderDisplayValue('#Rinsulation-level');
+    this.setSliderDisplayValue('#Ninsulation-level');
+    this.setSliderDisplayValue('#Einsulation-level');
+    this.setSliderDisplayValue('#Sinsulation-level');
+    this.setSliderDisplayValue('#Winsulation-level');
+
+    this.setSliderDisplayValue('#ventilation-rate');
+
+    this.setSliderDisplayValue('#people-rate');
+    this.setSliderDisplayValue('#lighting-rate');
+    this.setSliderDisplayValue('#equipment-rate');
+    this.setSliderDisplayValue('#hotwater-rate');
+
 
   },
 
@@ -655,6 +672,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     }.bind(this));
 
     $('#accordion').accordion();
+
 
     var helpDialog = $('#help-dialog').dialog({autoOpen: false});
     var otherHelpDialog = $('#other-help-dialog').dialog({autoOpen: false});
