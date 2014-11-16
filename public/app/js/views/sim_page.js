@@ -671,6 +671,21 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
     }.bind(this));
 
+    $('#left-panel-toggle').on('click', function(evt) {
+      var panel = $('#inputs_panel_id');
+      var accordion = $('#accordion');
+      window.console.log(panel.css('width'));
+      if (panel.css('width') === '20px') {
+        panel.css('width', '20%');
+        $('#accordion').show();
+        $('#left-panel-toggle').text('X');
+      } else {
+        panel.css('width', '20px');
+        $('#accordion').hide();
+        $('#left-panel-toggle').text('>');
+      }
+    });
+
     $('#accordion').accordion();
 
 
