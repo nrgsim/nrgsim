@@ -17,11 +17,9 @@
 </header>
 <div class="main_content" id="main_content_id">
   <div class="main_content--inputs_panel" id="inputs_panel_id">
-    <div id="left-panel-toggle">X</div>
-    <div class="clear"></div>
 
     <div id="accordion">
-      <h3>Geometry</h3>
+      <h3>Building</h3>
       <div>
         <div class="control">
           <label><%= $.i18n('sim-length') %> <span id="LengthDisp"></span></label>
@@ -35,25 +33,14 @@
           <label><%= $.i18n('sim-height') %> <span id="HeightDisp"></span></label>
           <div id="Height"></div>
         </div>
-      </div>
-      <h3>Loads</h3>
-      <div>
-       <div class="control">
-          <label><%= $.i18n('sim-people') %> <span id="people-rateDisp"></label>
-          <div id="people-rate"></div>
-        </div>
-       <div class="control">
-          <label><%= $.i18n('sim-lights') %> <span id="lighting-rateDisp"></label>
-          <div id="lighting-rate"></div>
-         </div>
-          <div class="control">
-          <label><%= $.i18n('sim-equipment') %> <span id="equipment-rateDisp"></label>
-          <div id="equipment-rate"></div>
-        </div>
         <div class="control">
-          <label><%= $.i18n('sim-hotwater') %> <span id="hotwater-rateDisp"></label>
-          <div id="hotwater-rate"></div>
-        </div>
+          <label><%= $.i18n('Occupency Type') %> <span id="occupency-typeDisp"></label>
+          <div id="occupency-type"></div>
+         </div>
+        <div class="control">
+          <label><%= $.i18n('Infiltration Rate [ACH]') %> <span id="infiltration-rateDisp"></label>
+          <div id="infiltration-rate"></div>
+         </div>
       </div>
       <h3>Roofs</h3>
       <div>
@@ -154,3 +141,26 @@
     <!--<div class="panel_toggle panel_toggle--results_panel" id="results_panel_toggle_id"></div>
   </div>
 </div>
+   <h3>Loads</h3>
+      <div>
+       <div class="control">
+          <label><%= $.i18n('People [m2/Person]') %> <span id="people-rateDisp"></label>
+          <div id="people-rate"></div>
+        </div>
+       <div class="control">
+          <label><%= $.i18n('Lighting [W/m2]') %> <span id="lighting-rateDisp"></label>
+          <div id="lighting-rate"></div>
+         </div>
+       <div class="control">
+          <label><%= $.i18n('Equipment [W/m2]') %> <span id="equipment-rateDisp"></label>
+          <div id="equipment-rate"></div>
+         </div>
+        <div class="control">
+          <label><%= $.i18n('Hot Water [W/m2]') %> <span id="hotwater-rateDisp"></label>
+          <div id="hotwater-rate"></div>
+         </div>
+        <div class="control">
+          <label><%= $.i18n('Infiltration [ACH]') %> <span id="infiltration-rateDisp"></label>
+          <div id="infiltration-rate"></div>
+         </div>
+      </div>

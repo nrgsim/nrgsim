@@ -480,6 +480,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     $("#Length").slider({ min: 1, max: 10, value: 3, slide: self.updateLength });
     $("#Depth").slider({ min: 1, max: 10, value: 4, slide: self.updateWidth });
     $("#Height").slider({ min: 1, max: 10, value: 4, slide: self.updateHeight });
+    $("#ventilation-rate").slider({ min: 0.35, max: 10, value: 1 });
 
     $("#NWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
     $("#EWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
@@ -492,7 +493,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     $("#Sinsulation-level").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
     $("#Winsulation-level").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
 
-    $("#ventilation-rate").slider({ min: 0.35, max: 10, value: 1 });
+    //$("#occupency-type").selectmenu({Office,School,Residential});
 
     $("#people-rate").slider({ min: 0, max: 100, value: 18 });
     $("#lighting-rate").slider({ min: 0, max: 30, value: 11 });
@@ -504,6 +505,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.setSliderDisplayValue('#Length');
     this.setSliderDisplayValue('#Depth');
     this.setSliderDisplayValue('#Height');
+    //this.setSliderDisplayValue('#infiltration-rate');
 
     this.setSliderDisplayValue('#NWinGR');
     this.setSliderDisplayValue('#EWinGR');
@@ -516,7 +518,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.setSliderDisplayValue('#Sinsulation-level');
     this.setSliderDisplayValue('#Winsulation-level');
 
-    this.setSliderDisplayValue('#ventilation-rate');
+
 
     this.setSliderDisplayValue('#people-rate');
     this.setSliderDisplayValue('#lighting-rate');
