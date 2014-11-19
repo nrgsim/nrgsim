@@ -658,37 +658,33 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
 
     window.addEventListener('resize', function() {
-
       var canvas = $('#canvas');
-
       var width = canvas.innerWidth();
-
       var height = canvas.innerHeight();
-
       this.renderer.setSize(width, height);
-
       this.camera.aspect = width / height;
-
       this.camera.updateProjectionMatrix();
-
     }.bind(this));
 
     $('#left-panel-toggle').on('click', function(evt) {
       var panel = $('#inputs_panel_id');
-      var accordion = $('#accordion');
+      var wrapper = $('#input-wrapper');
       window.console.log(panel.css('width'));
       if (panel.css('width') === '20px') {
         panel.css('width', '20%');
-        $('#accordion').show();
+        wrapper.show();
         $('#left-panel-toggle').text('X');
       } else {
         panel.css('width', '20px');
-        $('#accordion').hide();
+        wrapper.hide();
         $('#left-panel-toggle').text('>');
       }
     });
 
-    $('#accordion').accordion();
+
+    $('#input-menu').on('change', this.inputMenuSelect);
+    $('.accordion').accordion({ autoHeight: false });
+    self.inputMenuSelect();
 
 
     var helpDialog = $('#help-dialog').dialog({autoOpen: false});
@@ -708,16 +704,18 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
   },
 
+  inputMenuSelect: function(evt, ui) {
+    var sel = $('#input-menu').val();
+    $('.input-wrapper-section').hide();
+    $('#input-wrapper-'+sel).show();
+  },
+
 
 
   animate: function(controls, renderer) {
-
     window.requestAnimationFrame(this.animate);
-
     this.controls.update();
-
     this.renderer.render(this.scene, this.camera);
-
   },
 
 
