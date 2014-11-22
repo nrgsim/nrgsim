@@ -45,11 +45,8 @@ module.exports = require(process.env['LINEMAN_MAIN']).config.extend('files', {
 
   css: {
     vendor: [
-      "!vendor/css/**/*.css"
+      "vendor/css/**/*.css"
     ]
-  },
-  sass: {
-    main: ["!app/css/main.scss"]
   }
 
 });

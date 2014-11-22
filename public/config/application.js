@@ -8,21 +8,6 @@
 
 module.exports = require(process.env['LINEMAN_MAIN']).config.extend('application', {
 
-  removeTasks: {
-    common: [
-      "sass"
-    ],
-    dev: [
-      "sass"
-    ]
-  },
-
-
-  loadNpmTasks:[
-    'grunt-autoprefixer',
-    'grunt-contrib-compass'
-  ],
-
   //Override application configuration here. Common examples follow in the comments.
 
   compass: {
@@ -35,7 +20,6 @@ module.exports = require(process.env['LINEMAN_MAIN']).config.extend('application
   },
 
   appendTasks: {
-    common: ["compass:compile", "autoprefixer"],
     dev: ["copy:dev", "watch:dev"],
     dist: ["copy:dist"]
   },
@@ -81,27 +65,10 @@ module.exports = require(process.env['LINEMAN_MAIN']).config.extend('application
     }
   },
 
-  autoprefixer: {
-    dist: {
-      files: {
-        'dist/css/app.css' : 'app/temp/main.css'
-      }
-    },
-    dev: {
-      files: {
-        'generated/css/app.css' : 'app/temp/main.css'
-      }
-    }
-  },
-
   watch: {
     dev: {
       files: ["i18n/**"],
       tasks: ["copy"]
-    },
-    compassSource: {
-      files: ['app/css/**/*.scss'],
-      tasks: ['compass:compile']
     },
     autoPrefixer: {
       files: ['app/temp/**/*.css'],
@@ -130,6 +97,6 @@ module.exports = require(process.env['LINEMAN_MAIN']).config.extend('application
   // have Ruby installed as well as the `sass` gem. To enable it, comment out the
   // following line:
   //
-  enableSass: true
+  enableSass: false
 
 });

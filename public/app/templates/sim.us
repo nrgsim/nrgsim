@@ -1,101 +1,119 @@
 <header class="main_header" id="main_header_id">
-  <div class="inputs_header">
-    <!--h2 class="inputs_header--title"></h22-->
+  <div class="help">
     <a id="show-help" href="#">Help</a>
   </div>
-  <div class="render_header">
-    <h2 class="render_header--title"></h>
-    <input id="render_header__hour_id" type="range" class="render_header--input">
-    <input id="render_header__date_id" type="range" class="render_header--input">
+  <div class="temporal">
+    <!-- This doesn't work in IE so I took it out for now
+    <input id="temporal-hour" type="range"/>
+    <input id="temporal-date" type="range"/>
+    -->
   </div>
-  <div class="profile_header">
-    <a href="/#logout"><%= $.i18n('sim-logout') %></a>&nbsp;<a href="/#profile"><%= $.i18n('sim-profile') %></a>
-  </div>
-  <div class="results_header">
-    <h2 class="results_header--title"></h2>
+  <div class="profile">
+    <a href="/#logout"><%= $.i18n('sim-logout') %></a><a href="/#profile"><%= $.i18n('sim-profile') %></a>
   </div>
 </header>
-<div class="main_content" id="main_content_id">
-  <div class="main_content--inputs_panel" id="inputs_panel_id">
-    <div id="left-panel-toggle">X</div>
-    <div class="clear"></div>
 
-    <div id="input-wrapper" style="height: 100%">
-      <select id="input-menu" class="input-menu">
-        <option value="building">Building</option>
-        <option value="hvac">HVAC</option>
-        <option value="facade">Facade</option>
-        
-      </select>
+<div id="content-wrapper">
+  <div id="content">
 
-      <div id="input-wrapper-building" class="input-wrapper-section">
-        <div class="control">
-          <label><%= $.i18n('sim-length') %> <span id="LengthDisp"></span></label>
-          <div id="Length"></div>
-        </div>
-        <div class="control">
-          <label><%= $.i18n('sim-width') %> <span id="DepthDisp"></span></label>
-          <div id="Depth"></div>
-        </div>
-        <div class="control">
-          <label><%= $.i18n('sim-height') %> <span id="HeightDisp"></span></label>
-          <div id="Height"></div>
-        </div>
-        <div class="control">
-          <label><%= $.i18n('Occupency Type') %> <span id="occupency-typeDisp"></label>
-          <div id="occupency-type"></div>
-        </div>
-        <div class="control">
-          <label><%= $.i18n('Infiltration Rate [ACH]') %> <span id="infiltration-rateDisp"></label>
-          <div id="infiltration-rate"></div>
+    <div id="inputs-panel" class="panel">
+      <div>
+        <div>
+          <div id="left-panel-toggle">X</div>
         </div>
       </div>
 
-      <div id="input-wrapper-facade" class="input-wrapper-section">
-        <div class="accordion">
-          <h3>Wall</h3>
+      <div class="panel-content">
+
+        <div>
           <div>
-            <div class="control">
-              <label><%= $.i18n('North Insulation') %> <span id="insulation-levelDisp"></label>
-              <div id="Ninsulation-level"></div>
-            </div> 
+            <select id="input-menu" class="input-menu">
+              <option value="building">Building</option>
+              <option value="hvac">HVAC</option>
+              <option value="facade">Facade</option>
+            </select>
           </div>
-          <h3>Glazing</h3>
-          <div>
+        </div>
+
+        <div>
+          <div id="input-wrapper-building" class="input-wrapper-section">
             <div class="control">
-              <label><input type="checkbox" id="NWin" class="group-disable"><%= $.i18n('sim-nwin') %></input></label>
-              <div class="indent">
-                <label><%= $.i18n('sim-glaze-ratio') %> <span id="NWinGRDisp" style="display:none"></span></label>
-                <div id="NWinGR"></div>
+              <label><%= $.i18n('sim-length') %> <span id="LengthDisp"></span></label>
+              <div id="Length"></div>
+            </div>
+            <div class="control">
+              <label><%= $.i18n('sim-width') %> <span id="DepthDisp"></span></label>
+              <div id="Depth"></div>
+            </div>
+            <div class="control">
+              <label><%= $.i18n('sim-height') %> <span id="HeightDisp"></span></label>
+              <div id="Height"></div>
+            </div>
+            <div class="control">
+              <label><%= $.i18n('Occupency Type') %> <span id="occupency-typeDisp"></label>
+              <div id="occupency-type"></div>
+            </div>
+            <div class="control">
+              <label><%= $.i18n('Infiltration Rate [ACH]') %> <span id="infiltration-rateDisp"></label>
+              <div id="infiltration-rate"></div>
+            </div>
+          </div>
+
+          <div id="input-wrapper-facade" class="input-wrapper-section">
+            <div class="accordion">
+              <h3>Wall</h3>
+              <div>
+                <div class="control">
+                  <label><%= $.i18n('North Insulation') %> <span id="insulation-levelDisp"></label>
+                  <div id="Ninsulation-level"></div>
+                </div> 
+              </div>
+              <h3>Glazing</h3>
+              <div>
+                <div class="control">
+                  <label><input type="checkbox" id="NWin" class="group-disable"><%= $.i18n('sim-nwin') %></input></label>
+                  <div class="indent">
+                    <label><%= $.i18n('sim-glaze-ratio') %> <span id="NWinGRDisp" style="display:none"></span></label>
+                    <div id="NWinGR"></div>
+                  </div>
+                </div>
+                <hr/>
               </div>
             </div>
-            <hr/>
           </div>
-        </div>
-      </div>
 
-      <div id="input-wrapper-hvac" class="input-wrapper-section">
-        <div class="control">
-          <label><%= $.i18n('sim-ventilation') %> <span id="ventilation-rateDisp"></label>
-          <div id="ventilation-rate"></div>
+          <div id="input-wrapper-hvac" class="input-wrapper-section">
+            <div class="control">
+              <label><%= $.i18n('sim-ventilation') %> <span id="ventilation-rateDisp"></label>
+              <div id="ventilation-rate">&nbsp;</div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
+
+    <div id="canvas"></div>
+
+    <div id="results-panel" class="panel">
+      <div class="panel-content">
+        <div>
+          <div>
+            <h3>Run Simulation</h3>
+            <div>
+              <div class="control">
+                <button id="run-button"><%= $.i18n('sim-simulate') %></button>
+              </div>
+              <div class="control">
+                <div id="progressbar" style="display:none"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
   </div>
-
-  <div class="main_content--render_panel" id="canvas"></div>
-  <div class="main_content--results_panel" id="results_panel_id">
-
-   <div id="accordion">
-  <h3>Run Simulation</h3>
-      <div>
-        <div class="control">
-          <button id="run-button"><%= $.i18n('sim-simulate') %></button>
-        </div>
-        <div class="control">
-          <div id="progressbar" style="display:none"></div>
-        </div>
-      </div>
+</div>
 
 
 <div id="help-dialog" title="Help">
@@ -108,86 +126,3 @@
   <p>Some more help.</p>
 </div>
 
-    <!--<div class="panel_toggle panel_toggle--results_panel" id="results_panel_toggle_id"></div>
-  </div>
-</div>
-   <h3>Loads</h3>
-      <div>
-       <div class="control">
-          <label><%= $.i18n('People [m2/Person]') %> <span id="people-rateDisp"></label>
-          <div id="people-rate"></div>
-        </div>
-       <div class="control">
-          <label><%= $.i18n('Lighting [W/m2]') %> <span id="lighting-rateDisp"></label>
-          <div id="lighting-rate"></div>
-         </div>
-       <div class="control">
-          <label><%= $.i18n('Equipment [W/m2]') %> <span id="equipment-rateDisp"></label>
-          <div id="equipment-rate"></div>
-         </div>
-        <div class="control">
-          <label><%= $.i18n('Hot Water [W/m2]') %> <span id="hotwater-rateDisp"></label>
-          <div id="hotwater-rate"></div>
-         </div>
-        <div class="control">
-          <label><%= $.i18n('Infiltration [ACH]') %> <span id="infiltration-rateDisp"></label>
-          <div id="infiltration-rate"></div>
-         </div>
-      </div>
-         <h3>Roofs</h3>
-          <div>
-            <div class="control">
-              <label><%= $.i18n('Roof Insulation') %> <span id="insulation-levelDisp"></label>
-              <div id="Rinsulation-level"></div>
-            </div>
-          </div>
-           <h3>Wall</h3>
-          <div>
-            <div class="control">
-              <label><%= $.i18n('North Insulation') %> <span id="insulation-levelDisp"></label>
-              <div id="Ninsulation-level"></div>
-            </div> 
-            <div class="control">
-              <label><%= $.i18n('East Insulation') %> <span id="insulation-levelDisp"></label>
-              <div id="Einsulation-level"></div>
-            </div> 
-            <div class="control">
-              <label><%= $.i18n('South Insulation') %> <span id="insulation-levelDisp"></label>
-              <div id="Sinsulation-level"></div>
-            </div> 
-            <div class="control">
-              <label><%= $.i18n('West Insulation') %> <span id="insulation-levelDisp"></label>
-              <div id="Winsulation-level"></div>
-            </div> 
-          </div>
-          <h3>Glazing</h3>
-          <div>
-            <div class="control">
-              <label><input type="checkbox" id="NWin" class="group-disable"><%= $.i18n('sim-nwin') %></input></label>
-              <div class="indent">
-                <label><%= $.i18n('sim-glaze-ratio') %> <span id="NWinGRDisp" style="display:none"></span></label>
-                <div id="NWinGR"></div>
-              </div>
-            </div>
-            <hr/>
-            <div class="control">
-              <label><input type="checkbox" id="EWin" class="group-disable"><%= $.i18n('sim-ewin') %></input></label>
-              <div class="indent">
-                <label><%= $.i18n('sim-glaze-ratio') %> <span id="EWinGRDisp" style="display:none"></span></label>
-                <div id="EWinGR"></div>
-              </div>
-            </div>
-            <hr/>
-            <div class="control">
-              <label><input type="checkbox" id="SWin" class="group-disable"><%= $.i18n('sim-swin') %></input></label>
-              <div class="indent">
-                <label><%= $.i18n('sim-glaze-ratio') %> <span id="SWinGRDisp" style="display:none"></span></label>
-                <div id="SWinGR"></div>
-              </div>
-            </div>
-            <hr/>
-            <div class="control">
-              <label><input type="checkbox" id="WWin" class="group-disable"><%= $.i18n('sim-wwin') %></input></label>
-              <div class="indent">
-                <label><%= $.i18n('sim-glaze-ratio') %> <span id="WWinGRDisp" style="display:none"></span></label>
-                <div id="WWinGR"></div>

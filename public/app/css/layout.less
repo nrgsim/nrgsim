@@ -1,0 +1,76 @@
+
+#view {
+
+  header {
+    display: table;
+    width: 100%;
+    height: @header-height;
+    background-image: linear-gradient(#9e9e9e, #6b6b6b);
+    border-bottom: 1px solid black;
+    font-size: @header-font-size;
+
+    div {
+      display: table-cell;
+      vertical-align: middle;
+
+      &.help {
+        width: @side-panel-max-width;
+
+        a {
+          padding-left: 10px;
+        }
+      }
+
+      &.time {
+        width:auto;
+        text-align: center;
+      }
+
+      &.profile {
+        width: @side-panel-max-width;
+        text-align: right;
+
+        a {
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+
+  #content-wrapper {
+
+    #content {
+
+      #inputs-panel {
+        position: absolute;
+        left: 0;
+        width: @side-panel-max-width;
+        top:  @header-height + 1;
+        bottom: 0;
+        width: @side-panel-max-width;
+        vertical-align: top;
+        z-index: 10;
+      }
+
+      #canvas {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top:  @header-height + 1;
+        bottom: 0;
+        background-color: white;
+        z-index: 5;
+      }
+
+      #results-panel {
+        position: absolute;
+        right: 0;
+        width: @side-panel-max-width;
+        top:  @header-height + 1;
+        bottom: 0;
+        vertical-align: top;
+        z-index: 10;
+      }
+    }
+  }
+}
