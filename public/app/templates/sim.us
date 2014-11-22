@@ -28,7 +28,8 @@
         <div>
           <div>
             <select id="input-menu" class="input-menu">
-              <option value="building">Building</option>
+              <option value="site">Site</option>
+              <option value="zone">Zone</option>
               <option value="hvac">HVAC</option>
               <option value="facade">Facade</option>
             </select>
@@ -36,7 +37,7 @@
         </div>
 
         <div>
-          <div id="input-wrapper-building" class="input-wrapper-section">
+          <div id="input-wrapper-zone" class="input-wrapper-section">
             <div class="control">
               <label><%= $.i18n('sim-length') %> <span id="LengthDisp"></span></label>
               <div id="Length"></div>
@@ -64,17 +65,17 @@
               <h3>Wall</h3>
               <div>
                 <div class="control">
-                  <label><%= $.i18n('North Insulation') %> <span id="insulation-levelDisp"></label>
-                  <div id="Ninsulation-level"></div>
+                  <label><%= $.i18n('Insulation') %> <span id="insulation-levelDisp"></label>
+                  <div id="insulation-level"></div>
                 </div> 
               </div>
               <h3>Glazing</h3>
               <div>
                 <div class="control">
-                  <label><input type="checkbox" id="NWin" class="group-disable"><%= $.i18n('sim-nwin') %></input></label>
+                  <label><input type="checkbox" id="Win" class="group-disable"><%= $.i18n('sim-win') %></input></label>
                   <div class="indent">
-                    <label><%= $.i18n('sim-glaze-ratio') %> <span id="NWinGRDisp" style="display:none"></span></label>
-                    <div id="NWinGR"></div>
+                    <label><%= $.i18n('sim-glaze-ratio') %> <span id="WinGRDisp" style="display:none"></span></label>
+                    <div id="WinGR"></div>
                   </div>
                 </div>
                 <hr/>
@@ -83,6 +84,7 @@
           </div>
 
           <div id="input-wrapper-hvac" class="input-wrapper-section">
+          "Cooling Setpoint(SLIDER)" "Cooling Seasonal Coefficient Of Performance(SLIDER)" "Heating Setpoint(SLIDER)" "Heating Seasonal Coefficient Of Performance(SLIDER)" "Night Ventalation (YES/NO)" "Demand Controled Ventalation(YES/NO)"
             <div class="control">
               <label><%= $.i18n('sim-ventilation') %> <span id="ventilation-rateDisp"></label>
               <div id="ventilation-rate">&nbsp;</div>
@@ -117,12 +119,108 @@
 
 
 <div id="help-dialog" title="Help">
-  <p>This is some help. It could be styled nicely to fit on the page and be as big as you want.</p>
-  <p>It could even have links to <a id="other-help" href="#">other</a> dialogs.</p>
+  <p>Solar shoebox is an easy modeling tool designed make energy modeling fun and easy</p>
+  <p>Get started by following the links.</p>
+  <p> <a id="other-help" href="#">Step 1 Site</a> dialogs.</p>
 </div>
 
 
 <div id="other-help-dialog" title="More Help">
-  <p>Some more help.</p>
+  <p>Step 1 choose closet weather file and site terrian.</p>
 </div>
 
+<div id="other-help-dialog" title="More Help">
+  <p>Step 1 choose closet weather file and site terrian.</p>
+</div>
+
+<div id="other-help-dialog" title="More Help">
+  <p>Step 2 choose length, width, hight, occupency type, Roof Type, Wall Type and infiltration rate.</p>
+</div>
+
+<div id="other-help-dialog" title="More Help">
+  <p>Step 3 choose heating & cooling setpoints and ventalation type.</p>
+</div>
+
+  
+
+    <!--<div class="panel_toggle panel_toggle--results_panel" id="results_panel_toggle_id"></div>
+  </div>
+</div>
+  
+
+ <h3>Loads</h3>
+      <div>
+       <div class="control">
+          <label><%= $.i18n('People [m2/Person]') %> <span id="people-rateDisp"></label>
+          <div id="people-rate"></div>
+        </div>
+       <div class="control">
+          <label><%= $.i18n('Lighting [W/m2]') %> <span id="lighting-rateDisp"></label>
+          <div id="lighting-rate"></div>
+         </div>
+       <div class="control">
+          <label><%= $.i18n('Equipment [W/m2]') %> <span id="equipment-rateDisp"></label>
+          <div id="equipment-rate"></div>
+         </div>
+        <div class="control">
+          <label><%= $.i18n('Hot Water [W/m2]') %> <span id="hotwater-rateDisp"></label>
+          <div id="hotwater-rate"></div>
+         </div>
+        <div class="control">
+          <label><%= $.i18n('Infiltration [ACH]') %> <span id="infiltration-rateDisp"></label>
+          <div id="infiltration-rate"></div>
+         </div>
+      </div>
+              North (External YES/NO) Select BioPCM
+        <div class="control">
+          <label><%= $.i18n('North Insulation') %> <span id="insulation-levelDisp"></label>
+          <div id="Ninsulation-level"></div>
+        </div> 
+          <div class="control">
+          <label><input type="checkbox" id="NWin" class="group-disable"><%= $.i18n('sim-nwin') %></input></label>
+          <div class="indent">
+            <label><%= $.i18n('sim-glaze-ratio') %> <span id="NWinGRDisp" style="display:none"></span></label>
+            <div id="NWinGR"></div>
+          </div>
+        </div>
+        <hr/>
+        East (External YES/NO) Select BioPCM
+        <div class="control">
+          <label><%= $.i18n('East Insulation') %> <span id="insulation-levelDisp"></label>
+          <div id="Einsulation-level"></div>
+        </div> 
+         <div class="control">
+          <label><input type="checkbox" id="EWin" class="group-disable"><%= $.i18n('sim-ewin') %></input></label>
+          <div class="indent">
+            <label><%= $.i18n('sim-glaze-ratio') %> <span id="EWinGRDisp" style="display:none"></span></label>
+            <div id="EWinGR"></div>
+          </div>
+        </div>
+        <hr/>
+        South (External YES/NO) Select BioPCM
+        <div class="control">
+          <label><%= $.i18n('South Insulation') %> <span id="insulation-levelDisp"></label>
+          <div id="Sinsulation-level"></div>
+        </div> 
+         <div class="control">
+          <label><input type="checkbox" id="SWin" class="group-disable"><%= $.i18n('sim-swin') %></input></label>
+          <div class="indent">
+            <label><%= $.i18n('sim-glaze-ratio') %> <span id="SWinGRDisp" style="display:none"></span></label>
+            <div id="SWinGR"></div>
+          </div>
+        </div>
+        <hr/>
+        West (External YES/NO) Select BioPCM
+        <div class="control">
+          <label><%= $.i18n('West Insulation') %> <span id="insulation-levelDisp"></label>
+          <div id="Winsulation-level"></div>
+        </div> 
+        <div class="control">
+          <label><input type="checkbox" id="WWin" class="group-disable"><%= $.i18n('sim-wwin') %></input></label>
+          <div class="indent">
+            <label><%= $.i18n('sim-glaze-ratio') %> <span id="WWinGRDisp" style="display:none"></span></label>
+            <div id="WWinGR"></div>
+          </div>
+        </div>
+      </div>
+    </div> --> 

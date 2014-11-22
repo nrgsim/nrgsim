@@ -239,33 +239,37 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     controls.dynamicDampingFactor = 0.3;
     controls.keys = [ 65, 83, 68 ];
     return controls;
-  },
-
+    
+   },
   createManualControls: function() {
+
     var self = this;
 
     $("#Length").slider({ min: 1, max: 10, value: 3, slide: self.updateLength });
     $("#Depth").slider({ min: 1, max: 10, value: 4, slide: self.updateWidth });
-    $("#Height").slider({ min: 1, max: 10, value: 4, slide: self.updateHeight });
+    $("#Height").slider({ min: 1, max: 10, value: 4, slide: self.updateHeight });  
+    
     $("#ventilation-rate").slider({ min: 0.35, max: 10, value: 1 });
 
-    $("#NWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
-    $("#EWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
-    $("#SWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
-    $("#WWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
+    $("#WinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
+   // $("#NWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
+   // $("#EWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
+   // $("#SWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
+   // $("#WWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
 
-    $("#Rinsulation-level").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
-    $("#Ninsulation-level").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
-    $("#Einsulation-level").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
-    $("#Sinsulation-level").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
-    $("#Winsulation-level").slider({ min: 1, max: 10, value: 5, slide: self.updateSliderDisplay });
+    $("#insulation-level").slider({ min: 1, max: 10, value: 3, slide: self.updateSliderDisplay });
+   // $("#Rinsulation-level").slider({ min: 1, max: 10, value: 3, slide: self.updateSliderDisplay });
+   // $("#Ninsulation-level").slider({ min: 1, max: 10, value: 2, slide: self.updateSliderDisplay });
+   // $("#Einsulation-level").slider({ min: 1, max: 10, value: 2, slide: self.updateSliderDisplay });
+   // $("#Sinsulation-level").slider({ min: 1, max: 10, value: 2, slide: self.updateSliderDisplay });
+    //$("#Winsulation-level").slider({ min: 1, max: 10, value: 2, slide: self.updateSliderDisplay });
 
     //$("#occupency-type").selectmenu({Office,School,Residential});
 
-    $("#people-rate").slider({ min: 0, max: 100, value: 18 });
-    $("#lighting-rate").slider({ min: 0, max: 30, value: 11 });
-    $("#equipment-rate").slider({ min: 0, max: 30, value: 11 });
-    $("#hotwater-rate").slider({ min: 0, max: 30, value: 11 });
+    //$("#people-rate").slider({ min: 0, max: 100, value: 18 });
+    //$("#lighting-rate").slider({ min: 0, max: 30, value: 11 });
+    //$("#equipment-rate").slider({ min: 0, max: 30, value: 11 });
+   // $("#hotwater-rate").slider({ min: 0, max: 30, value: 11 });
 
     $("#run-button").button();
 
@@ -274,21 +278,24 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.setSliderDisplayValue('#Height');
     //this.setSliderDisplayValue('#infiltration-rate');
 
-    this.setSliderDisplayValue('#NWinGR');
-    this.setSliderDisplayValue('#EWinGR');
-    this.setSliderDisplayValue('#SWinGR');
-    this.setSliderDisplayValue('#WWinGR');
+    this.setSliderDisplayValue('#WinGR');
+    //this.setSliderDisplayValue('#NWinGR');
+   // this.setSliderDisplayValue('#EWinGR');
+   // this.setSliderDisplayValue('#SWinGR');
+   // this.setSliderDisplayValue('#WWinGR');
 
-    this.setSliderDisplayValue('#Rinsulation-level');
-    this.setSliderDisplayValue('#Ninsulation-level');
-    this.setSliderDisplayValue('#Einsulation-level');
-    this.setSliderDisplayValue('#Sinsulation-level');
-    this.setSliderDisplayValue('#Winsulation-level');
+    this.setSliderDisplayValue('#insulation-level');
+   // this.setSliderDisplayValue('#Rinsulation-level');
+   // this.setSliderDisplayValue('#Ninsulation-level');
+   // this.setSliderDisplayValue('#Einsulation-level');
+   // this.setSliderDisplayValue('#Sinsulation-level');
+   // this.setSliderDisplayValue('#Winsulation-level');
 
-    this.setSliderDisplayValue('#people-rate');
-    this.setSliderDisplayValue('#lighting-rate');
-    this.setSliderDisplayValue('#equipment-rate');
-    this.setSliderDisplayValue('#hotwater-rate');
+
+   // this.setSliderDisplayValue('#people-rate');
+  //  this.setSliderDisplayValue('#lighting-rate');
+  //  this.setSliderDisplayValue('#equipment-rate');
+  //  this.setSliderDisplayValue('#hotwater-rate');
   },
 
 
@@ -410,7 +417,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
   },
 
   runSimulation: function() {
-    var zone = { northWindow: null, eastWindow: null, southWindow: null, westWindow: null };
+    var zone = { Window: null, northWindow: null, eastWindow: null, southWindow: null, westWindow: null };
     var inverseTransform = new THREE.Matrix4();
     var progbar = $('#progressbar');
 
@@ -423,9 +430,14 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     zone.width = $("#Depth").slider('value');
     zone.height = $("#Height").slider('value');
 
+    if ($("#Win").prop("checked")) {
+      zone.Window = $("#WinGR").slider('value');
+    }
+
     if ($("#NWin").prop("checked")) {
       zone.northWindow = $("#NWinGR").slider('value');
     }
+
 
     if ($("#EWin").prop("checked")) {
       zone.northWindow = $("#EWinGR").slider('value');
@@ -571,4 +583,3 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
   }
 
 });
-
