@@ -245,21 +245,21 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
     var self = this;
 
-    $("#Width").slider({ min: 3, max: 21.336, value: 15, slide: self.updateWidth });
-    $("#Height").slider({ min: 2.4511, max: 8, value: 3.5, slide: self.updateHeight });  
+    $("#Width").slider({ min: 3, max: 21.336, value: 4.572, slide: self.updateWidth });
+    $("#Height").slider({ min: 2.1336, max: 8, value: 2.4511, slide: self.updateHeight });  
     //depth is not needed for facade model and so default to 15ft
     $("#Depth").slider({ min: 4.572, max: 4.572, value: 4.572, slide: self.updateDepth });
 
     
     $("#ventilation-rate").slider({ min: 0.35, max: 10, value: 1 });
-
+//could we remove the checkbox for window with an "if WinGR>1 then yes" statement? 
     $("#WinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
    // $("#NWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
    // $("#EWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
    // $("#SWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
    // $("#WWinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
 
-    $("#insulation-level").slider({ min: 1, max: 10, value: 3, slide: self.updateSliderDisplay });
+    $("#insulation-level").slider({ min: 0, max: 10, value: 3, slide: self.updateSliderDisplay });
    // $("#Rinsulation-level").slider({ min: 1, max: 10, value: 3, slide: self.updateSliderDisplay });
    // $("#Ninsulation-level").slider({ min: 1, max: 10, value: 2, slide: self.updateSliderDisplay });
    // $("#Einsulation-level").slider({ min: 1, max: 10, value: 2, slide: self.updateSliderDisplay });

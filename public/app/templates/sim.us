@@ -40,9 +40,6 @@
           <div id="input-wrapper-site" class="input-wrapper-section">
            <div class="control"> 
 class="selectfile" id="Location" "Choose Weatherfile" 
- class="selectmenu" id="Grounds"
-              <option value="landscaped">Landscaped</option>
-              <option value="paved">Paved</option>
  class="selectmenu" id="Terrain"
                     <div>
               <option value="city">City</option>
@@ -54,6 +51,10 @@ class="selectfile" id="Location" "Choose Weatherfile"
            </div>
           </div>
           <div id="input-wrapper-zone" class="input-wrapper-section">
+            <div class="control">
+          <label><%= $.i18n('Wall Width') %> <span id="WidthDisp"></span></label>
+          <div id="Width"></div>
+        </div>
             <div class="control">
               <label><%= $.i18n('Ceiling Height') %> <span id="HeightDisp"></span></label>
               <div id="Height"></div>
@@ -72,26 +73,25 @@ class="selectfile" id="Location" "Choose Weatherfile"
           <div id="input-wrapper-facade" class="input-wrapper-section">
             <div class="accordion">
             </div>
-              <h3>Wall</h3> DropDownListOfConstructionType: "Steal Framed", "Mass", "Metal Building", "Wood Framed And Other"
-              <div>
-              <div class="control">
-              <label><%= $.i18n('Wall Width') %> <span id="WidthDisp"></span></label>
-              <div id="Width"></div>
-                <div class="control">
-                  <label><%= $.i18n('Insulation R Value') %> <span id="insulation-levelDisp"></label>
-                  <div id="insulation-level"></div>
-                </div> 
-              </div>
+              <h3>Wall</h3> Drop Down List Of Construction Type: "Steal Framed", "Mass", "Metal Building", "Wood Framed And Other"
+                <div>
+        <div class="control">
+          <label><%= $.i18n('Insulation R-Value') %> <span id="insulation-levelDisp"></label>
+          <div id="insulation-level"></div>
+        </div>
+        Thermal Mass [YES/NO]
+        If BioPCM then Concrete Or BioPCM 
+         If Yes then dual vertical slider: Q-Value/Temperature 23,25,27 & Thermal Capacity 27,51,91
               <h3>Window</h3>
               <div>
                 <div class="control">
                   <label><input type="checkbox" id="Win" class="group-disable"><%= $.i18n('Glazed') %></input></label>
-                 Window U-Value [slider]
-                 Window Solar Heat Gain Coeffcient [slider]
-                 Sill Height [slider]
                   <div class="indent">
                     <label><%= $.i18n('sim-glaze-ratio') %> <span id="WinGRDisp" style="display:none"></span></label>
                     <div id="WinGR"></div>
+                     Window U-Value [slider]
+                 Window Solar Heat Gain Coeffcient [slider]
+                 Sill Height [slider]
                   </div>
                 </div>
                 <hr/>
