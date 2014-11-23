@@ -245,9 +245,11 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
     var self = this;
 
-    $("#Length").slider({ min: 1, max: 10, value: 3, slide: self.updateLength });
-    $("#Depth").slider({ min: 1, max: 10, value: 4, slide: self.updateWidth });
-    $("#Height").slider({ min: 1, max: 10, value: 4, slide: self.updateHeight });  
+    $("#Width").slider({ min: 3, max: 21.336, value: 15, slide: self.updateWidth });
+    $("#Height").slider({ min: 2.4511, max: 8, value: 3.5, slide: self.updateHeight });  
+    //depth is not needed for facade model and so default to 15ft
+    $("#Depth").slider({ min: 4.572, max: 4.572, value: 4.572, slide: self.updateDepth });
+
     
     $("#ventilation-rate").slider({ min: 0.35, max: 10, value: 1 });
 
@@ -273,7 +275,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
     $("#run-button").button();
 
-    this.setSliderDisplayValue('#Length');
+    this.setSliderDisplayValue('#Width');
     this.setSliderDisplayValue('#Depth');
     this.setSliderDisplayValue('#Height');
     //this.setSliderDisplayValue('#infiltration-rate');
@@ -310,12 +312,12 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     }
   },
 
-  updateLength: function(event, ui) {
+  updateWidth: function(event, ui) {
     this.updateSliderDisplay(event, ui);
     this.solarCube.scale.x = ui.value*100;
   },
 
-  updateWidth: function(event, ui) {
+  updateDepth: function(event, ui) {
     this.updateSliderDisplay(event, ui);
     this.solarCube.scale.y = ui.value*100;
   },
@@ -426,8 +428,8 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     progbar.show();
 
     zone.weatherFile = "TODO: add UI to let user specify weather file";
-    zone.length = $("#Length").slider('value');
-    zone.width = $("#Depth").slider('value');
+    zone.width = $("#Width").slider('value');
+    zone.depth = $("#Depth").slider('value');
     zone.height = $("#Height").slider('value');
 
     if ($("#Win").prop("checked")) {
