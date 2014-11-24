@@ -51,6 +51,10 @@ class="selectfile" id="Location" "Choose Weatherfile"
            </div>
           </div>
           <div id="input-wrapper-zone" class="input-wrapper-section">
+             <div class="control">
+          <label><%= $.i18n('Orientation') %> <span id="orientationDisp"></span></label>
+          <div id="orientation"></div>
+        </div>
             <div class="control">
           <label><%= $.i18n('Wall Width') %> <span id="WidthDisp"></span></label>
           <div id="Width"></div>
@@ -73,15 +77,14 @@ class="selectfile" id="Location" "Choose Weatherfile"
           <div id="input-wrapper-facade" class="input-wrapper-section">
             <div class="accordion">
             </div>
-              <h3>Wall</h3> Drop Down List Of Construction Type: "Steal Framed", "Mass", "Metal Building", "Wood Framed And Other"
+              <h3>Wall</h3> Drop Down List Of Wall Construction Type: "Steal Framed", "Mass", "Metal Building", "Wood Framed And Other"
                 <div>
         <div class="control">
           <label><%= $.i18n('Insulation R-Value') %> <span id="insulation-levelDisp"></label>
           <div id="insulation-level"></div>
         </div>
-        Thermal Mass [YES/NO]
-        If BioPCM then Concrete Or BioPCM 
-         If Yes then dual vertical slider: Q-Value/Temperature 23,25,27 & Thermal Capacity 27,51,91
+        BioPCM [YES/NO]
+         If Yes then dual vertical slider: Q-Value/Temperature 23,25,27 & Thermal Capacity/M-Value 27,51,91
               <h3>Window</h3>
               <div>
                 <div class="control">
@@ -91,7 +94,8 @@ class="selectfile" id="Location" "Choose Weatherfile"
                     <div id="WinGR"></div>
                      Window U-Value [slider]
                  Window Solar Heat Gain Coeffcient [slider]
-                 Sill Height [slider]
+Shade [YES/NO] IF YES THEN SHADE SIZE AS FRACTION OF WINDOW SIZE
+Side Fin [YES/NO] IF YES THEN FIN SIZE AS FRACTION OF WINDOW SIZE 
                   </div>
                 </div>
                 <hr/>
@@ -100,10 +104,13 @@ class="selectfile" id="Location" "Choose Weatherfile"
           </div>
 
           <div id="input-wrapper-hvac" class="input-wrapper-section">
-          "Cooling Setpoint(SLIDER)" "Cooling Seasonal Coefficient Of Performance(SLIDER)" "Heating Setpoint(SLIDER)" "Heating Seasonal Coefficient Of Performance(SLIDER)" "Night Ventalation (YES/NO)" "Demand Controled Ventalation(YES/NO)"
+             <div class="control">
+              <label><%= $.i18n('Cooling Setpoint') %> <span id="CoolingSPDisp"></label>
+              <div id="CoolingSP">&nbsp;</div>
+            </div>
             <div class="control">
-              <label><%= $.i18n('sim-ventilation') %> <span id="ventilation-rateDisp"></label>
-              <div id="ventilation-rate">&nbsp;</div>
+              <label><%= $.i18n('Heating Setpoint') %> <span id="HeatingSPDisp"></label>
+              <div id="HeatingSP">&nbsp;</div>
             </div>
           </div>
 
@@ -195,7 +202,38 @@ The building parameters can now be used to begin designing a non-shoebox direct 
 
   
 
-    <!--<div class="panel_toggle panel_toggle--results_panel" id="results_panel_toggle_id"></div>
+    <!--< //Detailed inputs, may use later
+    Thermal Mass [YES/NO]
+        If Yes then Concrete Or BioPCM 
+         If BioPCM then dual vertical slider: Q-Value/Temperature 23,25,27 & Thermal Capacity/M-Value 27,51,91
+          Else if Concrete then horizontal slider thickness: Min-0.0254, Max-0.1016 Default-0.0762
+           "Night Ventalation (YES/NO)" "Demand Controled Ventalation(YES/NO)"
+      <div class="control">
+              <label><%= $.i18n('Minimum-Ventilation') %> <span id="minventilation-rateDisp"></label>
+              <div id="minventilation-rate">&nbsp;</div>
+            </div>
+            <div class="control">
+              <label><%= $.i18n('Cooling-Ventilation') %> <span id="coolingventilation-rateDisp"></label>
+              <div id="coolingventilation-rate">&nbsp;</div>
+             </div>
+             <div class="control">
+              <label><%= $.i18n('Cooling Setpoint') %> <span id="CoolingSPDisp"></label>
+              <div id="CoolingSP">&nbsp;</div>
+            </div>
+            <div class="control">
+              <label><%= $.i18n('Cooling Seasonal Coefficient Of Performance') %> <span id="CoolingsCoPDisp"></label>
+              <div id="CoolingsCoP">&nbsp;</div>
+            </div>
+            <div class="control">
+              <label><%= $.i18n('Heating Setpoint') %> <span id="HeatingSPDisp"></label>
+              <div id="HeatingSP">&nbsp;</div>
+            </div>
+            <div class="control">
+              <label><%= $.i18n('Heating Seasonal Coefficient Of Performance') %> <span id="HeatingsCoPDisp"></label>
+              <div id="HeatingsCoP">&nbsp;</div>
+            </div>
+
+    div class="panel_toggle panel_toggle--results_panel" id="results_panel_toggle_id"></div>
   </div>
 </div>
   
