@@ -268,7 +268,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     //This does not work, but needs to $("#occupency-type").selectmenu({Office,School,Residential}); 
     $("#infiltration-rate").slider({ min: 0.35, max: 10, value: 1 });
 
-    $("#orientation").slider({1,360}); // This should allow for 360 degrees 
+    $("#orientation").slider({min: 0, max: 360, value: 180}); // This should allow for 360 degrees 
     
     
 //could we remove the checkbox for window with an "if WinGR>1 then yes" statement? 
