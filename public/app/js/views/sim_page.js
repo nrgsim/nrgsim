@@ -25,7 +25,6 @@ window.app.views.SimPage = Backbone.View.extend({
     'click #run-button' : 'runSimulation',
     'change .group-disable' : 'handleSliderCheckboxChange',
     'click #left-panel-toggle' : 'toggleInputPanel',
-    'change #input-menu' : 'inputMenuSelect',
     'change #bio-pcm' : 'handleBioPCMChange'
   },
 
@@ -413,7 +412,13 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
 
     $('.accordion').accordion({ autoHeight: false });
-    self.inputMenuSelect();
+    $( '#input-tabs' ).tabs({ active: 0, heightStyle: 'fill' });
+
+    // This forces the tabs to redraw correctly. Not sure why they don't without this.
+    $('.input-wrapper-section').hide();
+    window.setTimeout(function() {
+      $('#input-tabs' ).tabs('option', 'active', 3).tabs('option', 'active', 0).refresh();
+    }, 10);
 
 
     // This help stuff is kludgy just to show that we can do it. It should be implemented better when we really have help.
@@ -450,12 +455,6 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
       wrapper.hide();
       $('#left-panel-toggle').text('>');
     }
-  },
-
-  inputMenuSelect: function(evt, ui) {
-    var sel = $('#input-menu').val();
-    $('.input-wrapper-section').hide();
-    $('#input-wrapper-'+sel).show();
   },
 
   animate: function(controls, renderer) {

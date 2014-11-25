@@ -25,8 +25,8 @@
 
       <div class="panel-content">
 
-        <div>
-          <div>
+        <div id="input-tabs">
+          <!--div>
             <select id="input-menu" class="input-menu">
               <option value="site"><%= $.i18n('sim-site') %></option>
               <option value="zone"><%= $.i18n('sim-zone') %></option>
@@ -34,9 +34,14 @@
               <option value="facade"><%= $.i18n('sim-facade') %></option>
             </select>
           </div>
-        </div>
+        </div-->
+          <ul>
+            <li><a href="#input-wrapper-site"><%= $.i18n('sim-site') %></a></li>
+            <li><a href="#input-wrapper-zone"><%= $.i18n('sim-zone') %></a></li>
+            <li><a href="#input-wrapper-hvac"><%= $.i18n('sim-hvac') %></a></li>
+            <li><a href="#input-wrapper-facade"><%= $.i18n('sim-facade') %></a></li>
+          </ul>
 
-        <div>
           <div id="input-wrapper-site" class="input-wrapper-section">
             <div class="control">
               <label>Continent</label>
@@ -79,7 +84,7 @@
               <div id="Height"></div>
             </div>
             <div class="control">
-              <label><%= $.i18n('sim-occupancy-type') %> <span id="occupency-typeDisp"></label>
+              <label><%= $.i18n('sim-occupancy-type') %> <span id="occupency-typeDisp"></span></label>
               <select id="occupancy-type">
                 <option value="office"><%= $.i18n('sim-office') %></option>
                 <option value="school"><%= $.i18n('sim-school') %></option>
@@ -87,25 +92,25 @@
               </select>
             </div>
             <div class="control">
-              <label><%= $.i18n('Infiltration Rate [ACH]') %> <span id="infiltration-rateDisp"></label>
+              <label><%= $.i18n('Infiltration Rate [ACH]') %> <span id="infiltration-rateDisp"></span></label>
               <div id="infiltration-rate"></div>
             </div>
           </div>
 
           <div id="input-wrapper-hvac" class="input-wrapper-section">
             <div class="control">
-              <label><%= $.i18n('Cooling Setpoint') %> <span id="CoolingSPDisp"></label>
+              <label><%= $.i18n('Cooling Setpoint') %> <span id="CoolingSPDisp"></span></label>
               <div id="CoolingSP">&nbsp;</div>
             </div>
             <div class="control">
-              <label><%= $.i18n('Heating Setpoint') %> <span id="HeatingSPDisp"></label>
+              <label><%= $.i18n('Heating Setpoint') %> <span id="HeatingSPDisp"></span></label>
               <div id="HeatingSP">&nbsp;</div>
             </div>
           </div>
 
           <div id="input-wrapper-facade" class="input-wrapper-section">
             <div class="control">
-              <label><input type="checkbox" id="bio-pcm" class="group-disable" checked="checked">Bio PCM</input></label>
+              <label><input type="checkbox" id="bio-pcm" class="group-disable" checked="checked">Bio PCM</label>
             </div>
             <div class="control half">
               <label>M Value<br/>Fix this</label>
@@ -128,7 +133,7 @@
                   </select>
                 </div>
                 <div class="control">
-                  <label><%= $.i18n('Insulation R-Value') %> <span id="insulation-levelDisp"></label>
+                  <label><%= $.i18n('Insulation R-Value') %> <span id="insulation-levelDisp"></span></label>
                   <div id="insulation-level"></div>
                 </div>
               </div>
@@ -147,10 +152,10 @@
                   <div id="Window_SHGC"></div>
                </div>
                 <div class="control">
-                  <label><input type="checkbox" id="shade">Shade</input></label>
+                  <label><input type="checkbox" id="shade">Shade</label>
                 </div>
                 <div class="control">
-                  <label><input type="checkbox" id="shade-fin">Shade Fin</input></label>
+                  <label><input type="checkbox" id="shade-fin">Shade Fin</label>
                 </div>
               </div>
             </div>
@@ -176,6 +181,7 @@
             </div>
           </div>
         </div>
+      </div>
     </div>
 
   </div>
@@ -185,7 +191,7 @@
 <div id="help-dialog" title="Help">
   <p>SolarShoeBox models a simple direct gain passive solar building. A direct gain passive solar building uses only the energy supplied from the sun to achieve thermal comfort for the occupants of the building. The architect of the building will need to use their knowledge of the climate where the building will sit and their knowledge of the yearly movement of the sun to manipulate the fabric of the building in order to maintain a comfortable interior environment for the occupants. One can think of the building fabric as a filter between the outside climate and the inside thermal environment. The architect using SSB can manipulate the filter by changing the quantity and characteristics of these architectural components and strategies; Building Orientation, Building Form, Building Thermal Conduction, Solar radiation Collection, Solar Radiation Control, Heat Storage/Distribution and Controlled Porosity, in order to make the interior thermal environment as comfortable as possible for a given climate without using any fossil fuels.</p>
   <p>Get started by following the links.</p>
-  <p> <a id="other-help" href="#">Steps</a>Basic Steps to design a comfortable solar building with SolarShoeBox
+  <p> <a href="#">Steps</a>Basic Steps to design a comfortable solar building with SolarShoeBox
 • Choose a weather file and Run Energyplus
 • Adjust the season start sliders based on outside temperature patterns. Most climates will have a cold, cool to hot transition, hot and hot to cool transition season.
 • Energyplus can be run at anytime during the following steps. The steps can be done in any order but this sequence first.
@@ -200,162 +206,41 @@
 • Go back and fine tune settings until the indoor comfort chart is mostly green.
 
 The building parameters can now be used to begin designing a non-shoebox direct gain passive solar building.</p>
-</div>
 
 
-<div id="other-help-dialog" title="More Help">Climate 
-  <p>The weather file is selected by a pull down menu. The menu list all EPW files available in the Energyplus weather file on the users hard drive. This step is needed for Energyplus to run and it also sets the latitude for sun shading design. To download more weather files available from the internet click on the Weather button. The web site that opens in your browser has weather files for 1042 locations in the USA, 71 locations in Canada, and more than 1000 locations in 100 other countries throughout the world. Download the EPW file by left clicking.</p>
-</div>
+  <div title="More Help">Climate 
+    <p>The weather file is selected by a pull down menu. The menu list all EPW files available in the Energyplus weather file on the users hard drive. This step is needed for Energyplus to run and it also sets the latitude for sun shading design. To download more weather files available from the internet click on the Weather button. The web site that opens in your browser has weather files for 1042 locations in the USA, 71 locations in Canada, and more than 1000 locations in 100 other countries throughout the world. Download the EPW file by left clicking.</p>
+  </div>
 
-<div id="other-help-dialog" title="More Help">Comfort
-  <p>Optimization in SolarShoeBox is based on indoor comfort levels and not on fuel usage, since no energy will be used to heat the interior. On the graph below January 1st is on the left and December 31st is on the right. The top is 1 AM and the bottom is Midnight. The Top graph shows the outside temperature and the bottom graph shows in inside temperature. The color blue represents temperatures less than the set comfort zone temperature and the color red represents temperatures higher than the comfort zone. The color green represents temperatures in the comfort zone. The goal is to make the inside temperature graph turn completely green.</p>
-</div>
+  <div title="More Help">Comfort
+    <p>Optimization in SolarShoeBox is based on indoor comfort levels and not on fuel usage, since no energy will be used to heat the interior. On the graph below January 1st is on the left and December 31st is on the right. The top is 1 AM and the bottom is Midnight. The Top graph shows the outside temperature and the bottom graph shows in inside temperature. The color blue represents temperatures less than the set comfort zone temperature and the color red represents temperatures higher than the comfort zone. The color green represents temperatures in the comfort zone. The goal is to make the inside temperature graph turn completely green.</p>
+  </div>
 
-<div id="other-help-dialog" title="More Help">Orientation
-  <p>The building can be rotated 45° East and West from North by using the rotation slider. General Rule: 0° from South is best for optimum solar gain through south facing window and easy shading control.</p>
-</div>
+  <div title="More Help">Orientation
+    <p>The building can be rotated 45° East and West from North by using the rotation slider. General Rule: 0° from South is best for optimum solar gain through south facing window and easy shading control.</p>
+  </div>
 
-<div id="other-help-dialog" title="More Help">Shape
-  <p>The building height, length and depth are changed using sliders. As the sliders move the OpenGL modeler is updated in real time. The model can be zoomed in and out using the mouse wheel and rotated by click dragging. General Rule: Buildings elongated towards east/west will allow more southern exposure, allowing more solar gain and higher indoor temperatures.</p>
-</div>
+  <div title="More Help">Shape
+    <p>The building height, length and depth are changed using sliders. As the sliders move the OpenGL modeler is updated in real time. The model can be zoomed in and out using the mouse wheel and rotated by click dragging. General Rule: Buildings elongated towards east/west will allow more southern exposure, allowing more solar gain and higher indoor temperatures.</p>
+  </div>
 
-<div id="other-help-dialog" title="More Help">Insulation
-  <p>The insulation value is chosen for the envelope. This differs from most energy simulation programs because it reverses the decision order. Instead of choosing a wall type and figuring out the insulation level, the designer discovers what the required R-value should be and then designs a wall to that specification. General Rule: Higher insulation values will raise indoor temperature levels.</p>
-</div>
+  <div title="More Help">Insulation
+    <p>The insulation value is chosen for the envelope. This differs from most energy simulation programs because it reverses the decision order. Instead of choosing a wall type and figuring out the insulation level, the designer discovers what the required R-value should be and then designs a wall to that specification. General Rule: Higher insulation values will raise indoor temperature levels.</p>
+  </div>
 
-<div id="other-help-dialog" title="More Help">Window
-  <p>Window orientation, type and area as percent of wall area can be changed using sliders and pull down menus. General Rule: Larger south facing windows will increase indoor temperature levels.</p>
-</div>
+  <div title="More Help">Window
+    <p>Window orientation, type and area as percent of wall area can be changed using sliders and pull down menus. General Rule: Larger south facing windows will increase indoor temperature levels.</p>
+  </div>
 
-<div id="other-help-dialog" title="More Help">Thermal Mass
-  <p>Mass type, area and thickness are manipulated to decrease the indoor temperature swings. The internal mass modeled has both sides exposed so a thickness of 12 inches or 30 cm will act like a mass of half that thickness or 6 inches and 15 cm. General Rule: Mass area of 11 times the south window area and mass thickness of less than 6 inches or 15 cm are good starting points.</p>
-</div>
+  <div title="More Help">Thermal Mass
+    <p>Mass type, area and thickness are manipulated to decrease the indoor temperature swings. The internal mass modeled has both sides exposed so a thickness of 12 inches or 30 cm will act like a mass of half that thickness or 6 inches and 15 cm. General Rule: Mass area of 11 times the south window area and mass thickness of less than 6 inches or 15 cm are good starting points.</p>
+  </div>
 
-<div id="other-help-dialog" title="More Help">Shading
-  <p>Horizontal shading devices can be added to any wall. A slider changes the length of the shading device. Shadows are cast based on the latitude, date and time. The date and time can be changed to visually decide how long to make the shading device.General Rule: Adjust shading to create comfort during the transition seasons.</p>
-</div>
+  <div title="More Help">Shading
+    <p>Horizontal shading devices can be added to any wall. A slider changes the length of the shading device. Shadows are cast based on the latitude, date and time. The date and time can be changed to visually decide how long to make the shading device.General Rule: Adjust shading to create comfort during the transition seasons.</p>
+  </div>
 
-<div id="other-help-dialog" title="More Help">Ventilate
-  <p>Each season can have a different ventilation rate. A minimum ventilation rate of .35 air changes per hour should be kept to meet indoor air quality standards. Thermal comfort in the summer is usually achieved by raising the ventilation rate. The ventilation rate is controlled by an electric fan, which is powered by photovoltaic panels on the roof.</p>
-</div>
-
-
-
-  
-
-    <!--< //Detailed inputs, may use later
-    Thermal Mass [YES/NO]
-        If Yes then Concrete Or BioPCM 
-         If BioPCM then dual vertical slider: Q-Value/Temperature 23,25,27 & Thermal Capacity/M-Value 27,51,91
-          Else if Concrete then horizontal slider thickness: Min-0.0254, Max-0.1016 Default-0.0762
-           "Night Ventalation (YES/NO)" "Demand Controled Ventalation(YES/NO)"
-      <div class="control">
-              <label><%= $.i18n('Minimum-Ventilation') %> <span id="minventilation-rateDisp"></label>
-              <div id="minventilation-rate">&nbsp;</div>
-            </div>
-            <div class="control">
-              <label><%= $.i18n('Cooling-Ventilation') %> <span id="coolingventilation-rateDisp"></label>
-              <div id="coolingventilation-rate">&nbsp;</div>
-             </div>
-             <div class="control">
-              <label><%= $.i18n('Cooling Setpoint') %> <span id="CoolingSPDisp"></label>
-              <div id="CoolingSP">&nbsp;</div>
-            </div>
-            <div class="control">
-              <label><%= $.i18n('Cooling Seasonal Coefficient Of Performance') %> <span id="CoolingsCoPDisp"></label>
-              <div id="CoolingsCoP">&nbsp;</div>
-            </div>
-            <div class="control">
-              <label><%= $.i18n('Heating Setpoint') %> <span id="HeatingSPDisp"></label>
-              <div id="HeatingSP">&nbsp;</div>
-            </div>
-            <div class="control">
-              <label><%= $.i18n('Heating Seasonal Coefficient Of Performance') %> <span id="HeatingsCoPDisp"></label>
-              <div id="HeatingsCoP">&nbsp;</div>
-            </div>
-
-    div class="panel_toggle panel_toggle--results_panel" id="results_panel_toggle_id"></div>
+  <div title="More Help">Ventilate
+    <p>Each season can have a different ventilation rate. A minimum ventilation rate of .35 air changes per hour should be kept to meet indoor air quality standards. Thermal comfort in the summer is usually achieved by raising the ventilation rate. The ventilation rate is controlled by an electric fan, which is powered by photovoltaic panels on the roof.</p>
   </div>
 </div>
-  
-              <div class="control">
-              <label><%= $.i18n('sim-depth') %> <span id="DepthDisp"></span></label>
-              <div id="Depth"></div>
-            </div>
-
- <h3>Loads</h3>
-      <div>
-       <div class="control">
-          <label><%= $.i18n('People [m2/Person]') %> <span id="people-rateDisp"></label>
-          <div id="people-rate"></div>
-        </div>
-       <div class="control">
-          <label><%= $.i18n('Lighting [W/m2]') %> <span id="lighting-rateDisp"></label>
-          <div id="lighting-rate"></div>
-         </div>
-       <div class="control">
-          <label><%= $.i18n('Equipment [W/m2]') %> <span id="equipment-rateDisp"></label>
-          <div id="equipment-rate"></div>
-         </div>
-        <div class="control">
-          <label><%= $.i18n('Hot Water [W/m2]') %> <span id="hotwater-rateDisp"></label>
-          <div id="hotwater-rate"></div>
-         </div>
-        <div class="control">
-          <label><%= $.i18n('Infiltration [ACH]') %> <span id="infiltration-rateDisp"></label>
-          <div id="infiltration-rate"></div>
-         </div>
-      </div>
-              North (External YES/NO) Select BioPCM
-        <div class="control">
-          <label><%= $.i18n('North Insulation') %> <span id="insulation-levelDisp"></label>
-          <div id="Ninsulation-level"></div>
-        </div> 
-          <div class="control">
-          <label><input type="checkbox" id="NWin" class="group-disable"><%= $.i18n('sim-nwin') %></input></label>
-          <div class="indent">
-            <label><%= $.i18n('sim-glaze-ratio') %> <span id="NWinGRDisp" style="display:none"></span></label>
-            <div id="NWinGR"></div>
-          </div>
-        </div>
-        <hr/>
-        East (External YES/NO) Select BioPCM
-        <div class="control">
-          <label><%= $.i18n('East Insulation') %> <span id="insulation-levelDisp"></label>
-          <div id="Einsulation-level"></div>
-        </div> 
-         <div class="control">
-          <label><input type="checkbox" id="EWin" class="group-disable"><%= $.i18n('sim-ewin') %></input></label>
-          <div class="indent">
-            <label><%= $.i18n('sim-glaze-ratio') %> <span id="EWinGRDisp" style="display:none"></span></label>
-            <div id="EWinGR"></div>
-          </div>
-        </div>
-        <hr/>
-        South (External YES/NO) Select BioPCM
-        <div class="control">
-          <label><%= $.i18n('South Insulation') %> <span id="insulation-levelDisp"></label>
-          <div id="Sinsulation-level"></div>
-        </div> 
-         <div class="control">
-          <label><input type="checkbox" id="SWin" class="group-disable"><%= $.i18n('sim-swin') %></input></label>
-          <div class="indent">
-            <label><%= $.i18n('sim-glaze-ratio') %> <span id="SWinGRDisp" style="display:none"></span></label>
-            <div id="SWinGR"></div>
-          </div>
-        </div>
-        <hr/>
-        West (External YES/NO) Select BioPCM
-        <div class="control">
-          <label><%= $.i18n('West Insulation') %> <span id="insulation-levelDisp"></label>
-          <div id="Winsulation-level"></div>
-        </div> 
-        <div class="control">
-          <label><input type="checkbox" id="WWin" class="group-disable"><%= $.i18n('sim-wwin') %></input></label>
-          <div class="indent">
-            <label><%= $.i18n('sim-glaze-ratio') %> <span id="WWinGRDisp" style="display:none"></span></label>
-            <div id="WWinGR"></div>
-          </div>
-        </div>
-      </div>
-    </div> --> 
