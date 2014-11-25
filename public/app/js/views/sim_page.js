@@ -266,7 +266,6 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     //depth is not needed for facade model and so default to 15ft
     $("#Depth").slider({ min: 4.572, max: 4.572, value: 4.572, slide: self.updateDepth });
    
-    //This does not work, but needs to $("#occupency-type").selectmenu({Office,School,Residential}); 
     $("#infiltration-rate").slider({ min: 0.35, max: 10, value: 1 });
 
     $("#orientation").slider({min: 0, max: 360, value: 180}); // This should allow for 360 degrees 
@@ -284,8 +283,11 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     //SB must be higher than SP or error $("#CoolingSB").slider({ min: 23, max: 40, value: 27, slide: self.updateSliderDisplay })
     $("#HeatingSP").slider({ min: 18, max: 22, value: 21, slide: self.updateSliderDisplay });
     //SB must be higher than SP or error $("#HeatingSB").slider({ min: 12, max: 20, value: 18, slide: self.updateSliderDisplay })
-    $('#mvalue').slider({ min: 27, max: 91, step: 2, value: 51, orientation: 'vertical' });
-    $('#qvalue').slider({ min: 23, max: 25, step: 2, value: 27, orientation: 'vertical' });
+    $('#mvalue').slider({ min: 27, max: 91, step: 2, value: 51, slide: self.updateSliderDisplay });
+    $('#qvalue').slider({ min: 23, max: 25, step: 2, value: 27, slide: self.updateSliderDisplay });
+
+    //$('#mvalue').slider({ min: 27, max: 91, step: 2, value: 51, orientation: 'vertical' });
+    //$('#qvalue').slider({ min: 23, max: 25, step: 2, value: 27, orientation: 'vertical' });
 
 
    $("#run-button").button();
