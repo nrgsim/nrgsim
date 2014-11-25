@@ -97,10 +97,6 @@
                 <option value="residential"><%= $.i18n('sim-residential') %></option>
               </select>
             </div>
-            <div class="control">
-              <label><%= $.i18n('Infiltration Rate [ACH]') %> <span id="infiltration-rateDisp"></span></label>
-              <div id="infiltration-rate"></div>
-            </div>
           </div>
 
           <div id="input-wrapper-hvac" class="input-wrapper-section">
@@ -127,6 +123,10 @@
                     <option value="">Wood Framed And Other</option>
                   </select>
                 </div>
+                <div class="control">
+              <label><%= $.i18n('Infiltration Rate [ACH]') %> <span id="infiltration-rateDisp"></span></label>
+              <div id="infiltration-rate"></div>
+            </div>
                 <div class="control">
                   <label><%= $.i18n('Insulation R-Value') %> <span id="insulation-levelDisp"></span></label>
                   <div id="insulation-level"></div>
@@ -158,16 +158,16 @@
                   <div id="Window_SHGC"></div>
                </div>
                 <div class="control">
-                  <label><input type="checkbox" id="shade">Shade</label>
+                  <label><input type="checkbox" id="shade">Overhang</label>
                 </div>
                 <div class="control">
-                  <label><%= $.i18n('sim-WinOverhangR') %> <span id="WinOverhangR"></span></label>
+                  <label><%= $.i18n('sim-overhang') %> <span id="WinOverhangRDisp"></span></label>
                   <div id="WinOverhangR"></div>
                 </div>
                 <div class="control">
-                  <label><input type="checkbox" id="shade-fin">Shade Fin</label>
+                  <label><input type="checkbox" id="shade-fin">Fin</label>
                   <div class="control">
-                  <label><%= $.i18n('sim-WinFinR') %> <span id="WinFinRDisp"></span></label>
+                  <label><%= $.i18n('sim-fin') %> <span id="WinFinRDisp"></span></label>
                   <div id="WinFinR"></div>
                 </div>
                 </div>
