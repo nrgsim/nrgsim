@@ -273,12 +273,12 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     
     
 //could we remove the checkbox for window with an "if WinGR>1 then yes" statement? 
-    $("#WinGR").slider({ min: 1, max: 99, value: 40, slide: self.handleGlazingRatioChange });
+    $("#WinGR").slider({ min: 0, max: 99, value: 40, slide: self.handleGlazingRatioChange });
     $("#insulation-level").slider({ min: 0.1, max: 10, value: 3, slide: self.updateSliderDisplay });
     $("#Window_U_Value").slider({ min: 1.94, max: 5.8, value: 3.12, step: 0.1, slide: self.updateSliderDisplay });
     $("#Window_SHGC").slider({ min: 0.25, max: 1, value: 0.42, step: 0.1, slide: self.updateSliderDisplay });
-    $("#WinOverhangR").slider({ min: 0.1, max: 1, value: 0.4, slide: self.updateSliderDisplay });
-    $("#WinFinR").slider({ min: 0.1, max: 1, value: 0.4, slide: self.updateSliderDisplay });
+    $("#WinOverhangR").slider({ min: 0.1, max: 1, value: 0.2, slide: self.updateSliderDisplay });
+    $("#WinFinR").slider({ min: 0.1, max: 1, value: 0.2, slide: self.updateSliderDisplay });
 
     $("#CoolingSP").slider({ min: 23, max: 30, value: 25, slide: self.updateSliderDisplay });
     //SB must be higher than SP or error $("#CoolingSB").slider({ min: 23, max: 40, value: 27, slide: self.updateSliderDisplay })
@@ -295,7 +295,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.setSliderDisplayValue('#Height');
 
     this.setSliderDisplayValue('#orientation');
-    
+
     this.setSliderDisplayValue('#mvalue');
     this.setSliderDisplayValue('#qvalue');
 
