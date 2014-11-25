@@ -26,6 +26,7 @@ window.app.views.SimPage = Backbone.View.extend({
     'change .group-disable' : 'handleSliderCheckboxChange',
     'click #left-panel-toggle' : 'toggleInputPanel',
     'change #input-menu' : 'inputMenuSelect',
+    'change #bio-pcm' : 'handleBioPCMChange'
   },
 
   // Create a transform matrix that will put the center of a zone at the origin (0, 0, 0)
@@ -240,7 +241,8 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     controls.keys = [ 65, 83, 68 ];
     return controls;
     
-   },
+  },
+
   createManualControls: function() {
 
     var self = this;
@@ -272,10 +274,10 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     
     
 //could we remove the checkbox for window with an "if WinGR>1 then yes" statement? 
-    $("#WinGR").slider({ min: 1, max: 99, value: 40, disabled: true, slide: self.updateSliderDisplay });
+    $("#WinGR").slider({ min: 1, max: 99, value: 40, slide: self.handleGlazingRatioChange });
     $("#insulation-level").slider({ min: 0.1, max: 10, value: 3, slide: self.updateSliderDisplay });
-    $("#Window_U_Value").slider({ min: 1.94, max: 5.8, value: 3.12, slide: self.updateSliderDisplay });
-    $("#Window_SHGC").slider({ min: 0.25, max: 1, value: 0.42, slide: self.updateSliderDisplay });
+    $("#Window_U_Value").slider({ min: 1.94, max: 5.8, value: 3.12, step: 0.1, slide: self.updateSliderDisplay });
+    $("#Window_SHGC").slider({ min: 0.25, max: 1, value: 0.42, step: 0.1, slide: self.updateSliderDisplay });
     $("#WinOverhangR").slider({ min: 0.1, max: 1, value: 0.4, slide: self.updateSliderDisplay });
     $("#WinFinR").slider({ min: 0.1, max: 1, value: 0.4, slide: self.updateSliderDisplay });
 
@@ -333,7 +335,18 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
   //  this.setSliderDisplayValue('#hotwater-rate');
   },
 
+  handleBioPCMChange: function(evt) {
+    var checked = $('#bio-pcm').prop('checked');
+    $('#mvalue').slider(checked ? "enable" : "disable");
+    $('#qvalue').slider(checked ? "enable" : "disable");
+  },
 
+  handleGlazingRatioChange: function(evt, ui) {
+    this.updateSliderDisplay(evt, ui);
+    var enable = ui.value > 1;
+    $('#Window_U_Value').slider(enable ? "enable" : "disable");
+    $('#Window_SHGC').slider(enable ? "enable" : "disable");
+  },
 
   handleSliderCheckboxChange: function(event) {
     var grId = '#'+event.target.id+'GR';
@@ -465,9 +478,11 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     zone.depth = $("#Depth").slider('value');
     zone.height = $("#Height").slider('value');
 
+    /*
     if ($("#Win").prop("checked")) {
       zone.Window = $("#WinGR").slider('value');
     }
+    */
 
     if ($("#NWin").prop("checked")) {
       zone.northWindow = $("#NWinGR").slider('value');

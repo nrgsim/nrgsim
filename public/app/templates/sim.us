@@ -105,7 +105,7 @@
 
           <div id="input-wrapper-facade" class="input-wrapper-section">
             <div class="control">
-              <label><input type="checkbox" id="bio-pcm" class="group-disable">Bio PCM</input></label>
+              <label><input type="checkbox" id="bio-pcm" class="group-disable" checked="checked">Bio PCM</input></label>
             </div>
             <div class="control half">
               <label>M Value<br/>Fix this</label>
@@ -135,33 +135,26 @@
               <h3>Window</h3>
               <div>
                 <div class="control">
-                  <label><input type="checkbox" id="Win" class="group-disable"><%= $.i18n('Glazed') %></input></label>
-                  <div class="indent">
-                    <label><%= $.i18n('sim-glaze-ratio') %> <span id="WinGRDisp" style="display:none"></span></label>
-                    <div id="WinGR"></div>
-                  </div>
-                  <div class="control">
-                    <label><%= $.i18n('Window U-Value') %> <span id="Window_U_ValueDisp"></span></label>
-                    <div id="Window_U_Value"></div>
-                  </div>
-                  <div class="control">
-                    <label><%= $.i18n('Solar Heat Gain Coeffcient') %> <span id="Window_SHGCDisp"></span></label>
-                    <div id="Window_SHGC"></div>
-                 </div>
+                  <label><%= $.i18n('sim-glaze-ratio') %> <span id="WinGRDisp" style="display:none"></span></label>
+                  <div id="WinGR"></div>
                 </div>
-                <div class="controls">
+                <div class="control">
+                  <label><%= $.i18n('Window U-Value') %> <span id="Window_U_ValueDisp"></span></label>
+                  <div id="Window_U_Value"></div>
+                </div>
+                <div class="control">
+                  <label><%= $.i18n('Solar Heat Gain Coeffcient') %> <span id="Window_SHGCDisp"></span></label>
+                  <div id="Window_SHGC"></div>
+               </div>
+                <div class="control">
                   <label><input type="checkbox" id="shade">Shade</input></label>
                 </div>
-                <div class="controls">
+                <div class="control">
                   <label><input type="checkbox" id="shade-fin">Shade Fin</input></label>
                 </div>
               </div>
             </div>
           </div>
-
-<!--Shade [YES/NO] IF YES THEN SHADE SIZE AS FRACTION OF WINDOW SIZE
-Side Fin [YES/NO] IF YES THEN FIN SIZE AS FRACTION OF WINDOW SIZE -->
-
         </div>
       </div>
     </div>
