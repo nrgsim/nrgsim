@@ -28,45 +28,63 @@
         <div>
           <div>
             <select id="input-menu" class="input-menu">
-              <option value="site">Site</option>
-              <option value="zone">Zone</option>
-              <option value="hvac">HVAC</option>
-              <option value="facade">Facade</option>
+              <option value="site"><%= $.i18n('sim-site') %></option>
+              <option value="zone"><%= $.i18n('sim-zone') %></option>
+              <option value="hvac"><%= $.i18n('sim-hvac') %></option>
+              <option value="facade"><%= $.i18n('sim-facade') %></option>
             </select>
           </div>
         </div>
 
         <div>
           <div id="input-wrapper-site" class="input-wrapper-section">
-           <div class="control"> 
-class="selectfile" id="Location" "Choose Weatherfile" 
- class="selectmenu" id="Terrain"
-                    <div>
-              <option value="city">City</option>
-              <option value="suburbs">Suburbs</option>
-              <option value="country">Country</option>
-              <option value="ocean">Ocean</option>
-              <option value="urban">Urban</option>
-          </div>
-           </div>
-          </div>
-          <div id="input-wrapper-zone" class="input-wrapper-section">
-             <div class="control">
-          <label><%= $.i18n('Orientation') %> <span id="orientationDisp"></span></label>
-          <div id="orientation"></div>
-        </div>
             <div class="control">
-          <label><%= $.i18n('Wall Width') %> <span id="WidthDisp"></span></label>
-          <div id="Width"></div>
-        </div>
+              <label>Continent</label>
+              <select id="continent">
+              </select>
+            </div>
+            <div class="control">
+              <label>Country</label>
+              <select id="country">
+              </select>
+            </div>
+            <div class="control">
+              <label>Region</label>
+              <select id="region">
+              </select>
+            </div>
+            <div class="control">
+              <label>Terrain</label>
+              <select id="terrain">
+                <option value="city">City</option>
+                <option value="suburbs">Suburbs</option>
+                <option value="country">Country</option>
+                <option value="ocean">Ocean</option>
+                <option value="urban">Urban</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="input-wrapper-zone" class="input-wrapper-section">
+            <div class="control">
+              <label><%= $.i18n('Orientation') %> <span id="orientationDisp"></span></label>
+              <div id="orientation"></div>
+            </div>
+            <div class="control">
+              <label><%= $.i18n('Wall Width') %> <span id="WidthDisp"></span></label>
+              <div id="Width"></div>
+            </div>
             <div class="control">
               <label><%= $.i18n('Ceiling Height') %> <span id="HeightDisp"></span></label>
               <div id="Height"></div>
             </div>
             <div class="control">
-              <label><%= $.i18n('Occupency Type') %> <span id="occupency-typeDisp"></label>
-              <div id="occupency-type"></div>
-              "Office", "School", "Residential"
+              <label><%= $.i18n('sim-occupancy-type') %> <span id="occupency-typeDisp"></label>
+              <select id="occupancy-type">
+                <option value="office"><%= $.i18n('sim-office') %></option>
+                <option value="school"><%= $.i18n('sim-school') %></option>
+                <option value="residential"><%= $.i18n('sim-residential') %></option>
+              </select>
             </div>
             <div class="control">
               <label><%= $.i18n('Infiltration Rate [ACH]') %> <span id="infiltration-rateDisp"></label>
@@ -74,43 +92,8 @@ class="selectfile" id="Location" "Choose Weatherfile"
             </div>
           </div>
 
-          <div id="input-wrapper-facade" class="input-wrapper-section">
-            <div class="accordion">
-            </div>
-              <h3>Wall</h3> Drop Down List Of Wall Construction Type: "Steal Framed", "Mass", "Metal Building", "Wood Framed And Other"
-                <div>
-        <div class="control">
-          <label><%= $.i18n('Insulation R-Value') %> <span id="insulation-levelDisp"></label>
-          <div id="insulation-level"></div>
-        </div>
-        BioPCM [YES/NO]
-         If Yes then dual vertical slider: Q-Value/Temperature 23,25,27 & Thermal Capacity/M-Value 27,51,91
-              <h3>Window</h3>
-              <div>
-                <div class="control">
-                  <label><input type="checkbox" id="Win" class="group-disable"><%= $.i18n('Glazed') %></input></label>
-                  <div class="indent">
-                    <label><%= $.i18n('sim-glaze-ratio') %> <span id="WinGRDisp" style="display:none"></span></label>
-                    <div id="WinGR"></div>
-                     <div class="control">
-                  <label><%= $.i18n('Window U-Value') %> <span id="Window_U_ValueDisp"></span></label>
-                    <div id="Window_U_Value"></div>
-                 </div>
-                  <div class="control">
-                  <label><%= $.i18n('Solar Heat Gain Coeffcient') %> <span id="Window_SHGCDisp"></span></label>
-                    <div id="Window_SHGC"></div>
-                 </div>
-Shade [YES/NO] IF YES THEN SHADE SIZE AS FRACTION OF WINDOW SIZE
-Side Fin [YES/NO] IF YES THEN FIN SIZE AS FRACTION OF WINDOW SIZE 
-                  </div>
-                </div>
-                <hr/>
-              </div>
-            </div>
-          </div>
-
           <div id="input-wrapper-hvac" class="input-wrapper-section">
-             <div class="control">
+            <div class="control">
               <label><%= $.i18n('Cooling Setpoint') %> <span id="CoolingSPDisp"></label>
               <div id="CoolingSP">&nbsp;</div>
             </div>
@@ -119,6 +102,65 @@ Side Fin [YES/NO] IF YES THEN FIN SIZE AS FRACTION OF WINDOW SIZE
               <div id="HeatingSP">&nbsp;</div>
             </div>
           </div>
+
+          <div id="input-wrapper-facade" class="input-wrapper-section">
+            <div class="control">
+              <label><input type="checkbox" id="bio-pcm" class="group-disable">Bio PCM</input></label>
+            </div>
+            <div class="control half">
+              <label>M Value<br/>Fix this</label>
+              <div id="mvalue"></div>
+            </div>
+            <div class="control half">
+              <label>M Value<br/>Fix this</label>
+              <div id="qvalue"></div>
+            </div>
+            <div class="accordion">
+              <h3>Wall</h3>
+              <div>
+                <div class="control">
+                  <label>Construction Type</label>
+                  <select id="construction-type">
+                    <option value="">Steel Framed</option>
+                    <option value="">Mass</option>
+                    <option value="">Metal Building</option>
+                    <option value="">Wood Framed And Other</option>
+                  </select>
+                </div>
+                <div class="control">
+                  <label><%= $.i18n('Insulation R-Value') %> <span id="insulation-levelDisp"></label>
+                  <div id="insulation-level"></div>
+                </div>
+              </div>
+              <h3>Window</h3>
+              <div>
+                <div class="control">
+                  <label><input type="checkbox" id="Win" class="group-disable"><%= $.i18n('Glazed') %></input></label>
+                  <div class="indent">
+                    <label><%= $.i18n('sim-glaze-ratio') %> <span id="WinGRDisp" style="display:none"></span></label>
+                    <div id="WinGR"></div>
+                  </div>
+                  <div class="control">
+                    <label><%= $.i18n('Window U-Value') %> <span id="Window_U_ValueDisp"></span></label>
+                    <div id="Window_U_Value"></div>
+                  </div>
+                  <div class="control">
+                    <label><%= $.i18n('Solar Heat Gain Coeffcient') %> <span id="Window_SHGCDisp"></span></label>
+                    <div id="Window_SHGC"></div>
+                 </div>
+                </div>
+                <div class="controls">
+                  <label><input type="checkbox" id="shade">Shade</input></label>
+                </div>
+                <div class="controls">
+                  <label><input type="checkbox" id="shade-fin">Shade Fin</input></label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+<!--Shade [YES/NO] IF YES THEN SHADE SIZE AS FRACTION OF WINDOW SIZE
+Side Fin [YES/NO] IF YES THEN FIN SIZE AS FRACTION OF WINDOW SIZE -->
 
         </div>
       </div>

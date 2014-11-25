@@ -1,8 +1,4 @@
 
-.clear-both {
-  clear: both;
-}
-
 #left-panel-toggle {
   float: right;
   margin-bottom: 10px;
@@ -40,6 +36,20 @@
     .control {
       margin-left: 5px;
       margin-right: 5px;
+
+      &.half {
+        display: inline-block;
+        width: @side-panel-max-width/2 - 20;
+        text-align: center;
+
+        .ui-slider-vertical {
+          margin-left: (@side-panel-max-width/2 - 20) / 2;
+        }
+      }
+    }
+
+    .accordion {
+      margin-top: 30px;
     }
 
     label {
@@ -47,6 +57,7 @@
       margin-top: 10px;
       margin-bottom: 3px;
     }
+
   }
 }
 

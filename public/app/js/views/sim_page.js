@@ -283,6 +283,8 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     //SB must be higher than SP or error $("#CoolingSB").slider({ min: 23, max: 40, value: 27, slide: self.updateSliderDisplay })
     $("#HeatingSP").slider({ min: 18, max: 22, value: 21, slide: self.updateSliderDisplay });
     //SB must be higher than SP or error $("#HeatingSB").slider({ min: 12, max: 20, value: 18, slide: self.updateSliderDisplay })
+    $('#mvalue').slider({ min: 23, max: 27, step: 2, value: 23, orientation: 'vertical' });
+    $('#qvalue').slider({ min: 23, max: 27, step: 2, value: 23, orientation: 'vertical' });
 
 
    $("#run-button").button();
