@@ -46,6 +46,12 @@
             <div class="control">
               <label>Continent</label>
               <select id="continent">
+               <option value="Africa">Africa</option>
+                <option value="Asia">Asia</option>
+                <option value="South America">South America</option>
+                <option value="North and Central America">North and Central America</option>
+                <option value="Southwest Pacific">Southwest Pacific</option>
+                <option value="Europe">Europe</option>
               </select>
             </div>
             <div class="control">
@@ -109,17 +115,6 @@
           </div>
 
           <div id="input-wrapper-facade" class="input-wrapper-section">
-            <div class="control">
-              <label><input type="checkbox" id="bio-pcm" class="group-disable" checked="checked">Bio PCM</label>
-            </div>
-            <div class="control half">
-              <label>M Value<br/>Fix this</label>
-              <div id="mvalue"></div>
-            </div>
-            <div class="control half">
-              <label>M Value<br/>Fix this</label>
-              <div id="qvalue"></div>
-            </div>
             <div class="accordion">
               <h3>Wall</h3>
               <div>
@@ -136,6 +131,17 @@
                   <label><%= $.i18n('Insulation R-Value') %> <span id="insulation-levelDisp"></span></label>
                   <div id="insulation-level"></div>
                 </div>
+                <div class="control">
+              <label><input type="checkbox" id="bio-pcm" class="group-disable" checked="checked">BioPCM</label>
+            </div>
+            <div class="control half">
+              <label>M-Value<br/>Btu/sf</label>
+              <div id="mvalue"></div>
+            </div>
+            <div class="control half">
+              <label>Q-Value<br/>Degree C°</label>
+              <div id="qvalue"></div>
+            </div>
               </div>
               <h3>Window</h3>
               <div>
