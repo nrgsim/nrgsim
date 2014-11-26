@@ -26,15 +26,6 @@
       <div class="panel-content">
 
         <div id="input-tabs">
-          <!--div>
-            <select id="input-menu" class="input-menu">
-              <option value="site"><%= $.i18n('sim-site') %></option>
-              <option value="zone"><%= $.i18n('sim-zone') %></option>
-              <option value="hvac"><%= $.i18n('sim-hvac') %></option>
-              <option value="facade"><%= $.i18n('sim-facade') %></option>
-            </select>
-          </div>
-        </div-->
           <ul>
             <li><a href="#input-wrapper-site"><%= $.i18n('sim-site') %></a></li>
             <li><a href="#input-wrapper-zone"><%= $.i18n('sim-zone') %></a></li>
@@ -118,9 +109,12 @@
           </div>
 
           <div id="input-wrapper-facade" class="input-wrapper-section">
-            <div class="accordion">
-              <h3>Wall</h3>
-              <div>
+            <div id="facade-tabs">
+              <ul>
+                <li><a href="#input-wrapper-facade-wall">Wall</a></li>
+                <li><a href="#input-wrapper-facade-window">Window</a></li>
+              </ul>
+              <div id="input-wrapper-facade-wall">
                 <div class="control">
                   <label>Construction Type</label>
                   <select id="construction-type">
@@ -131,27 +125,27 @@
                   </select>
                 </div>
                 <div class="control">
-              <label><%= $.i18n('Infiltration Rate [ACH]') %> <span id="infiltration-rateDisp"></span></label>
-              <div id="infiltration-rate"></div>
-            </div>
+                  <label><%= $.i18n('Infiltration Rate [ACH]') %> <span id="infiltration-rateDisp"></span></label>
+                  <div id="infiltration-rate"></div>
+                </div>
                 <div class="control">
                   <label><%= $.i18n('Insulation R-Value') %> <span id="insulation-levelDisp"></span></label>
                   <div id="insulation-level"></div>
                 </div>
                 <div class="control">
-              <label><input type="checkbox" id="bio-pcm" class="group-disable" checked="checked">BioPCM</label>
-            </div>
-            <div class="control half">
-              <label>M-Value<br/>[Btu/sf]</label>
-              <div id="mvalue"></div>
-            </div>
-            <div class="control half">
-              <label>Q-Value<br/>[Degree C°]</label>
-              <div id="qvalue"></div>
-            </div>
+                  <label><input type="checkbox" id="bio-pcm" class="group-disable" checked="checked">BioPCM</label>
+                </div>
+                <div class="control half">
+                  <label>M-Value<br/>[Btu/sf]</label>
+                  <div id="mvalue"></div>
+                </div>
+                <div class="control half">
+                  <label>Q-Value<br/>[Degree C°]</label>
+                  <div id="qvalue"></div>
+                </div>
               </div>
-              <h3>Window</h3>
-              <div>
+
+              <div id="input-wrapper-facade-window">
                 <div class="control">
                   <label><%= $.i18n('sim-glaze-ratio') %> <span id="WinGRDisp"></span></label>
                   <div id="WinGR"></div>

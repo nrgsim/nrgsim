@@ -417,8 +417,8 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     });
 
 
-    $('.accordion').accordion({ autoHeight: false });
     $( '#input-tabs' ).tabs({ active: 0, heightStyle: 'fill' });
+    $( '#facade-tabs' ).tabs({ active: 0, heightStyle: 'content' });
 
     // This forces the tabs to redraw correctly. Not sure why they don't without this.
     $('.input-wrapper-section').hide();
