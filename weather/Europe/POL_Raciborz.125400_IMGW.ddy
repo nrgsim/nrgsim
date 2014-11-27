@@ -1,0 +1,536 @@
+ ! The following Location and Design Day data are produced as possible from the indicated data source.
+ ! Wind Speeds follow the indicated design conditions rather than traditional values (6.7 m/s heating, 3.35 m/s cooling)
+ ! No special attempts at re-creating or determining missing data parts (e.g. Wind speed or direction)
+ ! are done.  Therefore, you should look at the data and fill in any incorrect values as you desire.
+  
+ Site:Location,
+  Raciborz_POL Design_Conditions,     !- Location Name
+      50.08,     !- Latitude {N+ S-}
+      18.20,     !- Longitude {W- E+}
+       1.00,     !- Time Zone Relative to GMT {GMT+/-}
+     206.00;     !- Elevation {m}
+ 
+ !  WMO=125400 Time Zone=EUW: (GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna
+ !  Data Source=ASHRAE 2009 Annual Design Conditions
+ RunPeriodControl:DaylightSavingTime,
+   Last Sunday in March,    !- StartDate
+   Last Sunday in October;    !- EndDate
+  
+ ! Using Design Conditions from "Climate Design Data 2009 ASHRAE Handbook"
+ ! Raciborz_POL Extreme Annual Wind Speeds, 1%=10.1m/s, 2.5%=8.6m/s, 5%=7.5m/s
+ ! Raciborz_POL Extreme Annual Temperatures, Max Drybulb=N/A Min Drybulb=N/A
+  
+ ! Raciborz_POL Annual Heating Design Conditions Wind Speed=2.1m/s Wind Dir=150
+ ! Coldest Month=JAN
+ ! Raciborz_POL Annual Heating 99.6%, MaxDB=-16°C
+ SizingPeriod:DesignDay,
+  Raciborz Ann Htg 99.6% Condns DB,     !- Name
+          1,      !- Month
+         21,      !- Day of Month
+  WinterDesignDay,!- Day Type
+        -16,      !- Maximum Dry-Bulb Temperature {C}
+        0.0,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+        -16,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+        2.1,      !- Wind Speed {m/s} design conditions vs. traditional 6.71 m/s (15 mph)
+        150,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+  ASHRAEClearSky, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+           ,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+           ,      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+       0.00;      !- Clearness {0.0 to 1.1}
+ 
+ ! Raciborz_POL Annual Heating 99%, MaxDB=-12.4°C
+ SizingPeriod:DesignDay,
+  Raciborz Ann Htg 99% Condns DB,     !- Name
+          1,      !- Month
+         21,      !- Day of Month
+  WinterDesignDay,!- Day Type
+      -12.4,      !- Maximum Dry-Bulb Temperature {C}
+        0.0,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+      -12.4,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+        2.1,      !- Wind Speed {m/s} design conditions vs. traditional 6.71 m/s (15 mph)
+        150,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+  ASHRAEClearSky, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+           ,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+           ,      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+       0.00;      !- Clearness {0.0 to 1.1}
+ 
+ ! Raciborz_POL Annual Humidification 99.6% Design Conditions DP=>MCDB, DP=-18.4°C
+ SizingPeriod:DesignDay,
+  Raciborz Ann Hum_n 99.6% Condns DP=>MCDB,     !- Name
+          1,      !- Month
+         21,      !- Day of Month
+  WinterDesignDay,!- Day Type
+      -15.5,      !- Maximum Dry-Bulb Temperature {C}
+        0.0,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+    Dewpoint,     !- Humidity Condition Type
+      -18.4,      !- Dewpoint at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+        2.1,      !- Wind Speed {m/s} design conditions vs. traditional 6.71 m/s (15 mph)
+        150,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+  ASHRAEClearSky, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+           ,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+           ,      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+       0.00;      !- Clearness {0.0 to 1.1}
+ 
+ ! Raciborz_POL Annual Humidification 99% Design Conditions DP=>MCDB, DP=-15°C
+ SizingPeriod:DesignDay,
+  Raciborz Ann Hum_n 99% Condns DP=>MCDB,     !- Name
+          1,      !- Month
+         21,      !- Day of Month
+  WinterDesignDay,!- Day Type
+      -11.8,      !- Maximum Dry-Bulb Temperature {C}
+        0.0,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+    Dewpoint,     !- Humidity Condition Type
+        -15,      !- Dewpoint at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+        2.1,      !- Wind Speed {m/s} design conditions vs. traditional 6.71 m/s (15 mph)
+        150,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+  ASHRAEClearSky, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+           ,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+           ,      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+       0.00;      !- Clearness {0.0 to 1.1}
+ 
+ ! Raciborz_POL Annual Heating Wind 99.6% Design Conditions WS=>MCDB, WS=11.7m/s
+ SizingPeriod:DesignDay,
+  Raciborz Ann Htg Wind 99.6% Condns WS=>MCDB,     !- Name
+          1,      !- Month
+         21,      !- Day of Month
+  WinterDesignDay,!- Day Type
+        0.5,      !- Maximum Dry-Bulb Temperature {C}
+        0.0,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+        0.5,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+       11.7,      !- Wind Speed {m/s} design conditions vs. traditional 6.71 m/s (15 mph)
+        150,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+  ASHRAEClearSky, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+           ,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+           ,      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+       0.00;      !- Clearness {0.0 to 1.1}
+ 
+ ! Raciborz_POL Annual Heating Wind 99% Design Conditions WS=>MCDB, WS=10.5m/s
+ SizingPeriod:DesignDay,
+  Raciborz Ann Htg Wind 99% Condns WS=>MCDB,     !- Name
+          1,      !- Month
+         21,      !- Day of Month
+  WinterDesignDay,!- Day Type
+          1,      !- Maximum Dry-Bulb Temperature {C}
+        0.0,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+          1,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+       10.5,      !- Wind Speed {m/s} design conditions vs. traditional 6.71 m/s (15 mph)
+        150,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+  ASHRAEClearSky, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+           ,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+           ,      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+       0.00;      !- Clearness {0.0 to 1.1}
+ 
+ ! Raciborz Annual Cooling Design Conditions Wind Speed=3.6m/s Wind Dir=180
+ ! Hottest Month=JUL
+ ! Raciborz_POL Annual Cooling (DB=>MWB) .4%, MaxDB=29.6°C MWB=20.1°C
+ SizingPeriod:DesignDay,
+  Raciborz Ann Clg .4% Condns DB=>MWB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       29.6,      !- Maximum Dry-Bulb Temperature {C}
+       10.6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       20.1,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        180,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+       0.54,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.731;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Raciborz_POL Annual Cooling (DB=>MWB) 1%, MaxDB=27.6°C MWB=19.4°C
+ SizingPeriod:DesignDay,
+  Raciborz Ann Clg 1% Condns DB=>MWB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       27.6,      !- Maximum Dry-Bulb Temperature {C}
+       10.6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       19.4,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        180,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+       0.54,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.731;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Raciborz_POL Annual Cooling (DB=>MWB) 2%, MaxDB=25.7°C MWB=18.5°C
+ SizingPeriod:DesignDay,
+  Raciborz Ann Clg 2% Condns DB=>MWB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       25.7,      !- Maximum Dry-Bulb Temperature {C}
+       10.6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       18.5,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        180,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+       0.54,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.731;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Raciborz_POL Annual Cooling (WB=>MDB) .4%, MDB=27°C WB=21.1°C
+ SizingPeriod:DesignDay,
+  Raciborz Ann Clg .4% Condns WB=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+         27,      !- Maximum Dry-Bulb Temperature {C}
+       10.6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       21.1,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        180,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+       0.54,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.731;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Raciborz_POL Annual Cooling (WB=>MDB) 1%, MDB=25.9°C WB=20.1°C
+ SizingPeriod:DesignDay,
+  Raciborz Ann Clg 1% Condns WB=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       25.9,      !- Maximum Dry-Bulb Temperature {C}
+       10.6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       20.1,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        180,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+       0.54,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.731;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Raciborz_POL Annual Cooling (WB=>MDB) 2%, MDB=24.4°C WB=19.2°C
+ SizingPeriod:DesignDay,
+  Raciborz Ann Clg 2% Condns WB=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       24.4,      !- Maximum Dry-Bulb Temperature {C}
+       10.6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       19.2,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        180,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+       0.54,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.731;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Raciborz_POL Annual Cooling (DP=>MDB) .4%, MDB=24.1°C DP=19°C HR=0.0141
+ SizingPeriod:DesignDay,
+  Raciborz Ann Clg .4% Condns DP=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       24.1,      !- Maximum Dry-Bulb Temperature {C}
+       10.6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+    Dewpoint,     !- Humidity Condition Type
+         19,      !- Dewpoint at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        180,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+       0.54,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.731;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Raciborz_POL Annual Cooling (DP=>MDB) 1%, MDB=22.8°C DP=18°C HR=0.0133
+ SizingPeriod:DesignDay,
+  Raciborz Ann Clg 1% Condns DP=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       22.8,      !- Maximum Dry-Bulb Temperature {C}
+       10.6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+    Dewpoint,     !- Humidity Condition Type
+         18,      !- Dewpoint at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        180,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+       0.54,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.731;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Raciborz_POL Annual Cooling (DP=>MDB) 2%, MDB=21.7°C DP=17.2°C HR=0.0126
+ SizingPeriod:DesignDay,
+  Raciborz Ann Clg 2% Condns DP=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       21.7,      !- Maximum Dry-Bulb Temperature {C}
+       10.6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+    Dewpoint,     !- Humidity Condition Type
+       17.2,      !- Dewpoint at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        180,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+       0.54,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.731;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Raciborz_POL Annual Cooling (Enthalpy=>MDB) .4%, MDB=26.7°C Enthalpy=62100.0J/kg
+ SizingPeriod:DesignDay,
+  Raciborz Ann Clg .4% Condns Enth=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       26.7,      !- Maximum Dry-Bulb Temperature {C}
+       10.6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+   Enthalpy,      !- Humidity Condition Type
+           ,      !- Wetbulb or Dewpoint at Maximum Dry-Bulb
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+    62100.0,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        180,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+       0.54,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.731;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Raciborz_POL Annual Cooling (Enthalpy=>MDB) 1%, MDB=25.8°C Enthalpy=58300.0J/kg
+ SizingPeriod:DesignDay,
+  Raciborz Ann Clg 1% Condns Enth=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       25.8,      !- Maximum Dry-Bulb Temperature {C}
+       10.6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+   Enthalpy,      !- Humidity Condition Type
+           ,      !- Wetbulb or Dewpoint at Maximum Dry-Bulb
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+    58300.0,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        180,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+       0.54,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.731;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Raciborz_POL Annual Cooling (Enthalpy=>MDB) 2%, MDB=24.6°C Enthalpy=55400.0J/kg
+ SizingPeriod:DesignDay,
+  Raciborz Ann Clg 2% Condns Enth=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       24.6,      !- Maximum Dry-Bulb Temperature {C}
+       10.6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Schedule Name
+   Enthalpy,      !- Humidity Condition Type
+           ,      !- Wetbulb or Dewpoint at Maximum Dry-Bulb
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+    55400.0,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+     98875.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        180,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+       0.54,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.731;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
