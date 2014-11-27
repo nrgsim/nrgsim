@@ -33,16 +33,16 @@
             <li><a href="#input-wrapper-facade"><%= $.i18n('sim-facade') %></a></li>
           </ul>
 
-          <div id="input-wrapper-site" class="input-wrapper-section">
+          <div id="input-wrapper-site" class="input-wrapper-section" style="display:none">
             <div class="control">
               <label>Continent</label>
               <select id="continent">
-               <option value="Africa">Africa</option>
-                <option value="Asia">Asia</option>
-                <option value="South America">South America</option>
-                <option value="North and Central America">North and Central America</option>
-                <option value="Southwest Pacific">Southwest Pacific</option>
-                <option value="Europe">Europe</option>
+                <option value="1">Africa</option>
+                <option value="2">Asia</option>
+                <option value="3">South America</option>
+                <option value="4">North and Central America</option>
+                <option value="5">Southwest Pacific</option>
+                <option value="6">Europe</option>
               </select>
             </div>
             <div class="control">
@@ -64,17 +64,17 @@
                 <option value="ocean">Ocean</option>
                 <option value="urban">Urban</option>
               </select>
-               <div class="control">
-                  <label>Building Type</label>
-                  <select id="building-type">
-                    <option value="">Low Rise</option>
-                    <option value="">High Rise</option>
-                  </select>
-                </div>
+            </div>
+            <div class="control">
+              <label>Building Type</label>
+              <select id="building-type">
+                <option value="">Low Rise</option>
+                <option value="">High Rise</option>
+              </select>
             </div>
           </div>
 
-          <div id="input-wrapper-zone" class="input-wrapper-section">
+          <div id="input-wrapper-zone" class="input-wrapper-section" style="display:none">
             <div class="control">
               <label><%= $.i18n('Orientation') %> <span id="orientationDisp"></span></label>
               <div id="orientation"></div>
@@ -97,7 +97,7 @@
             </div>
           </div>
 
-          <div id="input-wrapper-hvac" class="input-wrapper-section">
+          <div id="input-wrapper-hvac" class="input-wrapper-section" style="display:none">
             <div class="control">
               <label><%= $.i18n('Cooling Setpoint') %> <span id="CoolingSPDisp"></span></label>
               <div id="CoolingSP">&nbsp;</div>
@@ -114,6 +114,7 @@
                 <li><a href="#input-wrapper-facade-wall">Wall</a></li>
                 <li><a href="#input-wrapper-facade-window">Window</a></li>
               </ul>
+
               <div id="input-wrapper-facade-wall">
                 <div class="control">
                   <label>Construction Type</label>
@@ -145,7 +146,7 @@
                 </div>
               </div>
 
-              <div id="input-wrapper-facade-window">
+              <div id="input-wrapper-facade-window" style="display:none">
                 <div class="control">
                   <label><%= $.i18n('sim-glaze-ratio') %> <span id="WinGRDisp"></span></label>
                   <div id="WinGR"></div>
@@ -157,7 +158,7 @@
                 <div class="control">
                   <label><%= $.i18n('Solar Heat Gain Coeffcient') %> <span id="Window_SHGCDisp"></span></label>
                   <div id="Window_SHGC"></div>
-               </div>
+                </div>
                 <div class="control">
                   <label><%= $.i18n('sim-overhang') %> <span id="WinOverhangRDisp"></span></label>
                   <div id="WinOverhangR"></div>
@@ -167,6 +168,7 @@
                   <div id="WinFinR"></div>
                 </div>
               </div>
+            
             </div>
           </div>
         </div>

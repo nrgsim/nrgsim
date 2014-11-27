@@ -27,7 +27,8 @@ window.app.views.SimPage = Backbone.View.extend({
     'click #run-button' : 'runSimulation',
     'change .group-disable' : 'handleSliderCheckboxChange',
     'click #left-panel-toggle' : 'toggleInputPanel',
-    'change #bio-pcm' : 'handleBioPCMChange'
+    'change #bio-pcm' : 'handleBioPCMChange',
+    'change #continent' : 'handleContinentChange'
   },
 
   // Create a transform matrix that will put the center of a zone at the origin (0, 0, 0)
@@ -395,6 +396,19 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     $(sliderId+'Disp').text(val);
   },
 
+  handleContinentChange: function(evt) {
+    var continent = evt.currentTarget.value;
+    $.get('simulation/countries/'+continent, function(d) {
+      var ctrl = $('#country');
+      ctrl.empty();
+      _.each(d.values, function(object) {
+        _.each(object, function(value, key) {
+          ctrl.append($("<option />").val(key).text(value.name));
+        });
+      });
+    });
+  },
+
   createRenderer: function(canvas) {
     var renderer = new THREE.WebGLRenderer();
     renderer.setClearColorHex(0xffffff, 1.0);
@@ -422,14 +436,16 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     });
 
 
-    $( '#input-tabs' ).tabs({ active: 0, heightStyle: 'fill' });
-    $( '#facade-tabs' ).tabs({ active: 0, heightStyle: 'content' });
+    $('#facade-tabs').tabs({ active: 0, heightStyle: 'content' });
+    $('#input-tabs').tabs({ active: 0, heightStyle: 'fill' });
 
     // This forces the tabs to redraw correctly. Not sure why they don't without this.
+    /*
     $('.input-wrapper-section').hide();
     window.setTimeout(function() {
-      $('#input-tabs' ).tabs('option', 'active', 3).tabs('option', 'active', 0).refresh();
+      $('#input-tabs').tabs('option', 'active', 3).tabs('option', 'active', 0);
     }, 10);
+    */
 
 
     // This help stuff is kludgy just to show that we can do it. It should be implemented better when we really have help.
