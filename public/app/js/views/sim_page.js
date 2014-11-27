@@ -4,6 +4,8 @@ window.app.views.SimPage = Backbone.View.extend({
 
   template: JST["app/templates/sim.us"],
 
+  MVALUES: { 1: 27, 2: 51, 3: 91 },
+
   camera: null,
   scene: null,
   renderer: null,
@@ -284,10 +286,8 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     $("#HeatingSP").slider({ min: 18, max: 22, value: 21, step: 1, slide: self.updateSliderDisplay });
     //SB must be higher than SP or error $("#HeatingSB").slider({ min: 12, max: 20, value: 18, slide: self.updateSliderDisplay })
     
-    //$('#mvalue').slider({ min: 27, max: 91, step: 2, value: 51, slide: self.updateSliderDisplay });
-    //$('#qvalue').slider({ min: 23, max: 25, value: 27, step: 2, slide: self.updateSliderDisplay });
-    $('#mvalue').slider({ min: 27, max: 91, step: 2, value: 51, orientation: 'vertical'});
-    $('#qvalue').slider({ min: 23, max: 25, step: 2, value: 27, orientation: 'vertical'});
+    $('#mvalue').slider({ min: 1, max: 3, step: 1, value: 2, orientation: 'vertical', slide: self.updateMValueSliderDisplay });
+    $('#qvalue').slider({ min: 23, max: 27, step: 2, value: 25, orientation: 'vertical', slide: self.updateSliderDisplay });
 
 
    $("#run-button").button();
@@ -298,9 +298,6 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.setSliderDisplayValue('#FloorHeight');
 
     this.setSliderDisplayValue('#orientation');
-
-    this.setSliderDisplayValue('#mvalue');
-    this.setSliderDisplayValue('#qvalue');
 
     this.setSliderDisplayValue('#CoolingSP');
     this.setSliderDisplayValue('#HeatingSP');
@@ -314,6 +311,9 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.setSliderDisplayValue('#Window_SHGC');
     this.setSliderDisplayValue('#WinOverhangR');
     this.setSliderDisplayValue('#WinFinR');
+
+    this.setSliderDisplayValue('#mvalue', 51);
+    this.setSliderDisplayValue('#qvalue');
 
     //Detailed inputs, may use later 
     //this.setSliderDisplayValue('#minventilation-rate');
@@ -381,6 +381,11 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
   updateSliderDisplay: function(event, ui) {
     this.setSliderDisplayValue('#'+event.target.id, ui.value);
+  },
+
+  updateMValueSliderDisplay: function(event, ui) {
+    ui.value = this.MVALUES[ui.value];
+    this.updateSliderDisplay(event, ui);
   },
 
   setSliderDisplayValue: function(sliderId, val) {
