@@ -406,6 +406,8 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
         _.each(object, function(value, key) {
           ctrl.append($("<option />").val(key).text(value.name));
         });
+        $('#country').removeAttr('disabled');
+        $('#region').empty().attr('disabled', 'disabled');
       });
     });
   },
@@ -418,6 +420,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
       ctrl.empty();
       _.each(d[country].values, function(object) {
         ctrl.append($("<option />").val(object.file).text(object.name));
+        $('#region').removeAttr('disabled');
       });
     });
   },
