@@ -84,133 +84,859 @@ module.exports = {
       "1": {
         name: "Africa",
         values: [
-          { "DZA": { name: "Algiers", values: [] } },
-          { "EGY": { name: "Egypt", values: [] } },
-          { "ETH": { name: "Ethiopia", values: [] } },
-          { "GHA": { name: "Ghana", values: [] } },
-          { "KEN": { name: "Kenya", values: [] } },
-          { "LBY": { name: "Libyan Arab Jamahiriya", values: [] } },
-          { "MAR": { name: "Morocco", values: [] } },
-          { "MDG": { name: "Madagascar", values: [] } },
-          { "SEN": { name: "Senegal", values: [] } },
-          { "TUN": { name: "Tunisia", values: [] } },
-          { "ZAF": { name: "South Africa", values: [] } },
-          { "ZWE": { name: "Zimbabwe", values: [] } }
+          {
+            "DZA": {
+              name: "Algiers",
+              values: [
+                { name: "Algiers", file: "1_africa_wmo_region_1/DZA_Algiers.603900_IWEC.zip" }
+              ]
+            }
+          },
+          {
+            "EGY": {
+              name: "Egypt",
+              values: [
+                { name: "Al Minya 623870 (ETMY)", file: "1_africa_wmo_region_1/EGY_Al.Minya.623870_ETMY.zip" },
+                { name: "Alexandria 623180 (ETMY)", file: "1_africa_wmo_region_1/EGY_Alexandria.623180_ETMY.zip" },
+                { name: "Aswan 624140 (ETMY)", file: "1_africa_wmo_region_1/EGY_Aswan.624140_ETMY.zip" },
+                { name: "Aswan 624140 (IWEC)", file: "1_africa_wmo_region_1/EGY_Aswan.624140_IWEC.zip" },
+                { name: "Asyut 623930 (ETMY)", file: "1_africa_wmo_region_1/EGY_Asyut.623930_ETMY.zip" },
+                { name: "Cairo 623660 (IWEC)", file: "1_africa_wmo_region_1/EGY_Cairo.623660_IWEC.zip" },
+                { name: "Cairo Intl Airport 623660 (ETMY)", file: "1_africa_wmo_region_1/EGY_Cairo.Intl.Airport.623660_ETMY.zip" },
+                { name: "El Arish 623370 (ETMY)", file: "1_africa_wmo_region_1/EGY_El.Arish.623370_ETMY.zip" },
+                { name: "Helwan 623780 (ETMY)", file: "1_africa_wmo_region_1/EGY_Helwan.623780_ETMY.zip" },
+                { name: "Hurghada 624630 (ETMY)", file: "1_africa_wmo_region_1/EGY_Hurghada.624630_ETMY.zip" },
+                { name: "Ismailia 624400 (ETMY)", file: "1_africa_wmo_region_1/EGY_Ismailia.624400_ETMY.zip" },
+                { name: "Kharga 624350 (ETMY)", file: "1_africa_wmo_region_1/EGY_Kharga.624350_ETMY.zip" },
+                { name: "Luxor 624050 (ETMY)", file: "1_africa_wmo_region_1/EGY_Luxor.624050_ETMY.zip" }
+              ]
+            }
+          },
+          {
+            "ETH": {
+              name: "Ethiopia",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "GHA": {
+              name: "Ghana",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "KEN": {
+              name: "Kenya",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "LBY": {
+              name: "Libyan Arab Jamahiriya",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+             }
+           },
+          {
+            "MAR": {
+              name: "Morocco",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "MDG": {
+              name: "Madagascar",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "SEN": {
+              name: "Senegal",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "TUN": {
+              name: "Tunisia",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "ZAF": {
+              name: "South Africa",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "ZWE": {
+              name: "Zimbabwe",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          }
         ]
       },
       "2": {
         name: "Asia",
         values: [
-          { "ARE": { name: "United Arab Emirates", values: [] } },
-          { "BGD": { name: "Bangladesh", values: [] } },
-          { "CHN": { name: "China", values: [] } },
-          { "IND": { name: "India", values: [] } },
-          { "IRN": { name: "Iran - Islamic Republic of", values: [] } },
-          { "JPN": { name: "Japan", values: [] } },
-          { "KAZ": { name: "Kazakhstan", values: [] } },
-          { "KOR": { name: "Korea - Republic of", values: [] } },
-          { "KWT": { name: "Kuwait", values: [] } },
-          { "LKA": { name: "Sri Lanka", values: [] } },
-          { "MAC": { name: "Macau", values: [] } },
-          { "MDV": { name: "Maldives", values: [] } },
-          { "MNG": { name: "Mongolia", values: [] } },
-          { "NPL": { name: "Nepal", values: [] } },
-          { "PAK": { name: "Pakistan", values: [] } },
-          { "PRK": { name: "Korea - Democratic People's Republic of", values: [] } },
-          { "RUS": { name: "Russian Federation", values: [] } },
-          { "SAU": { name: "Saudi Arabia", values: [] } },
-          { "THA": { name: "Thailand", values: [] } },
-          { "TWN": { name: "Taiwan", values: [] } },
-          { "UZB": { name: "Uzbekistan", values: [] } },
-          { "VNM": { name: "Viet Nam", values: [] } },
+          {
+            "ARE": {
+              name: "United Arab Emirates",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "BGD": {
+              name: "Bangladesh",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "CHN": {
+              name: "China",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "IND": {
+              name: "India",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "IRN": {
+              name: "Iran - Islamic Republic of",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "JPN": {
+              name: "Japan",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "KAZ": {
+              name: "Kazakhstan",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "KOR": {
+              name: "Korea - Republic of",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "KWT": {
+              name: "Kuwait",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "LKA": {
+              name: "Sri Lanka",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "MAC": {
+              name: "Macau",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "MDV": {
+              name: "Maldives",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "MNG": {
+              name: "Mongolia",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "NPL": {
+              name: "Nepal",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "PAK": {
+              name: "Pakistan",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "PRK": {
+              name: "Korea - Democratic People's Republic of",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "RUS": {
+              name: "Russian Federation",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "SAU": {
+              name: "Saudi Arabia",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "THA": {
+              name: "Thailand",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "TWN": {
+              name: "Taiwan",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "UZB": {
+              name: "Uzbekistan",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "VNM": {
+              name: "Viet Nam",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
         ]
       },
       "3": {
         name: "South America",
         values: [
-          { "ARG": { name: "Argentina", values: [] } },
-          { "BOL": { name: "Bolivia", values: [] } },
-          { "BRA": { name: "Brazil", values: [] } },
-          { "CHL": { name: "Chile", values: [] } },
-          { "COL": { name: "Colombia", values: [] } },
-          { "ECU": { name: "Ecuador", values: [] } },
-          { "PER": { name: "Peru", values: [] } },
-          { "PRY": { name: "Paraguay", values: [] } },
-          { "URY": { name: "Uruguay", values: [] } },
-          { "VEN": { name: "Venezuela", values: [] } }
+          {
+            "ARG": {
+              name: "Argentina",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "BOL": {
+              name: "Bolivia",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "BRA": {
+              name: "Brazil",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "CHL": {
+              name: "Chile",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "COL": {
+              name: "Colombia",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "ECU": {
+              name: "Ecuador",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "PER": {
+              name: "Peru",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "PRY": {
+              name: "Paraguay",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "URY": {
+              name: "Uruguay",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "VEN": {
+              name: "Venezuela",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
         ]
       },
       "4": {
         name: "North and Central America",
         values: [
-          { "USA": { name: "United States", values: [] } },
-          { "CCZ": { name: "California Climate Zones", values: [] } },
-          { "CAN": { name: "Canada", values: [] } },
-          { "BLZ": { name: "Belize", values: [] } },
-          { "CUB": { name: "Cuba", values: [] } },
-          { "GTM": { name: "Guatemala", values: [] } },
-          { "HND": { name: "Honduras", values: [] } },
-          { "MEX": { name: "Mexico", values: [] } },
-          { "MTQ": { name: "Martinique", values: [] } },
-          { "NIC": { name: "Nicaragua", values: [] } },
-          { "PRI": { name: "Puerto Rico", values: [] } },
-          { "SLV": { name: "El Salvador", values: [] } },
-          { "VIR": { name: "Virgin Islands (U.S.)", values: [] } }
+          {
+            "USA": {
+              name: "United States",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "CCZ": {
+              name: "California Climate Zones",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "CAN": {
+              name: "Canada",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "BLZ": {
+              name: "Belize",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "CUB": {
+              name: "Cuba",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "GTM": {
+              name: "Guatemala",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "HND": {
+              name: "Honduras",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "MEX": {
+              name: "Mexico",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "MTQ": {
+              name: "Martinique",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "NIC": {
+              name: "Nicaragua",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "PRI": {
+              name: "Puerto Rico",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "SLV": {
+              name: "El Salvador",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "VIR": {
+              name: "Virgin Islands (U.S.)",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
         ]
       },
       "5": {
         name: "Southwest Pacific",
         values: [
-          { "AUS": { name: "Australia", values: [] } },
-          { "BRN": { name: "Brunei Darussalam", values: [] } },
-          { "FJI": { name: "Fiji", values: [] } },
-          { "GUM": { name: "Guam", values: [] } },
-          { "MHL": { name: "Marshall Islands", values: [] } },
-          { "MYS": { name: "Malaysia", values: [] } },
-          { "NZL": { name: "New Zealand", values: [] } },
-          { "PHL": { name: "Philippines", values: [] } },
-          { "PLW": { name: "Palau", values: [] } },
-          { "SGP": { name: "Singapore", values: [] } },
-          { "UMI": { name: "United States Minor Outlying Islands", values: [] } },
+          {
+            "AUS": {
+              name: "Australia",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "BRN": {
+              name: "Brunei Darussalam",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "FJI": {
+              name: "Fiji",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "GUM": {
+              name: "Guam",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "MHL": {
+              name: "Marshall Islands",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "MYS": {
+              name: "Malaysia",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "NZL": {
+              name: "New Zealand",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "PHL": {
+              name: "Philippines",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "PLW": {
+              name: "Palau",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "SGP": {
+              name: "Singapore",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "UMI": {
+              name: "United States Minor Outlying Islands",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
         ]
       },
       "6": {
         name: "Europe",
         values: [
-          { "AUT": { name: "Austria", values: [] } },
-          { "BEL": { name: "Belgium", values: [] } },
-          { "BGR": { name: "Bulgaria", values: [] } },
-          { "BIH": { name: "Bosnia and Herzegowina", values: [] } },
-          { "BLR": { name: "Belarus", values: [] } },
-          { "CHE": { name: "Switzerland", values: [] } },
-          { "CYP": { name: "Cyprus", values: [] } },
-          { "CZE": { name: "Czech Republic", values: [] } },
-          { "DEU": { name: "Germany", values: [] } },
-          { "DNK": { name: "Denmark", values: [] } },
-          { "ESP": { name: "Spain", values: [] } },
-          { "FIN": { name: "Finland", values: [] } },
-          { "FRA": { name: "France", values: [] } },
-          { "GBR": { name: "United Kingdom", values: [] } },
-          { "GRC": { name: "Greece", values: [] } },
-          { "HUN": { name: "Hungary", values: [] } },
-          { "IRL": { name: "Ireland", values: [] } },
-          { "ISL": { name: "Iceland", values: [] } },
-          { "ISR": { name: "Israel", values: [] } },
-          { "ITA": { name: "Italy", values: [] } },
-          { "LTU": { name: "Lithuania", values: [] } },
-          { "NLD": { name: "Netherlands", values: [] } },
-          { "NOR": { name: "Norway", values: [] } },
-          { "POL": { name: "Poland", values: [] } },
-          { "PRT": { name: "Portugal", values: [] } },
-          { "ROU": { name: "Romania", values: [] } },
-          { "RUS": { name: "Russian Federation", values: [] } },
-          { "SRB": { name: "Serbia", values: [] } },
-          { "SVK": { name: "Slovakia (Slovak Republic)", values: [] } },
-          { "SVN": { name: "Slovenia", values: [] } },
-          { "SWE": { name: "Sweden", values: [] } },
-          { "SYR": { name: "Syrian Arab Republic", values: [] } },
-          { "TUR": { name: "Turkey", values: [] } },
-          { "UKR": { name: "Ukraine", values: [] } },
+          {
+            "AUT": {
+              name: "Austria",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "BEL": {
+              name: "Belgium",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "BGR": {
+              name: "Bulgaria",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "BIH": {
+              name: "Bosnia and Herzegowina",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "BLR": {
+              name: "Belarus",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "CHE": {
+              name: "Switzerland",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "CYP": {
+              name: "Cyprus",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "CZE": {
+              name: "Czech Republic",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "DEU": {
+              name: "Germany",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "DNK": {
+              name: "Denmark",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "ESP": {
+              name: "Spain",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "FIN": {
+              name: "Finland",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "FRA": {
+              name: "France",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "GBR": {
+              name: "United Kingdom",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "GRC": {
+              name: "Greece",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "HUN": {
+              name: "Hungary",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "IRL": {
+              name: "Ireland",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "ISL": {
+              name: "Iceland",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "ISR": {
+              name: "Israel",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "ITA": {
+              name: "Italy",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "LTU": {
+              name: "Lithuania",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "NLD": {
+              name: "Netherlands",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "NOR": {
+              name: "Norway",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "POL": {
+              name: "Poland",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "PRT": {
+              name: "Portugal",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "ROU": {
+              name: "Romania",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "RUS": {
+              name: "Russian Federation",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "SRB": {
+              name: "Serbia",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "SVK": {
+              name: "Slovakia (Slovak Republic)",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "SVN": {
+              name: "Slovenia",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "SWE": {
+              name: "Sweden",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "SYR": {
+              name: "Syrian Arab Republic",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "TUR": {
+              name: "Turkey",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
+          {
+            "UKR": {
+              name: "Ukraine",
+              values: [
+                { name: "TBD", file: "TBD" }
+              ]
+            }
+          },
         ]
       }
     };
@@ -258,9 +984,18 @@ module.exports = {
       res.send("This would be the results streamed back from the server");
     });
 
-    app.get('/simulation/countries/:id', function(req, res) {
-      var continent = req.params.id;
+    app.get('/simulation/countries/:continent', function(req, res) {
+      var continent = req.params.continent;
       res.json(WEATHER_DATA[continent]);
+    });
+
+    app.get('/simulation/regions/:continent/:country', function(req, res) {
+      var continent = req.params.continent;
+      var country = req.params.country;
+      var region = _.find(WEATHER_DATA[continent].values, function(acountry) {
+        return !!acountry[country];
+      });
+      res.json(region);
     });
   }
 };
