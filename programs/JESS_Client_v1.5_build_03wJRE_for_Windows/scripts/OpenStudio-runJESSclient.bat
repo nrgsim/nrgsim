@@ -1,1 +1,0 @@
-java -jar "C:\EnergyPlusV7-2-0\JESS_Client_v1.3 build 5"\JESS_Client.jar -cfg "C:\EnergyPlusV7-2-0\JESS_Client_v1.3 build 5"\client.cfg -log "C:\EnergyPlusV7-2-0\JESS_Client_v1.3 build 5"\log4j.cfg -job ./ -type STD_SINGLE_JOB -output ./
