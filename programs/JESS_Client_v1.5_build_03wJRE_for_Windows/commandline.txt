@@ -1,0 +1,33 @@
+usage: java -jar JESS_Client.jar [OPTIONS]
+ -cancel <job id>                   Cancel a previously submitted job using the
+                                    job id, or 'all' to cancel all pending jobs
+ -cfg <config file>                 Client configuration file.
+                                    Default=./client.cfg
+ -check <job folder>                Check the folder contains job files
+ -checkin                           Check in to JESS server with the existing
+                                    user details
+ -dbonly                            Use DesignBuilder specific actions and
+                                    output; effect only with -version, -checkin,
+                                    -retrieve and -job
+ -gui                               Run in GUI mode. This option defeats other
+                                    options except -cfg and -log
+ -help                              print this message
+ -job <job folder>                  Folder contains job files
+ -log <Log configuration>           Logger configuration file.
+                                    Default=./log4j.cfg
+ -output <output folder>            Output folder to store results
+ -ref_project <job id>              Job id of the submission that contains full
+                                    project data
+ -result <retrieval type>           Result to retrieve. Options are
+                                    SUMMARY_TABLE (default), RESULTS, ALL
+ -retrieve                          Retrieve results of previously submitted
+                                    jobs only
+ -subset <subset type>              Subset type. Options are ALL (default),
+                                    RANDOM, LHS_RANDOM, LIST, LIST_FILE
+ -subset_param <subset parameter>   Subset parameter. For RANDOM/LHS_RANDOM, it
+                                    is sample size. For LIST/LIST_FILE it is a
+                                    string containing jobs or a filename
+ -type <job type>                   Job type. Available options are
+                                    JEPLUS_PROJECT, JEPLUS_JOBSET,
+                                    STD_SINGLE_JOB
+ -version                           Get version string of this client

@@ -1,0 +1,21 @@
+eplusout.mtr
+eplusout.csv
+Electricity:Facility
+0
+!-sqlite
+! Output file name; Column headers; SQL command
+ChillerCap; Chiller Nominal Capacity
+ConsCost; Construction Cost
+!-end sqlite
+
+!-user spreadsheet
+! Output file name; User spreadsheet file name; columns to extract (e.g. 3,5, 6, 7)
+
+!-end user spreadsheet
+
+!-objectives
+! Name of the objective; unit; formula (c0,c1, c2... are columns in the result table generated from the statements above)
+Electricity; kWh; c0/1000/3600
+Chiller Capacity; kW; c1/1000
+Construction Cost; $/m2; c2
+!-end objectives

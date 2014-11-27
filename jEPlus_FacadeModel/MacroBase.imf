@@ -1,0 +1,643 @@
+!-   ===========  ALL OBJECTS IN CLASS: ZONE ===========
+##fileprefix include
+
+##showdetail
+##list
+
+##set1 L @@Length@@
+##set1 D @@Depth@@
+##set1 H @@Height@@
+
+##set1 WinS @@Window@@
+##set1 WinSGR @@Window_GR@@ ! Glazing ratio in %
+
+##if #[Win[] EQSU Yes]
+##include Win.idf
+##endif
+
+
+Version,8.1;
+
+Zone,
+    @@OccupancyType@@Zone1,                       !- Name
+    0,                       !- Direction of Relative North {deg}
+    0,                       !- X Origin {m}
+    0,                       !- Y Origin {m}
+    0,                       !- Z Origin {m}
+    ,                        !- Type
+    1;                       !- Multiplier
+
+!-   ===========  ALL OBJECTS IN CLASS: WALL:EXTERIOR ===========
+
+Wall:Exterior,
+    S,                       !- Name
+    Exterior Wall,           !- Construction Name
+    @@OccupancyType@@Zone1,                       !- Zone Name
+    180,                     !- Azimuth Angle {deg}
+    90,                      !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    0,                       !- Starting Z Coordinate {m}
+    L[],                      !- Length {m}
+    H[];                       !- Height {m}
+
+!-   ===========  ALL OBJECTS IN CLASS: WALL:ADIABATIC ===========
+
+Wall:Adiabatic,
+    E,                       !- Name
+    Exterior Wall,           !- Construction Name
+    @@OccupancyType@@Zone1,                       !- Zone Name
+    90,                      !- Azimuth Angle {deg}
+    90,                      !- Tilt Angle {deg}
+    L[],                      !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    0,                       !- Starting Z Coordinate {m}
+    D[],                       !- Length {m}
+    H[];                       !- Height {m}
+
+Wall:Adiabatic,
+    N,                       !- Name
+    Exterior Wall,           !- Construction Name
+    @@OccupancyType@@Zone1,                       !- Zone Name
+    0,                       !- Azimuth Angle {deg}
+    90,                      !- Tilt Angle {deg}
+    L[],                      !- Starting X Coordinate {m}
+    D[],                       !- Starting Y Coordinate {m}
+    0,                       !- Starting Z Coordinate {m}
+    L[],                      !- Length {m}
+    H[];                       !- Height {m}
+Wall:Adiabatic,
+    W,                       !- Name
+    Exterior Wall,           !- Construction Name
+    @@OccupancyType@@Zone1,                       !- Zone Name
+    270,                     !- Azimuth Angle {deg}
+    90,                      !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    D[],                       !- Starting Y Coordinate {m}
+    0,                       !- Starting Z Coordinate {m}
+    D[],                       !- Length {m}
+    H[];                      !- Height {m}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: CEILING:ADIABATIC ===========
+
+Ceiling:Adiabatic,,
+    Ceiling,                    !- Name
+    Exterior Roof,           !- Construction Name
+    @@OccupancyType@@Zone1,                       !- Zone Name
+    180,                     !- Azimuth Angle {deg}
+    0,                       !- Tilt Angle {deg}
+    0,                       !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    H[],                       !- Starting Z Coordinate {m}
+    L[],                      !- Length {m}
+    D[];                       !- Width {m}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: FLOOR:ADIABATIC ===========
+
+Floor:Adiabatic,
+    Floor,                   !- Name
+    Exterior Floor,          !- Construction Name
+    @@OccupancyType@@Zone1,                       !- Zone Name
+    0,                       !- Azimuth Angle {deg}
+    180,                     !- Tilt Angle {deg}
+    L[],                      !- Starting X Coordinate {m}
+    0,                       !- Starting Y Coordinate {m}
+    0,                       !- Starting Z Coordinate {m}
+    L[],                      !- Length {m}
+    D[];                       !- Width {m}
+
+    !-   ===========  ALL OBJECTS IN CLASS: SIMULATIONCONTROL ===========
+
+  SimulationControl,
+    No,                     !- Do Zone Sizing Calculation
+    No,                     !- Do System Sizing Calculation
+    No,                      !- Do Plant Sizing Calculation
+    No,                      !- Run Simulation for Sizing Periods
+    Yes;                     !- Run Simulation for Weather File Run Periods
+
+!-   ===========  ALL OBJECTS IN CLASS: BUILDING ===========
+
+  Building,
+    Building,                !- Name
+    0,                   !- North Axis {deg}
+    Suburbs,                 !- Terrain
+    0.04,                    !- Loads Convergence Tolerance Value
+    0.4,                     !- Temperature Convergence Tolerance Value {deltaC}
+    FullExterior,            !- Solar Distribution
+    25,                      !- Maximum Number of Warmup Days
+    6;                       !- Minimum Number of Warmup Days
+
+
+
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL ===========
+
+Material,
+    F08 Metal surface,       !- Name
+    Smooth,                  !- Roughness
+    0.0008,                  !- Thickness {m}
+    45.28,                   !- Conductivity {W/m-K}
+    7824,                    !- Density {kg/m3}
+    500;                     !- Specific Heat {J/kg-K}
+
+Material,
+    I01 25mm insulation board,  !- Name
+    MediumRough,             !- Roughness
+    0.0254,                  !- Thickness {m}
+    0.03,                    !- Conductivity {W/m-K}
+    43,                      !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+Material,
+    I02 50mm insulation board,  !- Name
+    MediumRough,             !- Roughness
+    0.0508,                  !- Thickness {m}
+    0.03,                    !- Conductivity {W/m-K}
+    43,                      !- Density {kg/m3}
+    1210;                    !- Specific Heat {J/kg-K}
+
+Material,
+    G01a 19mm gypsum board,  !- Name
+    MediumSmooth,            !- Roughness
+    0.019,                   !- Thickness {m}
+    0.16,                    !- Conductivity {W/m-K}
+    800,                     !- Density {kg/m3}
+    1090;                    !- Specific Heat {J/kg-K}
+
+Material,
+    M11 100mm lightweight concrete,  !- Name
+    MediumRough,             !- Roughness
+    0.1016,                  !- Thickness {m}
+    0.53,                    !- Conductivity {W/m-K}
+    1280,                    !- Density {kg/m3}
+    840;                     !- Specific Heat {J/kg-K}
+
+Material,
+    F16 Acoustic tile,       !- Name
+    MediumSmooth,            !- Roughness
+    0.0191,                  !- Thickness {m}
+    0.06,                    !- Conductivity {W/m-K}
+    368,                     !- Density {kg/m3}
+    590;                     !- Specific Heat {J/kg-K}
+
+Material,
+    M01 100mm brick,         !- Name
+    MediumRough,             !- Roughness
+    0.1016,                  !- Thickness {m}
+    0.89,                    !- Conductivity {W/m-K}
+    1920,                    !- Density {kg/m3}
+    790;                     !- Specific Heat {J/kg-K}
+
+Material,
+    M15 200mm heavyweight concrete,  !- Name
+    MediumRough,             !- Roughness
+    0.2032,                  !- Thickness {m}
+    1.95,                    !- Conductivity {W/m-K}
+    2240,                    !- Density {kg/m3}
+    900;                     !- Specific Heat {J/kg-K}
+
+Material,
+    M05 200mm concrete block,!- Name
+    MediumRough,             !- Roughness
+    0.2032,                  !- Thickness {m}
+    1.11,                    !- Conductivity {W/m-K}
+    800,                     !- Density {kg/m3}
+    920;                     !- Specific Heat {J/kg-K}
+
+Material,
+    G05 25mm wood,           !- Name
+    MediumSmooth,            !- Roughness
+    0.0254,                  !- Thickness {m}
+    0.15,                    !- Conductivity {W/m-K}
+    608,                     !- Density {kg/m3}
+    1630;                    !- Specific Heat {J/kg-K}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: MATERIAL:AIRGAP ===========
+
+Material:AirGap,
+    F04 Wall air space resistance,  !- Name
+    0.15;                    !- Thermal Resistance {m2-K/W}
+
+Material:AirGap,
+    F05 Ceiling air space resistance,  !- Name
+    0.18;                    !- Thermal Resistance {m2-K/W}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: WINDOWMATERIAL:GLAZING ===========
+
+WindowMaterial:Glazing,
+    Clear 3mm,               !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    0.003,                   !- Thickness {m}
+    0.837,                   !- Solar Transmittance at Normal Incidence
+    0.075,                   !- Front Side Solar Reflectance at Normal Incidence
+    0.075,                   !- Back Side Solar Reflectance at Normal Incidence
+    0.898,                   !- Visible Transmittance at Normal Incidence
+    0.081,                   !- Front Side Visible Reflectance at Normal Incidence
+    0.081,                   !- Back Side Visible Reflectance at Normal Incidence
+    0,                       !- Infrared Transmittance at Normal Incidence
+    0.84,                    !- Front Side Infrared Hemispherical Emissivity
+    0.84,                    !- Back Side Infrared Hemispherical Emissivity
+    0.9;                     !- Conductivity {W/m-K}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: WINDOWMATERIAL:GAS ===========
+
+WindowMaterial:Gas,
+    Air 13mm,                !- Name
+    Air,                     !- Gas Type
+    0.0127;                  !- Thickness {m}
+
+
+!-   ===========  ALL OBJECTS IN CLASS: CONSTRUCTION ===========
+
+Construction,
+    Exterior Floor,          !- Name
+    I02 50mm insulation board,  !- Outside Layer
+    M15 200mm heavyweight concrete;  !- Layer 2
+
+Construction,
+    Interior Floor,          !- Name
+    F16 Acoustic tile,       !- Outside Layer
+    F05 Ceiling air space resistance,  !- Layer 2
+    M11 100mm lightweight concrete;  !- Layer 3
+
+Construction,
+    Exterior Wall,           !- Name
+    M01 100mm brick,         !- Outside Layer
+    M15 200mm heavyweight concrete,  !- Layer 2
+    I02 50mm insulation board,  !- Layer 3
+    F04 Wall air space resistance,  !- Layer 4
+    G01a 19mm gypsum board;  !- Layer 5
+
+Construction,
+    Interior Wall,           !- Name
+    G01a 19mm gypsum board,  !- Outside Layer
+    F04 Wall air space resistance,  !- Layer 2
+    G01a 19mm gypsum board;  !- Layer 3
+
+Construction,
+    Exterior Roof,           !- Name
+    M11 100mm lightweight concrete,  !- Outside Layer
+    F05 Ceiling air space resistance,  !- Layer 2
+    F16 Acoustic tile;       !- Layer 3
+
+Construction,
+    Interior Ceiling,        !- Name
+    M11 100mm lightweight concrete,  !- Outside Layer
+    F05 Ceiling air space resistance,  !- Layer 2
+    F16 Acoustic tile;       !- Layer 3
+
+Construction,
+    Exterior Window,         !- Name
+    Clear 3mm,               !- Outside Layer
+    Air 13mm,                !- Layer 2
+    Clear 3mm;               !- Layer 3
+
+Construction,
+    Interior Window,         !- Name
+    Clear 3mm;               !- Outside Layer
+
+Construction,
+    Exterior Door,           !- Name
+    F08 Metal surface,       !- Outside Layer
+    I01 25mm insulation board;  !- Layer 2
+
+Construction,
+    Interior Door,           !- Name
+    G05 25mm wood;           !- Outside Layer
+
+!-   ===========  ALL OBJECTS IN CLASS: GLOBALGEOMETRYRULES ===========
+
+GlobalGeometryRules,
+    LowerLeftCorner,         !- Starting Vertex Position
+    CounterClockWise,        !- Vertex Entry Direction
+    Relative;                !- Coordinate System
+
+	
+
+!-   ===========  ALL OBJECTS IN CLASS: SHADOWCALCULATION ===========
+
+  ShadowCalculation,
+    AverageOverDaysInFrequency,  !- Calculation Method
+    20,                      !- Calculation Frequency
+    15000,                   !- Maximum Figures in Shadow Overlap Calculations
+    SutherlandHodgman,       !- Polygon Clipping Algorithm
+    SimpleSkyDiffuseModeling;!- Sky Diffuse Modeling Algorithm
+
+!-   ===========  ALL OBJECTS IN CLASS: SURFACECONVECTIONALGORITHM:INSIDE ===========
+
+  SurfaceConvectionAlgorithm:Inside,TARP;
+
+!-   ===========  ALL OBJECTS IN CLASS: SURFACECONVECTIONALGORITHM:OUTSIDE ===========
+
+  SurfaceConvectionAlgorithm:Outside,DOE-2;
+
+!-   ===========  ALL OBJECTS IN CLASS: HEATBALANCEALGORITHM ===========
+
+  HeatBalanceAlgorithm,ConductionTransferFunction,2000;
+
+!-   ===========  ALL OBJECTS IN CLASS: ZONECAPACITANCEMULTIPLIER:RESEARCHSPECIAL ===========
+
+  ZoneCapacitanceMultiplier:ResearchSpecial,
+    1.0,                     !- Temperature Capacity Multiplier
+    1.0,                     !- Humidity Capacity Multiplier
+    1.0,                     !- Carbon Dioxide Capacity Multiplier
+    1.0;                     !- Generic Contaminant Capacity Multiplier
+
+!-   ===========  ALL OBJECTS IN CLASS: TIMESTEP ===========
+
+  Timestep,6;
+
+!-   ===========  ALL OBJECTS IN CLASS: CONVERGENCELIMITS ===========
+
+  ConvergenceLimits,
+    1,                       !- Minimum System Timestep {minutes}
+    20;                      !- Maximum HVAC Iterations
+
+!-   ===========  ALL OBJECTS IN CLASS: PROGRAMCONTROL ===========
+
+  ProgramControl,
+    1;                       !- Number of Threads Allowed
+
+!-   ===========  ALL OBJECTS IN CLASS: SITE:LOCATION ===========
+
+  Site:Location,
+    Untitled,                !- Name
+    51.15,                   !- Latitude {deg}
+    -0.18,                   !- Longitude {deg}
+    0,                       !- Time Zone {hr}
+    62;                      !- Elevation {m}
+
+!-   ===========  ALL OBJECTS IN CLASS: SIZINGPERIOD:DESIGNDAY ===========
+
+  SizingPeriod:DesignDay,
+    Summer Design Day in Untitled,  !- Name
+    7,                       !- Month
+    15,                      !- Day of Month
+    SummerDesignDay,         !- Day Type
+    27,                      !- Maximum Dry-Bulb Temperature {C}
+    9.7,                     !- Daily Dry-Bulb Temperature Range {deltaC}
+    ,                        !- Dry-Bulb Temperature Range Modifier Type
+    ,                        !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    WetBulb,                 !- Humidity Condition Type
+    18.6,                    !- Wetbulb or DewPoint at Maximum Dry-Bulb {C}
+    ,                        !- Humidity Condition Day Schedule Name
+    ,                        !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+    ,                        !- Enthalpy at Maximum Dry-Bulb {J/kg}
+    ,                        !- Daily Wet-Bulb Temperature Range {deltaC}
+    100582.4,                !- Barometric Pressure {Pa}
+    0,                       !- Wind Speed {m/s}
+    0,                       !- Wind Direction {deg}
+    0,                       !- Rain Indicator
+    0,                       !- Snow Indicator
+    1,                       !- Daylight Saving Time Indicator
+    ,                        !- Solar Model Indicator
+    ,                        !- Beam Solar Day Schedule Name
+    ,                        !- Diffuse Solar Day Schedule Name
+    ,                        !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub) {dimensionless}
+    ,                        !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud) {dimensionless}
+    0.98;                    !- Sky Clearness
+
+  SizingPeriod:DesignDay,
+    Winter Design Day in Untitled,  !- Name
+    1,                       !- Month
+    15,                      !- Day of Month
+    WinterDesignDay,         !- Day Type
+    -4.8,                    !- Maximum Dry-Bulb Temperature {C}
+    0,                       !- Daily Dry-Bulb Temperature Range {deltaC}
+    ,                        !- Dry-Bulb Temperature Range Modifier Type
+    ,                        !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    WetBulb,                 !- Humidity Condition Type
+    -4.8,                    !- Wetbulb or DewPoint at Maximum Dry-Bulb {C}
+    ,                        !- Humidity Condition Day Schedule Name
+    ,                        !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+    ,                        !- Enthalpy at Maximum Dry-Bulb {J/kg}
+    ,                        !- Daily Wet-Bulb Temperature Range {deltaC}
+    100582.4,                !- Barometric Pressure {Pa}
+    12.7,                    !- Wind Speed {m/s}
+    0,                       !- Wind Direction {deg}
+    0,                       !- Rain Indicator
+    0,                       !- Snow Indicator
+    0,                       !- Daylight Saving Time Indicator
+    ,                        !- Solar Model Indicator
+    ,                        !- Beam Solar Day Schedule Name
+    ,                        !- Diffuse Solar Day Schedule Name
+    ,                        !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub) {dimensionless}
+    ,                        !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud) {dimensionless}
+    0;                       !- Sky Clearness
+
+!-   ===========  ALL OBJECTS IN CLASS: RUNPERIOD ===========
+
+  RunPeriod,
+    Untitled,                !- Name
+    1,                       !- Begin Month
+    1,                       !- Begin Day of Month
+    12,                      !- End Month
+    31,                      !- End Day of Month
+    UseWeatherFile,          !- Day of Week for Start Day
+    No,                      !- Use Weather File Holidays and Special Days
+    No,                      !- Use Weather File Daylight Saving Period
+    Yes,                     !- Apply Weekend Holiday Rule
+    Yes,                     !- Use Weather File Rain Indicators
+    Yes,                     !- Use Weather File Snow Indicators
+    1;                       !- Number of Times Runperiod to be Repeated
+
+!-   ===========  ALL OBJECTS IN CLASS: RUNPERIODCONTROL:DAYLIGHTSAVINGTIME ===========
+
+  RunPeriodControl:DaylightSavingTime,
+    Last Sunday in March,    !- Start Date
+    Last Sunday in October;  !- End Date
+
+!-   ===========  ALL OBJECTS IN CLASS: SITE:GROUNDTEMPERATURE:BUILDINGSURFACE ===========
+
+  Site:GroundTemperature:BuildingSurface,14,14,14,14,14,14,14,14,14,14,14,14;
+
+!-   ===========  ALL OBJECTS IN CLASS: SITE:GROUNDTEMPERATURE:SHALLOW ===========
+
+  Site:GroundTemperature:Shallow,14,14,14,14,14,14,14,14,14,14,14,14;
+
+!-   ===========  ALL OBJECTS IN CLASS: SITE:GROUNDTEMPERATURE:DEEP ===========
+
+  Site:GroundTemperature:Deep,14,14,14,14,14,14,14,14,14,14,14,14;
+
+!-   ===========  ALL OBJECTS IN CLASS: SITE:GROUNDREFLECTANCE ===========
+
+  Site:GroundReflectance,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2;
+
+!-   ===========  ALL OBJECTS IN CLASS: SITE:GROUNDREFLECTANCE:SNOWMODIFIER ===========
+
+  Site:GroundReflectance:SnowModifier,
+    1.0,                     !- Ground Reflected Solar Modifier
+    1.0;                     !- Daylighting Ground Reflected Solar Modifier
+	
+	
+	
+
+ScheduleTypeLimits,
+    Temperature,             !- Name
+    -60,                     !- Lower Limit Value
+    200,                     !- Upper Limit Value
+    Continuous;              !- Numeric Type
+
+ScheduleTypeLimits,
+    Control Type,            !- Name
+    0,                       !- Lower Limit Value
+    4,                       !- Upper Limit Value
+    Discrete;                !- Numeric Type
+
+!-   ===========  ALL OBJECTS IN CLASS: SCHEDULE:COMPACT ===========
+
+Schedule:Compact,
+    Thermostat Control Sch,  !- Name
+    Control Type,            !- Schedule Type Limits Name
+    Through: 31 Dec,         !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00,4;          !- Field 3
+
+Schedule:Compact,
+    1 Heating SP Sch,  !- Name
+    Temperature,             !- Schedule Type Limits Name
+    Through: 31 Dec,         !- Field 1
+    For: Weekdays SummerDesignDay WinterDesignDay, !- Field 2
+    Until: 07:00,12,         !- Field 3
+    Until: 18:00,20,         !- Field 5
+    Until: 24:00,12,         !- Field 7
+    For: Saturdays,          !- Field 9
+    Until: 07:00,12,         !- Field 10
+    Until: 18:00,20,         !- Field 12
+    Until: 24:00,12,         !- Field 14
+    For: Sundays Holidays,   !- Field 16
+    Until: 07:00,12,         !- Field 17
+    Until: 18:00,20,         !- Field 19
+    Until: 24:00,12,         !- Field 21
+    For: AllOtherDays,       !- Field 23
+    Until: 24:00,-50;        !- Field 24
+
+Schedule:Compact,
+    1 Cooling SP Sch,  !- Name
+    Temperature,             !- Schedule Type Limits Name
+    Through: 31 Dec,         !- Field 1
+    For: Weekdays SummerDesignDay, !- Field 2
+    Until: 07:00,100,        !- Field 3
+    Until: 18:00,23,         !- Field 5
+    Until: 24:00,100,        !- Field 7
+    For: Saturdays,          !- Field 9
+    Until: 07:00,100,        !- Field 10
+    Until: 18:00,23,         !- Field 12
+    Until: 24:00,100,        !- Field 14
+    For: Sundays Holidays,   !- Field 16
+    Until: 07:00,100,        !- Field 17
+    Until: 18:00,23,         !- Field 19
+    Until: 24:00,100,        !- Field 21
+    For: WinterDesignDay AllOtherDays, !- Field 23
+    Until: 24:00,100;        !- Field 24
+	
+	
+!-   ===========  ALL OBJECTS IN CLASS: SIZING:ZONE ===========
+
+Sizing:Zone,
+    1,            !- Zone or ZoneList Name
+    SupplyAirTemperature,    !- Zone Cooling Design Supply Air Temperature Input Method
+    12,                      !- Zone Cooling Design Supply Air Temperature {C}
+    0,                       !- Zone Cooling Design Supply Air Temperature Difference {deltaC}
+    SupplyAirTemperature,    !- Zone Heating Design Supply Air Temperature Input Method
+    35,                      !- Zone Heating Design Supply Air Temperature {C}
+    0,                       !- Zone Heating Design Supply Air Temperature Difference {deltaC}
+    0.0077,                  !- Zone Cooling Design Supply Air Humidity Ratio {kgWater/kgDryAir}
+    0.0156,                  !- Zone Heating Design Supply Air Humidity Ratio {kgWater/kgDryAir}
+    ,            !- Design Specification Outdoor Air Object Name
+    ,                    !- Zone Heating Sizing Factor
+    ,                    !- Zone Cooling Sizing Factor
+    DesignDay,               !- Cooling Design Air Flow Method
+    ,                        !- Cooling Design Air Flow Rate {m3/s}
+    ,                        !- Cooling Minimum Air Flow per Zone Floor Area {m3/s-m2}
+    ,                        !- Cooling Minimum Air Flow {m3/s}
+    0,                       !- Cooling Minimum Air Flow Fraction
+    DesignDay,               !- Heating Design Air Flow Method
+    ,                        !- Heating Design Air Flow Rate {m3/s}
+    ,                        !- Heating Maximum Air Flow per Zone Floor Area {m3/s-m2}
+    ,                        !- Heating Maximum Air Flow {m3/s}
+    ,                        !- Heating Maximum Air Flow Fraction
+    ;            !- Design Specification Zone Air Distribution Object Name
+	
+	!-   ===========  ALL OBJECTS IN CLASS: ZONECONTROL:THERMOSTAT ===========
+
+ZoneControl:Thermostat,
+    1 Thermostat, !- Name
+    1,            !- Zone or ZoneList Name
+    Thermostat Control Sch, !- Control Type Schedule Name
+    ThermostatSetpoint:DualSetpoint,  !- Control 1 Object Type
+    Dual Setpoint - 1;  !- Control 1 Name
+
+!-   ===========  ALL OBJECTS IN CLASS: THERMOSTATSETPOINT:DUALSETPOINT ===========
+
+ThermostatSetpoint:DualSetpoint,
+    Dual Setpoint - 1,  !- Name
+    1 Heating SP Sch,  !- Heating Setpoint Temperature Schedule Name
+    1 Cooling SP Sch;  !- Cooling Setpoint Temperature Schedule Name
+
+!-   ===========  ALL OBJECTS IN CLASS: ZONEHVAC:IDEALLOADSAIRSYSTEM ===========
+
+ZoneHVAC:IdealLoadsAirSystem,
+    1 Ideal Loads Air,  !- Name
+    ,                        !- Availability Schedule Name
+    1 In,    !- Zone Supply Air Node Name
+    ,                        !- Zone Exhaust Air Node Name
+    35,                      !- Maximum Heating Supply Air Temperature {C}
+    12,                      !- Minimum Cooling Supply Air Temperature {C}
+    0.0156,                  !- Maximum Heating Supply Air Humidity Ratio {kgWater/kgDryAir}
+    0.0077,                  !- Minimum Cooling Supply Air Humidity Ratio {kgWater/kgDryAir}
+    NoLimit,           !- Heating Limit
+    ,                        !- Maximum Heating Air Flow Rate {m3/s}
+    ,                !- Maximum Sensible Heating Capacity {W}
+    NoLimit,!- Cooling Limit
+    ,                !- Maximum Cooling Air Flow Rate {m3/s}
+    ,                !- Maximum Total Cooling Capacity {W}
+    ,  !- Heating Availability Schedule Name
+    ,  !- Cooling Availability Schedule Name
+    None,                    !- Dehumidification Control Type
+    ,                        !- Cooling Sensible Heat Ratio {dimensionless}
+    None,                    !- Humidification Control Type
+    ,            !- Design Specification Outdoor Air Object Name
+    ,                        !- Outdoor Air Inlet Node Name
+    ,                        !- Demand Controlled Ventilation Type
+    NoEconomizer,            !- Outdoor Air Economizer Type
+    None,                    !- Heat Recovery Type
+    ,                        !- Sensible Heat Recovery Effectiveness {dimensionless}
+    ;                        !- Latent Heat Recovery Effectiveness {dimensionless}
+
+!-   ===========  ALL OBJECTS IN CLASS: ZONEHVAC:EQUIPMENTLIST ===========
+
+  ZoneHVAC:EquipmentList,
+    1 Equipment,  !- Name
+    ZoneHVAC:IdealLoadsAirSystem,  !- Zone Equipment 1 Object Type
+    1 Ideal Loads Air,  !- Zone Equipment 1 Name
+    1,                       !- Zone Equipment 1 Cooling Sequence
+    1;                       !- Zone Equipment 1 Heating or No-Load Sequence
+
+!-   ===========  ALL OBJECTS IN CLASS: ZONEHVAC:EQUIPMENTCONNECTIONS ===========
+
+  ZoneHVAC:EquipmentConnections,
+    1,            !- Zone Name
+    1 Equipment,  !- Zone Conditioning Equipment List Name
+    1 In,     !- Zone Air Inlet Node or NodeList Name
+    ,                        !- Zone Air Exhaust Node or NodeList Name
+    1 Zone,  !- Zone Air Node Name
+    1 Out;   !- Zone Return Air Node Name
+
+	
+!-   ===========  ALL OBJECTS IN CLASS: OUTPUT:VARIABLEDICTIONARY ===========
+
+  Output:VariableDictionary,Regular;
+  
+!-   ===========  ALL OBJECTS IN CLASS: OUTPUT:METER ===========
+
+  Output:Meter,Cooling:DistrictCooling,annual;
+
+  Output:Meter,Heating:DistrictHeating,annual;
+	
+

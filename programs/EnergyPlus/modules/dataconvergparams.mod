@@ -1,0 +1,471 @@
+GFORTRAN module version '10' created from .\DataConvergParams.f90
+MD5:3393e3b2a1ac096330876012c756ae36 -- If you edit this, you'll get what you deserve.
+
+(() () () () () () () () () () () () () () () () () () () () () () ()
+() () () ())
+
+()
+
+(('hvacairloopiterationconvergencestruct' 'dataconvergparams' 2) (
+'hvacnodeconverglogstruct' 'dataconvergparams' 3) (
+'hvaczoneinletconvergencestruct' 'dataconvergparams' 4) (
+'plantiterationconvergencestruct' 'dataconvergparams' 5))
+
+()
+
+()
+
+()
+
+(2 'Hvacairloopiterationconvergencestruct' 'dataconvergparams' '' 1 ((
+DERIVED UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) (UNKNOWN 0 0 0
+0 UNKNOWN ()) 0 0 () () 0 ((6 'hvacmassflownotconverged' (LOGICAL 4 0 0
+0 LOGICAL ()) () (UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN
+0 0) UNKNOWN-ACCESS (CONSTANT (LOGICAL 4 0 0 0 LOGICAL ()) 0 0)) (7
+'hvacflowdemandtosupplytolvalue' (REAL 8 0 0 0 REAL ()) (1 0 EXPLICIT (
+CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (INTEGER 4 0 0 0
+INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (REAL 8 0 0 0 REAL ()) 0
+'0.00000000000000@0')) (8 'hvacflowsupplydeck1todemandtolvalue' (REAL 8
+0 0 0 REAL ()) (1 0 EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1')
+(CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION)
+UNKNOWN-ACCESS (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0'))
+(9 'hvacflowsupplydeck2todemandtolvalue' (REAL 8 0 0 0 REAL ()) (1 0
+EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (
+REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (10
+'hvachumratnotconverged' (LOGICAL 4 0 0 0 LOGICAL ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (LOGICAL 4 0 0 0 LOGICAL ()) 0 0)) (11
+'hvachumdemandtosupplytolvalue' (REAL 8 0 0 0 REAL ()) (1 0 EXPLICIT (
+CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (INTEGER 4 0 0 0
+INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (REAL 8 0 0 0 REAL ()) 0
+'0.00000000000000@0')) (12 'hvachumsupplydeck1todemandtolvalue' (REAL 8
+0 0 0 REAL ()) (1 0 EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1')
+(CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION)
+UNKNOWN-ACCESS (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0'))
+(13 'hvachumsupplydeck2todemandtolvalue' (REAL 8 0 0 0 REAL ()) (1 0
+EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (
+REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (14 'hvactempnotconverged'
+(LOGICAL 4 0 0 0 LOGICAL ()) () (UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (CONSTANT (LOGICAL 4 0 0 0 LOGICAL ())
+0 0)) (15 'hvactempdemandtosupplytolvalue' (REAL 8 0 0 0 REAL ()) (1 0
+EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (
+REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (16
+'hvactempsupplydeck1todemandtolvalue' (REAL 8 0 0 0 REAL ()) (1 0
+EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (
+REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (17
+'hvactempsupplydeck2todemandtolvalue' (REAL 8 0 0 0 REAL ()) (1 0
+EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (
+REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (18
+'hvacenergynotconverged' (LOGICAL 4 0 0 0 LOGICAL ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (LOGICAL 4 0 0 0 LOGICAL ()) 0 0)) (19
+'hvacenergydemandtosupplytolvalue' (REAL 8 0 0 0 REAL ()) (1 0 EXPLICIT
+(CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (INTEGER 4 0 0 0
+INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (REAL 8 0 0 0 REAL ()) 0
+'0.00000000000000@0')) (20 'hvacenergysupplydeck1todemandtolvalue' (
+REAL 8 0 0 0 REAL ()) (1 0 EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ())
+0 '1') (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION)
+UNKNOWN-ACCESS (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0'))
+(21 'hvacenergysupplydeck2todemandtolvalue' (REAL 8 0 0 0 REAL ()) (1 0
+EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (
+REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (22
+'hvacenthalpynotconverged' (LOGICAL 4 0 0 0 LOGICAL ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (LOGICAL 4 0 0 0 LOGICAL ()) 0 0)) (23
+'hvacenthalpydemandtosupplytolvalue' (REAL 8 0 0 0 REAL ()) (1 0
+EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (
+REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (24
+'hvacenthalpysupplydeck1todemandtolvalue' (REAL 8 0 0 0 REAL ()) (1 0
+EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (
+REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (25
+'hvacenthalpysupplydeck2todemandtolvalue' (REAL 8 0 0 0 REAL ()) (1 0
+EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (
+REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (26
+'hvacpressurenotconverged' (LOGICAL 4 0 0 0 LOGICAL ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (LOGICAL 4 0 0 0 LOGICAL ()) 0 0)) (27
+'hvacpressuredemandtosupplytolvalue' (REAL 8 0 0 0 REAL ()) (1 0
+EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (
+REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (28
+'hvacpressuresupplydeck1todemandtolvalue' (REAL 8 0 0 0 REAL ()) (1 0
+EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (
+REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (29
+'hvacpressuesupplydeck2todemandtolvalue' (REAL 8 0 0 0 REAL ()) (1 0
+EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (
+REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (30
+'hvacqualitynotconverged' (LOGICAL 4 0 0 0 LOGICAL ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (LOGICAL 4 0 0 0 LOGICAL ()) 0 0)) (31
+'hvacqualitydemandtosupplytolvalue' (REAL 8 0 0 0 REAL ()) (1 0 EXPLICIT
+(CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (INTEGER 4 0 0 0
+INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (REAL 8 0 0 0 REAL ()) 0
+'0.00000000000000@0')) (32 'hvacqualitsupplydeck1todemandtolvalue' (
+REAL 8 0 0 0 REAL ()) (1 0 EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ())
+0 '1') (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION)
+UNKNOWN-ACCESS (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0'))
+(33 'hvacqualitysupplydeck2todemandtolvalue' (REAL 8 0 0 0 REAL ()) (1 0
+EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (
+REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0'))) PUBLIC (() () () ()) ()
+0 0 37449994)
+3 'Hvacnodeconverglogstruct' 'dataconvergparams' '' 1 ((DERIVED
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) (UNKNOWN 0 0 0 0
+UNKNOWN ()) 0 0 () () 0 ((34 'nodenum' (INTEGER 4 0 0 0 INTEGER ()) () (
+UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0)
+UNKNOWN-ACCESS ()) (35 'notconvergedhumrate' (LOGICAL 4 0 0 0 LOGICAL ())
+() (UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0)
+UNKNOWN-ACCESS ()) (36 'notconvergedmassflow' (LOGICAL 4 0 0 0 LOGICAL ())
+() (UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0)
+UNKNOWN-ACCESS ()) (37 'notconvergedtemp' (LOGICAL 4 0 0 0 LOGICAL ()) ()
+(UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0)
+UNKNOWN-ACCESS ()) (38 'humidityratio' (REAL 8 0 0 0 REAL ()) (1 0
+EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS ()) (39
+'massflowrate' (REAL 8 0 0 0 REAL ()) (1 0 EXPLICIT (CONSTANT (INTEGER 4
+0 0 0 INTEGER ()) 0 '1') (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '10'))
+(UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION)
+UNKNOWN-ACCESS ()) (40 'temperature' (REAL 8 0 0 0 REAL ()) (1 0
+EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS ())) PUBLIC (
+() () () ()) () 0 0 81166914)
+4 'Hvaczoneinletconvergencestruct' 'dataconvergparams' '' 1 ((DERIVED
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 ALLOC_COMP) (UNKNOWN 0 0
+0 0 UNKNOWN ()) 0 0 () () 0 ((41 'zonename' (CHARACTER 1 0 0 0 CHARACTER
+((CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '100'))) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS ()) (42
+'numinletnodes' (INTEGER 4 0 0 0 INTEGER ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '0')) (43 'inletnode' (DERIVED 3
+0 0 0 DERIVED ()) (1 0 DEFERRED () ()) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 ALLOCATABLE DIMENSION) UNKNOWN-ACCESS ()))
+PUBLIC (() () () ()) () 0 0 64542697)
+5 'Plantiterationconvergencestruct' 'dataconvergparams' '' 1 ((DERIVED
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) (UNKNOWN 0 0 0 0
+UNKNOWN ()) 0 0 () () 0 ((44 'plantmassflownotconverged' (LOGICAL 4 0 0
+0 LOGICAL ()) () (UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN
+0 0) UNKNOWN-ACCESS (CONSTANT (LOGICAL 4 0 0 0 LOGICAL ()) 0 0)) (45
+'plantflowdemandtosupplytolvalue' (REAL 8 0 0 0 REAL ()) (1 0 EXPLICIT (
+CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (INTEGER 4 0 0 0
+INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (REAL 8 0 0 0 REAL ()) 0
+'0.00000000000000@0')) (46 'plantflowsupplytodemandtolvalue' (REAL 8 0 0
+0 REAL ()) (1 0 EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (
+CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION)
+UNKNOWN-ACCESS (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0'))
+(47 'planttempnotconverged' (LOGICAL 4 0 0 0 LOGICAL ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (LOGICAL 4 0 0 0 LOGICAL ()) 0 0)) (48
+'planttempdemandtosupplytolvalue' (REAL 8 0 0 0 REAL ()) (1 0 EXPLICIT (
+CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (INTEGER 4 0 0 0
+INTEGER ()) 0 '10')) (UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+UNKNOWN 0 0 DIMENSION) UNKNOWN-ACCESS (CONSTANT (REAL 8 0 0 0 REAL ()) 0
+'0.00000000000000@0')) (49 'planttempsupplytodemandtolvalue' (REAL 8 0 0
+0 REAL ()) (1 0 EXPLICIT (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '1') (
+CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '10')) (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DIMENSION)
+UNKNOWN-ACCESS (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')))
+PUBLIC (() () () ()) () 0 0 99251543)
+50 'airloopconvergence' 'dataconvergparams' '' 1 ((VARIABLE
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE
+DIMENSION) (DERIVED 2 0 0 0 DERIVED ()) 0 0 () (1 0 DEFERRED () ()) 0 ()
+() () 0 0)
+51 'airloopconvergfail' 'dataconvergparams' '' 1 ((VARIABLE
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0
+INTEGER ()) 0 0 () () 0 () () () 0 0)
+52 'calledfromairsystemdemandside' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0
+INTEGER ()) 0 0 () (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '100') () 0
+() () () 0 0)
+53 'calledfromairsystemsupplysidedeck1' 'dataconvergparams' '' 1 ((
+PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (
+INTEGER 4 0 0 0 INTEGER ()) 0 0 () (CONSTANT (INTEGER 4 0 0 0 INTEGER ())
+0 '101') () 0 () () () 0 0)
+54 'calledfromairsystemsupplysidedeck2' 'dataconvergparams' '' 1 ((
+PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (
+INTEGER 4 0 0 0 INTEGER ()) 0 0 () (CONSTANT (INTEGER 4 0 0 0 INTEGER ())
+0 '102') () 0 () () () 0 0)
+55 'constant_minusone' 'dataprecisionglobals' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '-0.10000000000000@1')
+() 0 () () () 0 0)
+56 'constant_one' 'dataprecisionglobals' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.10000000000000@1') () 0 () () () 0
+0)
+57 'constant_pointfive' 'dataprecisionglobals' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.80000000000000@0')
+() 0 () () () 0 0)
+58 'constant_twenty' 'dataprecisionglobals' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.14000000000000@2')
+() 0 () () () 0 0)
+59 'constant_zero' 'dataprecisionglobals' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')
+() 0 () () () 0 0)
+60 'converglogstackarr' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0 DIMENSION) (REAL 8
+0 0 0 REAL ()) 0 0 () (ARRAY (REAL 8 0 0 0 REAL ()) 1 (((CONSTANT (REAL
+8 0 0 0 REAL ()) 0 '0.00000000000000@0') ()) ((CONSTANT (REAL 8 0 0 0
+REAL ()) 0 '-0.10000000000000@1') ()) ((CONSTANT (REAL 8 0 0 0 REAL ())
+0 '-0.20000000000000@1') ()) ((CONSTANT (REAL 8 0 0 0 REAL ()) 0
+'-0.30000000000000@1') ()) ((CONSTANT (REAL 8 0 0 0 REAL ()) 0
+'-0.40000000000000@1') ()) ((CONSTANT (REAL 8 0 0 0 REAL ()) 0
+'-0.50000000000000@1') ()) ((CONSTANT (REAL 8 0 0 0 REAL ()) 0
+'-0.60000000000000@1') ()) ((CONSTANT (REAL 8 0 0 0 REAL ()) 0
+'-0.70000000000000@1') ()) ((CONSTANT (REAL 8 0 0 0 REAL ()) 0
+'-0.80000000000000@1') ()) ((CONSTANT (REAL 8 0 0 0 REAL ()) 0
+'-0.90000000000000@1') ())) ('10')) (1 0 EXPLICIT (CONSTANT (INTEGER 4 0
+0 0 INTEGER ()) 0 '1') (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '10')) 0
+() () () 0 0)
+61 'converglogstackdepth' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0
+INTEGER ()) 0 0 () (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '10') () 0 ()
+() () 0 0)
+62 'dataconvergparams' 'dataconvergparams' '' 1 ((MODULE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) (UNKNOWN 0 0 0 0 UNKNOWN ()) 0 0 () ()
+0 () () () 0 0)
+63 'dataglobals' 'dataglobals' '' 1 ((MODULE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (UNKNOWN 0 0 0 0 UNKNOWN ()) 0 0 () () 0 () () () 0
+0)
+64 'dataprecisionglobals' 'dataprecisionglobals' '' 1 ((MODULE
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) (UNKNOWN 0 0 0 0
+UNKNOWN ()) 0 0 () () 0 () () () 0 0)
+65 'default_prec' 'dataprecisionglobals' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0
+() (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '8') () 0 () () () 0 0)
+66 'exp_lowerlimit' 'dataprecisionglobals' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '-0.14000000000000@2')
+() 0 () () () 0 0)
+67 'exp_upperlimit' 'dataprecisionglobals' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.28000000000000@2')
+() 0 () () () 0 0)
+68 'hvacairloopiterationconvergencestruct' 'dataconvergparams' '' 1 ((
+PROCEDURE UNKNOWN-INTENT UNKNOWN-PROC DECL UNKNOWN 0 0 FUNCTION GENERIC)
+(UNKNOWN 0 0 0 0 UNKNOWN ()) 0 0 () () 0 () () () 0 0)
+69 'hvaccpapprox' 'dataconvergparams' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.3ecd810624dd30@3') () 0 () () () 0
+0)
+70 'hvacenergytoler' 'dataconvergparams' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.a0000000000000@1') () 0 () () () 0
+0)
+71 'hvacenthalpytoler' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.10400000000000@3')
+() 0 () () () 0 0)
+72 'hvacflowrateoscillationtoler' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.1ad7f29abcaf48@-5')
+() 0 () () () 0 0)
+73 'hvacflowrateslopetoler' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.4189374bc6a7f0@-2')
+() 0 () () () 0 0)
+74 'hvacflowratetoler' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.28f5c28f5c28f6@-1')
+() 0 () () () 0 0)
+75 'hvachumratoscillationtoler' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.2af31dc4611874@-6')
+() 0 () () () 0 0)
+76 'hvachumratslopetoler' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.a7c5ac471b4788@-4')
+() 0 () () () 0 0)
+77 'hvachumrattoler' 'dataconvergparams' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.68db8bac710cb4@-3') () 0 () () () 0
+0)
+78 'hvacnodeconverglogstruct' 'dataconvergparams' '' 1 ((PROCEDURE
+UNKNOWN-INTENT UNKNOWN-PROC DECL UNKNOWN 0 0 FUNCTION GENERIC) (UNKNOWN
+0 0 0 0 UNKNOWN ()) 0 0 () () 0 () () () 0 0)
+79 'hvacpresstoler' 'dataconvergparams' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.a0000000000000@1') () 0 () () () 0
+0)
+80 'hvacqualitytoler' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.28f5c28f5c28f6@-1')
+() 0 () () () 0 0)
+81 'hvactemperatureoscillationtoler' 'dataconvergparams' '' 1 ((
+PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8
+0 0 0 REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0
+'0.10c6f7a0b5ed8d@-4') () 0 () () () 0 0)
+82 'hvactemperatureslopetoler' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.4189374bc6a7f0@-2')
+() 0 () () () 0 0)
+83 'hvactemperaturetoler' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.28f5c28f5c28f6@-1')
+() 0 () () () 0 0)
+84 'hvaczoneinletconvergencestruct' 'dataconvergparams' '' 1 ((
+PROCEDURE UNKNOWN-INTENT UNKNOWN-PROC DECL UNKNOWN 0 0 FUNCTION GENERIC)
+(UNKNOWN 0 0 0 0 UNKNOWN ()) 0 0 () () 0 () () () 0 0)
+85 'i32' 'dataprecisionglobals' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0
+() (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '4') () 0 () () () 0 0)
+86 'i64' 'dataprecisionglobals' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0
+() (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '8') () 0 () () () 0 0)
+87 'kind' '(intrinsic)' '' 1 ((PROCEDURE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0 FUNCTION) (UNKNOWN 0 0 0 0 UNKNOWN ()) 0 0 () () 87
+() () () 0 0)
+88 'maxiter' 'dataconvergparams' '' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0
+() () 0 () () () 0 0)
+89 'maxnamelength' 'dataglobals' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0
+() (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '100') () 0 () () () 0 0)
+90 'maxplantsubiterations' 'dataconvergparams' '' 1 ((VARIABLE
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0
+INTEGER ()) 0 0 () () 0 () () () 0 0)
+91 'maxzonetempdiff' 'dataconvergparams' '' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () ()
+0 () () () 0 0)
+92 'minplantsubiterations' 'dataconvergparams' '' 1 ((VARIABLE
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0
+INTEGER ()) 0 0 () () 0 () () () 0 0)
+93 'minsystimeremaining' 'dataconvergparams' '' 1 ((VARIABLE
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () () 0 () () () 0 0)
+94 'mintimestepsys' 'dataconvergparams' '' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () ()
+0 () () () 0 0)
+95 'mintimesteptol' 'dataconvergparams' '' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () ()
+0 () () () 0 0)
+96 'plantconvergence' 'dataconvergparams' '' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (DERIVED 5
+0 0 0 DERIVED ()) 0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+97 'plantcpapprox' 'dataconvergparams' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.10540000000000@4') () 0 () () () 0
+0)
+98 'plantenergytoler' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.a0000000000000@1')
+() 0 () () () 0 0)
+99 'plantenthalpytoler' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.1999999999999a@0')
+() 0 () () () 0 0)
+100 'plantflowflowratetoler' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.28f5c28f5c28f6@-1')
+() 0 () () () 0 0)
+101 'plantflowrateoscillationtoler' 'dataconvergparams' '' 1 ((
+PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8
+0 0 0 REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0
+'0.1ad7f29abcaf48@-5') () 0 () () () 0 0)
+102 'plantflowrateslopetoler' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.68db8bac710cb4@-3')
+() 0 () () () 0 0)
+103 'plantflowratetoler' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.4189374bc6a7f0@-2')
+() 0 () () () 0 0)
+104 'plantiterationconvergencestruct' 'dataconvergparams' '' 1 ((
+PROCEDURE UNKNOWN-INTENT UNKNOWN-PROC DECL UNKNOWN 0 0 FUNCTION GENERIC)
+(UNKNOWN 0 0 0 0 UNKNOWN ()) 0 0 () () 0 () () () 0 0)
+105 'plantpresstoler' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.a0000000000000@1')
+() 0 () () () 0 0)
+106 'planttemperatureoscillationtoler' 'dataconvergparams' '' 1 ((
+PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8
+0 0 0 REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0
+'0.10c6f7a0b5ed8d@-4') () 0 () () () 0 0)
+107 'planttemperatureslopetoler' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.4189374bc6a7f0@-2')
+() 0 () () () 0 0)
+108 'planttemperaturetoler' 'dataconvergparams' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.28f5c28f5c28f6@-1')
+() 0 () () () 0 0)
+109 'r32' 'dataprecisionglobals' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0
+() (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '4') () 0 () () () 0 0)
+110 'r64' 'dataprecisionglobals' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0
+() (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '8') () 0 () () () 0 0)
+111 'selected_int_kind' '(intrinsic)' '' 1 ((PROCEDURE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 FUNCTION) (UNKNOWN 0 0 0 0 UNKNOWN ())
+0 0 () () 111 () () () 0 0)
+112 'zoneinletconvergence' 'dataconvergparams' '' 1 ((VARIABLE
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE
+DIMENSION) (DERIVED 4 0 0 0 DERIVED ()) 0 0 () (1 0 DEFERRED () ()) 0 ()
+() () 0 0)
+)
+
+('Hvacairloopiterationconvergencestruct' 0 2 'Hvacnodeconverglogstruct'
+0 3 'Hvaczoneinletconvergencestruct' 0 4 'Plantiterationconvergencestruct'
+0 5 'airloopconvergence' 0 50 'airloopconvergfail' 0 51
+'calledfromairsystemdemandside' 0 52 'calledfromairsystemsupplysidedeck1'
+0 53 'calledfromairsystemsupplysidedeck2' 0 54 'constant_minusone' 0 55
+'constant_one' 0 56 'constant_pointfive' 0 57 'constant_twenty' 0 58
+'constant_zero' 0 59 'converglogstackarr' 0 60 'converglogstackdepth' 0
+61 'dataconvergparams' 0 62 'dataglobals' 0 63 'dataprecisionglobals' 0
+64 'default_prec' 0 65 'exp_lowerlimit' 0 66 'exp_upperlimit' 0 67
+'hvacairloopiterationconvergencestruct' 0 68 'hvaccpapprox' 0 69
+'hvacenergytoler' 0 70 'hvacenthalpytoler' 0 71
+'hvacflowrateoscillationtoler' 0 72 'hvacflowrateslopetoler' 0 73
+'hvacflowratetoler' 0 74 'hvachumratoscillationtoler' 0 75
+'hvachumratslopetoler' 0 76 'hvachumrattoler' 0 77
+'hvacnodeconverglogstruct' 0 78 'hvacpresstoler' 0 79 'hvacqualitytoler'
+0 80 'hvactemperatureoscillationtoler' 0 81 'hvactemperatureslopetoler'
+0 82 'hvactemperaturetoler' 0 83 'hvaczoneinletconvergencestruct' 0 84
+'i32' 0 85 'i64' 0 86 'kind' 0 87 'maxiter' 0 88 'maxnamelength' 0 89
+'maxplantsubiterations' 0 90 'maxzonetempdiff' 0 91
+'minplantsubiterations' 0 92 'minsystimeremaining' 0 93 'mintimestepsys'
+0 94 'mintimesteptol' 0 95 'plantconvergence' 0 96 'plantcpapprox' 0 97
+'plantenergytoler' 0 98 'plantenthalpytoler' 0 99 'plantflowflowratetoler'
+0 100 'plantflowrateoscillationtoler' 0 101 'plantflowrateslopetoler' 0
+102 'plantflowratetoler' 0 103 'plantiterationconvergencestruct' 0 104
+'plantpresstoler' 0 105 'planttemperatureoscillationtoler' 0 106
+'planttemperatureslopetoler' 0 107 'planttemperaturetoler' 0 108 'r32' 0
+109 'r64' 0 110 'selected_int_kind' 0 111 'zoneinletconvergence' 0 112)

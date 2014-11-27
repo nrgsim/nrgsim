@@ -1,0 +1,90 @@
+{
+
+	"notes" : "Some notes about this RVX",
+
+	"rvis" : [ 
+		{ 
+			"fileName" : "5ZoneCostEst.rvi",
+			"tableName" : "SimResults"
+		}
+	],
+	
+	"sqls" : [
+		{ 
+			"tableName" : "ChillerCap",
+			"columnHeaders" : "Chiller Nominal Capacity [W]",
+			"sqlcommand" : "select Value from ComponentSizes WHERE (CompType='Chiller:Electric' AND CompName='CHILLER PLANT CHILLER' AND Description='Nominal Capacity')"
+		},
+		{ 
+			"tableName" : "ConsCost",
+			"columnHeaders" : "Construction Cost [$/m2]",
+			"sqlcommand" : "select Value from TabularDataWithStrings WHERE (ReportName='Construction Cost Estimate Summary' AND ReportForString='Entire Facility' AND TableName='Construction Cost Estimate Summary' AND RowName='Cost Per Conditioned Building Area (~~$~~/m2)' AND ColumnName='Current Bldg. Model' AND Units='' AND RowId=10)"
+		}
+	],
+	
+	"scripts" : [
+		{
+			"fileName" : "readRunTimes_jy.py",
+			"pythonVersion" : "jython",
+			"onEachJob" : false,
+			"arguments" : "",
+			"tableName" : "CpuTime"
+		}
+	],
+	
+	"userVars" : [
+		{
+			"identifier" : "v0",
+			"formula" : "c0",
+			"caption" : "Variable 0 []",
+			"report" : false
+		},
+		{
+			"identifier" : "v1",
+			"formula" : "c1",
+			"caption" : "Variable 1 []",
+			"report" : true
+		},
+		{
+			"identifier" : "v2",
+			"formula" : "c2",
+			"caption" : "Variable 2 []",
+			"report" : false
+		}
+	],
+	
+	"constraints" : [
+		{
+			"identifier" : "s1",
+			"formula" : "v1/1000",
+			"caption" : "Chiller Capacity [kW]",
+			"scaling" : true,
+			"lb" : 0,
+			"ub" : 200,
+			"min" : 0,
+			"max" : 300,
+			"weight" : 1.0
+		}
+	],
+
+	"objectives" : [
+		{
+			"identifier" : "t1",
+			"formula" : "v0/1000/3600",
+			"caption" : "Electricity [kWh]",
+			"scaling" : true,
+			"min" : 0,
+			"max" : 100000,
+			"weight" : 1.0
+		},
+		{
+			"identifier" : "t2",
+			"formula" : "v2",
+			"caption" : "Construction Cost [$/m2]",
+			"scaling" : false,
+			"min" : 0,
+			"max" : 1000,
+			"weight" : 1.0
+		}
+	]
+}

@@ -1,0 +1,27 @@
+0
+!-sqlite 
+! Output file name; Column headers; SQL command
+TotalEnergy; Total Energy [kWh]; SELECT Value FROM TabularDataWithStrings WHERE (ReportName= 'AnnualBuildingUtilityPerformanceSummary' AND TableName='Site and Source Energy' AND RowName= 'Total Site Energy' AND ColumnName= 'Total Energy')  
+IdealHeatingEnergy; Ideal Heating Energy [kWh]; SELECT Value FROM TabularDataWithStrings WHERE (ReportName= 'AnnualBuildingUtilityPerformanceSummary' AND TableName ='End Uses' AND RowName ='Heating' AND ColumnName = 'District Heating')  
+IdealCoolingEnergy; Ideal Cooling Energy [kWh]; SELECT Value FROM TabularDataWithStrings WHERE (ReportName= 'AnnualBuildingUtilityPerformanceSummary' AND TableName ='End Uses' AND RowName ='Cooling' AND ColumnName = 'District Cooling') 
+FanEnergy; Simple Fan Energy [kWh]; SELECT Value from TabularDataWithStrings WHERE (ReportName= 'AnnualBuildingUtilityPerformanceSummary' AND TableName ='End Uses' AND RowName ='Fans' AND ColumnName= 'Electricity') 
+TotalCoolingLoad; Calculated Design Cooling Load [W]; SELECT SUM(DesLoad) FROM ZoneSizes WHERE LoadType = "Cooling" 
+TotalHeatingLoad; Calculated Design Heating Load [W]; SELECT SUM(DesLoad) FROM ZoneSizes WHERE LoadType = "Heating"
+AdaptiveComfortReport; Time Outside ASHRAE55 80% Acceptability Limits []; SELECT SUM (Value) FROM TabularDataWithStrings WHERE (ReportName= 'AdaptiveComfortReport' AND TableName ='People Summary' AND ColumnName= 'ASHRAE55 80% Acceptability Limits') 
+DaylightSetpointMet; Daylight Set Point Met [hr]; SELECT SUM (Value) FROM TabularDataWithStrings WHERE (ReportName= 'DaylightingReportMonthly'  AND TableName= 'Custom Monthly Report' AND RowName='Annual Sum or Average' AND ColumnName= 'DAYLIGHTING REFERENCE POINT 1 DAYLIGHT ILLUMINANCE SETPOINT EXCEEDED TIME') 
+ConsCost; Construction Cost [$]; Select Value from TabularDataWithStrings WHERE (RowName ='Line Item SubTotal' AND ColumnName = 'SubTotal ~~$~~')  
+!-end sqlite
+
+!-user spreadsheet
+! Output file name; User spreadsheet file name; columns to extract (e.g. 3,5, 6, 7)
+
+!-end user spreadsheet
+!-objectives
+! Name of the objective; unit; formula (c0,c1, c2... are columns in the result table generated from the statements above)
+VAV HVAC Energy Intensity; kWh/m2/yr; (c1*1.40)+(c2*1.24)/1295.34
+Sum Zones Cooling Load; kW; c4/1000
+Sum Zones Discomfort Hours; Hours; c6 
+Sum Zones Daylight Hours; Hours; -c7 
+Sum Construction and HVAC First Cost; $; (C4/1000*7034)+c8
+!-end objectives
+! Need to be delta from baseline for each location, and normalized by square foot (possibly IP!) and $

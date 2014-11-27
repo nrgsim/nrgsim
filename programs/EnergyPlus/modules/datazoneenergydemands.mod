@@ -1,0 +1,177 @@
+GFORTRAN module version '10' created from .\DataZoneEnergyDemands.f90
+MD5:0b809862f63d917473c6b761df8fb938 -- If you edit this, you'll get what you deserve.
+
+(() () () () () () () () () () () () () () () () () () () () () () ()
+() () () ())
+
+()
+
+(('zonesystemdemanddata' 'datazoneenergydemands' 2) (
+'zonesystemmoisturedemand' 'datazoneenergydemands' 3))
+
+()
+
+()
+
+()
+
+(2 'Zonesystemdemanddata' 'datazoneenergydemands' '' 1 ((DERIVED
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 ALLOC_COMP) (UNKNOWN 0 0
+0 0 UNKNOWN ()) 0 0 () () 0 ((4 'remainingoutputrequired' (REAL 8 0 0 0
+REAL ()) () (UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0)
+UNKNOWN-ACCESS (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0'))
+(5 'totaloutputrequired' (REAL 8 0 0 0 REAL ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (6
+'outputrequiredtoheatingsp' (REAL 8 0 0 0 REAL ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (7
+'outputrequiredtocoolingsp' (REAL 8 0 0 0 REAL ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (8
+'remainingoutputreqtoheatsp' (REAL 8 0 0 0 REAL ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (9
+'remainingoutputreqtocoolsp' (REAL 8 0 0 0 REAL ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (10
+'numzoneequipment' (INTEGER 4 0 0 0 INTEGER ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '0')) (11
+'sequencedoutputrequired' (REAL 8 0 0 0 REAL ()) (1 0 DEFERRED () ()) (
+UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 ALLOCATABLE
+DIMENSION) UNKNOWN-ACCESS ()) (12 'sequencedoutputrequiredtoheatingsp' (
+REAL 8 0 0 0 REAL ()) (1 0 DEFERRED () ()) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 ALLOCATABLE DIMENSION) UNKNOWN-ACCESS ())
+(13 'sequencedoutputrequiredtocoolingsp' (REAL 8 0 0 0 REAL ()) (1 0
+DEFERRED () ()) (UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN
+0 0 ALLOCATABLE DIMENSION) UNKNOWN-ACCESS ()) (14 'supplyairadjustfactor'
+(REAL 8 0 0 0 REAL ()) () (UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (CONSTANT (REAL 8 0 0 0 REAL ()) 0
+'0.10000000000000@1')) (15 'stagenum' (INTEGER 4 0 0 0 INTEGER ()) () (
+UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0)
+UNKNOWN-ACCESS (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '0'))) PUBLIC (
+() () () ()) () 0 0 98767621)
+3 'Zonesystemmoisturedemand' 'datazoneenergydemands' '' 1 ((DERIVED
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 ALLOC_COMP) (UNKNOWN 0 0
+0 0 UNKNOWN ()) 0 0 () () 0 ((16 'remainingoutputrequired' (REAL 8 0 0 0
+REAL ()) () (UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0)
+UNKNOWN-ACCESS (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0'))
+(17 'totaloutputrequired' (REAL 8 0 0 0 REAL ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (18
+'outputrequiredtohumidifyingsp' (REAL 8 0 0 0 REAL ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (19
+'outputrequiredtodehumidifyingsp' (REAL 8 0 0 0 REAL ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (20
+'remainingoutputreqtohumidsp' (REAL 8 0 0 0 REAL ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (21
+'remainingoutputreqtodehumidsp' (REAL 8 0 0 0 REAL ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')) (22
+'numzoneequipment' (INTEGER 4 0 0 0 INTEGER ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) UNKNOWN-ACCESS (
+CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '0')) (23
+'sequencedoutputrequired' (REAL 8 0 0 0 REAL ()) (1 0 DEFERRED () ()) (
+UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 ALLOCATABLE
+DIMENSION) UNKNOWN-ACCESS ()) (24 'sequencedoutputrequiredtohumidsp' (
+REAL 8 0 0 0 REAL ()) (1 0 DEFERRED () ()) (UNKNOWN-FL UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 ALLOCATABLE DIMENSION) UNKNOWN-ACCESS ())
+(25 'sequencedoutputrequiredtodehumidsp' (REAL 8 0 0 0 REAL ()) (1 0
+DEFERRED () ()) (UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN
+0 0 ALLOCATABLE DIMENSION) UNKNOWN-ACCESS ())) PUBLIC (() () () ()) () 0
+0 16362779)
+26 'constant_minusone' 'dataprecisionglobals' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '-0.10000000000000@1')
+() 0 () () () 0 0)
+27 'constant_one' 'dataprecisionglobals' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.10000000000000@1') () 0 () () () 0
+0)
+28 'constant_pointfive' 'dataprecisionglobals' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.80000000000000@0')
+() 0 () () () 0 0)
+29 'constant_twenty' 'dataprecisionglobals' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.14000000000000@2')
+() 0 () () () 0 0)
+30 'constant_zero' 'dataprecisionglobals' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.00000000000000@0')
+() 0 () () () 0 0)
+31 'curdeadbandorsetback' 'datazoneenergydemands' '' 1 ((VARIABLE
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE
+DIMENSION) (LOGICAL 4 0 0 0 LOGICAL ()) 0 0 () (1 0 DEFERRED () ()) 0 ()
+() () 0 0)
+32 'dataprecisionglobals' 'dataprecisionglobals' '' 1 ((MODULE
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) (UNKNOWN 0 0 0 0
+UNKNOWN ()) 0 0 () () 0 () () () 0 0)
+33 'datazoneenergydemands' 'datazoneenergydemands' '' 1 ((MODULE
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) (UNKNOWN 0 0 0 0
+UNKNOWN ()) 0 0 () () 0 () () () 0 0)
+34 'deadbandorsetback' 'datazoneenergydemands' '' 1 ((VARIABLE
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE
+DIMENSION) (LOGICAL 4 0 0 0 LOGICAL ()) 0 0 () (1 0 DEFERRED () ()) 0 ()
+() () 0 0)
+35 'default_prec' 'dataprecisionglobals' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0
+() (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '8') () 0 () () () 0 0)
+36 'exp_lowerlimit' 'dataprecisionglobals' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '-0.14000000000000@2')
+() 0 () () () 0 0)
+37 'exp_upperlimit' 'dataprecisionglobals' '' 1 ((PARAMETER
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0
+REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0 REAL ()) 0 '0.28000000000000@2')
+() 0 () () () 0 0)
+38 'i32' 'dataprecisionglobals' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0
+() (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '4') () 0 () () () 0 0)
+39 'i64' 'dataprecisionglobals' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0
+() (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '8') () 0 () () () 0 0)
+40 'kind' '(intrinsic)' '' 1 ((PROCEDURE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0 FUNCTION) (UNKNOWN 0 0 0 0 UNKNOWN ()) 0 0 () () 40
+() () () 0 0)
+41 'r32' 'dataprecisionglobals' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0
+() (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '4') () 0 () () () 0 0)
+42 'r64' 'dataprecisionglobals' '' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0
+() (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '8') () 0 () () () 0 0)
+43 'selected_int_kind' '(intrinsic)' '' 1 ((PROCEDURE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 FUNCTION) (UNKNOWN 0 0 0 0 UNKNOWN ())
+0 0 () () 43 () () () 0 0)
+44 'setback' 'datazoneenergydemands' '' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (LOGICAL 4
+0 0 0 LOGICAL ()) 0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+45 'zonesysenergydemand' 'datazoneenergydemands' '' 1 ((VARIABLE
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE
+DIMENSION) (DERIVED 2 0 0 0 DERIVED ()) 0 0 () (1 0 DEFERRED () ()) 0 ()
+() () 0 0)
+46 'zonesysmoisturedemand' 'datazoneenergydemands' '' 1 ((VARIABLE
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE
+DIMENSION) (DERIVED 3 0 0 0 DERIVED ()) 0 0 () (1 0 DEFERRED () ()) 0 ()
+() () 0 0)
+47 'zonesystemdemanddata' 'datazoneenergydemands' '' 1 ((PROCEDURE
+UNKNOWN-INTENT UNKNOWN-PROC DECL UNKNOWN 0 0 FUNCTION GENERIC) (UNKNOWN
+0 0 0 0 UNKNOWN ()) 0 0 () () 0 () () () 0 0)
+48 'zonesystemmoisturedemand' 'datazoneenergydemands' '' 1 ((PROCEDURE
+UNKNOWN-INTENT UNKNOWN-PROC DECL UNKNOWN 0 0 FUNCTION GENERIC) (UNKNOWN
+0 0 0 0 UNKNOWN ()) 0 0 () () 0 () () () 0 0)
+)
+
+('Zonesystemdemanddata' 0 2 'Zonesystemmoisturedemand' 0 3
+'constant_minusone' 0 26 'constant_one' 0 27 'constant_pointfive' 0 28
+'constant_twenty' 0 29 'constant_zero' 0 30 'curdeadbandorsetback' 0 31
+'dataprecisionglobals' 0 32 'datazoneenergydemands' 0 33
+'deadbandorsetback' 0 34 'default_prec' 0 35 'exp_lowerlimit' 0 36
+'exp_upperlimit' 0 37 'i32' 0 38 'i64' 0 39 'kind' 0 40 'r32' 0 41 'r64'
+0 42 'selected_int_kind' 0 43 'setback' 0 44 'zonesysenergydemand' 0 45
+'zonesysmoisturedemand' 0 46 'zonesystemdemanddata' 0 47
+'zonesystemmoisturedemand' 0 48)
