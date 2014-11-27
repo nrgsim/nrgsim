@@ -28,7 +28,8 @@ window.app.views.SimPage = Backbone.View.extend({
     'change .group-disable' : 'handleSliderCheckboxChange',
     'click #left-panel-toggle' : 'toggleInputPanel',
     'change #bio-pcm' : 'handleBioPCMChange',
-    'change #continent' : 'handleContinentChange'
+    'change #continent' : 'handleContinentChange',
+    'change #country' : 'handleCountryChange'
   },
 
   // Create a transform matrix that will put the center of a zone at the origin (0, 0, 0)
@@ -405,6 +406,21 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
         _.each(object, function(value, key) {
           ctrl.append($("<option />").val(key).text(value.name));
         });
+        $('#country').removeAttr('disabled');
+        $('#region').empty().attr('disabled', 'disabled');
+      });
+    });
+  },
+
+  handleCountryChange: function(evt) {
+    var continent = $('#continent').val();
+    var country = evt.currentTarget.value;
+    $.get('simulation/regions/'+continent+'/'+country, function(d) {
+      var ctrl = $('#region');
+      ctrl.empty();
+      _.each(d[country].values, function(object) {
+        ctrl.append($("<option />").val(object.file).text(object.name));
+        $('#region').removeAttr('disabled');
       });
     });
   },
