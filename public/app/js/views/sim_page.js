@@ -463,6 +463,9 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     }, 10);
     */
 
+    var height = $('#inputs-panel').height();
+    $('#inputs-panel').resizable({ minHeight:  height });
+
 
     // This help stuff is kludgy just to show that we can do it. It should be implemented better when we really have help.
     var helpDialog = $('#help-dialog').dialog({autoOpen: false});
