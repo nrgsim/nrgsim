@@ -453,7 +453,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
 
     $('#facade-tabs').tabs({ active: 0, heightStyle: 'content' });
-    $('#input-tabs').tabs({ active: 0, heightStyle: 'fill' });
+    $('#input-tabs').tabs({ active: 0, heightStyle: 'content' });
 
     // This forces the tabs to redraw correctly. Not sure why they don't without this.
     /*
@@ -464,7 +464,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     */
 
     var height = $('#inputs-panel').height();
-    $('#inputs-panel').resizable({ minHeight:  height });
+    $('#inputs-panel').resizable({ handles: "ne, se, e", minHeight:  height, maxHeight: height });
 
 
     // This help stuff is kludgy just to show that we can do it. It should be implemented better when we really have help.
