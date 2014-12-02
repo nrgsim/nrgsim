@@ -1,0 +1,81 @@
+!-Generator IDFEditor 1.44
+!-Option SortedOrder
+
+!-NOTE: All comments with '!-' are ignored by the IDFEditor and are generated automatically.
+!-      Use '!' comments if they need to be retained when using the IDFEditor.
+
+
+!-   ===========  ALL OBJECTS IN CLASS: PEOPLE ===========
+
+People,
+    ConventionCenter,        !- Name
+    Zone1,        !- Zone or ZoneList Name
+    OCC-SCHED-BldgAvg,       !- Number of People Schedule Name
+    Area/Person,             !- Number of People Calculation Method
+    ,                        !- Number of People
+    ,                        !- People per Zone Floor Area {person/m2}
+    0.68,                    !- Zone Floor Area per Person {m2/person}
+    0.3,                     !- Fraction Radiant
+    0.69,                    !- Sensible Heat Fraction
+    ActSchd105,              !- Activity Level Schedule Name
+	0.0000000382,            !- Carbon Dioxide Generation Rate {m3/s-W}
+    No,                      !- Enable ASHRAE 55 Comfort Warnings
+    AngleFactor,             !- Mean Radiant Temperature Calculation Type
+    ComfortView,             !- Surface Name/Angle Factor List Name
+    WorkEfficiency,          !- Work Efficiency Schedule Name
+    DynamicClothingModelASHRAE55,  !- Clothing Insulation Calculation Method
+    ,                        !- Clothing Insulation Calculation Method Schedule Name
+    ,                        !- Clothing Insulation Schedule Name
+    AirVolicity,             !- Air Velocity Schedule Name
+    Fanger,                  !- Thermal Comfort Model 1 Type
+    AdaptiveASH55,           !- Thermal Comfort Model 2 Type
+    AdaptiveCEN15251;        !- Thermal Comfort Model 3 Type
+
+
+!-   ===========  ALL OBJECTS IN CLASS: LIGHTS ===========
+
+Lights,
+    ConventionCenter,        !- Name
+    Zone1,        !- Zone or ZoneList Name
+    LIT-SCHED-BldgAvg,       !- Schedule Name
+    Watts/Area,              !- Design Level Calculation Method
+    ,                        !- Lighting Level {W}
+    12.92,                   !- Watts per Zone Floor Area {W/m2}
+    ,                        !- Watts per Person {W/person}
+    0,                       !- Return Air Fraction
+    0.42,                    !- Fraction Radiant
+    0.18,                    !- Fraction Visible
+    ,                        !- Fraction Replaceable
+    General;                 !- End-Use Subcategory
+
+
+!-   ===========  ALL OBJECTS IN CLASS: ELECTRICEQUIPMENT ===========
+
+ElectricEquipment,
+    ConventionCenter,        !- Name
+    Zone1,        !- Zone or ZoneList Name
+    EQP-SCHED-BldgAvg,       !- Schedule Name
+    Watts/Area,              !- Design Level Calculation Method
+    ,                        !- Design Level {W}
+    10.33,                   !- Watts per Zone Floor Area {W/m2}
+    ,                        !- Watts per Person {W/person}
+    0,                       !- Fraction Latent
+    0.3,                     !- Fraction Radiant
+    0;                       !- Fraction Lost
+
+
+!-   ===========  ALL OBJECTS IN CLASS: HOTWATEREQUIPMENT ===========
+
+HotWaterEquipment,
+    ConventionCenter,        !- Name
+    Zone1,        !- Zone or ZoneList Name
+    DHW-SCHED-BldgAvg,       !- Schedule Name
+    Watts/Person,            !- Design Level Calculation Method
+    ,                        !- Design Level {W}
+    ,                        !- Power per Zone Floor Area {W/m2}
+    16.7,                    !- Power per Person {W/Person}
+    0.2,                     !- Fraction Latent
+    0.1,                     !- Fraction Radiant
+    0.5,                     !- Fraction Lost
+    General;                 !- End-Use Subcategory
+
