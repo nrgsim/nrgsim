@@ -35,7 +35,7 @@
 
           <div id="input-wrapper-site" class="input-wrapper-section" style="display:none">
             <div class="control">
-              <label>Continent</label>
+              <label>WMO Region</label>
               <select id="continent">
                 <option value="1">Africa</option>
                 <option value="2">Asia</option>
@@ -65,13 +65,6 @@
                 <option value="urban">Urban</option>
               </select>
             </div>
-            <div class="control">
-              <label>Building Type</label>
-              <select id="building-type">
-                <option value="">Low Rise</option>
-                <option value="">High Rise</option>
-              </select>
-            </div>
           </div>
 
           <div id="input-wrapper-zone" class="input-wrapper-section" style="display:none">
@@ -91,11 +84,28 @@
               <label><%= $.i18n('sim-occupancy-type') %> <span id="occupency-typeDisp"></span></label>
               <select id="occupancy-type">
                 <option value="office"><%= $.i18n('sim-office') %></option>
-                <option value="school"><%= $.i18n('sim-school') %></option>
+                <option value="classroom'"><%= $.i18n('sim-classroom') %></option>
                 <option value="residential"><%= $.i18n('sim-residential') %></option>
+                <option value="commercial"><%= $.i18n('sim-commercial') %></option>
+                <option value="conventionCenter"><%= $.i18n('sim-conventionCenter') %></option>
+                <option value="financial"><%= $.i18n('sim-financial') %></option>
+                <option value="industrial"><%= $.i18n('sim-industrial') %></option>
+                <option value="auditorium"><%= $.i18n('sim-auditorium') %></option>
+                <option value="grocery"><%= $.i18n('sim-grocery') %></option>
+                <option value="clinic"><%= $.i18n('sim-clinic') %></option>
+                <option value="worship"><%= $.i18n('sim-worship') %></option>
+                <option value="restaurant"><%= $.i18n('sim-restaurant') %></option>
+                <option value="general"><%= $.i18n('sim-unknownoccupancy') %></option>
               </select>
             </div>
-          </div>
+<!--             <div class="control">
+              <label>Type:</label>
+              <select id="building-type">
+                <option value="">Low Rise</option>
+                <option value="">High Rise</option>
+              </select>
+            </div>-->
+          </div> 
 
           <div id="input-wrapper-hvac" class="input-wrapper-section" style="display:none">
             <div class="control">
@@ -126,7 +136,7 @@
                   </select>
                 </div>
                 <div class="control">
-                  <label><%= $.i18n('Infiltration Rate [ACH]') %> <span id="infiltration-rateDisp"></span></label>
+                  <label><%= $.i18n('sim-infiltration') %> <span id="infiltration-rateDisp"></span></label>
                   <div id="infiltration-rate"></div>
                 </div>
                 <div class="control">
