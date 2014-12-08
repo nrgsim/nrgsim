@@ -32,7 +32,7 @@ def convertDataToCSV(jsondata):
   # This is a kludge for now. It just writes out the parameters on 3 lines to test that we received them correctly
   csvdata = []
   csvdata.append([jsondata["length"], jsondata["width"], jsondata["height"]])
-  csvdata.append([jsondata["northWindow"], jsondata["eastWindow"], jsondata["southWindow"], jsondata["westWindow"]])
+  csvdata.append([jsondata["Window"]])
   csvdata.append([jsondata["insulationLevel"], jsondata["ventilationRate"]])
   return csvdata
 
