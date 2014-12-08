@@ -267,7 +267,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
     $("#Width").slider({ min: 3, max: 21.336, value: 4.572, slide: self.updateWidth });
     $("#Height").slider({ min: 2.1336, max: 8, value: 2.4511, slide: self.updateHeight });
-    $("#FloorHeight").slider({ min: 0, max: 100, value: 0, slide: self.updateHeight });
+    //$("#FloorHeight").slider({ min: 0, max: 100, value: 0, slide: self.updateHeight });
     //depth is not needed for facade model and so default to 15ft
     $("#Depth").slider({ min: 4.572, max: 4.572, value: 4.572, slide: self.updateDepth });
    
@@ -297,11 +297,10 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.setSliderDisplayValue('#Width');
     this.setSliderDisplayValue('#Depth');
     this.setSliderDisplayValue('#Height');
-    this.setSliderDisplayValue('#FloorHeight');
+    //this.setSliderDisplayValue('#FloorHeight');
 
     this.setSliderDisplayValue('#orientation');
 
-    this.setSliderDisplayValue('#CoolingSP');
     this.setSliderDisplayValue('#HeatingSP');
     this.setSliderDisplayValue('#CoolingSP');
     

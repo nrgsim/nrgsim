@@ -20,14 +20,19 @@ def convertDataToCSV(jsondata):
     "length": "<number>",
     "width": "<number>",
     "height": "<number>",
-    "northWindow" : "null or <number>",
-    "eastWindow" : "null or <number>",
-    "southWindow" : "null or <number>",
-    "westWindow" : "null or <number>",
+    "window" : "null or <number>",
+    "orientation" : "<number>",
+    "CoolingSP" : "<number>",
+    "HeatingSP" : "<number>"
     "insulationLevel" : "<number>",
-    "ventilationRate" : "<number>"
+    "infiltration-rate" : "<number>",
+    "mvalue" : "<number>",
+    "qvalue" : "<number>",
+  
   }
   '''
+ # "ventilationRate" : "<number>"
+
 
   # This is a kludge for now. It just writes out the parameters on 3 lines to test that we received them correctly
   csvdata = []
