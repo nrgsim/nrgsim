@@ -157,18 +157,31 @@
               </div>
 
               <div id="input-wrapper-facade-window" style="display:none">
+                              <div class="control">
+                  <label>Construction Type</label>
+                  <select id="construction-type">
+                    <option value="">GenericWindow</option>
+                    <option value="">SinglePane</option>
+                    <option value="">DoublePane</option>
+                    <option value="">DoublePaneTinted</option>
+                    <option value="">DoublePaneLowE</option>
+                    <option value="">TripplePane</option>
+                    <option value="">TripplePaneTinted</option>
+                    <option value="">TripplePaneLowE</option>
+                  </select>
+                </div>
                 <div class="control">
                   <label><%= $.i18n('sim-glaze-ratio') %> <span id="WinGRDisp"></span></label>
                   <div id="WinGR"></div>
                 </div>
-                <div class="control">
+<!--                <div class="control">
                   <label><%= $.i18n('Window U-Value') %> <span id="Window_U_ValueDisp"></span></label>
                   <div id="Window_U_Value"></div>
                 </div>
                 <div class="control">
                   <label><%= $.i18n('Solar Heat Gain Coeffcient') %> <span id="Window_SHGCDisp"></span></label>
                   <div id="Window_SHGC"></div>
-                </div>
+                </div>-->
                 <div class="control">
                   <label><%= $.i18n('sim-overhang') %> <span id="WinOverhangRDisp"></span></label>
                   <div id="WinOverhangR"></div>
