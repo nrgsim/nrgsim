@@ -269,7 +269,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     $("#Height").slider({ min: 2.1336, max: 8, value: 2.4511, slide: self.updateHeight });
     //$("#FloorHeight").slider({ min: 0, max: 100, value: 0, slide: self.updateHeight });
     //depth is not needed for facade model and so default to 15ft
-    $("#Depth").slider({ min: 4.572, max: 4.572, value: 4.572, slide: self.updateDepth });
+    $("#Depth").slider({ min:3, max: 21.336, value: 4.572, slide: self.updateDepth });
    
     $("#infiltration-rate").slider({ min: 0.35, max: 10, value: 1, step: 0.1, slide: self.updateSliderDisplay });
     $("#orientation").slider({min: 0, max: 360, value: 180, step: 1, slide: self.updateSliderDisplay });

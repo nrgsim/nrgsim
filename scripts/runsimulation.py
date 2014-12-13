@@ -16,19 +16,25 @@ def convertDataToCSV(jsondata):
   # The format of the data is as follows:
   '''
   {
+    "weatherFileLocation": "<string>",
     "weatherFile": "<string>",
-    "length": "<number>",
+    "Terrain": "<string>",
+    "orientation" : "<number>",
     "width": "<number>",
     "height": "<number>",
+    "depth": "<number>",
+    "OccupancyType": "<string>",
     "window" : "null or <number>",
-    "orientation" : "<number>",
     "CoolingSP" : "<number>",
     "HeatingSP" : "<number>"
     "insulationLevel" : "<number>",
     "infiltration-rate" : "<number>",
     "mvalue" : "<number>",
     "qvalue" : "<number>",
-  
+    "WindowType": "<string>",
+    "WallType": "<string>",
+    "fin" : "<number>",
+    "overhang" : "<number>",
   }
   '''
  # "ventilationRate" : "<number>"
