@@ -17,6 +17,7 @@ def convertDataToCSV(jsondata):
   # The format of the data is as follows:
   '''
   {
+    "jobID": "<string>",  <-- can be any text that identifies this case
     "weatherFile": 0,  <-- should always be 0
     "modelFile": 0,    <-- should always be 0
     "Terrain": "<string>",
