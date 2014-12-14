@@ -6,6 +6,7 @@ import shutil
 import subprocess
 
 def createSimulationDirectory(simulationid):
+  # TODO: This directory needs to be a full copy of the 'Facade' folder in the jEPlus repository
   directory = 'simulations/{0}'.format(simulationid)
   if not os.path.exists(directory):
       os.makedirs(directory)
@@ -16,8 +17,8 @@ def convertDataToCSV(jsondata):
   # The format of the data is as follows:
   '''
   {
-    "weatherFileLocation": "<string>",
-    "weatherFile": "<string>",
+    "weatherFile": 0,  <-- should always be 0
+    "modelFile": 0,    <-- should always be 0
     "Terrain": "<string>",
     "orientation" : "<number>",
     "width": "<number>",
@@ -41,14 +42,15 @@ def convertDataToCSV(jsondata):
 
 
   # This is a kludge for now. It just writes out the parameters on 3 lines to test that we received them correctly
+  # TODO: When it is implemented, it should be one line with values appearing in the same order as the parameters in the project.
   csvdata = []
   csvdata.append([jsondata["length"], jsondata["width"], jsondata["height"]])
   csvdata.append([jsondata["Window"]])
   csvdata.append([jsondata["insulationLevel"], jsondata["ventilationRate"]])
   return csvdata
 
-def createParametersFile(directory, jsondata):
-  outputfile = directory + '/parameters.csv'
+def createJobListFile(directory, jsondata):
+  outputfile = directory + '/joblist.csv'
   with open(outputfile, 'w', newline='') as csvfile:
       csvfile = csv.writer(csvfile, delimiter=',', quotechar='\'', quoting=csv.QUOTE_MINIMAL)
       csvfile.writerows(convertDataToCSV(jsondata))
@@ -58,24 +60,28 @@ def copySupportingFiles(simulationDirectory, jsondata):
   shutil.copyfile('../weather/test.epw', simulationDirectory + os.sep + 'in.epw')
   #TODO: I think in version 1 we will always use the same idf file but it will get it's data from the parameter file.
   #      We need to replace the one that is currently there with the correct one that takes a parameter file.
-  shutil.copyfile('../idf/Geometry.idf', simulationDirectory + os.sep + 'in.idf')
+  # shutil.copyfile('../idf/Geometry.idf', simulationDirectory + os.sep + 'in.idf')  <-- No need to copy in.idf. The project folder contains the correct model file.
 
 def executeSimulation(simulationDirectory, resultsDirectory):
   olddir = os.getcwd()
   os.chdir('../jess_client')
+  # Call JESS client to run a single case defined in the joblist.csv file
   subprocess.call(['java', '-jar', '../jess_client/JESS_Client.jar',
     '-cfg', '../jess_client/client.cfg',
+    '-log', '../jess_client/log4j.cfg',
     '-job', simulationDirectory,
-    '-type', 'STD_SINGLE_JOB',
+    '-type', 'JEPLUS_PROJECT',
+    '-subset', 'LIST_FILE',
+    '-subset_param', 'joblist.csv',
     '-output', resultsDirectory])
   os.chdir(olddir)
 
 def runSimulation(simulationid, jsondata):
   directory = createSimulationDirectory(simulationid)
   resultsDirectory = directory + os.sep + 'output'
-  resultsFile = resultsDirectory + os.sep + 'eplustbl.csv'
+  resultsFile = resultsDirectory + os.sep + 'eplustbl.csv'  # <-- pick a different result file to report, maybe AllCombinedResults.csv?
 
-  createParametersFile(directory, jsondata)
+  createJobListFile(directory, jsondata)
   copySupportingFiles(directory, jsondata)
   executeSimulation(directory, resultsDirectory)
 
