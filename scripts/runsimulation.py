@@ -17,37 +17,43 @@ def convertDataToCSV(jsondata):
   # The format of the data is as follows:
   '''
   {
-    "jobID": "<string>",  <-- can be any text that identifies this case
-    "weatherFile": 0,  <-- should always be 0
-    "modelFile": 0,    <-- should always be 0
+    "JobID": "<string>",  <-- can be any text that identifies this case
+    "WeatherFile": 0,  <-- should always be 0
+    "ModelFile": 0,    <-- should always be 0
     "Terrain": "<string>",
-    "orientation" : "<number>",
-    "width": "<number>",
-    "height": "<number>",
-    "depth": "<number>",
+    "Orientation" : "<number>",
+    "Width": "<number>",
+    "Height": "<number>",
+    "Depth": "<number>",
     "OccupancyType": "<string>",
-    "window" : "null or <number>",
+    "Window" : "null or <number>",
     "CoolingSP" : "<number>",
     "HeatingSP" : "<number>"
-    "insulationLevel" : "<number>",
-    "infiltration-rate" : "<number>",
-    "mvalue" : "<number>",
-    "qvalue" : "<number>",
+    "InsulationLevel" : "<number>",
+    "InfiltrationRate" : "<number>",
+    "Mvalue" : "<number>",
+    "Qvalue" : "<number>",
     "WindowType": "<string>",
     "WallType": "<string>",
-    "fin" : "<number>",
-    "overhang" : "<number>",
+    "Fin" : "<number>",
+    "Overhang" : "<number>",
   }
   '''
- # "ventilationRate" : "<number>"
+ # "ventilationRate" : "<number>" jsondata["ventilationRate"]])
 
 
   # This is a kludge for now. It just writes out the parameters on 3 lines to test that we received them correctly
   # TODO: When it is implemented, it should be one line with values appearing in the same order as the parameters in the project.
   csvdata = []
-  csvdata.append([jsondata["length"], jsondata["width"], jsondata["height"]])
+  csvdata.append([jsondata["JobID"], jsondata["WeatherFile"], jsondata["ModelFile"]])
+  csvdata.append([jsondata["Terrain"], jsondata["Orientation"]])
+  csvdata.append([jsondata["Depth"], jsondata["Width"], jsondata["Height"]])
+  csvdata.append([jsondata["OccupancyType"], jsondata["CoolingSP"], jsondata["HeatingSP"]])
   csvdata.append([jsondata["Window"]])
-  csvdata.append([jsondata["insulationLevel"], jsondata["ventilationRate"]])
+  csvdata.append([jsondata["InsulationLevel"],  jsondata["InfiltrationRate"]])
+  csvdata.append([jsondata["Mvalue"],  jsondata["Qvalue"]])
+  csvdata.append([jsondata["WindowType"],  jsondata["WallType"]])
+  csvdata.append([jsondata["Fin"],  jsondata["Overhang"]])
   return csvdata
 
 def createJobListFile(directory, jsondata):
@@ -80,7 +86,7 @@ def executeSimulation(simulationDirectory, resultsDirectory):
 def runSimulation(simulationid, jsondata):
   directory = createSimulationDirectory(simulationid)
   resultsDirectory = directory + os.sep + 'output'
-  resultsFile = resultsDirectory + os.sep + 'eplustbl.csv'  # <-- pick a different result file to report, maybe AllCombinedResults.csv?
+  resultsFile = resultsDirectory + os.sep + 'AllCombinedResults.csv'  
 
   createJobListFile(directory, jsondata)
   copySupportingFiles(directory, jsondata)
