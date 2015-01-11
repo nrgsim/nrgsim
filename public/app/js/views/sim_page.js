@@ -5,7 +5,6 @@ window.app.views.SimPage = Backbone.View.extend({
   template: JST["app/templates/sim.us"],
 
   MVALUES: { 1: 27, 2: 51, 3: 91 },
-
   camera: null,
   scene: null,
   renderer: null,
@@ -164,21 +163,22 @@ sz1=str(CDbl(BuildingHeight)-windowheadersize)
 sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 */
 
+
   initializeScene: function(scene, surfaces, transform) {
     var axes = new THREE.AxisHelper(2000);
     scene.add(axes);
-
+	var scalingFactor = 100;
     var boxGeometry = new THREE.BoxGeometry(1, 1, 1);
     var cubeMaterial = new THREE.MeshBasicMaterial({color: 0xf2d478});
     this.solarCube = new THREE.Mesh(boxGeometry, cubeMaterial);
     this.solarCube.castShadow = true;
     this.solarCube.receiveShadow = true;
-    this.solarCube.scale.x = 300;
-    this.solarCube.scale.y = 400;
-    this.solarCube.scale.z = 400;
+    this.solarCube.scale.x = 500;
+    this.solarCube.scale.y = 500;
+    this.solarCube.scale.z = 213.36;
     this.solarCube.position.x = 0;
     this.solarCube.position.y = 0;
-    this.solarCube.position.z = 200;
+    this.solarCube.position.z = this.solarCube.scale.z/2;
     this.scene.add(this.solarCube);
 
     var southWindowGeometry = new THREE.BoxGeometry(1, 1, 1);
@@ -186,12 +186,16 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.southWindow = new THREE.Mesh(southWindowGeometry, southWindowMaterial);
     this.southWindow.castShadow = false;
     this.southWindow.receiveShadow = true;
-    this.southWindow.scale.x = 150;
+	var windowtowall= Math.sqrt(40/100);
+	//var Swinowtowall = Math.sqrt(windowtowall);
+	this.southWindow.scale.x = (windowtowall)*(this.solarCube.scale.x);
+    this.southWindow.scale.z = (windowtowall)*(this.solarCube.scale.z);
+    //this.southWindow.scale.x = 150;
     this.southWindow.scale.y = 10;
-    this.southWindow.scale.z = 200;
+    //this.southWindow.scale.z = 200;
     this.southWindow.position.x = 0;
-    this.southWindow.position.y = -200;
-    this.southWindow.position.z = 200;
+    this.southWindow.position.y = -this.solarCube.scale.y/2;
+    this.southWindow.position.z = this.solarCube.scale.z/2;
     this.scene.add(this.southWindow);
 
     var southShadeGeometry = new THREE.BoxGeometry(1, 1, 1);
@@ -199,25 +203,51 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.southShade = new THREE.Mesh(southShadeGeometry, southShadeMaterial);
     this.southShade.castShadow = true;
     this.southShade.receiveShadow = false;
-    this.southShade.scale.x = 300;
-    this.southShade.scale.y = 100;
-    this.southShade.scale.z = 10;
+    this.southShade.scale.x = this.solarCube.scale.x;
+    this.southShade.scale.y = 20;
+    this.southShade.scale.z = 1;
     this.southShade.position.x = 0;
-    this.southShade.position.y = -200;
-    this.southShade.position.z = 400;
+    this.southShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
+    this.southShade.position.z = this.solarCube.scale.z;
     this.scene.add(this.southShade);
 
+	var leftShadeGeometry = new THREE.BoxGeometry(1, 1, 1);
+	var leftShadeMaterial = new THREE.MeshBasicMaterial({color: 0xd43d2d});
+	this.leftShade = new THREE.Mesh(leftShadeGeometry, leftShadeMaterial);
+	this.leftShade.castShadow = true;
+	this.leftShade.receiveShadow = false;
+	this.leftShade.scale.x = 1;
+	this.leftShade.scale.y = 20;
+	this.leftShade.scale.z = this.solarCube.scale.z;
+	this.leftShade.position.x = -(this.solarCube.scale.x/2);
+	this.leftShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
+	this.leftShade.position.z = this.solarCube.scale.z/2;
+	this.scene.add(this.leftShade);
+
+	var rightShadeGeometry = new THREE.BoxGeometry(1, 1, 1);
+	var rightShadeMaterial = new THREE.MeshBasicMaterial({color: 0xd43d2d});
+	this.rightShade = new THREE.Mesh(rightShadeGeometry, rightShadeMaterial);
+	this.rightShade.castShadow = true;
+	this.rightShade.receiveShadow = false;
+	this.rightShade.scale.x = 1;
+	this.rightShade.scale.y = 20;
+	this.rightShade.scale.z = this.solarCube.scale.z;
+	this.rightShade.position.x = (this.solarCube.scale.x/2);
+	this.rightShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
+	this.rightShade.position.z = this.solarCube.scale.z/2;
+	this.scene.add(this.rightShade);
+	
     var groundPlaneGeometry = new THREE.PlaneGeometry (10000, 10000);
     var groundPlaneMaterial = new THREE.MeshBasicMaterial ({color: 0xcccccc});
     var groundPlane = new THREE.Mesh(groundPlaneGeometry, groundPlaneMaterial);
     groundPlane.position.x = 0;
     groundPlane.position.y = 0;
-    groundPlane.position.z = 0;
+    groundPlane.position.z = -0.1;
     groundPlane.receiveShadow = true;
     scene.add(groundPlane);
 
     var sunLight = new THREE.DirectionalLight (0xffffff, 0.1);
-    sunLight.position.set(450, -450, 1000);
+    sunLight.position.set(900, -900, 2000);
     sunLight.castShadow = true;
     sunLight.onlyShadow = true;
     scene.add(sunLight);
@@ -280,8 +310,8 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     $("#insulation-level").slider({ min: 0.1, max: 10, value: 3, slide: self.updateSliderDisplay });
     $("#Window_U_Value").slider({ min: 1.94, max: 5.8, value: 3.12, step: 0.1, slide: self.updateSliderDisplay });
     $("#Window_SHGC").slider({ min: 0.25, max: 1, value: 0.42, step: 0.1, slide: self.updateSliderDisplay });
-    $("#WinOverhangR").slider({ min: 0.1, max: 1, value: 0.2, step: 0.1, slide: self.updateSliderDisplay });
-    $("#WinFinR").slider({ min: 0.1, max: 1, value: 0.2, step: 0.1, slide: self.updateSliderDisplay });
+    $("#WinOverhangR").slider({ min: 0.1, max: 1, value: 0.2, step: 0.1, slide: self.handleOverHang });
+    $("#WinFinR").slider({ min: 0.1, max: 1, value: 0.2, step: 0.1, slide: self.handleFin });
 
     $("#CoolingSP").slider({ min: 23, max: 30, value: 25, step: 1, slide: self.updateSliderDisplay });
     //SB must be higher than SP or error $("#CoolingSB").slider({ min: 23, max: 40, value: 27, slide: self.updateSliderDisplay })
@@ -350,9 +380,32 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
   handleGlazingRatioChange: function(evt, ui) {
     this.updateSliderDisplay(evt, ui);
     var enable = ui.value > 1;
+	var windowtowall= Math.sqrt(ui.value/100);
+	//var Swinowtowall = Math.sqrt(windowtowall);
+	this.southWindow.scale.x = (windowtowall)*(this.solarCube.scale.x);
+    this.southWindow.scale.z = (windowtowall)*(this.solarCube.scale.z);
     $('#Window_U_Value').slider(enable ? "enable" : "disable");
     $('#Window_SHGC').slider(enable ? "enable" : "disable");
   },
+
+
+handleOverHang: function(evt, ui) {
+  this.updateSliderDisplay(evt, ui);
+  var enable = ui.value > 1;
+  this.southShade.scale.y= ui.value*100;
+  this.southShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
+
+},
+
+handleFin: function(evt, ui) {
+  this.updateSliderDisplay(evt, ui);
+  var enable = ui.value > 1;
+  this.leftShade.scale.y= ui.value*100;
+  this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
+  this.rightShade.scale.y= ui.value*100;
+  this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
+},
+
 
   handleSliderCheckboxChange: function(event) {
     var grId = '#'+event.target.id+'GR';
@@ -367,18 +420,38 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
   updateWidth: function(event, ui) {
     this.updateSliderDisplay(event, ui);
     this.solarCube.scale.x = ui.value*100;
+	this.southShade.scale.x= ui.value*100;
+	ratio=this.southWindow.scale.z/this.solarCube.scale.z;
+	this.southWindow.scale.x = (ratio)*(this.solarCube.scale.x);
+    this.southWindow.scale.z = (ratio)*(this.solarCube.scale.z);
+	this.leftShade.position.x = -(this.solarCube.scale.x/2);
+	this.rightShade.position.x = (this.solarCube.scale.x/2);
   },
 
   updateDepth: function(event, ui) {
     this.updateSliderDisplay(event, ui);
     this.solarCube.scale.y = ui.value*100;
+	this.southWindow.position.y = -this.solarCube.scale.y/2;
+	this.southShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
+	this.rightShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
+	this.leftShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
   },
 
   updateHeight: function(event, ui) {
     this.updateSliderDisplay(event, ui);
     this.solarCube.scale.z = ui.value*100;
     this.solarCube.position.z = ui.value*100/2;
+	ratio=this.southWindow.scale.x/this.solarCube.scale.x;
+	this.southWindow.scale.x = (ratio)*(this.solarCube.scale.x);
+    this.southWindow.scale.z = (ratio)*(this.solarCube.scale.z);
+	this.southWindow.position.z=this.solarCube.scale.z/2;
+	this.southShade.position.z = this.solarCube.scale.z;
+	this.rightShade.scale.z = this.solarCube.scale.z;
+	this.rightShade.position.z = this.solarCube.scale.z/2;
+	this.leftShade.scale.z = this.solarCube.scale.z;
+	this.leftShade.position.z = this.solarCube.scale.z/2;
   },
+
 
   updateSliderDisplay: function(event, ui) {
     this.setSliderDisplayValue('#'+event.target.id, ui.value);
