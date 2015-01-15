@@ -321,9 +321,13 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     $('#mvalue').slider({ min: 1, max: 3, step: 1, value: 2, orientation: 'vertical', slide: self.updateMValueSliderDisplay });
     $('#qvalue').slider({ min: 23, max: 27, step: 2, value: 25, orientation: 'vertical', slide: self.updateSliderDisplay });
 
+    $("#render_header__date_id").slider({ min: 1, max: 365, value: 150, step: 1, slide: self.updateSliderDisplay});
+    $("#render_header__hour_id").slider({ min: 0, max: 24, value: 12, step: 1, slide: self.updateSliderDisplay });
 
    $("#run-button").button();
 
+    this.setSliderDisplayValue('#render_header__date_id');
+    this.setSliderDisplayValue('#render_header__hour_id');
     this.setSliderDisplayValue('#Width');
     this.setSliderDisplayValue('#Depth');
     this.setSliderDisplayValue('#Height');
