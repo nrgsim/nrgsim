@@ -23,6 +23,8 @@ module.exports = function (app, t, passport, auth) {
   app.get('/simulation/load/:id', simulation.load);
   app.post('/simulation/run', simulation.run);
   app.get('/simulation/:jobId', simulation.checkForResults);
+  app.get('/simulation/countries/:continent', simulation.getCountries);
+  app.get('/simulation/files/:continent/:country', simulation.getWeatherFiles);
 
   /* general html page requests */
   /*
