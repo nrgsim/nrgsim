@@ -447,32 +447,32 @@ handleFin: function(evt, ui) {
     this.updateSliderDisplay(event, ui);
     this.solarCube.scale.x = ui.value*100;
 
-	ratio=this.southWindow.scale.z/this.solarCube.scale.z;
-	ratioFin=this.leftShade.scale.y/this.southWindow.scale.x;
-	
-	this.southWindow.scale.x = (ratio)*(this.solarCube.scale.x);
+    ratio=this.southWindow.scale.z/this.solarCube.scale.z;
+    ratioFin=this.leftShade.scale.y/this.southWindow.scale.x;
+
+    this.southWindow.scale.x = (ratio)*(this.solarCube.scale.x);
     this.southWindow.scale.z = (ratio)*(this.solarCube.scale.z);
 
-	this.southShade.scale.x = this.southWindow.scale.x;
-	this.southShade.position.z = this.southWindow.scale.z/2+this.solarCube.scale.z/2;
-	
-	this.leftShade.scale.y = ratioFin*this.southWindow.scale.x;
-	this.leftShade.position.x = -(this.southWindow.scale.x/2);
-	this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
+    this.southShade.scale.x = this.southWindow.scale.x;
+    this.southShade.position.z = this.southWindow.scale.z/2+this.solarCube.scale.z/2;
 
-	this.rightShade.scale.y = ratioFin*this.southWindow.scale.x;
-	this.rightShade.position.x = (this.southWindow.scale.x/2);
-	this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
+    this.leftShade.scale.y = ratioFin*this.southWindow.scale.x;
+    this.leftShade.position.x = -(this.southWindow.scale.x/2);
+    this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
+
+    this.rightShade.scale.y = ratioFin*this.southWindow.scale.x;
+    this.rightShade.position.x = (this.southWindow.scale.x/2);
+    this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
 
   },
 
   updateDepth: function(event, ui) {
     this.updateSliderDisplay(event, ui);
     this.solarCube.scale.y = ui.value*100;
-	this.southWindow.position.y = -this.solarCube.scale.y/2;
-	this.southShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
-	this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
-	this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
+    this.southWindow.position.y = -this.solarCube.scale.y/2;
+    this.southShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
+    this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
+    this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
   },
 
   updateHeight: function(event, ui) {
@@ -481,22 +481,22 @@ handleFin: function(evt, ui) {
     this.solarCube.position.z = ui.value*100/2;
 
     ratioShade=this.southShade.scale.y/this.southWindow.scale.z;
-	ratio=this.southWindow.scale.x/this.solarCube.scale.x;
+    ratio=this.southWindow.scale.x/this.solarCube.scale.x;
 	
-	this.southWindow.scale.x = (ratio)*(this.solarCube.scale.x);
+    this.southWindow.scale.x = (ratio)*(this.solarCube.scale.x);
     this.southWindow.scale.z = (ratio)*(this.solarCube.scale.z);
-	this.southWindow.position.z=this.solarCube.scale.z/2;
+    this.southWindow.position.z=this.solarCube.scale.z/2;
 	
 	
-	this.southShade.scale.y= ratioShade*this.southWindow.scale.z;
-	this.southShade.position.z = this.southWindow.scale.z/2+this.solarCube.scale.z/2;
-	this.southShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
-	
-	this.leftShade.scale.z = this.southWindow.scale.z;
-	this.leftShade.position.z = this.southWindow.position.z;
+    this.southShade.scale.y= ratioShade*this.southWindow.scale.z;
+    this.southShade.position.z = this.southWindow.scale.z/2+this.solarCube.scale.z/2;
+    this.southShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
 
-	this.rightShade.scale.z = this.southWindow.scale.z;
-	this.rightShade.position.z = this.southWindow.position.z;
+    this.leftShade.scale.z = this.southWindow.scale.z;
+    this.leftShade.position.z = this.southWindow.position.z;
+
+    this.rightShade.scale.z = this.southWindow.scale.z;
+    this.rightShade.position.z = this.southWindow.position.z;
   },
 
 
@@ -526,7 +526,7 @@ handleFin: function(evt, ui) {
           ctrl.append($("<option />").val(key).text(value.name));
         });
         $('#country').removeAttr('disabled');
-        $('#region').empty().attr('disabled', 'disabled');
+        //$('#region').empty().attr('disabled', 'disabled');
         $('#WeatherFile').empty().attr('disabled', 'disabled');
       });
     });
@@ -535,13 +535,15 @@ handleFin: function(evt, ui) {
   handleCountryChange: function(evt) {
     var continent = $('#continent').val();
     var country = evt.currentTarget.value;
-    $.get('simulation/regions/'+continent+'/'+country, function(d) {
-      var ctrl = $('#region');
+    $.get('simulation/files/'+continent+'/'+country, function(files) {
+      var ctrl = $('#WeatherFile');
       ctrl.empty();
-      _.each(d[country].values, function(object) {
-        ctrl.append($("<option />").val(object.file).text(object.name));
-        $('#region').removeAttr('disabled');
-      });
+      if (files) {
+        _.each(files, function(file) {
+          ctrl.append($("<option />").val(file).text(file));
+          $('#WeatherFile').removeAttr('disabled');
+        });
+      }
     });
   },
 
@@ -791,6 +793,7 @@ handleFin: function(evt, ui) {
     window.setTimeout(function() {
       self.init();
       self.animate();
+      self.handleContinentChange({currentTarget: { value: $('#continent').val() } }); // Force
     }, 0);
     this.onPageManipulations();
     return this;

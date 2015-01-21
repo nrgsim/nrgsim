@@ -3,6 +3,7 @@ module.exports = {
   drawRoutes: function(app, excel) {
 
     var _ = require('lodash');
+    var fs = require('fs');
   
     var zone = {
       zone:
@@ -989,13 +990,17 @@ module.exports = {
       res.json(WEATHER_DATA[continent]);
     });
 
-    app.get('/simulation/regions/:continent/:country', function(req, res) {
+    app.get('/simulation/files/:continent/:country', function(req, res) {
       var continent = req.params.continent;
       var country = req.params.country;
-      var region = _.find(WEATHER_DATA[continent].values, function(acountry) {
-        return !!acountry[country];
+      var weatherDir = process.cwd()+'\\..\\..\\weather\\'+continent+'\\'+country;
+      fs.readdir(weatherDir, function(err, files) {
+        if (!err) {
+          res.json(files);
+        } else {
+          console.log("Failed to get weather files for " + continent + ' ' + country + ': ' + err.message);
+        }
       });
-      res.json(region);
     });
   }
 };
