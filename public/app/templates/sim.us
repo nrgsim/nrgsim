@@ -2,17 +2,20 @@
   <div class="help">
     <a id="show-help" href="#">Help</a>
   </div>
-  <!--<div class="temporal">
-    This doesn't work in IE so I took it out for now
-    <input id="temporal-hour" type="range"/>
-    <input id="temporal-date" type="range"/>
-    --> 
-     <div class="render_header">
-     <h2 class="render_header--title"></h2> 
-     </div>
-     </div>
-    <input id="render_header__hour_id" type="range" class="render_header--input">
-    <input id="render_header__date_id" type="range" class="render_header--input">
+  <div class="temporal">
+    <div class="temporal-group">
+      <div>
+        <div id="day-of-year-slider"></div>
+      </div>
+      <div id="day-of-year-sliderDisp">&nbsp;</div>
+    </div>
+    <div class="temporal-group">
+      <div>
+        <div id="hour-of-day-slider"></div>
+      </div>
+      <div id="hour-of-day-sliderDisp">&nbsp;</div>
+    </div>
+  </div>
   <div class="profile">
     <a href="/#logout"><%= $.i18n('sim-logout') %></a><a href="/#profile"><%= $.i18n('sim-profile') %></a>
   </div>

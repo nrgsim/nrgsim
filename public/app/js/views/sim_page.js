@@ -4,6 +4,7 @@ window.app.views.SimPage = Backbone.View.extend({
 
   template: JST["app/templates/sim.us"],
 
+  MONTH_LENGTHS: [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ],
   MVALUES: { 1: 27, 2: 51, 3: 91 },
   camera: null,
   scene: null,
@@ -321,13 +322,13 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     $('#mvalue').slider({ min: 1, max: 3, step: 1, value: 2, orientation: 'vertical', slide: self.updateMValueSliderDisplay });
     $('#qvalue').slider({ min: 23, max: 27, step: 2, value: 25, orientation: 'vertical', slide: self.updateSliderDisplay });
 
-    $("#render_header__date_id").slider({ min: 1, max: 365, value: 150, step: 1, slide: self.updateSliderDisplay});
-    $("#render_header__hour_id").slider({ min: 0, max: 24, value: 12, step: 1, slide: self.updateSliderDisplay });
+    $("#day-of-year-slider").slider({ min: 1, max: 365, step: 1, value: 150, slide: self.updateDayOfYearSliderDisplay });
+    $("#hour-of-day-slider").slider({ min: 1, max: 24, step: 1, value: 12, slide: self.updateHourOfDaySliderDisplay });
 
-   $("#run-button").button();
+    $("#run-button").button();
 
-    this.setSliderDisplayValue('#render_header__date_id');
-    this.setSliderDisplayValue('#render_header__hour_id');
+    this.updateDayOfYearSliderDisplay({ target: { id: 'day-of-year-slider' } }, { value: 150 });
+    this.updateHourOfDaySliderDisplay({ target: { id: 'hour-of-day-slider' } }, { value: 12 });
     this.setSliderDisplayValue('#Width');
     this.setSliderDisplayValue('#Depth');
     this.setSliderDisplayValue('#Height');
@@ -385,52 +386,52 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.updateSliderDisplay(evt, ui);
     var enable = ui.value > 1;
 
-	ratioShade=this.southShade.scale.y/this.southWindow.scale.z;
-	ratioFin=this.leftShade.scale.y/this.southWindow.scale.x;
-	var windowtowall= Math.sqrt(ui.value/100);
-	
-	
-	this.southWindow.scale.x = (windowtowall)*(this.solarCube.scale.x);
+    ratioShade=this.southShade.scale.y/this.southWindow.scale.z;
+    ratioFin=this.leftShade.scale.y/this.southWindow.scale.x;
+    var windowtowall= Math.sqrt(ui.value/100);
+
+
+    this.southWindow.scale.x = (windowtowall)*(this.solarCube.scale.x);
     this.southWindow.scale.z = (windowtowall)*(this.solarCube.scale.z);
 
-	this.southShade.scale.x = this.southWindow.scale.x;
-	this.southShade.scale.y= ratioShade*this.southWindow.scale.z;
-	this.southShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
-	this.southShade.position.z = this.southWindow.scale.z/2+this.solarCube.scale.z/2;
-	
-	this.leftShade.scale.y = ratioFin*this.southWindow.scale.x;
-	this.leftShade.scale.z = this.southWindow.scale.z;
-	this.leftShade.position.x = -(this.southWindow.scale.x/2);
-	this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
-	this.leftShade.position.z = this.southWindow.position.z;
+    this.southShade.scale.x = this.southWindow.scale.x;
+    this.southShade.scale.y= ratioShade*this.southWindow.scale.z;
+    this.southShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
+    this.southShade.position.z = this.southWindow.scale.z/2+this.solarCube.scale.z/2;
 
-	this.rightShade.scale.y = ratioFin*this.southWindow.scale.x;
-	this.rightShade.scale.z = this.southWindow.scale.z;
-	this.rightShade.position.x = (this.southWindow.scale.x/2);
-	this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
-	this.rightShade.position.z = this.southWindow.position.z;
+    this.leftShade.scale.y = ratioFin*this.southWindow.scale.x;
+    this.leftShade.scale.z = this.southWindow.scale.z;
+    this.leftShade.position.x = -(this.southWindow.scale.x/2);
+    this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
+    this.leftShade.position.z = this.southWindow.position.z;
+
+    this.rightShade.scale.y = ratioFin*this.southWindow.scale.x;
+    this.rightShade.scale.z = this.southWindow.scale.z;
+    this.rightShade.position.x = (this.southWindow.scale.x/2);
+    this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
+    this.rightShade.position.z = this.southWindow.position.z;
 	
     $('#Window_U_Value').slider(enable ? "enable" : "disable");
     $('#Window_SHGC').slider(enable ? "enable" : "disable");
   },
 
 
-handleOverHang: function(evt, ui) {
-  this.updateSliderDisplay(evt, ui);
-  var enable = ui.value > 1;
-  this.southShade.scale.y= ui.value*this.southWindow.scale.z;
-  this.southShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
+  handleOverHang: function(evt, ui) {
+    this.updateSliderDisplay(evt, ui);
+    var enable = ui.value > 1;
+    this.southShade.scale.y= ui.value*this.southWindow.scale.z;
+    this.southShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
 
-},
+  },
 
-handleFin: function(evt, ui) {
-  this.updateSliderDisplay(evt, ui);
-  var enable = ui.value > 1;
-  this.leftShade.scale.y= ui.value*this.southWindow.scale.x;
-  this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
-  this.rightShade.scale.y= ui.value*this.southWindow.scale.x;
-  this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
-},
+  handleFin: function(evt, ui) {
+    this.updateSliderDisplay(evt, ui);
+    var enable = ui.value > 1;
+    this.leftShade.scale.y= ui.value*this.southWindow.scale.x;
+    this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
+    this.rightShade.scale.y= ui.value*this.southWindow.scale.x;
+    this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
+  },
 
 
   handleSliderCheckboxChange: function(event) {
@@ -507,6 +508,24 @@ handleFin: function(evt, ui) {
   updateMValueSliderDisplay: function(event, ui) {
     ui.value = this.MVALUES[ui.value];
     this.updateSliderDisplay(event, ui);
+  },
+
+  updateDayOfYearSliderDisplay: function(event, ui) {
+    var month = 0;
+    var dayOfYear = ui.value;
+    var curValue = 0;
+    while (curValue < dayOfYear) {
+      curValue += this.MONTH_LENGTHS[month];
+      month += 1;
+    }
+    curValue -= this.MONTH_LENGTHS[month-1];
+    var value = month + "/" + (dayOfYear - curValue);
+    this.setSliderDisplayValue('#'+event.target.id, value);
+  },
+
+  updateHourOfDaySliderDisplay: function(event, ui) {
+    var value = ui.value + ":00";
+    this.setSliderDisplayValue('#'+event.target.id, value);
   },
 
   setSliderDisplayValue: function(sliderId, val) {
