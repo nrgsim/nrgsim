@@ -2,20 +2,7 @@
   <div class="help">
     <a id="show-help" href="#">Help</a>
   </div>
-  <div class="temporal">
-    <div class="temporal-group">
-      <div>
-        <div id="day-of-year-slider"></div>
-      </div>
-      <div id="day-of-year-sliderDisp">&nbsp;</div>
-    </div>
-    <div class="temporal-group">
-      <div>
-        <div id="hour-of-day-slider"></div>
-      </div>
-      <div id="hour-of-day-sliderDisp">&nbsp;</div>
-    </div>
-  </div>
+ 
   <div class="profile">
     <a href="/#logout"><%= $.i18n('sim-logout') %></a><a href="/#profile"><%= $.i18n('sim-profile') %></a>
   </div>
@@ -35,33 +22,73 @@
 
         <div id="input-tabs">
           <ul>
+            <li><a href="#input-wrapper-geometry"><%= $.i18n('sim-geometry') %></a></li>
             <li><a href="#input-wrapper-facade"><%= $.i18n('sim-facade') %></a></li>
-            <li><a href="#input-wrapper-zone"><%= $.i18n('sim-zone') %></a></li>
-            <li><a href="#input-wrapper-hvac"><%= $.i18n('sim-hvac') %></a></li>
+            <li><a href="#input-wrapper-activity"><%= $.i18n('sim-activity') %></a></li>
             
           </ul>
 
           
 
-          <div id="input-wrapper-zone" class="input-wrapper-section" style="display:none">
+          <div id="input-wrapper-geometry" class="input-wrapper-section" style="display:none">
             <div class="control">
-              <label><%= $.i18n('Orientation') %> <span id="orientationDisp"></span></label>
-              <div id="orientation"></div>
-            </div>
             <div class="control">
-              <label><%= $.i18n('Wall Width') %> <span id="WidthDisp"></span></label>
-              <div id="Width"></div>
-            </div>
-            <div class="control">
-              <label><%= $.i18n('Zone Depth') %> <span id="DepthDisp"></span></label>
-              <div id="Depth"></div>
-            </div>
-            <div class="control">
-              <label><%= $.i18n('Ceiling Height') %> <span id="HeightDisp"></span></label>
+              <label><%= $.i18n('sim-ceiling height') %> <span id="HeightDisp"></span></label>
               <div id="Height"></div>
             </div>
             <div class="control">
-              <label><%= $.i18n('sim-occupancy-type') %> <span id="occupency-typeDisp"></span></label>
+              <label><%= $.i18n('sim-zone depth') %> <span id="DepthDisp"></span></label>
+              <div id="Depth"></div>
+            </div>
+              <label><%= $.i18n('sim-facadewidth') %> <span id="WidthDisp"></span></label>
+              <div id="Width"></div>
+            </div>
+            <div class="control">
+            <div class="control">
+                  <label><%= $.i18n('sim-glaze-ratio') %> <span id="WinGRDisp"></span></label>
+                  <div id="WinGR"></div>
+                </div>
+                                <div class="control">
+                  <label><%= $.i18n('sim-overhang') %> <span id="WinOverhangRDisp"></span></label>
+                  <div id="WinOverhangR"></div>
+                </div>
+                <div class="control">
+                  <label><%= $.i18n('sim-fin') %> <span id="WinFinRDisp"></span></label>
+                  <div id="WinFinR"></div>
+                </div>
+                 <div class="control">
+              <label><%= $.i18n('sim-orientation') %> <span id="orientationDisp"></span></label>
+              <div id="orientation"></div>
+           
+            </div>
+                <div class="temporal">
+               <div class="temporal-group">
+            <div>
+            <label><%= $.i18n('sim-day') %> <span id="temporal"></span></label>
+              <div id="day-of-year-slider"></div>
+           </div>
+              <div id="day-of-year-sliderDisp">&nbsp;</div>
+           </div>
+           <div class="temporal-group">
+          <div>
+           <label><%= $.i18n('sim-time') %> <span id="temporal"></span></label>
+          <div id="hour-of-day-slider"></div>
+           </div>
+        <div id="hour-of-day-sliderDisp">&nbsp;</div>
+        </div>
+        </div>
+            </div>
+<!--             <div class="control">
+              <label>Type:</label>
+              <select id="building-type">
+                <option value="">Low Rise</option>
+                <option value="">High Rise</option>
+              </select>
+            </div>-->
+          </div> 
+
+          <div id="input-wrapper-activity" class="input-wrapper-section" style="display:none">
+                        <label><%= $.i18n('sim-occupancy-type') %> <span id="occupency-typeDisp"></span></label>
               <select id="occupancy-type">
                 <option value="office"><%= $.i18n('sim-office') %></option>
                 <option value="classroom'"><%= $.i18n('sim-classroom') %></option>
@@ -77,17 +104,6 @@
                 <option value="restaurant"><%= $.i18n('sim-restaurant') %></option>
                 <option value="unknownoccupancy"><%= $.i18n('sim-unknownoccupancy') %></option>
               </select>
-            </div>
-<!--             <div class="control">
-              <label>Type:</label>
-              <select id="building-type">
-                <option value="">Low Rise</option>
-                <option value="">High Rise</option>
-              </select>
-            </div>-->
-          </div> 
-
-          <div id="input-wrapper-hvac" class="input-wrapper-section" style="display:none">
             <div class="control">
               <label><%= $.i18n('Cooling Setpoint') %> <span id="CoolingSPDisp"></span></label>
               <div id="CoolingSP">&nbsp;</div>
@@ -100,10 +116,6 @@
 
           <div id="input-wrapper-facade" class="input-wrapper-section">
             <div id="facade-tabs">
-              <ul>
-                <li><a href="#input-wrapper-facade-wall">Wall</a></li>
-                <li><a href="#input-wrapper-facade-window">Window</a></li>
-              </ul>
 
               <div id="input-wrapper-facade-wall">
                 <div class="control">
@@ -113,6 +125,19 @@
                     <option value="">Mass</option>
                     <option value="">Metal Building</option>
                     <option value="">Wood Framed And Other</option>
+                  </select>
+                </div>
+                <div class="control">
+                  <label>Window Construction Type</label>
+                  <select id="construction-type">
+                    <option value="">GenericWindow</option>
+                    <option value="">SinglePane</option>
+                    <option value="">DoublePane</option>
+                    <option value="">DoublePaneTinted</option>
+                    <option value="">DoublePaneLowE</option>
+                    <option value="">TripplePane</option>
+                    <option value="">TripplePaneTinted</option>
+                    <option value="">TripplePaneLowE</option>
                   </select>
                 </div>
                 <div class="control">
@@ -134,26 +159,7 @@
                   <label>Q&ndash;Value<br/>[Degree&ndash;C°]</br/>Q<span id="qvalueDisp"></span></label>
                   <div id="qvalue"></div>
                 </div>
-              </div>
-
-              <div id="input-wrapper-facade-window" style="display:none">
-                              <div class="control">
-                  <label>Window Construction Type</label>
-                  <select id="construction-type">
-                    <option value="">GenericWindow</option>
-                    <option value="">SinglePane</option>
-                    <option value="">DoublePane</option>
-                    <option value="">DoublePaneTinted</option>
-                    <option value="">DoublePaneLowE</option>
-                    <option value="">TripplePane</option>
-                    <option value="">TripplePaneTinted</option>
-                    <option value="">TripplePaneLowE</option>
-                  </select>
-                </div>
-                <div class="control">
-                  <label><%= $.i18n('sim-glaze-ratio') %> <span id="WinGRDisp"></span></label>
-                  <div id="WinGR"></div>
-                </div>
+                
 <!--                <div class="control">
                   <label><%= $.i18n('Window U-Value') %> <span id="Window_U_ValueDisp"></span></label>
                   <div id="Window_U_Value"></div>
@@ -162,14 +168,6 @@
                   <label><%= $.i18n('Solar Heat Gain Coeffcient') %> <span id="Window_SHGCDisp"></span></label>
                   <div id="Window_SHGC"></div>
                 </div>-->
-                <div class="control">
-                  <label><%= $.i18n('sim-overhang') %> <span id="WinOverhangRDisp"></span></label>
-                  <div id="WinOverhangR"></div>
-                </div>
-                <div class="control">
-                  <label><%= $.i18n('sim-fin') %> <span id="WinFinRDisp"></span></label>
-                  <div id="WinFinR"></div>
-                </div>
               </div>
             
             </div>
