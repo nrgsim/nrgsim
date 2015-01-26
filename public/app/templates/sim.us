@@ -1,8 +1,21 @@
 <header class="main_header" id="main_header_id">
   <div class="help">
     <a id="show-help" href="#">Help</a>
+  </div> <!-- -->
+   <div class="temporal">   Solar Day 
+    <div class="temporal-group">   
+      <div>    
+        <div id="day-of-year-slider"></div>    
+      </div>   
+      <div id="day-of-year-sliderDisp">&nbsp;</div>   
+    </div>  Solar Hour   
+    <div class="temporal-group">  
+      <div>    
+        <div id="hour-of-day-slider"></div>    
+      </div>   
+      <div id="hour-of-day-sliderDisp">&nbsp;</div>    
+    </div>   
   </div>
- 
   <div class="profile">
     <a href="/#logout"><%= $.i18n('sim-logout') %></a><a href="/#profile"><%= $.i18n('sim-profile') %></a>
   </div>
@@ -59,23 +72,6 @@
                  <div class="control">
               <label><%= $.i18n('sim-orientation') %> <span id="orientationDisp"></span></label>
               <div id="orientation"></div>
-           
-            </div>
-                <div class="temporal">
-               <div class="temporal-group">
-            <div>
-            <label><%= $.i18n('sim-day') %> <span id="temporal"></span></label>
-              <div id="day-of-year-slider"></div>
-           </div>
-              <div id="day-of-year-sliderDisp">&nbsp;</div>
-           </div>
-           <div class="temporal-group">
-          <div>
-           <label><%= $.i18n('sim-time') %> <span id="temporal"></span></label>
-          <div id="hour-of-day-slider"></div>
-           </div>
-        <div id="hour-of-day-sliderDisp">&nbsp;</div>
-        </div>
         </div>
             </div>
 <!--             <div class="control">
@@ -140,6 +136,14 @@
                     <option value="">TripplePaneLowE</option>
                   </select>
                 </div>
+                <!--                <div class="control">
+                  <label><%= $.i18n('Window U-Value') %> <span id="Window_U_ValueDisp"></span></label>
+                  <div id="Window_U_Value"></div>
+                </div>
+                <div class="control">
+                  <label><%= $.i18n('Solar Heat Gain Coeffcient') %> <span id="Window_SHGCDisp"></span></label>
+                  <div id="Window_SHGC"></div>
+                </div>-->
                 <div class="control">
                   <label><%= $.i18n('sim-infiltration') %> <span id="infiltration-rateDisp"></span></label>
                   <div id="infiltration-rate"></div>
@@ -160,14 +164,7 @@
                   <div id="qvalue"></div>
                 </div>
                 
-<!--                <div class="control">
-                  <label><%= $.i18n('Window U-Value') %> <span id="Window_U_ValueDisp"></span></label>
-                  <div id="Window_U_Value"></div>
-                </div>
-                <div class="control">
-                  <label><%= $.i18n('Solar Heat Gain Coeffcient') %> <span id="Window_SHGCDisp"></span></label>
-                  <div id="Window_SHGC"></div>
-                </div>-->
+
               </div>
             
             </div>
@@ -202,6 +199,7 @@
               <select id="region" disabled="disabled">
               </select>
             </div-->
+
             <div class="control">
               <label>Weather File</label>
               <select id="WeatherFile" disabled="disabled">
@@ -238,15 +236,24 @@
 </div>
 
 
-<div id="help-dialog" title="Help">
-  <p>The NRGSSIM BioPCM app models Phase Change Energy Soultions, BioPCM products 
+<div id="About-dialog" title="Help">
+  <p>NRGSSIM is a building information modeling visualization platform that simplifies the varribles involved in running and visulaization of modeling of buildiing energy systems into "blocks" of easy to use controlders, graphical and spactal visulatzaiton.  Flexable and easy to use the platform is basesd on the jEPlus infastructure to run Energy Plus simulation engine.  This beta applacation is called bioPCMfacadE+.  
 
-  SolarShoeBox models a simple direct gain passive solar building. A direct gain passive solar building uses only the energy supplied from the sun to achieve thermal comfort for the occupants of the building. The architect of the building will need to use their knowledge of the climate where the building will sit and their knowledge of the yearly movement of the sun to manipulate the fabric of the building in order to maintain a comfortable interior environment for the occupants. One can think of the building fabric as a filter between the outside climate and the inside thermal environment. The architect using SSB can manipulate the filter by changing the quantity and characteristics of these architectural components and strategies; Building Orientation, Building Form, Building Thermal Conduction, Solar radiation Collection, Solar Radiation Control, Heat Storage/Distribution and Controlled Porosity, in order to make the interior thermal environment as comfortable as possible for a given climate without using any fossil fuels.</p>
+   Sponcered by Energy Managmnt and storage soltions LTD, bioPCMfacadE+ runs the Energy Plus simulation engine to solve convective, radirive and concutvie energy transfer of wall systems and the zone types with Phase Change Energy Soultions BioPCM products. 
+
+   The Geomitry tab describes the geometric elements of the wall system, includeing the wall width, and ceiling heigt and zone depth. The actavity tab describes the lighting, people and quipment as blocks Interal and schedules are described as activity while the thermal properties. 
+ 
+ The model uses the SolarShoeBox algorothoms devoloped Troy Peters; Solarshoebox models a simple direct gain passive solar building with
+  A direct gain passive solar building uses only the energy supplied from the sun to achieve thermal comfort for the occupants of the building. The architect of the building will need to use their knowledge of the climate where the building will sit and their knowledge of the yearly movement of the sun to manipulate the fabric of the building in order to maintain a comfortable interior environment for the occupants.
+
+  One can think of the building fabric as a filter between the outside climate and the inside thermal environment. The architect using SSB can manipulate the filter by changing the quantity and characteristics of these architectural components and strategies; Building Orientation, Building Form, Building Thermal Conduction, Solar radiation Collection, Solar Radiation Control, Heat Storage and Distribution, in order to make the interior thermal environment as comfortable as possible for a given climate with minimal or no energy use. When no energy use can be acieived the zone will operate without equipment or matience costs and without using any fossil fuels. Comfort can be acheved without energy consuptipon in many locaion and interior load profile types with advanced facade systems.   </p>
   <p>Get started by following the links.</p>
   <p> <a href="#">Steps</a>Basic Steps to design a comfortable solar building with SolarShoeBox
-• Choose a weather file and Run Energyplus
-• Adjust the season start sliders based on outside temperature patterns. Most climates will have a cold, cool to hot transition, hot and hot to cool transition season.
-• Energyplus can be run at anytime during the following steps. The steps can be done in any order but this sequence first.
+Choose Weather file by WMO, country and zipcode and Run Energyplus
+
+Adjust the season start sliders based on outside temperature patterns. Most climates will have a cold, cool to hot transition, hot and hot to cool transition season.
+
+Energyplus can be run at anytime during the following steps. The steps can be done in any order but this sequence first.
 • Adjust Building Orientation.
 • Adjust Building Geometry (Height, Length and Width)
 • Tun off all shading.
