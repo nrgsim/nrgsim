@@ -1,6 +1,6 @@
 <header class="main_header" id="main_header_id">
   <div class="help">
-    <a id="show-help" href="#">Help</a>
+    <a id="show-help" href="#">About</a>
   </div> <!-- -->
    <div class="temporal">   Solar Day 
     <div class="temporal-group">   
@@ -236,70 +236,83 @@
 </div>
 
 
-<div id="About-dialog" title="Help">
-  <p>NRGSSIM is a building information modeling visualization platform that simplifies the varribles involved in running and visulaization of modeling of buildiing energy systems into "blocks" of easy to use controlders, graphical and spactal visulatzaiton.  Flexable and easy to use the platform is basesd on the jEPlus infastructure to run Energy Plus simulation engine.  This beta applacation is called bioPCMfacadE+.  
+<div id="help-dialog" title="About">
+  <p>NRGSSIM is a building information modeling visualization platform that simplifies the variables involved in running and visualization of modeling of building energy systems into "blocks" of easy to use input and output controllers and graphical visualization tools.  Flexible and easy to use the platform is based on the jEPlus infrastructure to run Energyplus simulation engine on a web server.  This beta application is designed for optimization of advanced wall, window and shading facade systems called FacadE+. FacadE+ helps designers design to maximize daylight, wind driven ventilation cooling and passive solar heating with minimal unwanted heat loss or gain. FacadE+ optimizes passive energy utilization to reduce loads and save energy while maintaining occupant comfort. 
 
-   Sponcered by Energy Managmnt and storage soltions LTD, bioPCMfacadE+ runs the Energy Plus simulation engine to solve convective, radirive and concutvie energy transfer of wall systems and the zone types with Phase Change Energy Soultions BioPCM products. 
+   Sponsored by Energy Management and storage solutions LTD, FacadE+ runs the Energyplus simulation engine to solve convective, radiative and conductive energy transfer of wall systems and a variety of zone types with Phase Change Energy Solutions BioPCM products. 
 
-   The Geomitry tab describes the geometric elements of the wall system, includeing the wall width, and ceiling heigt and zone depth. The actavity tab describes the lighting, people and quipment as blocks Interal and schedules are described as activity while the thermal properties. 
+   Geometry tab: Describes the geometric elements of the wall system and adjacnet zone including the wall width, and ceiling height, zone depth, window to wall ratio and window shadeing systems. 
+   
+   Activity tab: describes the lighting, people and equipment as blocks Internal and schedules are described as activity while the thermal properties.
+   Facade tab: 
  
- The model uses the SolarShoeBox algorothoms devoloped Troy Peters; Solarshoebox models a simple direct gain passive solar building with
-  A direct gain passive solar building uses only the energy supplied from the sun to achieve thermal comfort for the occupants of the building. The architect of the building will need to use their knowledge of the climate where the building will sit and their knowledge of the yearly movement of the sun to manipulate the fabric of the building in order to maintain a comfortable interior environment for the occupants.
+ FacadE+ is based on the SolarShoebox app currently under devolopment as an NRGSIM app, and first launched in 2001 as a still avaible as a desktop applacaion.  
 
-  One can think of the building fabric as a filter between the outside climate and the inside thermal environment. The architect using SSB can manipulate the filter by changing the quantity and characteristics of these architectural components and strategies; Building Orientation, Building Form, Building Thermal Conduction, Solar radiation Collection, Solar Radiation Control, Heat Storage and Distribution, in order to make the interior thermal environment as comfortable as possible for a given climate with minimal or no energy use. When no energy use can be acieived the zone will operate without equipment or matience costs and without using any fossil fuels. Comfort can be acheved without energy consuptipon in many locaion and interior load profile types with advanced facade systems.   </p>
+ FacadE+ is a simple modeling tool for maxamizing energy harvested from the from the sun, wind and air to achieve thermal comfort for the occupants of the building. Comples routines 
+
+ The architect of the building will need to use their knowledge of the climate where the building will sit and their knowledge of the yearly movement of the sun to manipulate the fabric of the building in order to maintain a comfortable interior environment for the occupants.
+
+  One can think of the building fabric as a filter between the outside climate and the indoor thermal environment. The architect using SSB can manipulate the filter by changing the quantity and characteristics of these architectural components and strategies; Building Orientation, Building Form, Building Thermal Conduction, Solar radiation Collection, Solar Radiation Control, Heat Storage and Distribution, in order to make the interior thermal environment as comfortable as possible for a given climate with minimal or no energy use. When comfort can be aciieved with no energy use can be achieved the zone will operate without equipment or maintenance costs and without using any fossil fuels. Heating, cooling and day Comfort can be achieved without energy consumption in many location and interior load profile types with advanced facade systems. 
+
+  </p>
   <p>Get started by following the links.</p>
-  <p> <a href="#">Steps</a>Basic Steps to design a comfortable solar building with SolarShoeBox
-Choose Weather file by WMO, country and zipcode and Run Energyplus
+  <p> <a href="#">Steps</a>
 
 Adjust the season start sliders based on outside temperature patterns. Most climates will have a cold, cool to hot transition, hot and hot to cool transition season.
 
 Energyplus can be run at anytime during the following steps. The steps can be done in any order but this sequence first.
 • Adjust Building Orientation.
 • Adjust Building Geometry (Height, Length and Width)
-• Tun off all shading.
+• Turn off all shading.
 • Adjust hot season ventilation until hot season comfort chart is mostly green.
 • Adjust Insulation levels and South facing window (Percentage, Type) until average cold season temperature is about 20 °C or 68 °F.
-• Adjust the amount of mass (Thickness and Surface Area) to decrease the indoor diurnal temperature swings during the cold season.
+• Adjust the BioPCM (M and Q value) to decrease the indoor diurnal temperature swings durings. 
 • Turn on south shading and adjust length until one of the transition seasons is mostly green without decreasing cold season comfort levels.
 • Adjust ventilation levels for transition seasons until indoor temperatures are in the comfort zone.
 • Go back and fine tune settings until the indoor comfort chart is mostly green.
 
-The building parameters can now be used to begin designing a non-shoebox direct gain passive solar building.</p>
+The building parameters can now be used to aid in designing advanced facade systems.</p>
 
 
-  <div title="More Help">Climate 
-    <p>The weather file is selected by a pull down menu. The menu list all EPW files available in the Energyplus weather file on the users hard drive. This step is needed for Energyplus to run and it also sets the latitude for sun shading design. To download more weather files available from the internet click on the Weather button. The web site that opens in your browser has weather files for 1042 locations in the USA, 71 locations in Canada, and more than 1000 locations in 100 other countries throughout the world. Download the EPW file by left clicking.</p>
+  <div title="Climate">Climate 
+    <p>The weather file is selected by a pull down menu. The menu list all EPW files available in the WMO region and country. This step is needed for Energyplus to run and it also sets the latitude for sun shading design. </p>
   </div>
 
-  <div title="More Help">Comfort
-    <p>Optimization in SolarShoeBox is based on indoor comfort levels and not on fuel usage, since no energy will be used to heat the interior. On the graph below January 1st is on the left and December 31st is on the right. The top is 1 AM and the bottom is Midnight. The Top graph shows the outside temperature and the bottom graph shows in inside temperature. The color blue represents temperatures less than the set comfort zone temperature and the color red represents temperatures higher than the comfort zone. The color green represents temperatures in the comfort zone. The goal is to make the inside temperature graph turn completely green.</p>
+  <div title="Comfort">Comfort
+    <p>Optimization in Solar ShoeBox is based on indoor comfort levels and not on fuel usage, since no energy will be used to heat the interior. On the graph below January 1st is on the left and December 31st is on the right. The top is 1 AM and the bottom is Midnight. The Top graph shows the outside temperature and the bottom graph shows in inside temperature. The color blue represents temperatures less than the set comfort zone temperature and the color red represents temperatures higher than the comfort zone. The color green represents temperatures in the comfort zone. The goal is to make the inside temperature graph turn completely green.</p>
   </div>
 
-  <div title="More Help">Orientation
-    <p>The building can be rotated 45° East and West from North by using the rotation slider. General Rule: 0° from South is best for optimum solar gain through south facing window and easy shading control.</p>
+  <div title="Orientation">Orientation
+    <p>The facade can be rotated 360 degrees, North is 0°, East is 90°, South is 180° and West is 270° by using the orentation slider. General Rules: West 270° tends to overheat during the summer, 180° South has the most benificial solar gain for heating through, and north has the largest heat loss. </p>
   </div>
 
-  <div title="More Help">Shape
-    <p>The building height, length and depth are changed using sliders. As the sliders move the OpenGL modeler is updated in real time. The model can be zoomed in and out using the mouse wheel and rotated by click dragging. General Rule: Buildings elongated towards east/west will allow more southern exposure, allowing more solar gain and higher indoor temperatures.</p>
+  <div title="Shape">Shape
+    <p>The building height, length and depth are changed using sliders. As the sliders move the OpenGL modeler is updated in real time. The model can be zoomed in and out using the mouse wheel and rotated by click dragging. General Rules: Buildings elongated towards east/west will allow more southern exposure, allowing more solar gain and higher indoor temperatures. ASHRAE 90.1 recomends a 15 foot parameter zone, this is the default for the thermal zone and best for most studies. </p>
   </div>
 
-  <div title="More Help">Insulation
+  <div title="Insulation">Insulation
     <p>The insulation value is chosen for the envelope. This differs from most energy simulation programs because it reverses the decision order. Instead of choosing a wall type and figuring out the insulation level, the designer discovers what the required R-value should be and then designs a wall to that specification. General Rule: Higher insulation values will raise indoor temperature levels.</p>
   </div>
 
-  <div title="More Help">Window
+  <div title="Window">Window
     <p>Window orientation, type and area as percent of wall area can be changed using sliders and pull down menus. General Rule: Larger south facing windows will increase indoor temperature levels.</p>
   </div>
 
-  <div title="More Help">Thermal Mass
-    <p>Mass type, area and thickness are manipulated to decrease the indoor temperature swings. The internal mass modeled has both sides exposed so a thickness of 12 inches or 30 cm will act like a mass of half that thickness or 6 inches and 15 cm. General Rule: Mass area of 11 times the south window area and mass thickness of less than 6 inches or 15 cm are good starting points.</p>
+ <div title="BioPCM">BioPCM
+    <p>BioPCM Thermal capicity and transition temprature are set to meet the loads and tempratures that  indoor temperature swings. The internal mass modeled has both sides exposed so a thickness of 12 inches or 30 cm will act like a mass of half that thickness or 6 inches and 15 cm. General Rules: Mass area of 11 times the south window area and mass thickness of less than 6 inches or 15 cm are good starting points.</p>
   </div>
 
-  <div title="More Help">Shading
-    <p>Horizontal shading devices can be added to any wall. A slider changes the length of the shading device. Shadows are cast based on the latitude, date and time. The date and time can be changed to visually decide how long to make the shading device.General Rule: Adjust shading to create comfort during the transition seasons.</p>
+  <div title="Thermal Mass">Thermal Mass
+    <p>Mass type, area and thickness are manipulated to decrease the indoor temperature swings. The internal mass modeled has both sides exposed so a thickness of 12 inches or 30 cm will act like a mass of half that thickness or 6 inches and 15 cm. General Rules: Mass area of 11 times the south window area and mass thickness of less than 6 inches or 15 cm are good starting points.</p>
   </div>
 
-  <div title="More Help">Ventilate
-    <p>Each season can have a different ventilation rate. A minimum ventilation rate of .35 air changes per hour should be kept to meet indoor air quality standards. Thermal comfort in the summer is usually achieved by raising the ventilation rate. The ventilation rate is controlled by an electric fan, which is powered by photovoltaic panels on the roof.</p>
+  <div title="Shading">Shading
+    <p>Horizontal shading devices can be added to any wall. A slider changes the length of the shading device. Shadows are cast based on the latitude, date and time. The date and time can be changed to visually decide how long to make the shading device. General Rules: East and west use fins, south uses overgaings and north does not need shade. Adjust shading to create comfort during the transition seasons.</p>
+  </div>
+
+  <div title="Ventilate">Ventilate
+    <p>Each season can have a different ventilation rate. A minimum ventilation rate of .35 air changes per hour should be kept to meet indoor air quality standards. Thermal comfort in the summer is usually achieved by raising the ventilation rate. The ventilation rate is controlled by an electric fan, which could be powered by photovoltaic panels on the roof or intergrated into the wall.</p>
   </div>
 </div>
+
+
