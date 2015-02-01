@@ -609,7 +609,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
 
     // This help stuff is kludgy just to show that we can do it. It should be implemented better when we really have help.
-    var helpDialog = $('#help-dialog').dialog({autoOpen: false});
+    var helpDialog = $('#help-dialog').dialog({autoOpen: false, width: 800});
     var otherHelpDialog = $('#other-help-dialog').dialog({autoOpen: false});
     $('#show-help').on('click', function(evt) {
       evt.preventDefault();
