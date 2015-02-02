@@ -168,7 +168,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
   initializeScene: function(scene, surfaces, transform) {
     var axes = new THREE.AxisHelper(2000);
     scene.add(axes);
-	var scalingFactor = 100;
+    var scalingFactor = 100;
     var boxGeometry = new THREE.BoxGeometry(1, 1, 1);
     var cubeMaterial = new THREE.MeshBasicMaterial({color: 0xf2d478});
     this.solarCube = new THREE.Mesh(boxGeometry, cubeMaterial);
@@ -187,9 +187,9 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.southWindow = new THREE.Mesh(southWindowGeometry, southWindowMaterial);
     this.southWindow.castShadow = false;
     this.southWindow.receiveShadow = true;
-	var windowtowall= Math.sqrt(40/100);
-	//var Swinowtowall = Math.sqrt(windowtowall);
-	this.southWindow.scale.x = (windowtowall)*(this.solarCube.scale.x);
+    var windowtowall= Math.sqrt(40/100);
+    //var Swinowtowall = Math.sqrt(windowtowall);
+    this.southWindow.scale.x = (windowtowall)*(this.solarCube.scale.x);
     this.southWindow.scale.z = (windowtowall)*(this.solarCube.scale.z);
     //this.southWindow.scale.x = 150;
     this.southWindow.scale.y = 1;
@@ -212,59 +212,59 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.southShade.position.z = this.southWindow.scale.z/2+this.solarCube.scale.z/2;
     this.scene.add(this.southShade);
 
-	var leftShadeGeometry = new THREE.BoxGeometry(1, 1, 1);
-	var leftShadeMaterial = new THREE.MeshBasicMaterial({color: 0xd43d2d});
-	this.leftShade = new THREE.Mesh(leftShadeGeometry, leftShadeMaterial);
-	this.leftShade.castShadow = true;
-	this.leftShade.receiveShadow = false;
-	this.leftShade.scale.x = 1;
-	this.leftShade.scale.y = 0.2*this.southWindow.scale.x;
-	this.leftShade.scale.z = this.southWindow.scale.z;
-	this.leftShade.position.x = -(this.southWindow.scale.x/2);
-	this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
-	this.leftShade.position.z = this.southWindow.position.z;
-	this.scene.add(this.leftShade);
+    var leftShadeGeometry = new THREE.BoxGeometry(1, 1, 1);
+    var leftShadeMaterial = new THREE.MeshBasicMaterial({color: 0xd43d2d});
+    this.leftShade = new THREE.Mesh(leftShadeGeometry, leftShadeMaterial);
+    this.leftShade.castShadow = true;
+    this.leftShade.receiveShadow = false;
+    this.leftShade.scale.x = 1;
+    this.leftShade.scale.y = 0.2*this.southWindow.scale.x;
+    this.leftShade.scale.z = this.southWindow.scale.z;
+    this.leftShade.position.x = -(this.southWindow.scale.x/2);
+    this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
+    this.leftShade.position.z = this.southWindow.position.z;
+    this.scene.add(this.leftShade);
 
-	var rightShadeGeometry = new THREE.BoxGeometry(1, 1, 1);
-	var rightShadeMaterial = new THREE.MeshBasicMaterial({color: 0xd43d2d});
-	this.rightShade = new THREE.Mesh(rightShadeGeometry, rightShadeMaterial);
-	this.rightShade.castShadow = true;
-	this.rightShade.receiveShadow = false;
-	this.rightShade.scale.x = 1;
-	this.rightShade.scale.y = 0.2*this.southWindow.scale.x;
-	this.rightShade.scale.z = this.southWindow.scale.z;
-	this.rightShade.position.x = (this.southWindow.scale.x/2);
-	this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
-	this.rightShade.position.z = this.southWindow.position.z;
-	this.scene.add(this.rightShade);
+    var rightShadeGeometry = new THREE.BoxGeometry(1, 1, 1);
+    var rightShadeMaterial = new THREE.MeshBasicMaterial({color: 0xd43d2d});
+    this.rightShade = new THREE.Mesh(rightShadeGeometry, rightShadeMaterial);
+    this.rightShade.castShadow = true;
+    this.rightShade.receiveShadow = false;
+    this.rightShade.scale.x = 1;
+    this.rightShade.scale.y = 0.2*this.southWindow.scale.x;
+    this.rightShade.scale.z = this.southWindow.scale.z;
+    this.rightShade.position.x = (this.southWindow.scale.x/2);
+    this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
+    this.rightShade.position.z = this.southWindow.position.z;
+    this.scene.add(this.rightShade);
 	
     var groundPlaneGeometry = new THREE.PlaneGeometry (10000, 10000);
     var groundPlaneMaterial = new THREE.MeshBasicMaterial ({color: 0xcccccc});
-    var groundPlane = new THREE.Mesh(groundPlaneGeometry, groundPlaneMaterial);
-    groundPlane.position.x = 0;
-    groundPlane.position.y = 0;
-    groundPlane.position.z = 0;
-    groundPlane.receiveShadow = true;
-    scene.add(groundPlane);
+    this.groundPlane = new THREE.Mesh(groundPlaneGeometry, groundPlaneMaterial);
+    this.groundPlane.position.x = 0;
+    this.groundPlane.position.y = 0;
+    this.groundPlane.position.z = 0;
+    this.groundPlane.receiveShadow = true;
+    scene.add(this.groundPlane);
 
-   	var SunGeometry = new THREE.SphereGeometry( 50, 32, 32 ); 
-	var SunMaterial = new THREE.MeshBasicMaterial( {color: 0xffff00} ); 
-	var SunSphere = new THREE.Mesh( SunGeometry, SunMaterial );
-	this.leftShade.castShadow = false;
-	this.leftShade.receiveShadow = false;
-	SunSphere.position.x=1500;
-    SunSphere.position.y=-1500;
-    SunSphere.position.z=1500;
-	scene.add( SunSphere );
+    var SunGeometry = new THREE.SphereGeometry( 50, 32, 32 );
+    var SunMaterial = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+    this.SunSphere = new THREE.Mesh( SunGeometry, SunMaterial );
+    this.leftShade.castShadow = false;
+    this.leftShade.receiveShadow = false;
+    this.SunSphere.position.x=1500;
+    this.SunSphere.position.y=-1500;
+    this.SunSphere.position.z=1500;
+    scene.add(this.SunSphere);
 	
 
-    var sunLight = new THREE.DirectionalLight (0xffffff, 0.1);
-    sunLight.castShadow = true;
-    sunLight.onlyShadow = true;
-    sunLight.position.x=1500;
-    sunLight.position.y=-1500;
-    sunLight.position.z=1500;
-    scene.add(sunLight);
+    this.sunLight = new THREE.DirectionalLight (0xffffff, 0.1);
+    this.sunLight.castShadow = true;
+    this.sunLight.onlyShadow = true;
+    this.sunLight.position.x=1500;
+    this.sunLight.position.y=-1500;
+    this.sunLight.position.z=1500;
+    scene.add(this.sunLight);
   },
 
   createCamera: function(canvas) {
