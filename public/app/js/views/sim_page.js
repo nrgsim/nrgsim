@@ -247,10 +247,23 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     groundPlane.receiveShadow = true;
     scene.add(groundPlane);
 
+   	var SunGeometry = new THREE.SphereGeometry( 50, 32, 32 ); 
+	var SunMaterial = new THREE.MeshBasicMaterial( {color: 0xffff00} ); 
+	var SunSphere = new THREE.Mesh( SunGeometry, SunMaterial );
+	this.leftShade.castShadow = false;
+	this.leftShade.receiveShadow = false;
+	SunSphere.position.x=1500;
+    SunSphere.position.y=-1500;
+    SunSphere.position.z=1500;
+	scene.add( SunSphere );
+	
+
     var sunLight = new THREE.DirectionalLight (0xffffff, 0.1);
-    sunLight.position.set(900, -900, 2000);
     sunLight.castShadow = true;
     sunLight.onlyShadow = true;
+    sunLight.position.x=1500;
+    sunLight.position.y=-1500;
+    sunLight.position.z=1500;
     scene.add(sunLight);
   },
 
@@ -526,6 +539,9 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
   updateHourOfDaySliderDisplay: function(event, ui) {
     var value = ui.value + ":00";
     this.setSliderDisplayValue('#'+event.target.id, value);
+
+    //this.sunLight.position.x=ui.value;
+    //this.SunSphere.position.x=ui.value;
   },
 
   setSliderDisplayValue: function(sliderId, val) {
