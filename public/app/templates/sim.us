@@ -1,7 +1,7 @@
 <header class="main_header" id="main_header_id">
   <div class="help">
     <a id="show-help" href="#">About</a>
-  </div> <!-- -->
+  </div> <!-- 
    <div class="temporal">   Solar Day 
     <div class="temporal-group">   
       <div>    
@@ -14,8 +14,8 @@
         <div id="hour-of-day-slider"></div>    
       </div>   
       <div id="hour-of-day-sliderDisp">&nbsp;</div>    
-    </div>   
-  </div>
+    </div> --> 
+  </div> 
   <div class="profile">
     <a href="/#logout"><%= $.i18n('sim-logout') %></a><a href="/#profile"><%= $.i18n('sim-profile') %></a>
   </div>
@@ -72,6 +72,22 @@
                  <div class="control">
               <label><%= $.i18n('sim-orientation') %> <span id="orientationDisp"></span></label>
               <div id="orientation"></div>
+        </div>
+            </div>   
+                <div class="temporal">   
+               <div class="temporal-group">    
+            <div>    
+            <label><%= $.i18n('sim-day') %> <span id="temporal"></span></label>    
+              <div id="day-of-year-slider"></div>    
+           </div>    
+             <div id="day-of-year-sliderDisp">&nbsp;</div>    
+          </div>    
+           <div class="temporal-group">    
+          <div>    
+           <label><%= $.i18n('sim-time') %> <span id="temporal"></span></label>    
+          <div id="hour-of-day-slider"></div>    
+           </div>    
+        <div id="hour-of-day-sliderDisp">&nbsp;</div>    
         </div>
             </div>
 <!--             <div class="control">
@@ -243,11 +259,10 @@
 
      <p>NRGSSIM is a building information modeling visualization platform that simplifies the process of modeling of building energy systems into "blocks" of easy to use input and output controllers and graphical visualization tools. Flexible and easy to use the platform is based on the jEPlus infrastructure to run EnergyPlus simulation engine on a web server.  This beta application is designed for optimization of advanced wall, window and shading facade systems called FacadE+.</p>
 
-<p>Left Panel Input tabs:</p>
-   <p>Geometry tab: Describes the geometric elements of the wall system and adjacent zone including the wall width, and ceiling height, zone depth, window to wall ratio and window shading systems.</p> 
-   <p>Facade Tab: Describes the wall type and window construction type, infiltration and PCM properties.</p> 
-   <p>Activity tab: Describes the lighting, people and equipment as blocks Internal and schedules are described as activity while the thermal properties.</p>
-   <p>Right Panel Run Settings: Choose weather file and site conditions and run the model.</p>
+   <p>Left Input Tab- Geometry: Describes the geometric elements of the wall system and adjacent zone including the wall width, and ceiling height, zone depth, window to wall ratio and window shading systems.</p> 
+   <p>Left Input Tab- Facade: Describes the wall type and window construction type, infiltration and PCM properties.</p> 
+   <p>Left Input Tab- Activity: Describes the lighting, people and equipment as blocks Internal and schedules are described as activity while the thermal properties.</p>
+   <p>Right Panel, Run Settings: Choose weather file and site conditions and run the model.</p>
 
   </div>
 </div>
