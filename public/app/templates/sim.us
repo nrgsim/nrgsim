@@ -194,60 +194,58 @@
     <div id="results-panel" class="panel">
       <div class="panel-content">
 
-            <div class="control">
-              <label>WMO Region</label>
-              <select id="continent">
-                <option value="1">Africa</option>
-                <option value="2">Asia</option>
-                <option value="3">South America</option>
-                <option value="4">North and Central America</option>
-                <option value="5">Southwest Pacific</option>
-                <option value="6">Europe</option>
-              </select>
-            </div>
-            <div class="control">
-              <label>Country</label>
-              <select id="country" disabled="disabled">
-              </select>
-            </div>
-            <!--div class="control">
-              <label>Region</label>
-              <select id="region" disabled="disabled">
-              </select>
-            </div-->
-
-            <div class="control">
-              <label>Weather File</label>
-              <select id="WeatherFile" disabled="disabled">
-              </select>
-            </div>
-            <div class="control">
-              <label>Terrain</label>
-              <select id="terrain">
-                <option value="city">City</option>
-                <option value="suburbs">Suburbs</option>
-                <option value="country">Country</option>
-                <option value="ocean">Ocean</option>
-                <option value="urban">Urban</option>
-              </select>
-            </div>
+        <div class="weather-panel">
+          <div class="control">
+            <label>WMO Region</label>
+            <select id="continent">
+              <option value="1">Africa</option>
+              <option value="2">Asia</option>
+              <option value="3">South America</option>
+              <option value="4">North and Central America</option>
+              <option value="5">Southwest Pacific</option>
+              <option value="6">Europe</option>
+            </select>
           </div>
-        <div>
+          <div class="control">
+            <label>Country</label>
+            <select id="country" disabled="disabled">
+            </select>
+          </div>
+          <!--div class="control">
+            <label>Region</label>
+            <select id="region" disabled="disabled">
+            </select>
+          </div-->
+
+          <div class="control">
+            <label>Weather File</label>
+            <select id="WeatherFile" disabled="disabled">
+            </select>
+          </div>
+          <div class="control">
+            <label>Terrain</label>
+            <select id="terrain">
+              <option value="city">City</option>
+              <option value="suburbs">Suburbs</option>
+              <option value="country">Country</option>
+              <option value="ocean">Ocean</option>
+              <option value="urban">Urban</option>
+            </select>
+          </div>
+        </div>
+        <div class="control">
+          <h3>Run Simulation</h3>
           <div>
-            <h3>Run Simulation</h3>
-            <div>
-              <div class="control">
-                <button id="run-button"><%= $.i18n('sim-simulate') %></button>
-              </div>
-              <div class="control">
-                <div id="progressbar" style="display:none"></div>
-              </div>
+            <div class="control">
+              <button id="run-button"><%= $.i18n('sim-simulate') %></button>
+            </div>
+            <div class="control">
+              <div id="progressbar" style="display:none"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
