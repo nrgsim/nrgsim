@@ -704,9 +704,9 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     }
 
     zone.insulationLevel = $("#insulation-level").slider('value');
-    zone.ventilationRate = $("#ventilation-rate").slider('value');
+    //zone.ventilationRate = $("#ventilation-rate").slider('value');
 
-    $.post('simulation/run', zone, this.getSimulationResults);
+    $.post('simulation/run', zone, this.getSimulationResults.bind(this));
   },
 
   getSimulationResults: function(data, status) {
