@@ -534,6 +534,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     curValue -= this.MONTH_LENGTHS[month-1];
     var value = month + "/" + (dayOfYear - curValue);
     this.setSliderDisplayValue('#'+event.target.id, value);
+    this.adjustSunPosition($('#hour-of-day-slider').slider('value'), dayOfYear);
   },
 
   updateHourOfDaySliderDisplay: function(event, ui) {
@@ -542,6 +543,63 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
     //this.sunLight.position.x=ui.value;
     //this.SunSphere.position.x=ui.value;
+    this.adjustSunPosition(ui.value, $('#day-of-year-slider').slider('value'));
+  },
+
+  adjustSunPosition: function(hour, day) {
+    var latitude = 45;
+    var hour_of_day = hour;
+    var day_number = day;
+
+window.console.log('hour of day: ' + hour + '  day of year ' + day);
+
+    if (!this.SunSphere || !this.sunLight) {
+      return;
+    }
+
+    //Convert radians to degrees
+    var rtd = 180/Math.pi;
+
+    // Convert degrees to radians
+    var dtr = Math.pi/180;
+
+    var hour_angle=(15 * hour_of_day) - 180;
+    var solar_declination=23.45 * Math.sin( 2*Math.pi/365 * (day_number + 284) );
+    var time_of_sunrise=12/Math.pi * Math.acos(Math.tan(dtr*(latitude)) * Math.tan(dtr*(solar_declination)));
+    var time_of_sunset=12/Math.pi * (2*Math.pi - Math.acos(Math.tan(dtr*(latitude)) * Math.tan(dtr*(solar_declination))));
+    var possible_sunshine_hours=time_of_sunset-time_of_sunrise;
+    var solar_altitude= rtd*Math.asin((Math.sin(solar_declination*dtr) * Math.sin(latitude*dtr)) + (Math.cos(solar_declination*dtr)* Math.cos(latitude*dtr) * Math.cos(hour_angle*dtr)));
+
+    if (hour_of_day === 12) {
+      solar_azimuth= 0;
+    } else if (hour_of_day < 12) {
+        solar_azimuth= -rtd*Math.acos(((Math.sin(solar_altitude*dtr) * Math.sin(latitude*dtr)) - Math.sin(solar_declination*dtr)) / (Math.cos(solar_altitude*dtr) * Math.cos(latitude*dtr)));
+    } else {
+      solar_azimuth= rtd*Math.acos(((Math.sin(solar_altitude*dtr) * Math.sin(latitude*dtr)) - Math.sin(solar_declination*dtr)) / (Math.cos(solar_altitude*dtr) * Math.cos(latitude*dtr)));
+    }
+
+    var rt = hour_of_day - time_of_sunrise;
+    var nt = hour_of_day - time_of_sunset;
+
+    if (rt > 0 && nt < 0) {
+      sun_nosun=1;
+    } else {
+      sun_nosun=0;
+    }
+
+    var multRad=1000*sun_nosun;
+    var altitudeProjection=Math.cos(dtr*solar_altitude);
+    var xcoord=-multRad*altitudeProjection*Math.sin(dtr*solar_azimuth);
+    var ycoord=-multRad*altitudeProjection*Math.cos(dtr*solar_azimuth);
+    var zcoord=multRad*Math.sin(dtr*solar_altitude);
+
+    this.SunSphere.position.x=xcoord;
+    this.SunSphere.position.y=ycoord;
+    this.SunSphere.position.z=zcoord;
+
+    this.sunLight.position.x=xcoord;
+    this.sunLight.position.y=ycoord;
+    this.sunLight.position.z=zcoord;
   },
 
   setSliderDisplayValue: function(sliderId, val) {
