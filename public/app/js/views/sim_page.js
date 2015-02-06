@@ -252,18 +252,18 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.SunSphere = new THREE.Mesh( SunGeometry, SunMaterial );
     this.leftShade.castShadow = false;
     this.leftShade.receiveShadow = false;
-    this.SunSphere.position.x=1500;
-    this.SunSphere.position.y=-1500;
-    this.SunSphere.position.z=1500;
+    this.SunSphere.position.x=-0;
+    this.SunSphere.position.y=-394.7;
+    this.SunSphere.position.z=918.8;
     scene.add(this.SunSphere);
 	
 
     this.sunLight = new THREE.DirectionalLight (0xffffff, 0.1);
     this.sunLight.castShadow = true;
     this.sunLight.onlyShadow = true;
-    this.sunLight.position.x=1500;
-    this.sunLight.position.y=-1500;
-    this.sunLight.position.z=1500;
+    this.sunLight.position.x=-0.0;
+    this.sunLight.position.y=-394.7;
+    this.sunLight.position.z=918.8;
     scene.add(this.sunLight);
   },
 
@@ -551,7 +551,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     var hour_of_day = hour;
     var day_number = day;
 
-window.console.log('hour of day: ' + hour + '  day of year ' + day);
+//window.console.log('hour of day: ' + hour + '  day of year ' + day);
 
     if (!this.SunSphere || !this.sunLight) {
       return;
@@ -559,7 +559,7 @@ window.console.log('hour of day: ' + hour + '  day of year ' + day);
 
     //Convert radians to degrees
     var rtd = 180/Math.pi;
-
+window.console.log(rtd);
     // Convert degrees to radians
     var dtr = Math.pi/180;
 
@@ -592,6 +592,8 @@ window.console.log('hour of day: ' + hour + '  day of year ' + day);
     var xcoord=-multRad*altitudeProjection*Math.sin(dtr*solar_azimuth);
     var ycoord=-multRad*altitudeProjection*Math.cos(dtr*solar_azimuth);
     var zcoord=multRad*Math.sin(dtr*solar_altitude);
+
+window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
 
     this.SunSphere.position.x=xcoord;
     this.SunSphere.position.y=ycoord;
