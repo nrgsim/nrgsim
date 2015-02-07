@@ -174,7 +174,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     var boxGeometry = new THREE.BoxGeometry(1, 1, 1);
     var cubeMaterial = new THREE.MeshBasicMaterial({transparent: true, opacity: 0.5, color: 0xf2d478});
     this.solarCube = new THREE.Mesh(boxGeometry, cubeMaterial);
-    this.solarCube.castShadow = true;
+    this.solarCube.castShadow = false;
     this.solarCube.receiveShadow = false;
     this.solarCube.scale.x = 5*scalingFactor;
     this.solarCube.scale.y = 5*scalingFactor;
@@ -183,6 +183,8 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.solarCube.position.y = 0;
     this.solarCube.position.z = this.solarCube.scale.z/2;
     this.scene.add(this.solarCube);
+	
+
 
  	var facadeGeometry = new THREE.BoxGeometry(1, 1, 1);
     var facadeMaterial = new THREE.MeshBasicMaterial({ color: 0xf2d478});
@@ -198,7 +200,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
 
     var southWindowGeometry = new THREE.BoxGeometry(1, 1, 1);
-    var southWindowMaterial = new THREE.MeshBasicMaterial({color: 0x1011ff});
+    var southWindowMaterial = new THREE.MeshBasicMaterial({ color: 0x1011ff});
     this.southWindow = new THREE.Mesh(southWindowGeometry, southWindowMaterial);
     this.southWindow.castShadow = false;
     this.southWindow.receiveShadow = true;
@@ -239,6 +241,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
     this.leftShade.position.z = this.southWindow.position.z;
     this.leftShade.castShadow = true;
+    this.leftShade.receiveShadow = true;
     this.scene.add(this.leftShade);
 
     var rightShadeGeometry = new THREE.BoxGeometry(1, 1, 1);
@@ -253,6 +256,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
     this.rightShade.position.z = this.southWindow.position.z;
     this.rightShade.castShadow = true;
+    this.rightShade.receiveShadow = true;
     this.scene.add(this.rightShade);
 	
     var groundPlaneGeometry = new THREE.PlaneGeometry (10000, 10000);
@@ -261,14 +265,12 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.groundPlane.position.x = 0;
     this.groundPlane.position.y = 0;
     this.groundPlane.position.z = 0;
-    this.groundPlane.receiveShadow = true;
+    this.groundPlane.receiveShadow = false;
     scene.add(this.groundPlane);
 
     var SunGeometry = new THREE.SphereGeometry( 50, 32, 32 );
     var SunMaterial = new THREE.MeshBasicMaterial( {color: 0xffff00} );
     this.SunSphere = new THREE.Mesh( SunGeometry, SunMaterial );
-    this.leftShade.castShadow = false;
-    this.leftShade.receiveShadow = false;
     this.SunSphere.position.x=-0;
     this.SunSphere.position.y=-394.7;
     this.SunSphere.position.z=918.8;
@@ -279,8 +281,8 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.sunLight.castShadow = true;
     this.sunLight.onlyShadow = true;
     this.sunLight.position.x=-0.0;
-    this.sunLight.position.y=-394.7;
-    this.sunLight.position.z=918.8;
+    this.sunLight.position.y=3*-394.7;
+    this.sunLight.position.z=3*918.8;
     scene.add(this.sunLight);
   },
 
@@ -526,7 +528,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 	this.sFacade.scale.x = this.solarCube.scale.x;
     this.sFacade.scale.z = this.solarCube.scale.z;
     this.sFacade.position.z=this.solarCube.position.z;
-	
+
     this.southShade.scale.y= ratioShade*this.southWindow.scale.z;
     this.southShade.position.z = this.southWindow.scale.z/2+this.solarCube.scale.z/2;
     this.southShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
@@ -583,15 +585,15 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     }
 
     //Convert radians to degrees
-    var rtd = 180/Math.pi;
+    var rtd = 180/Math.PI;
 window.console.log(rtd);
     // Convert degrees to radians
-    var dtr = Math.pi/180;
+    var dtr = Math.PI/180;
 
     var hour_angle=(15 * hour_of_day) - 180;
-    var solar_declination=23.45 * Math.sin( 2*Math.pi/365 * (day_number + 284) );
-    var time_of_sunrise=12/Math.pi * Math.acos(Math.tan(dtr*(latitude)) * Math.tan(dtr*(solar_declination)));
-    var time_of_sunset=12/Math.pi * (2*Math.pi - Math.acos(Math.tan(dtr*(latitude)) * Math.tan(dtr*(solar_declination))));
+    var solar_declination=23.45 * Math.sin( 2*Math.PI/365 * (day_number + 284) );
+    var time_of_sunrise=12/Math.PI * Math.acos(Math.tan(dtr*(latitude)) * Math.tan(dtr*(solar_declination)));
+    var time_of_sunset=12/Math.PI * (2*Math.PI - Math.acos(Math.tan(dtr*(latitude)) * Math.tan(dtr*(solar_declination))));
     var possible_sunshine_hours=time_of_sunset-time_of_sunrise;
     var solar_altitude= rtd*Math.asin((Math.sin(solar_declination*dtr) * Math.sin(latitude*dtr)) + (Math.cos(solar_declination*dtr)* Math.cos(latitude*dtr) * Math.cos(hour_angle*dtr)));
 
@@ -624,9 +626,9 @@ window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
     this.SunSphere.position.y=ycoord;
     this.SunSphere.position.z=zcoord;
 
-    this.sunLight.position.x=xcoord;
-    this.sunLight.position.y=ycoord;
-    this.sunLight.position.z=zcoord;
+    this.sunLight.position.x=3*xcoord;
+    this.sunLight.position.y=3*ycoord;
+    this.sunLight.position.z=3*zcoord;
   },
 
   setSliderDisplayValue: function(sliderId, val) {
