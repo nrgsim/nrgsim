@@ -355,7 +355,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     $('#qvalue').slider({ min: 23, max: 27, step: 2, value: 25, orientation: 'vertical', slide: self.updateSliderDisplay });
 
     $("#day-of-year-slider").slider({ min: 1, max: 365, step: 1, value: 150, slide: self.updateDayOfYearSliderDisplay });
-    $("#hour-of-day-slider").slider({ min: 5, max: 19, step: 1, value: 12, slide: self.updateHourOfDaySliderDisplay });
+    $("#hour-of-day-slider").slider({ min: 1, max: 24, step: 1, value: 12, slide: self.updateHourOfDaySliderDisplay });
 
     $("#run-button").button();
 
