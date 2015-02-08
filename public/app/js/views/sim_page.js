@@ -186,7 +186,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 	
 
 
- 	var facadeGeometry = new THREE.BoxGeometry(1, 1, 1);
+    var facadeGeometry = new THREE.BoxGeometry(1, 1, 1);
     var facadeMaterial = new THREE.MeshBasicMaterial({ color: 0xf2d478});
     this.sFacade = new THREE.Mesh(facadeGeometry, facadeMaterial);
     this.sFacade.receiveShadow = true;
