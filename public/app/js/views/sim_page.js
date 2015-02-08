@@ -551,8 +551,6 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     var hour_of_day = hour;
     var day_number = day;
 
-window.console.log('hour of day: ' + hour + '  day of year ' + day);
-
     if (!this.SunSphere || !this.sunLight) {
       return;
     }
