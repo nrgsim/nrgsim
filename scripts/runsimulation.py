@@ -6,10 +6,11 @@ import shutil
 import subprocess
 
 def createSimulationDirectory(simulationid):
-  # TODO: This directory needs to be a full copy of the 'Facade' folder in the jEPlus repository
+  # YZ: This directory is created by making a full copy of the 'Facade' folder in the jEPlus repository
   directory = 'simulations/{0}'.format(simulationid)
-  if not os.path.exists(directory):
-      os.makedirs(directory)
+  if os.path.exists(directory):
+      shutil.removeTree (directory)
+  shutil.copyTree("../jEPlus/Facade", directory)  # YZ: check if it should "../../jEPlus/Facade"
   return os.path.abspath(directory)
 
 def convertDataToCSV(jsondata):
@@ -45,7 +46,8 @@ def convertDataToCSV(jsondata):
   # This is a kludge for now. It just writes out the parameters on 3 lines to test that we received them correctly
   # TODO: When it is implemented, it should be one line with values appearing in the same order as the parameters in the project.
   csvdata = []
-  csvdata.append([jsondata["JobID"], jsondata["WeatherFile"], jsondata["ModelFile"]])
+  csvdata.append([jsondata["JobID"]])
+  csvdata.append([0, 0])  # YZ: Weather file id and model file id are both '0', meaning the filenames are hardcoded in the project.
   csvdata.append([jsondata["Terrain"], jsondata["Orientation"]])
   csvdata.append([jsondata["Depth"], jsondata["Width"], jsondata["Height"]])
   csvdata.append([jsondata["OccupancyType"], jsondata["CoolingSP"], jsondata["HeatingSP"]])
@@ -62,9 +64,11 @@ def createJobListFile(directory, jsondata):
       csvfile = csv.writer(csvfile, delimiter=',', quotechar='\'', quoting=csv.QUOTE_MINIMAL)
       csvfile.writerows(convertDataToCSV(jsondata))
 
+# Main purpose of this function is to copy the selected weather file to in.epw in the simulation folder
 def copySupportingFiles(simulationDirectory, jsondata):
-  # TODO: check jsondata.weatherFile to determin which weather file to copy
-  shutil.copyfile('../weather/test.epw', simulationDirectory + os.sep + 'in.epw')
+  # YZ: is the value in jsondata.weatherFile containing the full path to the weather file to copy?
+  shutil.copyfile(jsondata['WeatherFile'], simulationDirectory + os.sep + 'in.epw')
+  # YZ: no need to copy the geometry file unless it has been altered for this case.
   #TODO: I think in version 1 we will always use the same idf file but it will get it's data from the parameter file.
   #      We need to replace the one that is currently there with the correct one that takes a parameter file.
   # shutil.copyfile('../idf/Geometry.idf', simulationDirectory + os.sep + 'in.idf')  <-- No need to copy in.idf. The project folder contains the correct model file.
@@ -83,13 +87,19 @@ def executeSimulation(simulationDirectory, resultsDirectory):
     '-output', resultsDirectory])
   os.chdir(olddir)
 
+# This is the main entry to execute simulation. Simulationid is used to name the working directory, and 
+# jsondata should contain all parameter values for the cases
 def runSimulation(simulationid, jsondata):
+  # create simulation directory "simulations/[simulationid]" by copying from the template folder ("jEPlus/Facade/")
   directory = createSimulationDirectory(simulationid)
   resultsDirectory = directory + os.sep + 'output'
   resultsFile = resultsDirectory + os.sep + 'AllCombinedResults.csv'  
 
-  createJobListFile(directory, jsondata)
+  # copy selected weather file to the simulation directory
   copySupportingFiles(directory, jsondata)
+  # create job list file from jsondata
+  createJobListFile(directory, jsondata)
+  # run simulation
   executeSimulation(directory, resultsDirectory)
 
   # Send the directory that the simulation results are in and the file to stream back to the client to the caller.
