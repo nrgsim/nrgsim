@@ -760,7 +760,10 @@ window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
     progbar.progressbar({ value: false });
     progbar.show();
 
-    zone.weatherFile = "TODO: add UI to let user specify weather file";
+    var continent = $('#continent').val();
+    var country = $('#country').val();
+    var weatherFile = $('#WeatherFile').val();
+    zone.weatherFile = "weather/" + continent + "/" + country + "/" + weatherFile;
     zone.width = $("#Width").slider('value');
     zone.depth = $("#Depth").slider('value');
     zone.height = $("#Height").slider('value');

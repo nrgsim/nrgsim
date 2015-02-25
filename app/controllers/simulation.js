@@ -85,16 +85,16 @@ var zone = {
 };
 
 var WEATHER_DATA = {
-  "1": {
+  "WMO_1_Africa": {
     name: "Africa",
     values: [
       {
-        "DZA": {
+        "Algiers": {
           name: "Algiers",
         }
       },
       {
-        "EGY": {
+        "Egypt": {
           name: "Egypt",
         }
       },
@@ -150,7 +150,7 @@ var WEATHER_DATA = {
       }
     ]
   },
-  "2": {
+  "WMO_2_Asia": {
     name: "Asia",
     values: [
       {
@@ -265,7 +265,7 @@ var WEATHER_DATA = {
       },
     ]
   },
-  "3": {
+  "WMO_3_SouthAmerica": {
     name: "South America",
     values: [
       {
@@ -320,7 +320,7 @@ var WEATHER_DATA = {
       },
     ]
   },
-  "4": {
+  "WMO_4_NorthAndCentralAmerica": {
     name: "North and Central America",
     values: [
       {
@@ -390,7 +390,7 @@ var WEATHER_DATA = {
       },
     ]
   },
-  "5": {
+  "WMO_5_SouthwestPacific": {
     name: "Southwest Pacific",
     values: [
       {
@@ -450,176 +450,176 @@ var WEATHER_DATA = {
       },
     ]
   },
-  "6": {
+  "WMO_6_Europe": {
     name: "Europe",
     values: [
       {
-        "AUT": {
+        "Austria": {
           name: "Austria",
         }
       },
       {
-        "BEL": {
+        "Belgium": {
           name: "Belgium",
         }
       },
       {
-        "BGR": {
+        "Bulgaria": {
           name: "Bulgaria",
         }
       },
       {
-        "BIH": {
+        "Bosnia_and_Herzegowina": {
           name: "Bosnia and Herzegowina",
         }
       },
       {
-        "BLR": {
+        "Belarus": {
           name: "Belarus",
         }
       },
       {
-        "CHE": {
-          name: "Switzerland",
-        }
-      },
-      {
-        "CYP": {
+        "Cyprus": {
           name: "Cyprus",
         }
       },
       {
-        "CZE": {
+        "Czech_Republic": {
           name: "Czech Republic",
         }
       },
       {
-        "DEU": {
+        "Germany": {
           name: "Germany",
         }
       },
       {
-        "DNK": {
+        "Denmark": {
           name: "Denmark",
         }
       },
       {
-        "ESP": {
+        "Spain": {
           name: "Spain",
         }
       },
       {
-        "FIN": {
+        "Finland": {
           name: "Finland",
         }
       },
       {
-        "FRA": {
+        "France": {
           name: "France",
         }
       },
       {
-        "GBR": {
+        "United_Kingdom": {
           name: "United Kingdom",
         }
       },
       {
-        "GRC": {
+        "Greece": {
           name: "Greece",
         }
       },
       {
-        "HUN": {
+        "Hungary": {
           name: "Hungary",
         }
       },
       {
-        "IRL": {
+        "Ireland": {
           name: "Ireland",
         }
       },
       {
-        "ISL": {
+        "Iceland": {
           name: "Iceland",
         }
       },
       {
-        "ISR": {
+        "Israel": {
           name: "Israel",
         }
       },
       {
-        "ITA": {
+        "Italy": {
           name: "Italy",
         }
       },
       {
-        "LTU": {
+        "Lithuania": {
           name: "Lithuania",
         }
       },
       {
-        "NLD": {
+        "Netherlands": {
           name: "Netherlands",
         }
       },
       {
-        "NOR": {
+        "Norway": {
           name: "Norway",
         }
       },
       {
-        "POL": {
+        "Poland": {
           name: "Poland",
         }
       },
       {
-        "PRT": {
+        "Portugal": {
           name: "Portugal",
         }
       },
       {
-        "ROU": {
+        "Romania": {
           name: "Romania",
         }
       },
       {
-        "RUS": {
+        "Russian_Federation": {
           name: "Russian Federation",
         }
       },
       {
-        "SRB": {
+        "Serbia": {
           name: "Serbia",
         }
       },
       {
-        "SVK": {
+        "Slovakia_(Slovak_Republic)": {
           name: "Slovakia (Slovak Republic)",
         }
       },
       {
-        "SVN": {
+        "Slovenia": {
           name: "Slovenia",
         }
       },
       {
-        "SWE": {
+        "Sweden": {
           name: "Sweden",
         }
       },
       {
-        "SYR": {
+        "Switzerland": {
+          name: "Switzerland",
+        }
+      },
+      {
+        "Syrian_Arab_Republic": {
           name: "Syrian Arab Republic",
         }
       },
       {
-        "TUR": {
+        "Turkey": {
           name: "Turkey",
         }
       },
       {
-        "UKR": {
+        "Ukraine": {
           name: "Ukraine",
         }
       },
@@ -687,6 +687,8 @@ exports.checkForResults = function(req, res) {
 
 exports.getCountries = function(req, res) {
   var continent = req.params.continent;
+  console.log('CONTINENT: ' + continent);
+  console.log(WEATHER_DATA[continent]);
   res.json(WEATHER_DATA[continent]);
 };
 
