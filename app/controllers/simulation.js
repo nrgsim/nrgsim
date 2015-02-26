@@ -695,7 +695,7 @@ exports.getCountries = function(req, res) {
 exports.getWeatherFiles = function(req, res) {
   var continent = req.params.continent;
   var country = req.params.country;
-  var weatherDir = process.cwd()+'\\..\\weather\\'+continent+'\\'+country;
+  var weatherDir = process.cwd()+'/../weather/'+continent+'/'+country;
   console.log('WEATHER DIR: ' + weatherDir);
   fs.readdir(weatherDir, function(err, files) {
     if (!err) {
