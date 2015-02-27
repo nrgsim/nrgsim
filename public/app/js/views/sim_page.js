@@ -337,10 +337,8 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     $("#infiltration-rate").slider({ min: 0.35, max: 10, value: 1, step: 0.1, slide: self.updateSliderDisplay });
     $("#orientation").slider({min: 0, max: 360, value: 180, step: 1, slide: self.updateSliderDisplay });
     
-    
-//could we remove the checkbox for window with an "if WinGR>1 then yes" statement? 
     $("#WinGR").slider({ min: 0, max: 99, value: 40, slide: self.handleGlazingRatioChange });
-    $("#insulation-level").slider({ min: 0.1, max: 10, value: 3, slide: self.updateSliderDisplay });
+    $("#insulation-level").slider({ min: 0.1, max: 10, value: 3, step: 0.1, slide: self.updateSliderDisplay });
     $("#Window_U_Value").slider({ min: 1.94, max: 5.8, value: 3.12, step: 0.1, slide: self.updateSliderDisplay });
     $("#Window_SHGC").slider({ min: 0.25, max: 1, value: 0.42, step: 0.1, slide: self.updateSliderDisplay });
     $("#WinOverhangR").slider({ min: 0.01, max: 0.9, value: 0.5, step: 0.01, slide: self.handleOverHang });
