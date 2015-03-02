@@ -337,8 +337,10 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     $("#infiltration-rate").slider({ min: 0.35, max: 10, value: 1, step: 0.1, slide: self.updateSliderDisplay });
     $("#orientation").slider({min: 0, max: 360, value: 180, step: 1, slide: self.updateSliderDisplay });
     
+    
+//could we remove the checkbox for window with an "if WinGR>1 then yes" statement? 
     $("#WinGR").slider({ min: 0, max: 99, value: 40, slide: self.handleGlazingRatioChange });
-    $("#insulation-level").slider({ min: 0.1, max: 10, value: 3, step: 0.1, slide: self.updateSliderDisplay });
+    $("#insulation-level").slider({ min: 0.1, max: 10, value: 3, slide: self.updateSliderDisplay });
     $("#Window_U_Value").slider({ min: 1.94, max: 5.8, value: 3.12, step: 0.1, slide: self.updateSliderDisplay });
     $("#Window_SHGC").slider({ min: 0.25, max: 1, value: 0.42, step: 0.1, slide: self.updateSliderDisplay });
     $("#WinOverhangR").slider({ min: 0.01, max: 0.9, value: 0.5, step: 0.01, slide: self.handleOverHang });
@@ -750,7 +752,7 @@ window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
   },
 
   runSimulation: function() {
-    var zone = { Window: null, northWindow: null, eastWindow: null, southWindow: null, westWindow: null };
+    var zone = { Window: null};
     var inverseTransform = new THREE.Matrix4();
     var progbar = $('#progressbar');
 
@@ -758,39 +760,30 @@ window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
     progbar.progressbar({ value: false });
     progbar.show();
 
-    var continent = $('#continent').val();
-    var country = $('#country').val();
-    var weatherFile = $('#WeatherFile').val();
-    zone.weatherFile = "weather/" + continent + "/" + country + "/" + weatherFile;
+    zone.weatherFile = "TODO: add UI to let user specify weather file";
     zone.width = $("#Width").slider('value');
     zone.depth = $("#Depth").slider('value');
     zone.height = $("#Height").slider('value');
-
-    /*
+    zone.Terrain = $("#Terrain").slider('value');
+    zone.Orientation = $("#Orientation").slider('value');
+    zone.OccupancyType = $("#OccupancyType").slider('value');
+    zone.CoolingSP = $("#CoolingSP").slider('value');
+    zone.HeatingSP = $("#HeatingSP").slider('value');
+    zone.Window = $("#Window").slider('value');
+    zone.InsulationLevel = $("#InsulationLevel").slider('value');
+    zone.InfiltrationRate = $("#InfiltrationRate").slider('value');
+    zone.Mvalue = $("#Mvalue").slider('value');
+    zone.Qvalue = $("#Qvalue").slider('value');
+    zone.WindowType = $("#WindowType").slider('value');
+    zone.WallType = $("#WallType").slider('value');
+    zone.Fin = $("#Fin").slider('value');
+    zone.Fin = $("#Overhang").slider('value');
+//zone.ventilationRate = $("#ventilation-rate").slider('value');
     if ($("#Win").prop("checked")) {
       zone.Window = $("#WinGR").slider('value');
     }
-    */
+   
 
-    if ($("#NWin").prop("checked")) {
-      zone.northWindow = $("#NWinGR").slider('value');
-    }
-
-
-    if ($("#EWin").prop("checked")) {
-      zone.northWindow = $("#EWinGR").slider('value');
-    }
-
-    if ($("#SWin").prop("checked")) {
-      zone.southWindow = $("#SWinGR").slider('value');
-    }
-
-    if ($("#WWin").prop("checked")) {
-      zone.westWindow = $("#WWinGR").slider('value');
-    }
-
-    zone.insulationLevel = $("#insulation-level").slider('value');
-    //zone.ventilationRate = $("#ventilation-rate").slider('value');
 
     $.post('simulation/run', zone, this.getSimulationResults.bind(this));
   },
