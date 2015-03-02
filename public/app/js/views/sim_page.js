@@ -760,7 +760,7 @@ window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
     progbar.progressbar({ value: false });
     progbar.show();
 
-    zone.weatherFile = "TODO: add UI to let user specify weather file";
+    zone.weatherFile = "weather/" + $("#continent").val() + "/" + $("#country").val() + "/" + $("#WeatherFile").val();
     zone.width = $("#Width").slider('value');
     zone.depth = $("#Depth").slider('value');
     zone.height = $("#Height").slider('value');
@@ -782,8 +782,6 @@ window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
     if ($("#Win").prop("checked")) {
       zone.Window = $("#WinGR").slider('value');
     }
-   
-
 
     $.post('simulation/run', zone, this.getSimulationResults.bind(this));
   },
