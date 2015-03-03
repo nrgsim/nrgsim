@@ -9,8 +9,8 @@ def createSimulationDirectory(simulationid):
   # YZ: This directory is created by making a full copy of the 'Facade' folder in the jEPlus repository
   directory = 'simulations/{0}'.format(simulationid)
   if os.path.exists(directory):
-      shutil.removeTree (directory)
-  shutil.copyTree("../jEPlus/Facade", directory)  # YZ: check if it should "../../jEPlus/Facade"
+      shutil.rmtree (directory)
+  shutil.copytree("../jEPlus/Facade", directory)  # YZ: check if it should "../../jEPlus/Facade"
   return os.path.abspath(directory)
 
 def convertDataToCSV(jsondata):
