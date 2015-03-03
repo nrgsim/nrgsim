@@ -82,7 +82,7 @@ module.exports = {
     };
 
     var WEATHER_DATA = {
-      "1": {
+      "WMO_1_": {
         name: "Africa",
         values: [
           {
@@ -112,7 +112,7 @@ module.exports = {
           },
           {
             "LBY": {
-              name: "Libyan Arab Jamahiriya",
+              name: "Libyan_Arab_Jamahiriya",
              }
            },
           {
@@ -137,7 +137,7 @@ module.exports = {
           },
           {
             "ZAF": {
-              name: "South Africa",
+              name: "South_Africa",
             }
           },
           {
@@ -147,12 +147,12 @@ module.exports = {
           }
         ]
       },
-      "2": {
+      "wmo_2_": {
         name: "Asia",
         values: [
           {
             "ARE": {
-              name: "United Arab Emirates",
+              name: "United_Arab_Emirates",
             }
           },
           {
@@ -172,7 +172,7 @@ module.exports = {
           },
           {
             "IRN": {
-              name: "Iran - Islamic Republic of",
+              name: "Iran_Islamic_Republic_of",
             }
           },
           {
@@ -187,7 +187,7 @@ module.exports = {
           },
           {
             "KOR": {
-              name: "Korea - Republic of",
+              name: "Korea_Republic_of",
             }
           },
           {
@@ -197,7 +197,7 @@ module.exports = {
           },
           {
             "LKA": {
-              name: "Sri Lanka",
+              name: "Sri_Lanka",
             }
           },
           {
@@ -227,17 +227,17 @@ module.exports = {
           },
           {
             "PRK": {
-              name: "Korea - Democratic People's Republic of",
+              name: "Korea_Democratic_People's_Republic_of",
             }
           },
           {
             "RUS": {
-              name: "Russian Federation",
+              name: "Russian_Federation",
             }
           },
           {
             "SAU": {
-              name: "Saudi Arabia",
+              name: "Saudi_Arabia",
             }
           },
           {
@@ -257,13 +257,13 @@ module.exports = {
           },
           {
             "VNM": {
-              name: "Viet Nam",
+              name: "Viet_Nam",
             }
           },
         ]
       },
-      "3": {
-        name: "South America",
+      "WMO_3_": {
+        name: "South_America",
         values: [
           {
             "ARG": {
@@ -317,17 +317,17 @@ module.exports = {
           },
         ]
       },
-      "4": {
-        name: "North and Central America",
+      "WMO_4_": {
+        name: "North_and_Central_America",
         values: [
           {
             "USA": {
-              name: "United States",
+              name: "United_States",
             }
           },
           {
             "CCZ": {
-              name: "California Climate Zones",
+              name: "California_Climate_Zones",
             }
           },
           {
@@ -372,23 +372,23 @@ module.exports = {
           },
           {
             "PRI": {
-              name: "Puerto Rico",
+              name: "Puerto_Rico",
             }
           },
           {
             "SLV": {
-              name: "El Salvador",
+              name: "El_Salvador",
             }
           },
           {
             "VIR": {
-              name: "Virgin Islands (U.S.)",
+              name: "Virgin_Islands",
             }
           },
         ]
       },
-      "5": {
-        name: "Southwest Pacific",
+      "WMO_5_": {
+        name: "Southwest_Pacific",
         values: [
           {
             "AUS": {
@@ -397,7 +397,7 @@ module.exports = {
           },
           {
             "BRN": {
-              name: "Brunei Darussalam",
+              name: "Brunei_Darussalam",
             }
           },
           {
@@ -412,7 +412,7 @@ module.exports = {
           },
           {
             "MHL": {
-              name: "Marshall Islands",
+              name: "Marshall_Islands",
             }
           },
           {
@@ -422,7 +422,7 @@ module.exports = {
           },
           {
             "NZL": {
-              name: "New Zealand",
+              name: "New_Zealand",
             }
           },
           {
@@ -442,12 +442,12 @@ module.exports = {
           },
           {
             "UMI": {
-              name: "United States Minor Outlying Islands",
+              name: "United_States_Minor_Outlying_Islands",
             }
           },
         ]
       },
-      "6": {
+      "WMO_6_": {
         name: "Europe",
         values: [
           {
@@ -467,7 +467,7 @@ module.exports = {
           },
           {
             "BIH": {
-              name: "Bosnia and Herzegowina",
+              name: "Bosnia_and_Herzegowina",
             }
           },
           {
@@ -487,7 +487,7 @@ module.exports = {
           },
           {
             "CZE": {
-              name: "Czech Republic",
+              name: "Czech_Republic",
             }
           },
           {
@@ -517,7 +517,7 @@ module.exports = {
           },
           {
             "GBR": {
-              name: "United Kingdom",
+              name: "United_Kingdom",
             }
           },
           {
@@ -582,7 +582,7 @@ module.exports = {
           },
           {
             "RUS": {
-              name: "Russian Federation",
+              name: "Russian_Federation",
             }
           },
           {
@@ -592,7 +592,7 @@ module.exports = {
           },
           {
             "SVK": {
-              name: "Slovakia (Slovak Republic)",
+              name: "Slovakia_Slovak_Republic",
             }
           },
           {
@@ -607,7 +607,7 @@ module.exports = {
           },
           {
             "SYR": {
-              name: "Syrian Arab Republic",
+              name: "Syrian_Arab_Republic",
             }
           },
           {
