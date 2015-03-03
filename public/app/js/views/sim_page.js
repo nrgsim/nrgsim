@@ -764,24 +764,25 @@ window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
     zone.width = $("#Width").slider('value');
     zone.depth = $("#Depth").slider('value');
     zone.height = $("#Height").slider('value');
-    zone.Terrain = $("#Terrain").slider('value');
-    zone.Orientation = $("#Orientation").slider('value');
-    zone.OccupancyType = $("#OccupancyType").slider('value');
+    zone.Terrain = $("#terrain").val();
+    zone.Orientation = $("#orientation").slider('value');
+    zone.OccupancyType = $("#occupancy-type").val();
     zone.CoolingSP = $("#CoolingSP").slider('value');
     zone.HeatingSP = $("#HeatingSP").slider('value');
-    zone.Window = $("#Window").slider('value');
-    zone.InsulationLevel = $("#InsulationLevel").slider('value');
-    zone.InfiltrationRate = $("#InfiltrationRate").slider('value');
-    zone.Mvalue = $("#Mvalue").slider('value');
-    zone.Qvalue = $("#Qvalue").slider('value');
-    zone.WindowType = $("#WindowType").slider('value');
-    zone.WallType = $("#WallType").slider('value');
-    zone.Fin = $("#Fin").slider('value');
-    zone.Fin = $("#Overhang").slider('value');
+    //zone.Window = $("#Window").slider('value');
+    zone.InsulationLevel = $("#insulation-level").slider('value');
+    zone.InfiltrationRate = $("#infiltration-rate").slider('value');
+    zone.Mvalue = $("#mvalue").slider('value');
+    zone.Qvalue = $("#qvalue").slider('value');
+    zone.WindowType = $("#window-type").val();
+    zone.WallType = $("#construction-type").val();
+    zone.Fin = $("#WinFinR").slider('value');
+    zone.Fin = $("#WinOverhangR").slider('value');
 //zone.ventilationRate = $("#ventilation-rate").slider('value');
     if ($("#Win").prop("checked")) {
       zone.Window = $("#WinGR").slider('value');
     }
+window.console.log(zone);
 
     $.post('simulation/run', zone, this.getSimulationResults.bind(this));
   },
