@@ -760,6 +760,7 @@ window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
     progbar.progressbar({ value: false });
     progbar.show();
 
+    zone.JobID = Math.uuid();
     zone.WeatherFile = "weather/" + $("#continent").val() + "/" + $("#country").val() + "/" + $("#WeatherFile").val();
     zone.ModelFile = "";
     zone.Terrain = $("#terrain").val();
