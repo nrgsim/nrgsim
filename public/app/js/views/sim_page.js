@@ -760,16 +760,21 @@ window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
     progbar.progressbar({ value: false });
     progbar.show();
 
-    zone.weatherFile = "weather/" + $("#continent").val() + "/" + $("#country").val() + "/" + $("#WeatherFile").val();
-    zone.width = $("#Width").slider('value');
-    zone.depth = $("#Depth").slider('value');
-    zone.height = $("#Height").slider('value');
+    zone.WeatherFile = "weather/" + $("#continent").val() + "/" + $("#country").val() + "/" + $("#WeatherFile").val();
+    zone.ModelFile = "";
     zone.Terrain = $("#terrain").val();
     zone.Orientation = $("#orientation").slider('value');
+    zone.Width = $("#Width").slider('value');
+    zone.Height = $("#Height").slider('value');
+    zone.Depth = $("#Depth").slider('value');
     zone.OccupancyType = $("#occupancy-type").val();
+    if ($("#Win").prop("checked")) {
+      zone.Window = $("#WinGR").slider('value');
+    } else {
+      zone.Window = null;
+    }
     zone.CoolingSP = $("#CoolingSP").slider('value');
     zone.HeatingSP = $("#HeatingSP").slider('value');
-    //zone.Window = $("#Window").slider('value');
     zone.InsulationLevel = $("#insulation-level").slider('value');
     zone.InfiltrationRate = $("#infiltration-rate").slider('value');
     zone.Mvalue = $("#mvalue").slider('value');
@@ -777,11 +782,7 @@ window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
     zone.WindowType = $("#window-type").val();
     zone.WallType = $("#construction-type").val();
     zone.Fin = $("#WinFinR").slider('value');
-    zone.Fin = $("#WinOverhangR").slider('value');
-//zone.ventilationRate = $("#ventilation-rate").slider('value');
-    if ($("#Win").prop("checked")) {
-      zone.Window = $("#WinGR").slider('value');
-    }
+    zone.Overhang = $("#WinOverhangR").slider('value');
 window.console.log(zone);
 
     $.post('simulation/run', zone, this.getSimulationResults.bind(this));
