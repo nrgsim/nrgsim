@@ -761,7 +761,7 @@ window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
     progbar.show();
 
     zone.JobID = Math.uuid();
-    zone.WeatherFile = "weather/" + $("#continent").val() + "/" + $("#country").val() + "/" + $("#WeatherFile").val();
+    zone.WeatherFile = "../weather/" + $("#continent").val() + "/" + $("#country").val() + "/" + $("#WeatherFile").val();
     zone.ModelFile = "";
     zone.Terrain = $("#terrain").val();
     zone.Orientation = $("#orientation").slider('value');
