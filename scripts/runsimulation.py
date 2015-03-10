@@ -53,7 +53,7 @@ def convertDataToCSV(jsondata):
   csvdata.append([jsondata["OccupancyType"], jsondata["CoolingSP"], jsondata["HeatingSP"]])
   csvdata.append([jsondata["Window"]])
   csvdata.append([jsondata["InsulationLevel"],  jsondata["InfiltrationRate"]])
-  csvdata.append([jsondata["Mvalue"],  jsondata["Qvalue"]])
+  csvdata.append(["M" + jsondata["Mvalue"] + "Q"  + jsondata["Qvalue"]])
   csvdata.append([jsondata["WindowType"],  jsondata["WallType"]])
   csvdata.append([jsondata["Fin"],  jsondata["Overhang"]])
   return csvdata
