@@ -45,17 +45,26 @@ def convertDataToCSV(jsondata):
 
   # This is a kludge for now. It just writes out the parameters on 3 lines to test that we received them correctly
   # TODO: When it is implemented, it should be one line with values appearing in the same order as the parameters in the project.
-  csvdata = []
-  csvdata.append([jsondata["JobID"]])
-  csvdata.append([0, 0])  # YZ: Weather file id and model file id are both '0', meaning the filenames are hardcoded in the project.
-  csvdata.append([jsondata["Terrain"], jsondata["Orientation"]])
-  csvdata.append([jsondata["Depth"], jsondata["Width"], jsondata["Height"]])
-  csvdata.append([jsondata["OccupancyType"], jsondata["CoolingSP"], jsondata["HeatingSP"]])
-  csvdata.append([jsondata["Window"]])
-  csvdata.append([jsondata["InsulationLevel"],  jsondata["InfiltrationRate"]])
-  csvdata.append(["M" + jsondata["Mvalue"] + "Q"  + jsondata["Qvalue"]])
-  csvdata.append([jsondata["WindowType"],  jsondata["WallType"]])
-  csvdata.append([jsondata["Fin"],  jsondata["Overhang"]])
+  csvdata = [ jsondata["JobID"], 
+              0, 
+              0, 
+              jsondata["Terrain"], 
+              jsondata["Orientation"], 
+              jsondata["Depth"], 
+              jsondata["Width"], 
+              jsondata["Height"], 
+              jsondata["OccupancyType"], 
+              jsondata["CoolingSP"], 
+              jsondata["HeatingSP"], 
+              jsondata["Window"], 
+              jsondata["InsulationLevel"], 
+              jsondata["InfiltrationRate"]，
+              "M" + jsondata["Mvalue"] + "Q"  + jsondata["Qvalue"]，
+              jsondata["WindowType"], 
+              jsondata["WallType"]，
+              jsondata["Fin"], 
+              jsondata["Overhang"]
+            ]
   return csvdata
 
 def createJobListFile(directory, jsondata):
