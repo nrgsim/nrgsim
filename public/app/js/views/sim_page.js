@@ -344,7 +344,8 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     $("#Window_U_Value").slider({ min: 1.94, max: 5.8, value: 3.12, step: 0.1, slide: self.updateSliderDisplay });
     $("#Window_SHGC").slider({ min: 0.25, max: 1, value: 0.42, step: 0.1, slide: self.updateSliderDisplay });
     $("#WinOverhangR").slider({ min: 0.01, max: 0.9, value: 0.5, step: 0.01, slide: self.handleOverHang });
-    $("#WinFinR").slider({ min: 0.01, max: 0.4, value: 0.2, step: 0.01, slide: self.handleFin });
+    $("#LWinFinR").slider({ min: 0.01, max: 0.4, value: 0.2, step: 0.01, slide: self.handleFin });
+    $("#RWinFinR").slider({ min: 0.01, max: 0.4, value: 0.2, step: 0.01, slide: self.handleFin });
 
     $("#CoolingSP").slider({ min: 23, max: 30, value: 25, step: 1, slide: self.updateSliderDisplay });
     //SB must be higher than SP or error $("#CoolingSB").slider({ min: 23, max: 40, value: 27, slide: self.updateSliderDisplay })
@@ -378,7 +379,8 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.setSliderDisplayValue('#Window_U_Value');
     this.setSliderDisplayValue('#Window_SHGC');
     this.setSliderDisplayValue('#WinOverhangR');
-    this.setSliderDisplayValue('#WinFinR');
+    this.setSliderDisplayValue('#LWinFinR');
+    this.setSliderDisplayValue('#RWinFinR');
 
     this.setSliderDisplayValue('#mvalue', 51);
     this.setSliderDisplayValue('#qvalue');
@@ -782,7 +784,8 @@ window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
     zone.Qvalue = $("#qvalue").slider('value');
     zone.WindowType = $("#window-type").val();
     zone.WallType = $("#construction-type").val();
-    zone.Fin = $("#WinFinR").slider('value');
+    zone.LFin = $("#LWinFinR").slider('value');
+    zone.RFin = $("#RWinFinR").slider('value');
     zone.Overhang = $("#WinOverhangR").slider('value');
 window.console.log(zone);
 
