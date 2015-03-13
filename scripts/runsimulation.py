@@ -36,7 +36,8 @@ def convertDataToCSV(jsondata):
     "Qvalue" : "<number>",
     "WindowType": "<string>",
     "WallType": "<string>",
-    "Fin" : "<number>",
+    "FinLeft" : "<number>",
+    "FinRight" : "<number>",
     "Overhang" : "<number>",
   }
   '''
@@ -62,7 +63,8 @@ def convertDataToCSV(jsondata):
               "M" + jsondata["Mvalue"] + "Q"  + jsondata["Qvalue"],
               jsondata["WindowType"], 
               jsondata["WallType"],
-              jsondata["Fin"], 
+              jsondata["FinLeft"], 
+              jsondata["FinRight"],
               jsondata["Overhang"]
             ]
   return csvdata
