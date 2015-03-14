@@ -63,8 +63,8 @@ def convertDataToCSV(jsondata):
               "M" + jsondata["Mvalue"] + "Q"  + jsondata["Qvalue"],
               jsondata["WindowType"], 
               jsondata["WallType"],
-              jsondata["FinLeft"], 
-              jsondata["FinRight"],
+              jsondata["LFin"], 
+              jsondata["RFin"],
               jsondata["Overhang"]
             ]
   return csvdata
@@ -73,7 +73,7 @@ def createJobListFile(directory, jsondata):
   outputfile = directory + '/joblist.csv'
   with open(outputfile, 'w', newline='') as csvfile:
       csvfile = csv.writer(csvfile, delimiter=',', quotechar='\'', quoting=csv.QUOTE_MINIMAL)
-      csvfile.writerows(convertDataToCSV(jsondata))
+      csvfile.writerow(convertDataToCSV(jsondata))
 
 # Main purpose of this function is to copy the selected weather file to in.epw in the simulation folder
 def copySupportingFiles(simulationDirectory, jsondata):
