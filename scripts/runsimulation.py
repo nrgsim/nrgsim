@@ -1,3 +1,4 @@
+
 import sys
 import os
 import json
@@ -57,7 +58,6 @@ def convertDataToCSV(jsondata):
               jsondata["OccupancyType"], 
               jsondata["CoolingSP"], 
               jsondata["HeatingSP"], 
-              jsondata["Window"], 
               jsondata["InsulationLevel"], 
               jsondata["InfiltrationRate"],
               "M" + jsondata["Mvalue"] + "Q"  + jsondata["Qvalue"],
