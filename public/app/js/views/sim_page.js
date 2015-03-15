@@ -184,6 +184,13 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Extwh)
     this.solarCube.position.z = this.solarCube.scale.z/2;
     this.scene.add(this.solarCube);
 	
+	var dir = new THREE.Vector3( 0, -1, 0 );
+	var origin = new THREE.Vector3( 0, 0, 0 );
+	var length = 800;
+	var hex = 0x000000;
+	this.arrowHelper = new THREE.ArrowHelper( dir, origin, length, hex );
+	this.scene.add( this.arrowHelper );
+
 
 
     var facadeGeometry = new THREE.BoxGeometry(1, 1, 1);
@@ -335,7 +342,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Extwh)
     $("#Depth").slider({ min:3, max: 21.336, value: 4.572, slide: self.updateDepth });
    
     $("#infiltration-rate").slider({ min: 0.35, max: 10, value: 1, step: 0.1, slide: self.updateSliderDisplay });
-    $("#orientation").slider({min: 0, max: 360, value: 180, step: 1, slide: self.updateSliderDisplay });
+    $("#orientation").slider({min: 0, max: 360, value: 180, step: 1, slide: self.updateOrientaionDisplay });
     
     
 //could we remove the checkbox for window with an "if WinGR>1 then yes" statement? 
@@ -344,8 +351,8 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Extwh)
     $("#Window_U_Value").slider({ min: 1.94, max: 5.8, value: 3.12, step: 0.1, slide: self.updateSliderDisplay });
     $("#Window_SHGC").slider({ min: 0.25, max: 1, value: 0.42, step: 0.1, slide: self.updateSliderDisplay });
     $("#WinOverhangR").slider({ min: 0.01, max: 0.9, value: 0.5, step: 0.01, slide: self.handleOverHang });
-    $("#LWinFinR").slider({ min: 0.01, max: 0.4, value: 0.2, step: 0.01, slide: self.handleFin });
-    $("#RWinFinR").slider({ min: 0.01, max: 0.4, value: 0.2, step: 0.01, slide: self.handleFin });
+    $("#LWinFinR").slider({ min: 0.01, max: 0.4, value: 0.2, step: 0.01, slide: self.handleFinL });
+    $("#RWinFinR").slider({ min: 0.01, max: 0.4, value: 0.2, step: 0.01, slide: self.handleFinR });
 
     $("#CoolingSP").slider({ min: 23, max: 30, value: 25, step: 1, slide: self.updateSliderDisplay });
     //SB must be higher than SP or error $("#CoolingSB").slider({ min: 23, max: 40, value: 27, slide: self.updateSliderDisplay })
@@ -458,15 +465,20 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Extwh)
 
   },
 
-  handleFin: function(evt, ui) {
+  handleFinL: function(evt, ui) {
     this.updateSliderDisplay(evt, ui);
     var enable = ui.value > 1;
     this.leftShade.scale.y= ui.value*this.ExtWindow.scale.x;
     this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
+
+  },
+ 
+ handleFinR: function(evt, ui) {
+    this.updateSliderDisplay(evt, ui);
+    var enable = ui.value > 1;
     this.rightShade.scale.y= ui.value*this.ExtWindow.scale.x;
     this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
   },
-
 
   handleSliderCheckboxChange: function(event) {
     var grId = '#'+event.target.id+'GR';
@@ -563,7 +575,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Extwh)
     curValue -= this.MONTH_LENGTHS[month-1];
     var value = month + "/" + (dayOfYear - curValue);
     this.setSliderDisplayValue('#'+event.target.id, value);
-    this.adjustSunPosition($('#hour-of-day-slider').slider('value'), dayOfYear);
+    this.adjustSunPosition($('#hour-of-day-slider').slider('value'), dayOfYear,$("#orientation").slider('value'));
   },
 
   updateHourOfDaySliderDisplay: function(event, ui) {
@@ -572,21 +584,26 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Extwh)
 
     //this.sunLight.position.x=ui.value;
     //this.SunSphere.position.x=ui.value;
-    this.adjustSunPosition(ui.value, $('#day-of-year-slider').slider('value'));
+    this.adjustSunPosition(ui.value, $('#day-of-year-slider').slider('value'),$("#orientation").slider('value'));
   },
 
-  adjustSunPosition: function(hour, day) {
+updateOrientaionDisplay: function(event, ui) {
+    this.updateSliderDisplay(event, ui);
+    this.adjustSunPosition($('#hour-of-day-slider').slider('value'), $('#day-of-year-slider').slider('value'),ui.value);
+  },
+
+  adjustSunPosition: function(hour, day, orientation) {
     var latitude = 45;
     var hour_of_day = hour;
     var day_number = day;
-
+	var orient=orientation;
     if (!this.SunSphere || !this.sunLight) {
       return;
     }
 
     //Convert radians to degrees
     var rtd = 180/Math.PI;
-window.console.log(rtd);
+window.console.log(orient);
     // Convert degrees to radians
     var dtr = Math.PI/180;
 
@@ -598,11 +615,11 @@ window.console.log(rtd);
     var solar_altitude= rtd*Math.asin((Math.sin(solar_declination*dtr) * Math.sin(latitude*dtr)) + (Math.cos(solar_declination*dtr)* Math.cos(latitude*dtr) * Math.cos(hour_angle*dtr)));
 
     if (hour_of_day === 12) {
-      solar_azimuth= 0;
+      solar_azimuth= 180-orient;
     } else if (hour_of_day < 12) {
-        solar_azimuth= -rtd*Math.acos(((Math.sin(solar_altitude*dtr) * Math.sin(latitude*dtr)) - Math.sin(solar_declination*dtr)) / (Math.cos(solar_altitude*dtr) * Math.cos(latitude*dtr)));
+        solar_azimuth= 180-orient-rtd*Math.acos(((Math.sin(solar_altitude*dtr) * Math.sin(latitude*dtr)) - Math.sin(solar_declination*dtr)) / (Math.cos(solar_altitude*dtr) * Math.cos(latitude*dtr)));
     } else {
-      solar_azimuth= rtd*Math.acos(((Math.sin(solar_altitude*dtr) * Math.sin(latitude*dtr)) - Math.sin(solar_declination*dtr)) / (Math.cos(solar_altitude*dtr) * Math.cos(latitude*dtr)));
+      solar_azimuth= 180-orient+rtd*Math.acos(((Math.sin(solar_altitude*dtr) * Math.sin(latitude*dtr)) - Math.sin(solar_declination*dtr)) / (Math.cos(solar_altitude*dtr) * Math.cos(latitude*dtr)));
     }
 
     var rt = hour_of_day - time_of_sunrise;
