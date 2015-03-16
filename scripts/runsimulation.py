@@ -62,6 +62,7 @@ def convertDataToCSV(jsondata):
               jsondata["InfiltrationRate"],
               "M" + jsondata["Mvalue"] + "Q"  + jsondata["Qvalue"],
               jsondata["WindowType"], 
+              jsondata["#WinGR""],
               jsondata["WallType"],
               jsondata["LFin"], 
               jsondata["RFin"],
