@@ -780,7 +780,7 @@ window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
     zone.HeatingSP = $("#HeatingSP").slider('value');
     zone.InsulationLevel = $("#insulation-level").slider('value');
     zone.InfiltrationRate = $("#infiltration-rate").slider('value');
-    zone.Mvalue = $("#mvalue").slider('value');
+    zone.Mvalue = this.MVALUES[$("#mvalue").slider('value')];
     zone.Qvalue = $("#qvalue").slider('value');
     zone.WindowType = $("#window-type").val();
     zone.WallType = $("#construction-type").val();
