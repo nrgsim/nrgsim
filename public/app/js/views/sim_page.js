@@ -148,20 +148,20 @@ window.app.views.SimPage = Backbone.View.extend({
   */
 
 /*
-South window sizer with a header until window gets too large
+Ext window sizer with a header until window gets too large
 WindowHeaderSize depth set at .3 meters
 This code needs to be hooked to slider for window percent 
 window percent should not exceed 99%
 Model Window as a thin box so it doesn't get lost in wall
 
 windowheadersize=.3
-Southper=double(Southpercent)/100
-Southww=pow(Southper,0.5)*CDbl(EastWestLength)
-Southwh=pow(Southper,0.5)*CDbl(BuildingHeight)
-sy1=str((CDbl(EastWestLength)-Southww)/2)
-sy2=str(((CDbl(EastWestLength)-Southww)/2)+Southww)
+Extper=double(Extpercent)/100
+Extww=pow(Extper,0.5)*CDbl(EastWestLength)
+Extwh=pow(Extper,0.5)*CDbl(BuildingHeight)
+sy1=str((CDbl(EastWestLength)-Extww)/2)
+sy2=str(((CDbl(EastWestLength)-Extww)/2)+Extww)
 sz1=str(CDbl(BuildingHeight)-windowheadersize)
-sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
+sz2=str(CDbl(BuildingHeight)-windowheadersize-Extwh)
 */
 
 
@@ -184,6 +184,13 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.solarCube.position.z = this.solarCube.scale.z/2;
     this.scene.add(this.solarCube);
 	
+	var dir = new THREE.Vector3( 0, -1, 0 );
+	var origin = new THREE.Vector3( 0, 0, 0 );
+	var length = 800;
+	var hex = 0x000000;
+	this.arrowHelper = new THREE.ArrowHelper( dir, origin, length, hex );
+	this.scene.add( this.arrowHelper );
+
 
 
     var facadeGeometry = new THREE.BoxGeometry(1, 1, 1);
@@ -199,35 +206,35 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.scene.add(this.sFacade);
 
 
-    var southWindowGeometry = new THREE.BoxGeometry(1, 1, 1);
-    var southWindowMaterial = new THREE.MeshBasicMaterial({ color: 0x1011ff});
-    this.southWindow = new THREE.Mesh(southWindowGeometry, southWindowMaterial);
-    this.southWindow.castShadow = false;
-    this.southWindow.receiveShadow = true;
+    var ExtWindowGeometry = new THREE.BoxGeometry(1, 1, 1);
+    var ExtWindowMaterial = new THREE.MeshBasicMaterial({ color: 0x1011ff});
+    this.ExtWindow = new THREE.Mesh(ExtWindowGeometry, ExtWindowMaterial);
+    this.ExtWindow.castShadow = false;
+    this.ExtWindow.receiveShadow = true;
     var windowtowall= Math.sqrt(40/100);
     //var Swinowtowall = Math.sqrt(windowtowall);
-    this.southWindow.scale.x = (windowtowall)*(this.solarCube.scale.x);
-    this.southWindow.scale.z = (windowtowall)*(this.solarCube.scale.z);
-    //this.southWindow.scale.x = 150;
-    this.southWindow.scale.y = 2;
-    //this.southWindow.scale.z = 200;
-    this.southWindow.position.x = 0;
-    this.southWindow.position.y = -4-this.solarCube.scale.y/2;
-    this.southWindow.position.z = this.solarCube.scale.z/2;
-    this.scene.add(this.southWindow);
+    this.ExtWindow.scale.x = (windowtowall)*(this.solarCube.scale.x);
+    this.ExtWindow.scale.z = (windowtowall)*(this.solarCube.scale.z);
+    //this.ExtWindow.scale.x = 150;
+    this.ExtWindow.scale.y = 2;
+    //this.ExtWindow.scale.z = 200;
+    this.ExtWindow.position.x = 0;
+    this.ExtWindow.position.y = -4-this.solarCube.scale.y/2;
+    this.ExtWindow.position.z = this.solarCube.scale.z/2;
+    this.scene.add(this.ExtWindow);
 
-    var southShadeGeometry = new THREE.BoxGeometry(1, 1, 1);
-    var southShadeMaterial = new THREE.MeshBasicMaterial({color: 0xd43d2d});
-    this.southShade = new THREE.Mesh(southShadeGeometry, southShadeMaterial);
-    this.southShade.castShadow = true;
-    this.southShade.receiveShadow = false;
-    this.southShade.scale.x = this.southWindow.scale.x;
-    this.southShade.scale.y = 0.2*this.southWindow.scale.z;
-    this.southShade.scale.z = 1;
-    this.southShade.position.x = 0;
-    this.southShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
-    this.southShade.position.z = this.southWindow.scale.z/2+this.solarCube.scale.z/2;
-    this.scene.add(this.southShade);
+    var ExtShadeGeometry = new THREE.BoxGeometry(1, 1, 1);
+    var ExtShadeMaterial = new THREE.MeshBasicMaterial({color: 0xd43d2d});
+    this.ExtShade = new THREE.Mesh(ExtShadeGeometry, ExtShadeMaterial);
+    this.ExtShade.castShadow = true;
+    this.ExtShade.receiveShadow = false;
+    this.ExtShade.scale.x = this.ExtWindow.scale.x;
+    this.ExtShade.scale.y = 0.2*this.ExtWindow.scale.z;
+    this.ExtShade.scale.z = 1;
+    this.ExtShade.position.x = 0;
+    this.ExtShade.position.y = -this.solarCube.scale.y/2-(this.ExtShade.scale.y/2);
+    this.ExtShade.position.z = this.ExtWindow.scale.z/2+this.solarCube.scale.z/2;
+    this.scene.add(this.ExtShade);
 
     var leftShadeGeometry = new THREE.BoxGeometry(1, 1, 1);
     var leftShadeMaterial = new THREE.MeshBasicMaterial({color: 0xd43d2d});
@@ -235,11 +242,11 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     
     //this.leftShade.receiveShadow = true;
     this.leftShade.scale.x = 1;
-    this.leftShade.scale.y = 0.2*this.southWindow.scale.x;
-    this.leftShade.scale.z = this.southWindow.scale.z;
-    this.leftShade.position.x = -(this.southWindow.scale.x/2);
+    this.leftShade.scale.y = 0.2*this.ExtWindow.scale.x;
+    this.leftShade.scale.z = this.ExtWindow.scale.z;
+    this.leftShade.position.x = -(this.ExtWindow.scale.x/2);
     this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
-    this.leftShade.position.z = this.southWindow.position.z;
+    this.leftShade.position.z = this.ExtWindow.position.z;
     this.leftShade.castShadow = true;
     this.leftShade.receiveShadow = true;
     this.scene.add(this.leftShade);
@@ -250,11 +257,11 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     
     //this.rightShade.receiveShadow = true;
     this.rightShade.scale.x = 1;
-    this.rightShade.scale.y = 0.2*this.southWindow.scale.x;
-    this.rightShade.scale.z = this.southWindow.scale.z;
-    this.rightShade.position.x = (this.southWindow.scale.x/2);
+    this.rightShade.scale.y = 0.2*this.ExtWindow.scale.x;
+    this.rightShade.scale.z = this.ExtWindow.scale.z;
+    this.rightShade.position.x = (this.ExtWindow.scale.x/2);
     this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
-    this.rightShade.position.z = this.southWindow.position.z;
+    this.rightShade.position.z = this.ExtWindow.position.z;
     this.rightShade.castShadow = true;
     this.rightShade.receiveShadow = true;
     this.scene.add(this.rightShade);
@@ -335,7 +342,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     $("#Depth").slider({ min:3, max: 21.336, value: 4.572, slide: self.updateDepth });
    
     $("#infiltration-rate").slider({ min: 0.35, max: 10, value: 1, step: 0.1, slide: self.updateSliderDisplay });
-    $("#orientation").slider({min: 0, max: 360, value: 180, step: 1, slide: self.updateSliderDisplay });
+    $("#orientation").slider({min: 0, max: 360, value: 180, step: 1, slide: self.updateOrientaionDisplay });
     
     
 //could we remove the checkbox for window with an "if WinGR>1 then yes" statement? 
@@ -344,8 +351,8 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     $("#Window_U_Value").slider({ min: 1.94, max: 5.8, value: 3.12, step: 0.1, slide: self.updateSliderDisplay });
     $("#Window_SHGC").slider({ min: 0.25, max: 1, value: 0.42, step: 0.1, slide: self.updateSliderDisplay });
     $("#WinOverhangR").slider({ min: 0.01, max: 0.9, value: 0.5, step: 0.01, slide: self.handleOverHang });
-    $("#LWinFinR").slider({ min: 0.01, max: 0.4, value: 0.2, step: 0.01, slide: self.handleFin });
-    $("#RWinFinR").slider({ min: 0.01, max: 0.4, value: 0.2, step: 0.01, slide: self.handleFin });
+    $("#LWinFinR").slider({ min: 0.01, max: 0.4, value: 0.2, step: 0.01, slide: self.handleFinL });
+    $("#RWinFinR").slider({ min: 0.01, max: 0.4, value: 0.2, step: 0.01, slide: self.handleFinR });
 
     $("#CoolingSP").slider({ min: 23, max: 30, value: 25, step: 1, slide: self.updateSliderDisplay });
     //SB must be higher than SP or error $("#CoolingSB").slider({ min: 23, max: 40, value: 27, slide: self.updateSliderDisplay })
@@ -420,30 +427,30 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.updateSliderDisplay(evt, ui);
     var enable = ui.value > 1;
 
-    ratioShade=this.southShade.scale.y/this.southWindow.scale.z;
-    ratioFin=this.leftShade.scale.y/this.southWindow.scale.x;
+    ratioShade=this.ExtShade.scale.y/this.ExtWindow.scale.z;
+    ratioFin=this.leftShade.scale.y/this.ExtWindow.scale.x;
     var windowtowall= Math.sqrt(ui.value/100);
 
 
-    this.southWindow.scale.x = (windowtowall)*(this.solarCube.scale.x);
-    this.southWindow.scale.z = (windowtowall)*(this.solarCube.scale.z);
+    this.ExtWindow.scale.x = (windowtowall)*(this.solarCube.scale.x);
+    this.ExtWindow.scale.z = (windowtowall)*(this.solarCube.scale.z);
 
-    this.southShade.scale.x = this.southWindow.scale.x;
-    this.southShade.scale.y= ratioShade*this.southWindow.scale.z;
-    this.southShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
-    this.southShade.position.z = this.southWindow.scale.z/2+this.solarCube.scale.z/2;
+    this.ExtShade.scale.x = this.ExtWindow.scale.x;
+    this.ExtShade.scale.y= ratioShade*this.ExtWindow.scale.z;
+    this.ExtShade.position.y = -this.solarCube.scale.y/2-(this.ExtShade.scale.y/2);
+    this.ExtShade.position.z = this.ExtWindow.scale.z/2+this.solarCube.scale.z/2;
 
-    this.leftShade.scale.y = ratioFin*this.southWindow.scale.x;
-    this.leftShade.scale.z = this.southWindow.scale.z;
-    this.leftShade.position.x = -(this.southWindow.scale.x/2);
+    this.leftShade.scale.y = ratioFin*this.ExtWindow.scale.x;
+    this.leftShade.scale.z = this.ExtWindow.scale.z;
+    this.leftShade.position.x = -(this.ExtWindow.scale.x/2);
     this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
-    this.leftShade.position.z = this.southWindow.position.z;
+    this.leftShade.position.z = this.ExtWindow.position.z;
 
-    this.rightShade.scale.y = ratioFin*this.southWindow.scale.x;
-    this.rightShade.scale.z = this.southWindow.scale.z;
-    this.rightShade.position.x = (this.southWindow.scale.x/2);
+    this.rightShade.scale.y = ratioFin*this.ExtWindow.scale.x;
+    this.rightShade.scale.z = this.ExtWindow.scale.z;
+    this.rightShade.position.x = (this.ExtWindow.scale.x/2);
     this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
-    this.rightShade.position.z = this.southWindow.position.z;
+    this.rightShade.position.z = this.ExtWindow.position.z;
 	
     $('#Window_U_Value').slider(enable ? "enable" : "disable");
     $('#Window_SHGC').slider(enable ? "enable" : "disable");
@@ -453,20 +460,25 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
   handleOverHang: function(evt, ui) {
     this.updateSliderDisplay(evt, ui);
     var enable = ui.value > 1;
-    this.southShade.scale.y= ui.value*this.southWindow.scale.z;
-    this.southShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
+    this.ExtShade.scale.y= ui.value*this.ExtWindow.scale.z;
+    this.ExtShade.position.y = -this.solarCube.scale.y/2-(this.ExtShade.scale.y/2);
 
   },
 
-  handleFin: function(evt, ui) {
+  handleFinL: function(evt, ui) {
     this.updateSliderDisplay(evt, ui);
     var enable = ui.value > 1;
-    this.leftShade.scale.y= ui.value*this.southWindow.scale.x;
+    this.leftShade.scale.y= ui.value*this.ExtWindow.scale.x;
     this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
-    this.rightShade.scale.y= ui.value*this.southWindow.scale.x;
+
+  },
+ 
+ handleFinR: function(evt, ui) {
+    this.updateSliderDisplay(evt, ui);
+    var enable = ui.value > 1;
+    this.rightShade.scale.y= ui.value*this.ExtWindow.scale.x;
     this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
   },
-
 
   handleSliderCheckboxChange: function(event) {
     var grId = '#'+event.target.id+'GR';
@@ -482,25 +494,25 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.updateSliderDisplay(event, ui);
     this.solarCube.scale.x = ui.value*100;
 
-    ratio=this.southWindow.scale.z/this.solarCube.scale.z;
-    ratioFin=this.leftShade.scale.y/this.southWindow.scale.x;
+    ratio=this.ExtWindow.scale.z/this.solarCube.scale.z;
+    ratioFin=this.leftShade.scale.y/this.ExtWindow.scale.x;
 
-    this.southWindow.scale.x = (ratio)*(this.solarCube.scale.x);
-    this.southWindow.scale.z = (ratio)*(this.solarCube.scale.z);
+    this.ExtWindow.scale.x = (ratio)*(this.solarCube.scale.x);
+    this.ExtWindow.scale.z = (ratio)*(this.solarCube.scale.z);
 
 	this.sFacade.scale.x = this.solarCube.scale.x;
     this.sFacade.scale.z = this.solarCube.scale.z;
 
 
-    this.southShade.scale.x = this.southWindow.scale.x;
-    this.southShade.position.z = this.southWindow.scale.z/2+this.solarCube.scale.z/2;
+    this.ExtShade.scale.x = this.ExtWindow.scale.x;
+    this.ExtShade.position.z = this.ExtWindow.scale.z/2+this.solarCube.scale.z/2;
 
-    this.leftShade.scale.y = ratioFin*this.southWindow.scale.x;
-    this.leftShade.position.x = -(this.southWindow.scale.x/2);
+    this.leftShade.scale.y = ratioFin*this.ExtWindow.scale.x;
+    this.leftShade.position.x = -(this.ExtWindow.scale.x/2);
     this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
 
-    this.rightShade.scale.y = ratioFin*this.southWindow.scale.x;
-    this.rightShade.position.x = (this.southWindow.scale.x/2);
+    this.rightShade.scale.y = ratioFin*this.ExtWindow.scale.x;
+    this.rightShade.position.x = (this.ExtWindow.scale.x/2);
     this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
 
   },
@@ -508,9 +520,9 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
   updateDepth: function(event, ui) {
     this.updateSliderDisplay(event, ui);
     this.solarCube.scale.y = ui.value*100;
-    this.southWindow.position.y = -4-this.solarCube.scale.y/2;
+    this.ExtWindow.position.y = -4-this.solarCube.scale.y/2;
     this.sFacade.position.y = -2-this.solarCube.scale.y/2;
-    this.southShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
+    this.ExtShade.position.y = -this.solarCube.scale.y/2-(this.ExtShade.scale.y/2);
     this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
     this.leftShade.position.y = -this.solarCube.scale.y/2-(this.leftShade.scale.y/2);
   },
@@ -520,26 +532,26 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     this.solarCube.scale.z = ui.value*100;
     this.solarCube.position.z = ui.value*100/2;
 
-    ratioShade=this.southShade.scale.y/this.southWindow.scale.z;
-    ratio=this.southWindow.scale.x/this.solarCube.scale.x;
+    ratioShade=this.ExtShade.scale.y/this.ExtWindow.scale.z;
+    ratio=this.ExtWindow.scale.x/this.solarCube.scale.x;
 	
-    this.southWindow.scale.x = (ratio)*(this.solarCube.scale.x);
-    this.southWindow.scale.z = (ratio)*(this.solarCube.scale.z);
-    this.southWindow.position.z=this.solarCube.scale.z/2;
+    this.ExtWindow.scale.x = (ratio)*(this.solarCube.scale.x);
+    this.ExtWindow.scale.z = (ratio)*(this.solarCube.scale.z);
+    this.ExtWindow.position.z=this.solarCube.scale.z/2;
 	
 	this.sFacade.scale.x = this.solarCube.scale.x;
     this.sFacade.scale.z = this.solarCube.scale.z;
     this.sFacade.position.z=this.solarCube.position.z;
 
-    this.southShade.scale.y= ratioShade*this.southWindow.scale.z;
-    this.southShade.position.z = this.southWindow.scale.z/2+this.solarCube.scale.z/2;
-    this.southShade.position.y = -this.solarCube.scale.y/2-(this.southShade.scale.y/2);
+    this.ExtShade.scale.y= ratioShade*this.ExtWindow.scale.z;
+    this.ExtShade.position.z = this.ExtWindow.scale.z/2+this.solarCube.scale.z/2;
+    this.ExtShade.position.y = -this.solarCube.scale.y/2-(this.ExtShade.scale.y/2);
 
-    this.leftShade.scale.z = this.southWindow.scale.z;
-    this.leftShade.position.z = this.southWindow.position.z;
+    this.leftShade.scale.z = this.ExtWindow.scale.z;
+    this.leftShade.position.z = this.ExtWindow.position.z;
 
-    this.rightShade.scale.z = this.southWindow.scale.z;
-    this.rightShade.position.z = this.southWindow.position.z;
+    this.rightShade.scale.z = this.ExtWindow.scale.z;
+    this.rightShade.position.z = this.ExtWindow.position.z;
   },
 
 
@@ -563,7 +575,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
     curValue -= this.MONTH_LENGTHS[month-1];
     var value = month + "/" + (dayOfYear - curValue);
     this.setSliderDisplayValue('#'+event.target.id, value);
-    this.adjustSunPosition($('#hour-of-day-slider').slider('value'), dayOfYear);
+    this.adjustSunPosition($('#hour-of-day-slider').slider('value'), dayOfYear,$("#orientation").slider('value'));
   },
 
   updateHourOfDaySliderDisplay: function(event, ui) {
@@ -572,21 +584,26 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Southwh)
 
     //this.sunLight.position.x=ui.value;
     //this.SunSphere.position.x=ui.value;
-    this.adjustSunPosition(ui.value, $('#day-of-year-slider').slider('value'));
+    this.adjustSunPosition(ui.value, $('#day-of-year-slider').slider('value'),$("#orientation").slider('value'));
   },
 
-  adjustSunPosition: function(hour, day) {
+updateOrientaionDisplay: function(event, ui) {
+    this.updateSliderDisplay(event, ui);
+    this.adjustSunPosition($('#hour-of-day-slider').slider('value'), $('#day-of-year-slider').slider('value'),ui.value);
+  },
+
+  adjustSunPosition: function(hour, day, orientation) {
     var latitude = 45;
     var hour_of_day = hour;
     var day_number = day;
-
+	var orient=orientation;
     if (!this.SunSphere || !this.sunLight) {
       return;
     }
 
     //Convert radians to degrees
     var rtd = 180/Math.PI;
-window.console.log(rtd);
+window.console.log(orient);
     // Convert degrees to radians
     var dtr = Math.PI/180;
 
@@ -598,11 +615,11 @@ window.console.log(rtd);
     var solar_altitude= rtd*Math.asin((Math.sin(solar_declination*dtr) * Math.sin(latitude*dtr)) + (Math.cos(solar_declination*dtr)* Math.cos(latitude*dtr) * Math.cos(hour_angle*dtr)));
 
     if (hour_of_day === 12) {
-      solar_azimuth= 0;
+      solar_azimuth= 180-orient;
     } else if (hour_of_day < 12) {
-        solar_azimuth= -rtd*Math.acos(((Math.sin(solar_altitude*dtr) * Math.sin(latitude*dtr)) - Math.sin(solar_declination*dtr)) / (Math.cos(solar_altitude*dtr) * Math.cos(latitude*dtr)));
+        solar_azimuth= 180-orient-rtd*Math.acos(((Math.sin(solar_altitude*dtr) * Math.sin(latitude*dtr)) - Math.sin(solar_declination*dtr)) / (Math.cos(solar_altitude*dtr) * Math.cos(latitude*dtr)));
     } else {
-      solar_azimuth= rtd*Math.acos(((Math.sin(solar_altitude*dtr) * Math.sin(latitude*dtr)) - Math.sin(solar_declination*dtr)) / (Math.cos(solar_altitude*dtr) * Math.cos(latitude*dtr)));
+      solar_azimuth= 180-orient+rtd*Math.acos(((Math.sin(solar_altitude*dtr) * Math.sin(latitude*dtr)) - Math.sin(solar_declination*dtr)) / (Math.cos(solar_altitude*dtr) * Math.cos(latitude*dtr)));
     }
 
     var rt = hour_of_day - time_of_sunrise;
@@ -698,6 +715,7 @@ window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
 
     $('#facade-tabs').tabs({ active: 0, heightStyle: 'content' });
     $('#input-tabs').tabs({ active: 0, heightStyle: 'content' });
+    $('#run-tabs').tabs({ active: 0, heightStyle: 'content' });
 
     // This forces the tabs to redraw correctly. Not sure why they don't without this.
     /*

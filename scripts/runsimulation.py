@@ -1,3 +1,4 @@
+
 import sys
 import os
 import json
@@ -10,7 +11,7 @@ def createSimulationDirectory(simulationid):
   directory = 'simulations/{0}'.format(simulationid)
   if os.path.exists(directory):
       shutil.rmtree (directory)
-  shutil.copytree("../jEPlus/Facade", directory)  # YZ: check if it should "../../jEPlus/Facade"
+  shutil.copytree("../jEPlus/Box", directory)  # YZ: check if it should "../../jEPlus/Facade"
   return os.path.abspath(directory)
 
 def convertDataToCSV(jsondata):
@@ -57,11 +58,11 @@ def convertDataToCSV(jsondata):
               jsondata["OccupancyType"], 
               jsondata["CoolingSP"], 
               jsondata["HeatingSP"], 
-              jsondata["Window"], 
               jsondata["InsulationLevel"], 
               jsondata["InfiltrationRate"],
               "M" + jsondata["Mvalue"] + "Q"  + jsondata["Qvalue"],
               jsondata["WindowType"], 
+              jsondata["#WinGR""],
               jsondata["WallType"],
               jsondata["LFin"], 
               jsondata["RFin"],
