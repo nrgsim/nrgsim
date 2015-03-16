@@ -11,7 +11,7 @@ def createSimulationDirectory(simulationid):
   directory = 'simulations/{0}'.format(simulationid)
   if os.path.exists(directory):
       shutil.rmtree (directory)
-  shutil.copytree("../jEPlus/Facade", directory)  # YZ: check if it should "../../jEPlus/Facade"
+  shutil.copytree("../jEPlus/Box", directory)  # YZ: check if it should "../../jEPlus/Facade"
   return os.path.abspath(directory)
 
 def convertDataToCSV(jsondata):
