@@ -54,8 +54,8 @@ def convertDataToCSV(jsondata):
               jsondata["Height"],
               jsondata["Depth"], 
               jsondata["Width"], 
-              jsondata["#WinGR""],
-              jsondata["Overhang"]
+              jsondata["#WinGR"],
+              jsondata["Overhang"],
               jsondata["LFin"], 
               jsondata["RFin"],
               jsondata["Orientation"], 
@@ -71,7 +71,7 @@ def convertDataToCSV(jsondata):
               jsondata["CoolingSP"], 
               jsondata["HeatingSP"],  
 #Site tab
-              jsondata["Terrain"], 
+              jsondata["Terrain"]
 #Run tab
 
             ]
