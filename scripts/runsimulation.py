@@ -50,23 +50,30 @@ def convertDataToCSV(jsondata):
   csvdata = [ jsondata["JobID"], 
               0, 
               0, 
-              jsondata["Terrain"], 
-              jsondata["Orientation"], 
+#Geometry tab
+              jsondata["Height"],
               jsondata["Depth"], 
               jsondata["Width"], 
-              jsondata["Height"], 
-              jsondata["OccupancyType"], 
-              jsondata["CoolingSP"], 
-              jsondata["HeatingSP"], 
-              jsondata["InsulationLevel"], 
-              jsondata["InfiltrationRate"],
-              "M" + jsondata["Mvalue"] + "Q"  + jsondata["Qvalue"],
-              jsondata["WindowType"], 
               jsondata["#WinGR""],
-              jsondata["WallType"],
+              jsondata["Overhang"]
               jsondata["LFin"], 
               jsondata["RFin"],
-              jsondata["Overhang"]
+              jsondata["Orientation"], 
+#Facade tab
+              jsondata["WallType"],  
+              jsondata["WindowType"], 
+              jsondata["InfiltrationRate"],           
+              jsondata["InsulationLevel"], 
+        "M" + jsondata["Mvalue"] + "Q"  + jsondata["Qvalue"],
+ 
+#Activity tab
+              jsondata["OccupancyType"], 
+              jsondata["CoolingSP"], 
+              jsondata["HeatingSP"],  
+#Site tab
+              jsondata["Terrain"], 
+#Run tab
+
             ]
   return csvdata
 
