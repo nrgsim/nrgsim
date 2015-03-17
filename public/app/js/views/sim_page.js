@@ -789,11 +789,14 @@ window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
     zone.Height = $("#Height").slider('value');
     zone.Depth = $("#Depth").slider('value');
     zone.OccupancyType = $("#occupancy-type").val();
+    /*
     if ($("#Win").prop("checked")) {
       zone.Window = $("#WinGR").slider('value');
     } else {
       zone.Window = null;
     }
+    */
+    zone.Window = $("#WinGR").slider('value');
     zone.CoolingSP = $("#CoolingSP").slider('value');
     zone.HeatingSP = $("#HeatingSP").slider('value');
     zone.InsulationLevel = $("#insulation-level").slider('value');
