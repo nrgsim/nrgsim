@@ -99,52 +99,52 @@ var WEATHER_DATA = {
         }
       },
       {
-        "ETH": {
+        "Ethiopia": {
           name: "Ethiopia",
         }
       },
       {
-        "GHA": {
+        "Ghana": {
           name: "Ghana",
         }
       },
       {
-        "KEN": {
+        "Kenya": {
           name: "Kenya",
         }
       },
       {
-        "LBY": {
+        "Libyan_Arab_Jamahiriya": {
           name: "Libyan Arab Jamahiriya",
          }
        },
       {
-        "MAR": {
+        "Morocco": {
           name: "Morocco",
         }
       },
       {
-        "MDG": {
+        "Madagascar": {
           name: "Madagascar",
         }
       },
       {
-        "SEN": {
+        "Senegal": {
           name: "Senegal",
         }
       },
       {
-        "TUN": {
+        "Tunisia": {
           name: "Tunisia",
         }
       },
       {
-        "ZAF": {
+        "South_Africa": {
           name: "South Africa",
         }
       },
       {
-        "ZWE": {
+        "Zimbabwe": {
           name: "Zimbabwe",
         }
       }
@@ -154,112 +154,112 @@ var WEATHER_DATA = {
     name: "Asia",
     values: [
       {
-        "ARE": {
+        "United_Arab_Emirates": {
           name: "United Arab Emirates",
         }
       },
       {
-        "BGD": {
+        "Bangladesh": {
           name: "Bangladesh",
         }
       },
       {
-        "CHN": {
+        "China": {
           name: "China",
         }
       },
       {
-        "IND": {
+        "India": {
           name: "India",
         }
       },
       {
-        "IRN": {
+        "Iran_Islamic_Republic_of": {
           name: "Iran - Islamic Republic of",
         }
       },
       {
-        "JPN": {
+        "Japan": {
           name: "Japan",
         }
       },
       {
-        "KAZ": {
+        "Kazakhstan": {
           name: "Kazakhstan",
         }
       },
       {
-        "KOR": {
+        "Korea_Republic_of": {
           name: "Korea - Republic of",
         }
       },
       {
-        "KWT": {
+        "Kuwait": {
           name: "Kuwait",
         }
       },
       {
-        "LKA": {
+        "Sri_Lanka": {
           name: "Sri Lanka",
         }
       },
       {
-        "MAC": {
+        "Macau": {
           name: "Macau",
         }
       },
       {
-        "MDV": {
+        "Maldives": {
           name: "Maldives",
         }
       },
       {
-        "MNG": {
+        "Mongolia": {
           name: "Mongolia",
         }
       },
       {
-        "NPL": {
+        "Nepal": {
           name: "Nepal",
         }
       },
       {
-        "PAK": {
+        "Pakistan": {
           name: "Pakistan",
         }
       },
       {
-        "PRK": {
+        "Korea_Democratic_People's_Republ": {
           name: "Korea - Democratic People's Republic of",
         }
       },
       {
-        "RUS": {
+        "Russian_Federation": {
           name: "Russian Federation",
         }
       },
       {
-        "SAU": {
+        "Saudi_Arabia": {
           name: "Saudi Arabia",
         }
       },
       {
-        "THA": {
+        "Thailand": {
           name: "Thailand",
         }
       },
       {
-        "TWN": {
+        "Taiwan": {
           name: "Taiwan",
         }
       },
       {
-        "UZB": {
+        "Uzbekistan": {
           name: "Uzbekistan",
         }
       },
       {
-        "VNM": {
+        "Viet_Nam": {
           name: "Viet Nam",
         }
       },
@@ -269,52 +269,52 @@ var WEATHER_DATA = {
     name: "South America",
     values: [
       {
-        "ARG": {
+        "Argentina": {
           name: "Argentina",
         }
       },
       {
-        "BOL": {
+        "Bolivia": {
           name: "Bolivia",
         }
       },
       {
-        "BRA": {
+        "Brazil": {
           name: "Brazil",
         }
       },
       {
-        "CHL": {
+        "Chile": {
           name: "Chile",
         }
       },
       {
-        "COL": {
+        "Colombia": {
           name: "Colombia",
         }
       },
       {
-        "ECU": {
+        "Ecuador": {
           name: "Ecuador",
         }
       },
       {
-        "PER": {
+        "Peru": {
           name: "Peru",
         }
       },
       {
-        "PRY": {
+        "Paraguay": {
           name: "Paraguay",
         }
       },
       {
-        "URY": {
+        "Uruguay": {
           name: "Uruguay",
         }
       },
       {
-        "VEN": {
+        "Venezuela": {
           name: "Venezuela",
         }
       },
@@ -324,67 +324,67 @@ var WEATHER_DATA = {
     name: "North and Central America",
     values: [
       {
-        "USA": {
+        "United_States": {
           name: "United States",
         }
       },
       {
-        "CCZ": {
+        "alifornia_Climate_Zones": {
           name: "California Climate Zones",
         }
       },
       {
-        "CAN": {
+        "Canada": {
           name: "Canada",
         }
       },
       {
-        "BLZ": {
+        "Belize": {
           name: "Belize",
         }
       },
       {
-        "CUB": {
+        "Cuba": {
           name: "Cuba",
         }
       },
       {
-        "GTM": {
+        "Guatemala": {
           name: "Guatemala",
         }
       },
       {
-        "HND": {
+        "Honduras": {
           name: "Honduras",
         }
       },
       {
-        "MEX": {
+        "Mexico": {
           name: "Mexico",
         }
       },
       {
-        "MTQ": {
+        "Martinique": {
           name: "Martinique",
         }
       },
       {
-        "NIC": {
+        "Nicaragua": {
           name: "Nicaragua",
         }
       },
       {
-        "PRI": {
+        "Puerto_Rico": {
           name: "Puerto Rico",
         }
       },
       {
-        "SLV": {
+        "El_Salvador": {
           name: "El Salvador",
         }
       },
       {
-        "VIR": {
+        "Virgin_Islands": {
           name: "Virgin Islands (U.S.)",
         }
       },
@@ -394,57 +394,57 @@ var WEATHER_DATA = {
     name: "Southwest Pacific",
     values: [
       {
-        "AUS": {
+        "Australia": {
           name: "Australia",
         }
       },
       {
-        "BRN": {
+        "Brunei_Darussalam": {
           name: "Brunei Darussalam",
         }
       },
       {
-        "FJI": {
+        "Fiji": {
           name: "Fiji",
         }
       },
       {
-        "GUM": {
+        "Guam": {
           name: "Guam",
         }
       },
       {
-        "MHL": {
+        "Marshall_Islands": {
           name: "Marshall Islands",
         }
       },
       {
-        "MYS": {
+        "Malaysia": {
           name: "Malaysia",
         }
       },
       {
-        "NZL": {
+        "New_Zealand": {
           name: "New Zealand",
         }
       },
       {
-        "PHL": {
+        "Philippines": {
           name: "Philippines",
         }
       },
       {
-        "PLW": {
+        "Palau": {
           name: "Palau",
         }
       },
       {
-        "SGP": {
+        "Singapore": {
           name: "Singapore",
         }
       },
       {
-        "UMI": {
+        "United_States_Minor_Outlying_Islands": {
           name: "United States Minor Outlying Islands",
         }
       },
