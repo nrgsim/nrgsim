@@ -184,13 +184,14 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Extwh)
     this.solarCube.position.z = this.solarCube.scale.z/2;
     this.scene.add(this.solarCube);
 	
-	var dir = new THREE.Vector3( 0, -1, 0 );
-	var origin = new THREE.Vector3( 0, 0, 0 );
-	var length = 800;
-	var hex = 0x000000;
-	this.arrowHelper = new THREE.ArrowHelper( dir, origin, length, hex );
-	this.scene.add( this.arrowHelper );
 
+
+   	var Cgeometry = new THREE.CylinderGeometry( 5, 5, 2000, 32 );
+	var Cmaterial = new THREE.MeshBasicMaterial( {color: 0x000000} );
+	this.DIRcylinder = new THREE.Mesh( Cgeometry, Cmaterial );
+	
+	this.scene.add( this.DIRcylinder );
+	
 
 
     var facadeGeometry = new THREE.BoxGeometry(1, 1, 1);
@@ -597,6 +598,7 @@ updateOrientaionDisplay: function(event, ui) {
     var hour_of_day = hour;
     var day_number = day;
 	var orient=orientation;
+	var xcamera=this.camera.position.x;
     if (!this.SunSphere || !this.sunLight) {
       return;
     }
@@ -613,7 +615,7 @@ window.console.log(orient);
     var time_of_sunset=12/Math.PI * (2*Math.PI - Math.acos(Math.tan(dtr*(latitude)) * Math.tan(dtr*(solar_declination))));
     var possible_sunshine_hours=time_of_sunset-time_of_sunrise;
     var solar_altitude= rtd*Math.asin((Math.sin(solar_declination*dtr) * Math.sin(latitude*dtr)) + (Math.cos(solar_declination*dtr)* Math.cos(latitude*dtr) * Math.cos(hour_angle*dtr)));
-
+	
     if (hour_of_day === 12) {
       solar_azimuth= 180-orient;
     } else if (hour_of_day < 12) {
@@ -630,7 +632,7 @@ window.console.log(orient);
     } else {
       sun_nosun=0;
     }
-
+	
     var multRad=1000*sun_nosun;
     var altitudeProjection=Math.cos(dtr*solar_altitude);
     var xcoord=-multRad*altitudeProjection*Math.sin(dtr*solar_azimuth);
@@ -638,7 +640,11 @@ window.console.log(orient);
     var zcoord=multRad*Math.sin(dtr*solar_altitude);
 
 window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
-
+	//this.camera.position.x=-xcoord;
+	//this.camera.position.y=-ycoord;
+	this.DIRcylinder.position.y=1000;
+	this.DIRcylinder.rotation.z = (orient/180)*Math.PI;
+	this.DIRcylinder.position.y=0;
     this.SunSphere.position.x=xcoord;
     this.SunSphere.position.y=ycoord;
     this.SunSphere.position.z=zcoord;
