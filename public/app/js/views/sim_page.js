@@ -659,16 +659,21 @@ window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
     var continent = evt.currentTarget.value;
     $.get('simulation/countries/'+continent, function(d) {
       var ctrl = $('#country');
+      var first = null;
       ctrl.empty();
       _.each(d.values, function(object) {
         _.each(object, function(value, key) {
+          if (!first) {
+            first = key;
+          }
           ctrl.append($("<option />").val(key).text(value.name));
         });
         $('#country').removeAttr('disabled');
         //$('#region').empty().attr('disabled', 'disabled');
         $('#WeatherFile').empty().attr('disabled', 'disabled');
       });
-    });
+      this.handleCountryChange({ currentTarget: { value: first } });
+    }.bind(this));
   },
 
   handleCountryChange: function(evt) {
