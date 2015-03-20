@@ -589,7 +589,7 @@ var WEATHER_DATA = {
         }
       },
       {
-        "Slovakia_(Slovak_Republic)": {
+        "Slovakia_Slovak_Republic": {
           name: "Slovakia (Slovak Republic)",
         }
       },
