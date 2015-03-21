@@ -229,7 +229,7 @@ var WEATHER_DATA = {
         }
       },
       {
-        "Korea_Democratic_People's_Republ": {
+        "Korea_Democratic_People's_Republic_of": {
           name: "Korea - Democratic People's Republic of",
         }
       },
@@ -265,7 +265,7 @@ var WEATHER_DATA = {
       },
     ]
   },
-  "WMO_3_SouthAmerica": {
+  "WMO_3_South_America": {
     name: "South America",
     values: [
       {
@@ -320,7 +320,7 @@ var WEATHER_DATA = {
       },
     ]
   },
-  "WMO_4_NorthAndCentralAmerica": {
+  "WMO_4_North_And_Central_America": {
     name: "North and Central America",
     values: [
       {
@@ -390,7 +390,7 @@ var WEATHER_DATA = {
       },
     ]
   },
-  "WMO_5_SouthwestPacific": {
+  "WMO_5_Southwest_Pacific": {
     name: "Southwest Pacific",
     values: [
       {
