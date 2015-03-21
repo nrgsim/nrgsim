@@ -329,7 +329,7 @@ var WEATHER_DATA = {
         }
       },
       {
-        "alifornia_Climate_Zones": {
+        "California_Climate_Zones": {
           name: "California Climate Zones",
         }
       },
