@@ -37,3 +37,12 @@ Nodemon - useful for restarting express when something changes: `npm install -g 
 ## Testing
 Run from command line at root of project: `runTests.cmd` or `npm test`  
 It runs all the tests under the 'tests/' directory. They can be written in JavaScript or CoffeeScript.
+
+## Running on production server
+The following is how to run the app on the production server.
+`cd /data/app-dev/nrgsim`
+`sudo PORT=8000 forever start servers.js &`
+
+To stop the app use the following command:
+`sudo forever stop 0`
+

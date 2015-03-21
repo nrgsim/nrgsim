@@ -7,8 +7,6 @@ application. If you are working on just the client side code then you don't real
 
 ## Development Environment Setup
 * Open a console window and cd to the nrgsim/public directory
-* Install Ruby: `sudo apt-get install ruby` [Linux] or `http://rubyinstaller.org/` [Windows]
-* Install the Sass Gem: `gem install sass`
 * Install lineman globally: `sudo npm install -g lineman` [Linux] or `npm install -g lineman` [Windows]
 * Install the projects node modules: `npm install`
 * Run lineman
