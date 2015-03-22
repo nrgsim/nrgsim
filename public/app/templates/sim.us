@@ -35,13 +35,48 @@
 
         <div id="input-tabs">
           <ul>
+            <li><a href="#input-wrapper-site"><%= $.i18n('sim-site') %></a></li>
             <li><a href="#input-wrapper-geometry"><%= $.i18n('sim-geometry') %></a></li>
             <li><a href="#input-wrapper-facade"><%= $.i18n('sim-facade') %></a></li>
             <li><a href="#input-wrapper-activity"><%= $.i18n('sim-activity') %></a></li>
             
           </ul>
 
-          
+ <div id="input-wrapper-site" class="input-wrapper-section" style="display:none">
+         
+          <div class="control">
+            <label>WMO Region</label>
+            <select id="continent">
+              <option value="WMO_1_Africa">Africa</option>
+              <option value="WMO_2_Asia">Asia</option>
+              <option value="WMO_3_South_America">South America</option>
+              <option value="WMO_4_North_And_Central_America">North and Central America</option>
+              <option value="WMO_5_Southwest_Pacific">Southwest Pacific</option>
+              <option value="WMO_6_Europe">Europe</option>
+            </select>
+          </div>
+          <div class="control">
+            <label>Country</label>
+            <select id="country" disabled="disabled">
+            </select>
+          </div>
+
+          <div class="control">
+            <label>Weather File</label>
+            <select id="WeatherFile" disabled="disabled">
+            </select>
+          </div>
+          <div class="control">
+            <label>Terrain</label>
+            <select id="terrain">
+              <option value="City">City</option>
+              <option value="Suburbs">Suburbs</option>
+              <option value="Country">Country</option>
+              <option value="Ocean">Ocean</option>
+              <option value="Urban">Urban</option>
+            </select>
+          </div>
+        </div>         
 
           <div id="input-wrapper-geometry" class="input-wrapper-section" style="display:none">
             <div class="control">
@@ -141,21 +176,11 @@
                   <label><%= $.i18n('Insulation R-Value') %> <span id="insulation-levelDisp"></span></label>
                   <div id="insulation-level"></div>
                 </div>
-                <div class="control">
-                  <label><input type="checkbox" id="bio-pcm" class="group-disable" checked="checked">BioPCM</label>
-                </div>
-                <div class="control half">
-                  <label>M&ndash;Value<br/>[Btu/sf]</br/>M<span id="mvalueDisp"></span></label>
-                  <div id="mvalue"></div>
-                </div>
-                <div class="control half">
-                  <label>Q&ndash;Value<br/>[Degree&ndash;C°]</br/>Q<span id="qvalueDisp"></span></label>
-                  <div id="qvalue"></div>
-                </div>
+
                 
 
               </div>
-            
+     
             </div>
           </div>
         </div>
@@ -167,40 +192,17 @@
     <div id="results-panel" class="panel">
       <div class="panel-content">
 
-        <div class="weather-panel">
-          <div class="control">
-            <label>WMO Region</label>
-            <select id="continent">
-              <option value="WMO_1_Africa">Africa</option>
-              <option value="WMO_2_Asia">Asia</option>
-              <option value="WMO_3_South_America">South America</option>
-              <option value="WMO_4_North_And_Central_America">North and Central America</option>
-              <option value="WMO_5_Southwest_Pacific">Southwest Pacific</option>
-              <option value="WMO_6_Europe">Europe</option>
-            </select>
-          </div>
-          <div class="control">
-            <label>Country</label>
-            <select id="country" disabled="disabled">
-            </select>
-          </div>
-
-          <div class="control">
-            <label>Weather File</label>
-            <select id="WeatherFile" disabled="disabled">
-            </select>
-          </div>
-          <div class="control">
-            <label>Terrain</label>
-            <select id="terrain">
-              <option value="City">City</option>
-              <option value="Suburbs">Suburbs</option>
-              <option value="Country">Country</option>
-              <option value="Ocean">Ocean</option>
-              <option value="Urban">Urban</option>
-            </select>
-          </div>
-        </div>
+                <div class="control">
+                  <label><input type="checkbox" id="bio-pcm" class="group-disable" checked="checked">BioPCM</label>
+                </div>
+                <div class="control half">
+                  <label>M&ndash;Value<br/>[Btu/sf]</br/>M<span id="mvalueDisp"></span></label>
+                  <div id="mvalue"></div>
+                </div>
+                <div class="control half">
+                  <label>Q&ndash;Value<br/>[Degree&ndash;C°]</br/>Q<span id="qvalueDisp"></span></label>
+                  <div id="qvalue"></div>
+                </div>
 
         <div class="simulation-controls">
           <div class="control">
