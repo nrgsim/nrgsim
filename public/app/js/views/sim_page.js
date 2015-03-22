@@ -186,13 +186,23 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Extwh)
 	
 
 
-   	var Cgeometry = new THREE.CylinderGeometry( 5, 5, 2000, 32 );
+   	var Cgeometry = new THREE.CylinderGeometry( 3, 3, 2000, 4 );
 	var Cmaterial = new THREE.MeshBasicMaterial( {color: 0x000000} );
 	this.DIRcylinder = new THREE.Mesh( Cgeometry, Cmaterial );
-	
 	this.scene.add( this.DIRcylinder );
 	
-
+	var Cgeometry2 = new THREE.CylinderGeometry( 20, 0, 100, 4 );
+	this.DIRcylinder2 = new THREE.Mesh( Cgeometry2, Cmaterial );
+	this.DIRcylinder2.rotation.z = Math.PI;
+	this.DIRcylinder2.position.y=1000;
+	this.scene.add( this.DIRcylinder2 );
+	
+	var curve = new THREE.EllipseCurve( 0,0,1000,1000,0,2*Math.PI,false );  
+	var path = new THREE.Path( curve.getPoints( 50 ) );
+	var circleGeometry = path.createPointsGeometry( 50 );
+	var circleMaterial = new THREE.LineBasicMaterial( { color : 0x000000 } );           
+	this.circle = new THREE.Line( circleGeometry, circleMaterial );
+	this.scene.add( this.circle );
 
     var facadeGeometry = new THREE.BoxGeometry(1, 1, 1);
     var facadeMaterial = new THREE.MeshBasicMaterial({ color: 0xf2d478});
@@ -642,9 +652,11 @@ window.console.log(orient);
 window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
 	//this.camera.position.x=-xcoord;
 	//this.camera.position.y=-ycoord;
-	this.DIRcylinder.position.y=1000;
+
 	this.DIRcylinder.rotation.z = (orient/180)*Math.PI;
-	this.DIRcylinder.position.y=0;
+	this.DIRcylinder2.rotation.z = ((orient/180))*Math.PI;
+	this.DIRcylinder2.position.x=1000*(Math.sin((orient/180)*Math.PI));
+	this.DIRcylinder2.position.y=-1000*(Math.cos((orient/180)*Math.PI));
     this.SunSphere.position.x=xcoord;
     this.SunSphere.position.y=ycoord;
     this.SunSphere.position.z=zcoord;
