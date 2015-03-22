@@ -111,7 +111,7 @@ def runSimulation(simulationid, jsondata):
   # create simulation directory "simulations/[simulationid]" by copying from the template folder ("jEPlus/Facade/")
   directory = createSimulationDirectory(simulationid)
   resultsDirectory = directory + os.sep + 'output'
-  resultsFile = resultsDirectory + os.sep + 'AllCombinedResults.csv'  
+  resultsFile = resultsDirectory + os.sep + 'AllDerivedResults.csv'  
 
   # copy selected weather file to the simulation directory
   copySupportingFiles(directory, jsondata)
