@@ -811,9 +811,9 @@ updateOrientaionDisplay: function(event, ui) {
     zone.Depth = $("#Depth").slider('value');
     zone.OccupancyType = $("#occupancy-type").val();
     if ($("#Win").prop("checked")) {
-      zone.Window = $("#WinGR").slider('value');
+      zone.WinGR = $("#WinGR").slider('value');
     } else {
-      zone.Window = null;
+      zone.WinGR = null;
     }
     zone.CoolingSP = $("#CoolingSP").slider('value');
     zone.HeatingSP = $("#HeatingSP").slider('value');
