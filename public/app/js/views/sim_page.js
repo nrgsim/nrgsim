@@ -183,26 +183,26 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Extwh)
     this.solarCube.position.y = 0;
     this.solarCube.position.z = this.solarCube.scale.z/2;
     this.scene.add(this.solarCube);
-	
+  
 
 
-   	var Cgeometry = new THREE.CylinderGeometry( 3, 3, 2000, 4 );
-	var Cmaterial = new THREE.MeshBasicMaterial( {color: 0x000000} );
-	this.DIRcylinder = new THREE.Mesh( Cgeometry, Cmaterial );
-	this.scene.add( this.DIRcylinder );
-	
-	var Cgeometry2 = new THREE.CylinderGeometry( 20, 0, 100, 4 );
-	this.DIRcylinder2 = new THREE.Mesh( Cgeometry2, Cmaterial );
-	this.DIRcylinder2.rotation.z = Math.PI;
-	this.DIRcylinder2.position.y=1000;
-	this.scene.add( this.DIRcylinder2 );
-	
-	var curve = new THREE.EllipseCurve( 0,0,1000,1000,0,2*Math.PI,false );  
-	var path = new THREE.Path( curve.getPoints( 50 ) );
-	var circleGeometry = path.createPointsGeometry( 50 );
-	var circleMaterial = new THREE.LineBasicMaterial( { color : 0x000000 } );           
-	this.circle = new THREE.Line( circleGeometry, circleMaterial );
-	this.scene.add( this.circle );
+    var Cgeometry = new THREE.CylinderGeometry( 3, 3, 2000, 4 );
+    var Cmaterial = new THREE.MeshBasicMaterial( {color: 0x000000} );
+    this.DIRcylinder = new THREE.Mesh( Cgeometry, Cmaterial );
+    this.scene.add( this.DIRcylinder );
+
+    var Cgeometry2 = new THREE.CylinderGeometry( 20, 0, 100, 4 );
+    this.DIRcylinder2 = new THREE.Mesh( Cgeometry2, Cmaterial );
+    this.DIRcylinder2.rotation.z = Math.PI;
+    this.DIRcylinder2.position.y=1000;
+    this.scene.add( this.DIRcylinder2 );
+
+    var curve = new THREE.EllipseCurve( 0,0,1000,1000,0,2*Math.PI,false );
+    var path = new THREE.Path( curve.getPoints( 50 ) );
+    var circleGeometry = path.createPointsGeometry( 50 );
+    var circleMaterial = new THREE.LineBasicMaterial( { color : 0x000000 } );
+    this.circle = new THREE.Line( circleGeometry, circleMaterial );
+    this.scene.add( this.circle );
 
     var facadeGeometry = new THREE.BoxGeometry(1, 1, 1);
     var facadeMaterial = new THREE.MeshBasicMaterial({ color: 0xf2d478});
@@ -276,7 +276,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Extwh)
     this.rightShade.castShadow = true;
     this.rightShade.receiveShadow = true;
     this.scene.add(this.rightShade);
-	
+  
     var groundPlaneGeometry = new THREE.PlaneGeometry (10000, 10000);
     var groundPlaneMaterial = new THREE.MeshBasicMaterial ({color: 0xcccccc});
     this.groundPlane = new THREE.Mesh(groundPlaneGeometry, groundPlaneMaterial);
@@ -293,7 +293,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Extwh)
     this.SunSphere.position.y=-394.7;
     this.SunSphere.position.z=918.8;
     scene.add(this.SunSphere);
-	
+  
 
     this.sunLight = new THREE.DirectionalLight (0xffffff, 0.1);
     this.sunLight.castShadow = true;
@@ -462,7 +462,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Extwh)
     this.rightShade.position.x = (this.ExtWindow.scale.x/2);
     this.rightShade.position.y = -this.solarCube.scale.y/2-(this.rightShade.scale.y/2);
     this.rightShade.position.z = this.ExtWindow.position.z;
-	
+  
     $('#Window_U_Value').slider(enable ? "enable" : "disable");
     $('#Window_SHGC').slider(enable ? "enable" : "disable");
   },
@@ -511,7 +511,7 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Extwh)
     this.ExtWindow.scale.x = (ratio)*(this.solarCube.scale.x);
     this.ExtWindow.scale.z = (ratio)*(this.solarCube.scale.z);
 
-	this.sFacade.scale.x = this.solarCube.scale.x;
+    this.sFacade.scale.x = this.solarCube.scale.x;
     this.sFacade.scale.z = this.solarCube.scale.z;
 
 
@@ -545,12 +545,12 @@ sz2=str(CDbl(BuildingHeight)-windowheadersize-Extwh)
 
     ratioShade=this.ExtShade.scale.y/this.ExtWindow.scale.z;
     ratio=this.ExtWindow.scale.x/this.solarCube.scale.x;
-	
+  
     this.ExtWindow.scale.x = (ratio)*(this.solarCube.scale.x);
     this.ExtWindow.scale.z = (ratio)*(this.solarCube.scale.z);
     this.ExtWindow.position.z=this.solarCube.scale.z/2;
-	
-	this.sFacade.scale.x = this.solarCube.scale.x;
+  
+    this.sFacade.scale.x = this.solarCube.scale.x;
     this.sFacade.scale.z = this.solarCube.scale.z;
     this.sFacade.position.z=this.solarCube.position.z;
 
@@ -607,15 +607,14 @@ updateOrientaionDisplay: function(event, ui) {
     var latitude = 45;
     var hour_of_day = hour;
     var day_number = day;
-	var orient=orientation;
-	var xcamera=this.camera.position.x;
+    var orient=orientation;
+    var xcamera=this.camera.position.x;
     if (!this.SunSphere || !this.sunLight) {
       return;
     }
 
     //Convert radians to degrees
     var rtd = 180/Math.PI;
-window.console.log(orient);
     // Convert degrees to radians
     var dtr = Math.PI/180;
 
@@ -625,7 +624,7 @@ window.console.log(orient);
     var time_of_sunset=12/Math.PI * (2*Math.PI - Math.acos(Math.tan(dtr*(latitude)) * Math.tan(dtr*(solar_declination))));
     var possible_sunshine_hours=time_of_sunset-time_of_sunrise;
     var solar_altitude= rtd*Math.asin((Math.sin(solar_declination*dtr) * Math.sin(latitude*dtr)) + (Math.cos(solar_declination*dtr)* Math.cos(latitude*dtr) * Math.cos(hour_angle*dtr)));
-	
+  
     if (hour_of_day === 12) {
       solar_azimuth= 180-orient;
     } else if (hour_of_day < 12) {
@@ -642,21 +641,20 @@ window.console.log(orient);
     } else {
       sun_nosun=0;
     }
-	
+  
     var multRad=1000*sun_nosun;
     var altitudeProjection=Math.cos(dtr*solar_altitude);
     var xcoord=-multRad*altitudeProjection*Math.sin(dtr*solar_azimuth);
     var ycoord=-multRad*altitudeProjection*Math.cos(dtr*solar_azimuth);
     var zcoord=multRad*Math.sin(dtr*solar_altitude);
 
-window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
-	//this.camera.position.x=-xcoord;
-	//this.camera.position.y=-ycoord;
+  //this.camera.position.x=-xcoord;
+  //this.camera.position.y=-ycoord;
 
-	this.DIRcylinder.rotation.z = (orient/180)*Math.PI;
-	this.DIRcylinder2.rotation.z = ((orient/180))*Math.PI;
-	this.DIRcylinder2.position.x=1000*(Math.sin((orient/180)*Math.PI));
-	this.DIRcylinder2.position.y=-1000*(Math.cos((orient/180)*Math.PI));
+    this.DIRcylinder.rotation.z = (orient/180)*Math.PI;
+    this.DIRcylinder2.rotation.z = ((orient/180))*Math.PI;
+    this.DIRcylinder2.position.x=1000*(Math.sin((orient/180)*Math.PI));
+    this.DIRcylinder2.position.y=-1000*(Math.cos((orient/180)*Math.PI));
     this.SunSphere.position.x=xcoord;
     this.SunSphere.position.y=ycoord;
     this.SunSphere.position.z=zcoord;
@@ -828,7 +826,6 @@ window.console.log('x:' + xcoord + 'y:' + ycoord  +  'z:' +  zcoord);
     zone.LFin = $("#LWinFinR").slider('value');
     zone.RFin = $("#RWinFinR").slider('value');
     zone.Overhang = $("#WinOverhangR").slider('value');
-window.console.log(zone);
 
     $.post('simulation/run', zone, this.getSimulationResults.bind(this));
   },
