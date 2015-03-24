@@ -98,7 +98,7 @@ def convertDataToCSV(jsondata):
               jsondata["Terrain"]
 #Run tab
             ]
-            ]
+            
   return csvdata
 
 def createJobListFile(directory, jsondata):
