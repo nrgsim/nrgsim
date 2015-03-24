@@ -66,7 +66,7 @@ def convertDataToCSV(jsondata):
               jsondata["InfiltrationRate"],
               jsondata["InsulationLevel"],
               #This most likely will not work, but is noPCM word..
-              "WallAirGap" 
+              ["WallAirGap"], 
 #Activity tab (P14,P15,P16)
               jsondata["OccupancyType"],
               jsondata["CoolingSP"],
@@ -98,7 +98,7 @@ def convertDataToCSV(jsondata):
               jsondata["Terrain"]
 #Run tab
             ]
-            
+
   return csvdata
 
 def createJobListFile(directory, jsondata):
