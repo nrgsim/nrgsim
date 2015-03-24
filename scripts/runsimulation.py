@@ -50,6 +50,7 @@ def convertDataToCSV(jsondata):
   csvdata = [ jsondata["JobID"], 
               0, 
               0, 
+# First Run NoPCM
 #Geometry tab (P1,P2,P3,P4,P5,P6,P7,P8)
               jsondata["Height"],
               jsondata["Depth"],
@@ -64,7 +65,8 @@ def convertDataToCSV(jsondata):
               jsondata["WindowType"],
               jsondata["InfiltrationRate"],
               jsondata["InsulationLevel"],
-       "WallAirGap," + "M" + jsondata["Mvalue"] + "Q"  + jsondata["Qvalue"],
+              #This most likely will not work, but is noPCM word..
+              "WallAirGap" 
 #Activity tab (P14,P15,P16)
               jsondata["OccupancyType"],
               jsondata["CoolingSP"],
@@ -72,6 +74,30 @@ def convertDataToCSV(jsondata):
 #Site tab (P17)
               jsondata["Terrain"]
 #Run tab
+#Second with BioPCM
+#Geometry tab (P1,P2,P3,P4,P5,P6,P7,P8)
+              jsondata["Height"],
+              jsondata["Depth"],
+              jsondata["Width"],
+              jsondata["WinGR"],
+              jsondata["Overhang"],
+              jsondata["LFin"],
+              jsondata["RFin"],
+              jsondata["Orientation"],
+#Facade tab (P9,P10,P11,P12,P13)
+              jsondata["WallType"],
+              jsondata["WindowType"],
+              jsondata["InfiltrationRate"],
+              jsondata["InsulationLevel"],
+        "M" + jsondata["Mvalue"] + "Q"  + jsondata["Qvalue"],
+#Activity tab (P14,P15,P16)
+              jsondata["OccupancyType"],
+              jsondata["CoolingSP"],
+              jsondata["HeatingSP"],
+#Site tab (P17)
+              jsondata["Terrain"]
+#Run tab
+            ]
             ]
   return csvdata
 
