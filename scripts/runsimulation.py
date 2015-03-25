@@ -75,7 +75,7 @@ def convertDataToCSV(jsondata):
               jsondata["Terrain"]
 #Run tab
 
-# Row 2 NoPCM
+# Row 2 NoPCM This is a kludge for now used to add a noPCM run.
 #Geometry tab (P1,P2,P3,P4,P5,P6,P7,P8)
               jsondata["Height"],
               jsondata["Depth"],
@@ -90,8 +90,8 @@ def convertDataToCSV(jsondata):
               jsondata["WindowType"],
               jsondata["InfiltrationRate"],
               jsondata["InsulationLevel"],
-              #This most likely will not work, but is noPCM word..
-                      ["WallAirGap"], 
+              #This is a kludge for now used to add a noPCM run.
+                       "WallAirGap", 
 #Activity tab (P14,P15,P16)
               jsondata["OccupancyType"],
               jsondata["CoolingSP"],
