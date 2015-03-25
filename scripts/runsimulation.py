@@ -47,7 +47,7 @@ def convertDataToCSV(jsondata):
 
   # This is a kludge for now. It just writes out the parameters on 3 lines to test that we received them correctly
   # TODO: When it is implemented, it should be one line with values appearing in the same order as the parameters in the project.
-  csvdata = [ [ "job1",  # jsondata["JobID"], 
+  csvdata = [[ 'job1',  # jsondata["JobID"], 
               0, 
               0, 
 
@@ -76,7 +76,7 @@ def convertDataToCSV(jsondata):
               ],
 
 # Row 2 NoPCM This is a kludge for now used to add a noPCM run.
-              [ "job0",  # jsondata["JobID"], 
+              ['job0',  # jsondata["JobID"], 
               0, 
               0,
 #Geometry tab (P1,P2,P3,P4,P5,P6,P7,P8)
@@ -110,7 +110,7 @@ def createJobListFile(directory, jsondata):
   outputfile = directory + '/joblist.csv'
   with open(outputfile, 'w', newline='') as csvfile:
       csvfile = csv.writer(csvfile, delimiter=',', quotechar='\'', quoting=csv.QUOTE_MINIMAL)
-      csvfile.writerow(convertDataToCSV(jsondata))
+      csvfile.writerows(convertDataToCSV(jsondata))
 
 # Main purpose of this function is to copy the selected weather file to in.epw in the simulation folder
 def copySupportingFiles(simulationDirectory, jsondata):
