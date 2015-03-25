@@ -47,7 +47,7 @@ def convertDataToCSV(jsondata):
 
   # This is a kludge for now. It just writes out the parameters on 3 lines to test that we received them correctly
   # TODO: When it is implemented, it should be one line with values appearing in the same order as the parameters in the project.
-  csvdata = [ jsondata["JobID"], 
+  csvdata = [ [ "job1",  # jsondata["JobID"], 
               0, 
               0, 
 
@@ -73,9 +73,12 @@ def convertDataToCSV(jsondata):
               jsondata["HeatingSP"],
 #Site tab (P17)
               jsondata["Terrain"]
-#Run tab
+              ],
 
 # Row 2 NoPCM This is a kludge for now used to add a noPCM run.
+              [ "job0",  # jsondata["JobID"], 
+              0, 
+              0,
 #Geometry tab (P1,P2,P3,P4,P5,P6,P7,P8)
               jsondata["Height"],
               jsondata["Depth"],
@@ -98,7 +101,7 @@ def convertDataToCSV(jsondata):
               jsondata["HeatingSP"],
 #Site tab (P17)
               jsondata["Terrain"]
-#Run tab
+              ] 
             ]
 
   return csvdata
