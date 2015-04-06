@@ -845,7 +845,21 @@ updateOrientaionDisplay: function(event, ui) {
       progbar.hide();
       progbar.progressbar('destroy');
       $("#run-button").button("option", "disabled", false);
-      $("#results").text(results);
+      //$("#results").text(results);
+      var vals = results.split(',');
+      console.log(vals);
+      var heatNoPCM = window.parseFloat(vals[8]);
+      var coolNoPCM = window.parseFloat(vals[9]);
+      var heatBioPCM = window.parseFloat(vals[13]);
+      var coolBioPCM = window.parseFloat(vals[14]);
+      $('#heat-nopcm').text(''+heatNoPCM);
+      $('#cool-nopcm').text(''+coolNoPCM);
+      $('#heat-biopcm').text(''+heatBioPCM);
+      $('#cool-biopcm').text(''+coolBioPCM);
+      $('#heat-savings').text(''+(Number(heatNoPCM-heatBioPCM).toFixed(2)));
+      $('#cool-savings').text(''+(Number(coolNoPCM-coolBioPCM).toFixed(2)));
+      $('#heat-percent-savings').text(''+(100-(Number(heatBioPCM/heatNoPCM*100).toFixed(0)))+'%');
+      $('#cool-percent-savings').text(''+(100-(Number(coolBioPCM/coolNoPCM*100).toFixed(0)))+'%');
     } else {
       //window.console.log('simulation not finished');
       window.setTimeout(this.getSimulationResults.bind(this, results), 5000);

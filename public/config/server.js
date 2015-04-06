@@ -655,16 +655,23 @@ module.exports = {
       res.json({ "status": 0, "data": zone});
     });
   
+    var resultRequestCount = 0;
     app.post('/simulation/run', function(req, res) {
       console.log(JSON.stringify(req.body, null, '  '));
+      resultRequestCount = 0;
       res.json({ "status": 0, "data": "this would be some simulation results"});
     });
 
     app.get('/simulation/:jobId', function(req, res) {
       var jobId = req.params.jobId;
-      var rnd = Math.floor((Math.random() * 4) + 1);
-      var finished = (rnd === 1);
-      res.send("This would be the results streamed back from the server");
+      //var rnd = Math.floor((Math.random() * 4) + 1);
+      //var finished = (rnd === 1);
+      resultRequestCount = resultRequestCount + 1;
+      if (resultRequestCount > 3) {
+        res.send("#,Job_ID,Reserved,E1: Heating Energy Demand [kWh],E2: Cooling Energy Demand [kWh],\r\n0,job0,,187.75,1530.01,\r\n0,job1,,112.99,1424.85,");
+      } else {
+        res.status(203).json({ jobId: jobId, finished: false });
+      }
     });
 
     app.get('/simulation/countries/:continent', function(req, res) {
