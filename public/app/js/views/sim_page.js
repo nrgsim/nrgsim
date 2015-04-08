@@ -798,6 +798,7 @@ updateOrientaionDisplay: function(event, ui) {
     var progbar = $('#progressbar');
 
     $("#run-button").button("option", "disabled", true);
+    $("#results").hide();
     progbar.progressbar({ value: false });
     progbar.show();
 
@@ -845,6 +846,7 @@ updateOrientaionDisplay: function(event, ui) {
       progbar.hide();
       progbar.progressbar('destroy');
       $("#run-button").button("option", "disabled", false);
+      $("#results").show();
       //$("#results").text(results);
       var vals = results.split(',');
       console.log(vals);
