@@ -100,7 +100,7 @@ def convertDataToCSV(jsondata):
               jsondata["CoolingSP"],
               jsondata["HeatingSP"],
 #Site tab (P17)
-              jsondata["Terrain"]
+             # jsondata["Terrain"]
               ] 
             ]
 
