@@ -847,7 +847,7 @@ updateOrientaionDisplay: function(event, ui) {
       progbar.progressbar('destroy');
       $("#run-button").button("option", "disabled", false);
       $("#results").show();
-      //$("#results").text(results);
+      $("#results").text(results);
       var vals = results.split(',');
       console.log(vals);
       var heatNoPCM = window.parseFloat(vals[8]);
