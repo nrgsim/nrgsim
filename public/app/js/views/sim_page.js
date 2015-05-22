@@ -847,13 +847,13 @@ updateOrientaionDisplay: function(event, ui) {
       progbar.progressbar('destroy');
       $("#run-button").button("option", "disabled", false);
       $("#results").show();
-      $("#results").text(results);
+      // $("#results").text(results);
       var vals = results.split(',');
       console.log(vals);
-      var heatNoPCM = window.parseFloat(vals[8]);
-      var coolNoPCM = window.parseFloat(vals[9]);
-      var heatBioPCM = window.parseFloat(vals[13]);
-      var coolBioPCM = window.parseFloat(vals[14]);
+      var heatNoPCM = window.parseFloat(vals[7]);
+      var coolNoPCM = window.parseFloat(vals[8]);
+      var heatBioPCM = window.parseFloat(vals[11]);
+      var coolBioPCM = window.parseFloat(vals[12]);
       $('#heat-nopcm').text(''+heatNoPCM);
       $('#cool-nopcm').text(''+coolNoPCM);
       $('#heat-biopcm').text(''+heatBioPCM);
