@@ -70,8 +70,9 @@ def convertDataToCSV(jsondata):
 #Activity tab (P14,P15,P16)
               jsondata["OccupancyType"],
               jsondata["CoolingSP"],
-              jsondata["HeatingSP"]
+              jsondata["HeatingSP"],
 #Site tab (P17)
+              'City'
               # jsondata["Terrain"]
               ],
 
@@ -98,8 +99,9 @@ def convertDataToCSV(jsondata):
 #Activity tab (P14,P15,P16)
               jsondata["OccupancyType"],
               jsondata["CoolingSP"],
-              jsondata["HeatingSP"]
+              jsondata["HeatingSP"],
 #Site tab (P17)
+              'City'
              # jsondata["Terrain"]
               ] 
             ]
