@@ -70,9 +70,9 @@ def convertDataToCSV(jsondata):
 #Activity tab (P14,P15,P16)
               jsondata["OccupancyType"],
               jsondata["CoolingSP"],
-              jsondata["HeatingSP"],
+              jsondata["HeatingSP"]
 #Site tab (P17)
-              jsondata["Terrain"]
+              # jsondata["Terrain"]
               ],
 
 # Row 2 NoPCM This is a kludge for now used to add a noPCM run.
@@ -98,7 +98,7 @@ def convertDataToCSV(jsondata):
 #Activity tab (P14,P15,P16)
               jsondata["OccupancyType"],
               jsondata["CoolingSP"],
-              jsondata["HeatingSP"],
+              jsondata["HeatingSP"]
 #Site tab (P17)
              # jsondata["Terrain"]
               ] 
