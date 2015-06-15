@@ -746,8 +746,10 @@ updateOrientaionDisplay: function(event, ui) {
     }, 10);
     */
 
+    /*
     var height = $('#inputs-panel').height();
     $('#inputs-panel').resizable({ handles: "ne, se, e", minHeight:  height, maxHeight: height });
+    */
 
 
     // This help stuff is kludgy just to show that we can do it. It should be implemented better when we really have help.
